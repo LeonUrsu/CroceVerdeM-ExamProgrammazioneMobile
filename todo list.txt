@@ -1,0 +1,13 @@
+APP:----------------------------------
+X 1. trovare giocatori per calcetto 
+X 2. vedere le postazioni di autovelox
+3. gestione dei volontari della CV
+X 4. cerca Dottori a torrette (Celeste)
+X 5. orologio sveglia con musica personalizzata
+X 6. cocktail maker 
+X 7. registra suoni e segnalibri per le sezioni
+X 8. gestione ambulance della centrale operativa
+
+DATABASE:----------------------------- 
+un servizio online, bisogna controllare se si verificano condizione di stallo nella sincronizazione delle informazioni dei turni, 
+questa verifica andrà fatta con la simulazine di molte richieste in poco tempo di operazione
