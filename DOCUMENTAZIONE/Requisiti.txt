@@ -1,0 +1,19 @@
+RF1 - Il sistema dovrà permettere di gestire l'H24 a settimane alterne
+RF2 - Il sistema dovrà gestire diverse tipologie di turnazioni orarie
+RF3 - Il sistema dovrà gestire gerarchie di militi
+RF4 - Il sistema dovrà permettere di prenotarsi ai turni disponibili
+RF5 - Il sistema dovrà permettere di gestire il Login
+RF6 - Il sistema dovrà permettere di vedere un tabellone di turni disponibili
+RF7 - Il sistema dovrà permettere di effettuare operazioni CD/(CRUD) dei militi
+RF8 - Il sistema dovrà permettere di gestire l'autoprenotazione
+RF9 - Il sistema dovrà gestire la richiesta di cambio turno
+RF10 - Il sistema dovrà permettere ai militi di fornire la propria disponibilità
+RF11 - Il sistema dovrà permettere di vedere il proprio profilo
+RF12 - Il sistema dovrà permettere di vedere le proprie statistiche
+RF13 - Il sistema dovrà permettere di effettuare le checklist dell'ambulanza 
+RF14 - Il sistema dovrà permettere all'amministratore di visualizzare le statistiche sui turni svolti dai militi.
+RF15 - Il sistema dovrà permettere di effettuare il backup dei dati
+---
+RNF1 - Il sistema dovrà essere implementato utilizzando Kotlin
+RNF2 - Il sistema dovrà avere un DB condiviso online
+RNF3 - Il sistema deve essere intuitivo e facile da utilizzare per chiunque 
