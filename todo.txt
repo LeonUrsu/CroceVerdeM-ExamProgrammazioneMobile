@@ -1,0 +1,3 @@
+DATABASE:----------------------------- 
+un servizio online, bisogna controllare se si verificano condizione di stallo nella sincronizazione delle informazioni dei turni, 
+questa verifica andrà fatta con la simulazine di molte richieste in poco tempo di operazione
