@@ -1,7 +1,6 @@
 //Per non avere problemi di condivisione il lavoro deve essere fatto su file PDF separati per ogni mockup.
 #Login_mockup
 #Profilo_Volontario_dipendente_mockup
-#Profilo_Centralinista_mockup
 #Tabellone_Turni_mockup
 #Operazioni_Centralinista_sui_turni_mockup *1 
 #Operazioni_Volontario_sui_turni_mockup *1
