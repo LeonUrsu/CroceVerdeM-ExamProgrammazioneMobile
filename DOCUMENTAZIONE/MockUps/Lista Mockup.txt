@@ -2,8 +2,11 @@
 #Login_mockup
 #Profilo_Volontario_dipendente_mockup
 #Tabellone_Turni_mockup
-#Operazioni_Centralinista_sui_turni_mockup *1 
+#Operazioni_Centralinista_sui_turni_mockup *1
 #Operazioni_Volontario_sui_turni_mockup *1
+#Operazioni_Ammministratore_sui_turni_mockup *1
 
+#Checklist_Volontario
+#Operazioni_admin_nelle_impostazioni
 
 *1 A seconda di chi clicca un turno si avrà a disposizione diverse opzioni da fare su quel determinato turno.
