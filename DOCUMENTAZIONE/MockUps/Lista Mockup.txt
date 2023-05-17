@@ -10,3 +10,6 @@
 #Operazioni_admin_nelle_impostazioni
 
 *1 A seconda di chi clicca un turno si avrà a disposizione diverse opzioni da fare su quel determinato turno.
+
+
+DIMENSIONI SCHERMO 300x600
