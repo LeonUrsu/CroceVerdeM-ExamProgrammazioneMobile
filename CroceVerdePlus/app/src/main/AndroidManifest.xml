@@ -12,7 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CroceVerdePlus"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Gestione_Backup"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
