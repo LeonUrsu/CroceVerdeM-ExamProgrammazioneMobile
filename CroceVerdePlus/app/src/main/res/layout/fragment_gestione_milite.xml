@@ -2,6 +2,87 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GestioneMilite"/>
+    tools:context=".GestioneMilite">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="172dp"
+            android:layout_height="154dp"
+            android:layout_marginTop="86dp"
+            android:layout_marginBottom="371dp"
+            app:layout_constraintBottom_toTopOf="@+id/cancella_milite_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/nome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="nome"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/cognome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="cognome"
+            app:layout_constraintStart_toStartOf="@+id/nome_text"
+            app:layout_constraintTop_toBottomOf="@+id/nome_text" />
+
+        <TextView
+            android:id="@+id/indirizzo_milite_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="indirizzo"
+            app:layout_constraintStart_toStartOf="@+id/data_di_nascita_text"
+            app:layout_constraintTop_toBottomOf="@+id/data_di_nascita_text" />
+
+        <TextView
+            android:id="@+id/data_di_nascita_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="data di nascita"
+            app:layout_constraintStart_toStartOf="@+id/cognome_text"
+            app:layout_constraintTop_toBottomOf="@+id/cognome_text" />
+
+        <Button
+            android:id="@+id/cancella_milite_btn"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="58dp"
+            android:text="Cancella milite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/aggiorna_milite_btn"
+            android:layout_width="210dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="124dp"
+            android:text="Aggiorna mlite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gestisci_militi_btn2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -15,7 +15,7 @@
         <activity
             android:name=".GestioneBackup"
             android:exported="false"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Gestione"
             />
         <activity
             android:name=".MainActivity"
