@@ -10,47 +10,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="36dp"
-            android:text="Nome"
-            app:layout_constraintBottom_toTopOf="@+id/textView12"
-            tools:layout_editor_absoluteX="45dp" />
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="172dp"
+            android:layout_height="154dp"
+            android:layout_marginTop="152dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/textView12"
-            android:layout_width="300dp"
+            android:id="@+id/nome_text"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="Cognome"
-            app:layout_constraintBottom_toTopOf="@+id/textView13"
-            tools:layout_editor_absoluteX="45dp" />
+            android:layout_marginTop="28dp"
+            android:text="nome"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="300dp"
+            android:id="@+id/data_di_nascita_text"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Data di nascita"
-            tools:layout_editor_absoluteX="45dp"
-            tools:layout_editor_absoluteY="443dp" />
+            android:layout_marginTop="20dp"
+            android:text="data di nascita"
+            app:layout_constraintStart_toStartOf="@+id/cognome_text"
+            app:layout_constraintTop_toBottomOf="@+id/cognome_text" />
+
+        <TextView
+            android:id="@+id/cognome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="cognome"
+            app:layout_constraintStart_toStartOf="@+id/nome_text"
+            app:layout_constraintTop_toBottomOf="@+id/nome_text" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="28dp"
             android:text="LogOut"
-            tools:layout_editor_absoluteX="275dp"
-            tools:layout_editor_absoluteY="51dp" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="165dp"
-            android:layout_height="181dp"
-            tools:layout_editor_absoluteX="123dp"
-            tools:layout_editor_absoluteY="150dp"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
