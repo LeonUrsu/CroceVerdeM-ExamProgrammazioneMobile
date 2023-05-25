@@ -6,79 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".Login">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/username_text"
-            android:layout_width="113dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="68dp"
-            android:gravity="center"
-            android:text="username"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/username_input"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/username_input"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="68dp"
-            android:background="@drawable/small_black_tv_border"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            <TextView
+                android:id="@+id/username_text"
+                android:layout_width="113dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="68dp"
+                android:gravity="center"
+                android:text="username"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/username_input"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-        <TextView
-            android:id="@+id/password_text"
-            android:layout_width="113dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="13dp"
-            android:gravity="center"
-            android:text="password"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@+id/password_input"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/username_text"
-            app:layout_constraintTop_toBottomOf="@+id/username_text" />
+            <EditText
+                android:id="@+id/username_input"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="68dp"
+                android:background="@drawable/small_black_tv_border"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
-        <EditText
-            android:id="@+id/password_input"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/small_black_tv_border"
-            android:ems="10"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toBottomOf="@+id/username_input" />
+            <TextView
+                android:id="@+id/password_text"
+                android:layout_width="113dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="13dp"
+                android:gravity="center"
+                android:text="password"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/password_input"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/username_text"
+                app:layout_constraintTop_toBottomOf="@+id/username_text" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="358dp"
-            android:layout_height="337dp"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/logo_cv"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/password_input"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/small_black_tv_border"
+                android:ems="10"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/username_input" />
 
-        <Button
-            android:id="@+id/accedi"
-            android:layout_width="150dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="57dp"
-            android:text="Accedi"
-            app:layout_constraintEnd_toEndOf="@+id/password_input"
-            app:layout_constraintStart_toStartOf="@+id/password_text"
-            app:layout_constraintTop_toBottomOf="@+id/password_input" />
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="358dp"
+                android:layout_height="337dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/logo_cv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/accedi"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="57dp"
+                android:text="Accedi"
+                app:layout_constraintEnd_toEndOf="@+id/password_input"
+                app:layout_constraintStart_toStartOf="@+id/password_text"
+                app:layout_constraintTop_toBottomOf="@+id/password_input" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/bottom_navigation_menu" />
+
+
+    </LinearLayout>
 
 </FrameLayout>
