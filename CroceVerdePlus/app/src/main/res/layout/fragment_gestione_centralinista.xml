@@ -5,7 +5,7 @@
     android:id="@+id/frame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GestioneMilite">
+    tools:context=".GestioneCentralinista">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -64,25 +64,13 @@
             android:layout_width="210dp"
             android:layout_height="50dp"
             android:layout_marginBottom="58dp"
-            android:text="Cancella milite"
+            android:text="Cancella centralinista"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView4"
             app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/aggiorna_milite_btn"
-            android:layout_width="210dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="124dp"
-            android:text="Aggiorna mlite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gestisci_militi_btn2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
