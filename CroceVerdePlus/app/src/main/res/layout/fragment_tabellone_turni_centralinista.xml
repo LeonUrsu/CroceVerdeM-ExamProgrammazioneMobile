@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TabelloneTurniCentralinista">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".TabelloneTurniVolontario">
+
+
+        <Spinner
+            android:id="@+id/giorno_input4"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/segnami_cancellami_btn"
+            app:layout_constraintEnd_toEndOf="@+id/orario_input"
+            app:layout_constraintHorizontal_bias="0.636"
+            app:layout_constraintStart_toStartOf="@+id/giorno_input" />
+
+        <Spinner
+            android:id="@+id/grado_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="52dp"
+            app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/servizio_input"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <Spinner
+            android:id="@+id/servizio_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="@+id/tableLayout"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <Spinner
+            android:id="@+id/giorno_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="@+id/servizio_input"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/servizio_input"
+            app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
+
+        <Button
+            android:id="@+id/segnami_cancellami_btn"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="76dp"
+            android:text="Agiungi milite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/giorno_input4"
+            app:layout_constraintStart_toStartOf="@+id/giorno_input4" />
+
+        <Spinner
+            android:id="@+id/orario_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="@+id/grado_input"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/grado_input"
+            app:layout_constraintTop_toBottomOf="@+id/grado_input" />
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="411dp"
+            android:layout_height="322dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
