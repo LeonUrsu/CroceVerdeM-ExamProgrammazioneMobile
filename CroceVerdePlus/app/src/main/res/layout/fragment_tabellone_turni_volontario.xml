@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TabelloneTurniVolontario">
+
+
+    <Spinner
+        android:id="@+id/grado_input"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toEndOf="@+id/tableLayout"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/servizio_input"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <Spinner
+        android:id="@+id/servizio_input"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toStartOf="@+id/tableLayout"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+    <Spinner
+        android:id="@+id/giorno_input"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="@+id/servizio_input"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/servizio_input"
+        app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
+
+    <Button
+        android:id="@+id/segnami_cancellami_btn"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="52dp"
+        android:text="Segnami"
+        app:layout_constraintEnd_toEndOf="@+id/orario_input"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/orario_input"
+        app:layout_constraintTop_toBottomOf="@+id/orario_input" />
+
+    <Button
+        android:id="@+id/disponibilita_btn"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="52dp"
+        android:text="Disponibilità"
+        app:layout_constraintEnd_toEndOf="@+id/giorno_input"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/giorno_input"
+        app:layout_constraintTop_toBottomOf="@+id/giorno_input" />
+
+    <Spinner
+        android:id="@+id/orario_input"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="@+id/grado_input"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/grado_input"
+        app:layout_constraintTop_toBottomOf="@+id/grado_input" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="411dp"
+        android:layout_height="322dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
