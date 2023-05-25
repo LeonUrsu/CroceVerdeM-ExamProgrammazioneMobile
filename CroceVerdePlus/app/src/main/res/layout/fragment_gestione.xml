@@ -15,7 +15,7 @@
             android:id="@+id/esci_btn2"
             android:layout_width="210dp"
             android:layout_height="50dp"
-            android:text="Esci"
+            android:text="esci"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
