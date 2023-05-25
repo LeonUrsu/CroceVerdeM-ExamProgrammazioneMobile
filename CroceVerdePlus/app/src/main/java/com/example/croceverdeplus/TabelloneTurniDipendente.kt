@@ -34,7 +34,7 @@ class TabelloneTurniDipendente : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tabellone_turni_dipendente, container, false)
+        return inflater.inflate(R.layout., container, false)
     }
 
     companion object {
