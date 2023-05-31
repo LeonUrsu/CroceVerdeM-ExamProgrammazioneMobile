@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
         //val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
         //val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
         startActivity(intent)
-        //------------------------------
-
+        //-----------------------------
 
         /* QUI CI VA IL CODICE PER LOGGARE L'UTENTE, QUANDO L'UTENTE PREME LOGIUN LA CLASSE LOGIN()
          VIENE ATTIVATA E CONTROLLA L'UTENTE, RITORNA UN VALORE E GRAZIE A QUESTO VALORE VIENE
