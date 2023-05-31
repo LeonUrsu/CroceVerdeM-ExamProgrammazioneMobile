@@ -11,6 +11,15 @@
         android:theme="@style/Theme.CroceVerdePlus"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivityCentralinista"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityDipendente"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityAmministratore"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityVolontario"
             android:exported="false" />
         <activity
@@ -22,6 +31,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
