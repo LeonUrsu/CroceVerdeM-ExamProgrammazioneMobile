@@ -7,12 +7,12 @@ import android.os.Bundle
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_login)
+        setContentView(R.layout.fragment_tabellone_turni_dipendente)
         title = "CroceVerdePlus"
 
         //-----------------------------
         //QUI E' STATA CAMBIATA L'ACTIVITY A MainActivityVolontario
-        val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+        //val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
         //val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
         //val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
         //val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
