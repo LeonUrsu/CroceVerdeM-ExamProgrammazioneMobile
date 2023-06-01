@@ -23,10 +23,9 @@ class TabelloneTurniDipendente : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        //Serve per cambiare tabellone degli turni
+        //findViewById<View>(R.id.tabellone_turni_118).setVisibility(View.VISIBLE)
+        //findViewById<View>(R.id.tabellone_turni_h24_118).setVisibility(View.GONE)
     }
 
     override fun onCreateView(

@@ -3,13 +3,14 @@ package com.example.croceverdeplus
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.ViewStub
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_tabellone_turni_dipendente)
         title = "CroceVerdePlus"
-
         //-----------------------------
         //QUI E' STATA CAMBIATA L'ACTIVITY A MainActivityVolontario
         //val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
