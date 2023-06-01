@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CVP_nomi">
+        <item name="android:textSize">10sp</item>
+        <item name="android:background">@color/CV_green</item>
+    </style>
+
+    <style name="CVP_titoli">
+        <item name="android:textSize">34sp</item>
+        <item name="android:background">@color/CV_green</item>
+    </style>
+
+
+</resources>

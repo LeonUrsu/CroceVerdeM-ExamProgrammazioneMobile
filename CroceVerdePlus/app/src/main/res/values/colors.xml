@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="danger_color">#800000</color>
     <color name="white">#FFFFFF</color>
-</resources>
+    <color name="CV_green">#2BB107</color>
+    </resources>
