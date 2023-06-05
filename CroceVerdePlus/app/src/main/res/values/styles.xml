@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CVP_nomi">
+    <style name="CVP_tabella">
         <item name="android:textSize">10sp</item>
         <item name="android:gravity">center</item>
     </style>
-
 
     <style name="CVP_titoli">
         <item name="android:textSize">34sp</item>
         <item name="android:background">@color/CV_green</item>
     </style>
 
+    <style name="CVP_nomi">
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+
     <style name="CVP_giorni">
+        <item name="android:textSize">10sp</item>
+        <item name="android:background">@color/CV_green</item>
+    </style>
+
+    <style name="CVP_orari">
+        <item name="android:textSize">10sp</item>
+        <item name="android:gravity">start</item>
+    </style>
+
+    <style name="CVP_vuoto">
         <item name="android:textSize">10sp</item>
         <item name="android:background">@color/CV_green</item>
     </style>
@@ -20,9 +35,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:backgroundTint">#656363</item>
         <item name="android:textSize">14sp</item>
-        <!-- <item name="android:background">@color/CV_green</item> -->
     </style>
-
 
 
 </resources>
