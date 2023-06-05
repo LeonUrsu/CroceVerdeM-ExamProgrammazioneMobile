@@ -34,4 +34,9 @@ class MainActivityCentralinista : AppCompatActivity() {
         transaction.commit()
     }
 
+
+    fun back_function(){
+        setContentView(R.layout.activity_main_centralinista)
+    }
+
 }
