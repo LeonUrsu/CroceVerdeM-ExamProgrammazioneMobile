@@ -22,7 +22,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/nome_text"
+            android:id="@+id/nome_text_centralinista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
@@ -31,13 +31,13 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
         <TextView
-            android:id="@+id/cognome_text"
+            android:id="@+id/cognome_text_centralinista"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="cognome"
-            app:layout_constraintStart_toStartOf="@+id/nome_text"
-            app:layout_constraintTop_toBottomOf="@+id/nome_text" />
+            app:layout_constraintStart_toStartOf="@+id/nome_text_centralinista"
+            app:layout_constraintTop_toBottomOf="@+id/nome_text_centralinista" />
 
         <TextView
             android:id="@+id/indirizzo_milite_text"
@@ -45,17 +45,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="indirizzo"
-            app:layout_constraintStart_toStartOf="@+id/data_di_nascita_text"
-            app:layout_constraintTop_toBottomOf="@+id/data_di_nascita_text" />
+            app:layout_constraintStart_toStartOf="@+id/data_di_nascita_text_centralinista"
+            app:layout_constraintTop_toBottomOf="@+id/data_di_nascita_text_centralinista" />
 
         <TextView
-            android:id="@+id/data_di_nascita_text"
+            android:id="@+id/data_di_nascita_text_centralinista"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="data di nascita"
-            app:layout_constraintStart_toStartOf="@+id/cognome_text"
-            app:layout_constraintTop_toBottomOf="@+id/cognome_text" />
+            app:layout_constraintStart_toStartOf="@+id/cognome_text_centralinista"
+            app:layout_constraintTop_toBottomOf="@+id/cognome_text_centralinista" />
 
         <Button
             android:id="@+id/cancella_centralinista_btn"
