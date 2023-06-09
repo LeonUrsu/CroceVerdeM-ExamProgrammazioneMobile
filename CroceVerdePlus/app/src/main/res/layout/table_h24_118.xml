@@ -6,6 +6,7 @@
     android:id="@+id/tabellone_turni_h24_118"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:theme="@style/CVP_tabella"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="0dp">
@@ -20,13 +21,12 @@
         <TextView
             android:id="@+id/textView46"
             android:layout_width="50dp"
-
             android:layout_height="match_parent"
             android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView47"
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="H24"
@@ -34,7 +34,7 @@
 
         <TextView
             android:id="@+id/textView48"
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="118"
@@ -44,8 +44,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_orari"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_orari">
 
         <TextView
             android:id="@+id/textView3"
@@ -57,43 +57,43 @@
 
         <TextView
             android:id="@+id/textView49"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="7 - 14"/>
+            android:text="7 - 14" />
 
         <TextView
             android:id="@+id/textView50"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="14 - 21"/>
+            android:text="14 - 21" />
 
         <TextView
             android:id="@+id/textView51"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="21 - 7"/>
+            android:text="21 - 7" />
 
         <TextView
             android:id="@+id/textView52"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="7 - 14" />
 
         <TextView
             android:id="@+id/textView53"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="14 - 21" />
 
         <TextView
             android:id="@+id/textView54"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="21 - 7" />
     </TableRow>
@@ -101,8 +101,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView55"
@@ -111,157 +111,146 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Lunedì 23/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/theme"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_lun_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_lun_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_lun_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_lun_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_lun_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_lun_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_lun_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -270,8 +259,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView74"
@@ -280,157 +269,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Martedì 24/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mar_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mar_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mar_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mar_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mar_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mar_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mar_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -439,8 +416,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView93"
@@ -449,157 +426,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Mercoledì 25/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mer_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mer_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_mer_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_mer_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mer_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mer_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_mer_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -608,8 +573,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView112"
@@ -618,157 +583,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Giovedì 26/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_gio_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_gio_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_gio_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_gio_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_gio_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_gio_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_gio_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -777,8 +730,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView131"
@@ -787,157 +740,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Venerdì 27/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_ven_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_ven_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_ven_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_ven_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_ven_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_ven_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_ven_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -946,8 +887,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView150"
@@ -956,157 +897,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Sabato 28/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_sab_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_sab_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_sab_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_sab_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_sab_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_sab_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_sab_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -1115,8 +1044,8 @@
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:theme="@style/CVP_nomi"
-        android:paddingTop="2dp">
+        android:paddingTop="2dp"
+        android:theme="@style/CVP_nomi">
 
         <TextView
             android:id="@+id/textView169"
@@ -1125,157 +1054,145 @@
             android:gravity="center_horizontal|center_vertical"
             android:text="Domenica 29/04"
             android:textAlignment="gravity"
-            android:theme="@style/CVP_giorni"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:theme="@style/CVP_giorni" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_dom_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_dom_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_h24_dom_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_h24_dom_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_dom_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_dom_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/turno_118_dom_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 

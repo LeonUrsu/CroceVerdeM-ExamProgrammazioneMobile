@@ -6,12 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".TabelloneTurniDipendente" >
 
-    <include
-        layout="@layout/table_118"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+    <ViewFlipper
+        android:id="@+id/vf_dipendente"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <include layout="@layout/table_h24_118"/>
+        <include
+            android:id="@+id/include3"
+            layout="@layout/table_118" />
+
+        <include
+            android:id="@+id/map3"
+            layout="@layout/table_h24_118" />
+
+    </ViewFlipper>
 
 
 

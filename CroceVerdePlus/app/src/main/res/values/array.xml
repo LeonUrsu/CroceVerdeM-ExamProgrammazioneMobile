@@ -27,4 +27,47 @@
         <item>21 - 7</item>
     </string-array>
 
+
+    <string-array name="presidi_ambulanza_array">
+        <item>Targa Data FirmaAttrezzature e materialiBombola 1 Bar</item>
+        <item>Bombola 2 Bar</item>
+        <item>Bombola P.P.S</item>
+        <item>Venturi</item>
+        <item>Pediatrica</item>
+        <item>AerosolOcchiali di protezione</item>
+        <item>Pallone di ambu</item>
+        <item>Maschere</item>
+        <item>Annule orofaringee</item>
+        <item>FiltroFonendoscopio</item>
+        <item>SfigmanometroSaturimetro o fissoBende</item>
+        <item>Cerotti</item>
+        <item>DisinfettanteGhiaccio spray e sintetico in buste</item>
+        <item>Telo termoisolanteBarella</item>
+        <item>Ferma testa</item>
+        <item>Cinghia frontale  e mentoniera</item>
+        <item>RagnoEstricatore di sicurezza KED</item>
+        <item>Lenzuola e teli di ricambioGuanti</item>
+        <item>Contenitore aghi usati</item>
+        <item>Forbici di Robin</item>
+        <item>Laccio femorale</item>
+        <item>Aspiratore Sondini</item>
+        <item>Aspirazione e naso gastrici</item>
+        <item>Kit scasso</item>
+        <item>EstintoreZaino per adulti</item>
+        <item>Saturimetro</item>
+        <item>Fonendoscopio</item>
+        <item>Sfigmanometro</item>
+        <item>Ghiaccio</item>
+        <item>Garze</item>
+        <item>Disinfettante</item>
+        <item>Ambu</item>
+        <item>Mascherine</item>
+        <item>Telo termico</item>
+    </string-array>
+
+
+
+
+
+
 </resources>

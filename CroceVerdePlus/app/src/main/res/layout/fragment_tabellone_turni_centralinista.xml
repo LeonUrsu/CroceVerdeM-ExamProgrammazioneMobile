@@ -14,7 +14,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
         <include
             android:id="@+id/include1"
             layout="@layout/table_118" />
@@ -22,7 +21,6 @@
         <include
             android:id="@+id/map"
             layout="@layout/table_h24_118" />
-
     </ViewFlipper>
 
     <Spinner
@@ -69,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
 
     <Button
-        android:id="@+id/segnami_cancellami_btn"
+        android:id="@+id/segna_cancella_btn"
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginTop="24dp"
@@ -89,16 +87,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/grado_input"
         app:layout_constraintTop_toTopOf="@+id/giorno_input" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/segnami_cancellami_btn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

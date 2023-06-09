@@ -1,1 +1,34 @@
-Targa Data FirmaAttrezzature e materialiBombola 1 Bar             Bombola 2 Bar               Bombola P.P.S La somma delle bombole deve essere minimo 200 LtSI NOMaschera a percentuale variabile di ossigeno, venturi, pediatrica, aerosolOcchiali di protezionePallone di ambu, maschere, cannule orofaringee, filtroFonendoscopio, sfigmanometroSaturimetro a batterie portatile o fissoBende, cerotti, disinfettanteGhiaccio spray e sintetico in buste, telo termoisolanteBarella auto caricanteTelo portaferitiBarella a cucchiaio e cinture di sicurezzaMaterasso a depressione con pompaTavola spinale radiotrasparente, ferma testa, cinghia frontale  e mentoniera, ragnoEstricatore di sicurezza KEDSerie stecco bendeSerie collari cervicaliCoperta, lenzuola e teli di ricambioGuanti non sterili monouso taglia S - M - LPadella e pappagalloContenitore rifiuti sanitari e sacchetti, contenitore aghi usatiForbici di RobinLaccio femoraleAspiratore Sondini aspirazione e naso gastriciKit scassoEstintoreZaino per adultiSaturimetro, fonendoscopio, sfigmanometro, ghiaccio, garze, disinfettante, ambu, mascherine, telo termico
+Targa Data FirmaAttrezzature e materialiBombola 1 Bar             
+Bombola 2 Bar               
+Bombola P.P.S
+Venturi
+Pediatrica
+AerosolOcchiali di protezione
+Pallone di ambu
+Maschere
+Annule orofaringee 
+FiltroFonendoscopio
+SfigmanometroSaturimetro o fissoBende
+Cerotti
+DisinfettanteGhiaccio spray e sintetico in buste
+Telo termoisolanteBarella
+Ferma testa
+Cinghia frontale  e mentoniera
+RagnoEstricatore di sicurezza KED
+Lenzuola e teli di ricambioGuanti
+Contenitore aghi usati
+Forbici di Robin
+Laccio femorale
+Aspiratore Sondini
+Aspirazione e naso gastrici
+Kit scasso
+EstintoreZaino per adulti
+Saturimetro
+Fonendoscopio
+Sfigmanometro
+Ghiaccio
+Garze
+Disinfettante
+Ambu
+Mascherine
+Telo termico
