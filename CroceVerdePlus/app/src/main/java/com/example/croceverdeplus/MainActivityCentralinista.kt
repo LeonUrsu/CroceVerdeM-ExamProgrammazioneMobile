@@ -3,7 +3,6 @@ package com.example.croceverdeplus
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -36,7 +35,9 @@ class MainActivityCentralinista : AppCompatActivity() {
         transaction.commit()
     }
 
-
+    /*
+    Metodo per effettuare il logout dal profilo e ritornare alla schermata di login
+     */
     fun exit_function(){
         val intent = Intent(this@MainActivityCentralinista, MainActivity::class.java)
         startActivity(intent)
