@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
@@ -150,6 +151,8 @@ class TabelloneTurniVolontario : Fragment() {
         })
         return ret_position
     }
+
+
 
 
 }
