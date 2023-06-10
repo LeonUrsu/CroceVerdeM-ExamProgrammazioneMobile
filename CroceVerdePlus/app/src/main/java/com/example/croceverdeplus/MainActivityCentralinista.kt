@@ -13,8 +13,8 @@ class MainActivityCentralinista : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_centralinista)
-        loadFragment(CheckList())
         bottomNav = findViewById(R.id.bottomNavCentralinista) as BottomNavigationView
+        bottomNav.setSelectedItemId(R.id.tabellone)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.tabellone -> {

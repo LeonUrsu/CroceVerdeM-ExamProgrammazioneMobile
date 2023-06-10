@@ -27,7 +27,15 @@
                 android:src="@drawable/accountimage" />
 
             <TextView
-                android:id="@+id/nome_volontario"
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20sp"
+                android:text="Dati Personali"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/cognome_text_profilo_volontario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="nome_volontario" />
@@ -39,7 +47,7 @@
                 android:text="cognome_volontario" />
 
             <TextView
-                android:id="@+id/datadinascita_volontario"
+                android:id="@+id/data_di_nascita_text_profilo_volontario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="datadinascita_volontario" />
