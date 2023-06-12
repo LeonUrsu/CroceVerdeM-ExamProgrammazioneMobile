@@ -31,7 +31,14 @@ class CheckList : Fragment() {
         }
 
         val salva_btn = root.findViewById(R.id.salva) as Button
+<<<<<<< HEAD
         salva_btn.setOnClickListener { salva_btn_function() }
+=======
+        salva_btn.setOnClickListener {
+            //TODO implementare la rilevazione e il salvataggio nel database
+            Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
+        }
+>>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         return root
     }
 
@@ -44,10 +51,15 @@ class CheckList : Fragment() {
         return stringArray
     }
 
+<<<<<<< HEAD
     fun salva_btn_function() {
         //TODO implementare la rilevazione e il salvataggio nel database
         Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
     }
+=======
+
+
+>>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
 
 
 }

@@ -37,11 +37,20 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+<<<<<<< HEAD
     <style name="CV_profilo">
         <item name="android:layout_width">230dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
+=======
+    <style name="cv_righe_profilo">
+        <item name="android:layout_height">40dp</item>
+        <item name="android:backgroundTint">#656363</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">15sp</item>
+>>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
     </style>
 
 
