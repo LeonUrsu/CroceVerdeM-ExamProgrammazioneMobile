@@ -54,8 +54,8 @@ class TabelloneTurniVolontario : Fragment() {
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
-            segnami_cancellami_btn_function(id)
+            var id_builded = id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            segnami_cancellami_btn_function(id_builded)
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
         }
 
@@ -73,6 +73,8 @@ class TabelloneTurniVolontario : Fragment() {
     }
 
     fun segnami_cancellami_btn_function(id: String) {
+        val res = resources
+        val id = res.getIdentifier("titleText", "id", requireContext().packageName)
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
     }
 

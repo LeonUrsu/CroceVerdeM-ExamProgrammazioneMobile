@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-
 
 class CheckList : Fragment() {
 
@@ -32,12 +30,8 @@ class CheckList : Fragment() {
             linearLayout.addView(check)
         }
 
-        val disponibilita_btn = root.findViewById(R.id.salva) as Button
-        disponibilita_btn.setOnClickListener {
-            //TODO implementare la rilevazione e il salvataggio nel database
-            Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
-        }
-        setta_info_profilo(root)
+        val salva_btn = root.findViewById(R.id.salva) as Button
+        salva_btn.setOnClickListener { salva_btn_function() }
         return root
     }
 
@@ -50,16 +44,9 @@ class CheckList : Fragment() {
         return stringArray
     }
 
-
-    fun setta_info_profilo(root : View){
-        //TODO implementare il metodo per ricevere informazioni e settarle
-        val nome = "nome"
-        val cognome = "cognome"
-        val datadinacita = "11/09/2012"
-        root.findViewById<TextView>(R.id.nome_text_profilo_volontario).setText(nome)
-        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(cognome)
-        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).setText(datadinacita)
-
+    fun salva_btn_function() {
+        //TODO implementare la rilevazione e il salvataggio nel database
+        Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
     }
 
 

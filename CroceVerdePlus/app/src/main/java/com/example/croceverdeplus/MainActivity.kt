@@ -46,19 +46,23 @@ class LogIn{
     fun gestioneAccesso(username: EditText, password: EditText ): Int {
         val idUser: Int
 
-        if (username.text.toString() == "amministratore" && password.text.toString() == "amministratore") {
+        if (username.text.toString() == "a" && password.text.toString() == "") {
+        //if (username.text.toString() == "amministratore" && password.text.toString() == "amministratore") {
             idUser = 1
             return idUser
         }
-        if (username.text.toString() == "centralinista" && password.text.toString() == "centralinista") {
+        if (username.text.toString() == "c" && password.text.toString() == "") {
+        //if (username.text.toString() == "centralinista" && password.text.toString() == "centralinista") {
             idUser = 2
             return idUser
         }
-        if (username.text.toString() == "dipendente" && password.text.toString() == "dipendente") {
+        if (username.text.toString() == "d" && password.text.toString() == "") {
+        //if (username.text.toString() == "dipendente" && password.text.toString() == "dipendente") {
             idUser = 3
             return idUser
         }
-        if (username.text.toString() == "volontario" && password.text.toString() == "volontario") {
+        if (username.text.toString() == "v" && password.text.toString() == "") {
+        //if (username.text.toString() == "volontario" && password.text.toString() == "volontario") {
             idUser = 4
             return idUser
         } else {
