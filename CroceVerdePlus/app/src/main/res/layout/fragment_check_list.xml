@@ -4,11 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".CheckList">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
+<<<<<<< HEAD
         android:layout_height="660dp"
+=======
+        android:layout_height="650dp"
+>>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,9 +31,9 @@
 
     <Button
         android:id="@+id/salva"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salva"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

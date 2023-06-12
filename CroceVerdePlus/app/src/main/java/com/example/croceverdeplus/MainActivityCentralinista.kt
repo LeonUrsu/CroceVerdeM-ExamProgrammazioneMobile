@@ -12,8 +12,8 @@ class MainActivityCentralinista : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_centralinista)
-        loadFragment(CheckList())
         bottomNav = findViewById(R.id.bottomNavCentralinista) as BottomNavigationView
+        bottomNav.setSelectedItemId(R.id.tabellone)
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.tabellone -> {
@@ -35,7 +35,9 @@ class MainActivityCentralinista : AppCompatActivity() {
         transaction.commit()
     }
 
-
+    /*
+    Metodo per effettuare il logout dal profilo e ritornare alla schermata di login
+     */
     fun exit_function(){
         val intent = Intent(this@MainActivityCentralinista, MainActivity::class.java)
         startActivity(intent)
