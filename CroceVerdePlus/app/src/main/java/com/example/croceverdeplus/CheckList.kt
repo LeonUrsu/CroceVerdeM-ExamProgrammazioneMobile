@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -31,14 +32,12 @@ class CheckList : Fragment() {
         }
 
         val salva_btn = root.findViewById(R.id.salva) as Button
-<<<<<<< HEAD
         salva_btn.setOnClickListener { salva_btn_function() }
-=======
-        salva_btn.setOnClickListener {
+        val disponibilita_btn = root.findViewById(R.id.salva) as Button
+        disponibilita_btn.setOnClickListener {
             //TODO implementare la rilevazione e il salvataggio nel database
             Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
         }
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         return root
     }
 
@@ -51,15 +50,20 @@ class CheckList : Fragment() {
         return stringArray
     }
 
-<<<<<<< HEAD
     fun salva_btn_function() {
         //TODO implementare la rilevazione e il salvataggio nel database
         Toast.makeText(requireActivity(), "Check list salvata", Toast.LENGTH_SHORT).show()
+
+        fun setta_info_profilo(root: View) {
+            //TODO implementare il metodo per ricevere informazioni e settarle
+            val nome = "nome"
+            val cognome = "cognome"
+            val datadinacita = "11/09/2012"
+            root.findViewById<TextView>(R.id.nome_text_profilo_volontario).setText(nome)
+            root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(cognome)
+            root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
+                .setText(datadinacita)
+
+        }
     }
-=======
-
-
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
-
-
 }

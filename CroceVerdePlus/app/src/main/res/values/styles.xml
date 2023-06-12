@@ -15,7 +15,6 @@
         <item name="android:gravity">start</item>
     </style>
 
-
     <style name="CVP_giorni">
         <item name="android:textSize">10sp</item>
         <item name="android:background">@color/CV_green</item>
@@ -37,21 +36,19 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-<<<<<<< HEAD
     <style name="CV_profilo">
         <item name="android:layout_width">230dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
-=======
+    </style>
+
     <style name="cv_righe_profilo">
         <item name="android:layout_height">40dp</item>
         <item name="android:backgroundTint">#656363</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingTop">15sp</item>
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
     </style>
-
 
 </resources>

@@ -10,11 +10,7 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="660dp"
-=======
-        android:layout_height="650dp"
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,8 +20,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-
         </LinearLayout>
     </ScrollView>
 

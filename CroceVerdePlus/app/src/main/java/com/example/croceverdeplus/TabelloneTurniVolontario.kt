@@ -51,6 +51,7 @@ class TabelloneTurniVolontario : Fragment() {
             R.array.grado_input_array,
             root.findViewById(R.id.grado_input)
         )
+
         /*TODO questo metodo serve per rilevare i nomi dei militi che andranno ad essere registrati
            nel turno scelto, la rilevazione deve essere effettuata tramite il metodo sottostante oppure tramite altro metodo tramite il database
         var nome_val = rileva_valori_spinner(
@@ -59,12 +60,10 @@ class TabelloneTurniVolontario : Fragment() {
             R.array.nome_input_array,
             root.findViewById(R.id.nome_input)
          */
-        var nome_val = "Elliot Alderson" // TODO questo nome è temporaneo, serve solamente per provare il funzionamento della tabella
+        var nome_val =
+            "Elliot Alderson" // TODO questo nome è temporaneo, serve solamente per provare il funzionamento della tabella
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            var id_builded = id_builder(servizio_val, giorno_val, orario_val, grado_val)
-            segnami_cancellami_btn_function(id_builded)
-            Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
             var id_string = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             val res = resources
             val id_trovato = res.getIdentifier(id_string, "id", requireContext().packageName)
@@ -81,17 +80,17 @@ class TabelloneTurniVolontario : Fragment() {
         return root
     }
 
-    fun disponibilita_btn_function(id: String){
+    /*
+    Metodo per fornire la propria disponibilità per effettaure il turno
+     */
+    fun disponibilita_btn_function(id: String) {
         //TODO al click bisogna che il sistema mandi nel database i dati
     }
 
-    fun segnami_cancellami_btn_function(id: String) {
-        val res = resources
-        val id = res.getIdentifier("titleText", "id", requireContext().packageName)
     /*
     Metodo per far fiunzionare il pulsante della cancellazione
      */
-    fun segnami_cancellami_btn_function(id_passed: Int, root : View, nome_milite : String) {
+    fun segnami_cancellami_btn_function(id_passed: Int, root: View, nome_milite: String) {
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
         var textView = root.findViewById<TextView>(id_passed)
         //TODO bisogna anche che permetta di cancellarsi se è io tunro in cui si vuole cancellare
@@ -102,14 +101,19 @@ class TabelloneTurniVolontario : Fragment() {
     Metodo per la costruzione dell'id per riempire la tabella nella schermata del tabellone dei turni
     ogni id corrispone al luogo di posizionamento nella tabella
      */
-    fun id_builder(servizio_val: Int, giorno_val: Int, orario_val: Int, grado_val: Int): String {
+    fun id_builder(
+        servizio_val: Int,
+        giorno_val: Int,
+        orario_val: Int,
+        grado_val: Int
+    ): String {
         val servizio = when (servizio_val) { //turno_118_mar_mat_3
             0 -> "118"
             1 -> "h24"
             else -> {
                 "118"
             }
-            
+
         }
         val giorno = when (giorno_val) {
             0 -> "lun"
@@ -142,12 +146,13 @@ class TabelloneTurniVolontario : Fragment() {
         return "turno" + "_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
+
     /*
     Metodo per rilevarela posizione del valore dello  spinner selezionato nel
     TabelloneTurniCentralinista una volta selezionato il valore viene ritornato il valore dello
     spinner tramite il valore ret_posizion
-     */
-    private fun rileva_valori_spinner(
+    */
+    fun rileva_valori_spinner(
         root: View,
         spinner: Int,
         id_array: Int,
@@ -175,6 +180,5 @@ class TabelloneTurniVolontario : Fragment() {
     }
 
 
-
-
 }
+

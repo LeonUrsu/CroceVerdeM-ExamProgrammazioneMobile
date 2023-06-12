@@ -3,8 +3,6 @@ package com.example.croceverdeplus
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-//import android.view.View
-//import android.view.ViewStub
 import android.widget.Button
 import android.widget.EditText
 
@@ -21,19 +19,19 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
 
-            if (l.gestioneAccesso(username, password) == 1 ) {
+            if (l.gestioneAccesso(username, password) == 1) {
                 val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 2 ) {
+            if (l.gestioneAccesso(username, password) == 2) {
                 val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 3 ) {
+            if (l.gestioneAccesso(username, password) == 3) {
                 val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 4 ) {
+            if (l.gestioneAccesso(username, password) == 4) {
                 val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
                 startActivity(intent)
             }
@@ -41,28 +39,28 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-class LogIn{
+class LogIn {
     //TODO probabilmente questa classe va dichiarata nel Login.kt e usata tramite import
-    fun gestioneAccesso(username: EditText, password: EditText ): Int {
+    fun gestioneAccesso(username: EditText, password: EditText): Int {
         val idUser: Int
 
         if (username.text.toString() == "a" && password.text.toString() == "") {
-        //if (username.text.toString() == "amministratore" && password.text.toString() == "amministratore") {
+            //if (username.text.toString() == "amministratore" && password.text.toString() == "amministratore") {
             idUser = 1
             return idUser
         }
         if (username.text.toString() == "c" && password.text.toString() == "") {
-        //if (username.text.toString() == "centralinista" && password.text.toString() == "centralinista") {
+            //if (username.text.toString() == "centralinista" && password.text.toString() == "centralinista") {
             idUser = 2
             return idUser
         }
         if (username.text.toString() == "d" && password.text.toString() == "") {
-        //if (username.text.toString() == "dipendente" && password.text.toString() == "dipendente") {
+            //if (username.text.toString() == "dipendente" && password.text.toString() == "dipendente") {
             idUser = 3
             return idUser
         }
         if (username.text.toString() == "v" && password.text.toString() == "") {
-        //if (username.text.toString() == "volontario" && password.text.toString() == "volontario") {
+            //if (username.text.toString() == "volontario" && password.text.toString() == "volontario") {
             idUser = 4
             return idUser
         } else {

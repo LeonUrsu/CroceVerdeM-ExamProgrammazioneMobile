@@ -9,25 +9,17 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-=======
-        app:layout_constraintEnd_toEndOf="parent"
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
-<<<<<<< HEAD
-            android:theme="@style/CV_profilo">
-=======
-            android:theme="@style/cv_righe_profilo">
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
+            android:orientation="vertical">
+
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -37,7 +29,6 @@
                 android:src="@drawable/accountimage" />
 
             <TextView
-<<<<<<< HEAD
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,179 +42,77 @@
                 android:layout_height="20dp"
                 android:layout_marginTop="40dp"
                 android:text="Nome" />
-=======
-                android:id="@+id/textView26"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="20sp"
-                android:text="Dati Personali"
-                android:textSize="24sp" />
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
+
 
             <TextView
                 android:id="@+id/cognome_text_profilo_volontario"
                 android:layout_width="match_parent"
-<<<<<<< HEAD
                 android:layout_height="20dp"
                 android:layout_marginTop="30dp"
                 android:text="Cognome" />
-=======
-                android:layout_height="wrap_content"
-                android:text="nome_volontario" />
 
             <TextView
                 android:id="@+id/cognome_volontario"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="cognome_volontario" />
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
 
             <TextView
                 android:id="@+id/data_di_nascita_text_profilo_volontario"
                 android:layout_width="match_parent"
-<<<<<<< HEAD
-                android:layout_height="20dp"
-                android:layout_marginTop="30dp"
+                android:layout_height="match_parent"
                 android:text="Data di nascita" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="Statistiche Personali"
                 android:textSize="23sp" />
 
             <TextView
                 android:id="@+id/prima_118"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="prima_118" />
 
             <TextView
                 android:id="@+id/seconda_118"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="seconda_118" />
 
             <TextView
                 android:id="@+id/terza_118"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="terza_118" />
 
             <TextView
                 android:id="@+id/prima_h24"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="prima_h24" />
 
             <TextView
                 android:id="@+id/seconda_h24"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginTop="40dp"
+                android:layout_height="match_parent"
                 android:text="seconda_h24" />
 
             <TextView
                 android:id="@+id/terza_h24"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginTop="40dp"
                 android:text="terza_h24" />
 
             <Button
                 android:id="@+id/logout"
                 android:layout_width="120dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="24dp"
                 android:onClick="exit_function"
                 android:text="LogOut" />
         </LinearLayout>
     </ScrollView>
-=======
-                android:layout_height="wrap_content"
-                android:text="datadinascita_volontario" />
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="20sp"
-                android:text="Statistiche Personali"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/servizio_118_1a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_118_1a" />
-
-            <TextView
-                android:id="@+id/servizio_118_2a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_118_2a" />
-
-            <TextView
-                android:id="@+id/servizio_118_3a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_118_3a" />
-
-            <TextView
-                android:id="@+id/servizio_h24_1a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_h24_1a" />
-
-            <TextView
-                android:id="@+id/servizio_h24_2a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_h24_2a" />
-
-            <TextView
-                android:id="@+id/servizio_h24_3a"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="servizio_h24_3a" />
-
-            <TextView
-                android:id="@+id/ore_mese_corrente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ore_mese_corrente" />
-
-            <TextView
-                android:id="@+id/ore_mese_precendente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ore_mese_precendente" />
-
-            <TextView
-                android:id="@+id/ore_mese_precendente_x1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ore_mese_precendente_x1" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:id="@+id/logout_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="exit_function"
-        android:text="Logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
 
 </androidx.constraintlayout.widget.ConstraintLayout>
