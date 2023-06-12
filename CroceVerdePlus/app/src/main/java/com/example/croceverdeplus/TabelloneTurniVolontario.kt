@@ -89,6 +89,7 @@ class TabelloneTurniVolontario : Fragment() {
             else -> {
                 "h24"
             }
+            
         }
         val giorno = when (giorno_val) {
             0 -> "lun"
