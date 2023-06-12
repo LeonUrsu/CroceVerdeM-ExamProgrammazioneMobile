@@ -62,18 +62,15 @@ class TabelloneTurniVolontario : Fragment() {
         var nome_val = "Elliot Alderson" // TODO questo nome è temporaneo, serve solamente per provare il funzionamento della tabella
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-<<<<<<< HEAD
             var id_builded = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             segnami_cancellami_btn_function(id_builded)
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
-=======
             var id_string = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             val res = resources
             val id_trovato = res.getIdentifier(id_string, "id", requireContext().packageName)
             segnami_cancellami_btn_function(id_trovato, root, nome_val)
             //TODO per questo medodo serve anche l'inserimento nel database, non solamente nel tabellone
             Toast.makeText(requireActivity(), id_string, Toast.LENGTH_SHORT).show()
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         }
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
@@ -88,16 +85,13 @@ class TabelloneTurniVolontario : Fragment() {
         //TODO al click bisogna che il sistema mandi nel database i dati
     }
 
-<<<<<<< HEAD
     fun segnami_cancellami_btn_function(id: String) {
         val res = resources
         val id = res.getIdentifier("titleText", "id", requireContext().packageName)
-=======
     /*
     Metodo per far fiunzionare il pulsante della cancellazione
      */
     fun segnami_cancellami_btn_function(id_passed: Int, root : View, nome_milite : String) {
->>>>>>> b9e2d51307e24a17accf43c549339f6db3bd7c40
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
         var textView = root.findViewById<TextView>(id_passed)
         //TODO bisogna anche che permetta di cancellarsi se è io tunro in cui si vuole cancellare
