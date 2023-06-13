@@ -1,5 +1,4 @@
 package com.example.croceverdeplus
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,14 +10,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.fragment_login)
         title = "CroceVerdePlus"
-
         val username: EditText = findViewById(R.id.username_input)
         val password: EditText = findViewById(R.id.password_input)
         val button: Button = findViewById(R.id.accedi)
         val l = LogIn()
-
         button.setOnClickListener {
-
             if (l.gestioneAccesso(username, password) == 1) {
                 val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
                 startActivity(intent)

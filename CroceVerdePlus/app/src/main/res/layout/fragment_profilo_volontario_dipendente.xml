@@ -18,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:theme="@style/CV_profilo">
 
 
             <ImageView
@@ -32,7 +33,6 @@
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:text="Dati Personali"
                 android:textSize="23sp" />
 
@@ -40,7 +40,6 @@
                 android:id="@+id/nome_text_profilo_volontario"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginTop="40dp"
                 android:text="Nome" />
 
 
@@ -48,7 +47,6 @@
                 android:id="@+id/cognome_text_profilo_volontario"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_marginTop="30dp"
                 android:text="Cognome" />
 
             <TextView
