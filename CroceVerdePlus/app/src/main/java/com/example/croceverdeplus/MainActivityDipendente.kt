@@ -12,7 +12,8 @@ class MainActivityDipendente : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_dipendente)
-        loadFragment(TabelloneTurniVolontario())
+        loadFragment(TabelloneTurniDipendente())
+        bottomNav.setSelectedItemId(R.id.tabellone)
         bottomNav = findViewById(R.id.bottomNavDipendente) as BottomNavigationView
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
