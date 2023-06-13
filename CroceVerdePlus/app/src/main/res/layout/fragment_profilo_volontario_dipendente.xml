@@ -50,12 +50,6 @@
                 android:text="Cognome" />
 
             <TextView
-                android:id="@+id/cognome_volontario"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="cognome_volontario" />
-
-            <TextView
                 android:id="@+id/data_di_nascita_text_profilo_volontario"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
