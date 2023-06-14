@@ -1,8 +1,10 @@
 package com.example.croceverdeplus
 
+import android.content.res.Resources
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
+import androidx.core.content.ContentProviderCompat.requireContext
 
 class TabelloneTurni {
 
@@ -100,5 +102,21 @@ class TabelloneTurni {
         return "turno" + "_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
+
+    /*
+    Metodo per trovare dalla stringa il numero nella risorsa da segnare
+     */
+    fun id_int_val_builder(
+        resources: Resources,
+        servizio_val: Int,
+        giorno_val: Int,
+        orario_val: Int,
+        grado_val: Int, context: String
+    ) :Int {
+        var id_string = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
+        val res = resources
+        val id_trovato = res.getIdentifier(id_string, "id", context)
+        return id_trovato
+    }
 
 }

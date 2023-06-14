@@ -35,14 +35,14 @@ class TabelloneTurniDipendente : Fragment() {
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             val numero_tabella = TabelloneTurni().setta_settimana_corrente()
-            vf_dipendente.setDisplayedChild(numero_tabella); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            vf_dipendente.setDisplayedChild(numero_tabella)
             //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             //disponibilita_btn_function(id)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
-            vf_dipendente.setDisplayedChild(TabelloneTurni().setta_settimana_corrente()); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            vf_dipendente.setDisplayedChild(TabelloneTurni().setta_settimana_corrente())
             //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             //disponibilita_btn_function(id)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
