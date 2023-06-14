@@ -57,7 +57,6 @@ class ProfiloVolontarioDipendente : Fragment() {
         root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(nome)
         root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(cognome)
         root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).setText(datadinacita)
-
     }
 
     fun exit_function(act: Activity){
