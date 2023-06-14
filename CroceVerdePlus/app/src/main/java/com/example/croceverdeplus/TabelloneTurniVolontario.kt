@@ -25,7 +25,9 @@ class TabelloneTurniVolontario : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
-        vf_volontario.setDisplayedChild(2); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+        //TODO da finire di implementare
+        // val numero_tabella = setta_settimana_corrente()
+        vf_volontario.setDisplayedChild(1); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
         var servizio_val = rileva_valori_spinner(
             root,
