@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
@@ -26,28 +24,28 @@ class TabelloneTurniVolontario : Fragment() {
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
         //TODO da finire di implementare
-        // val numero_tabella = setta_settimana_corrente()
-        vf_volontario.setDisplayedChild(1); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+        val numero_tabella = TabelloneTurni().setta_settimana_corrente()
+        vf_volontario.setDisplayedChild(numero_tabella); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
-        var servizio_val = rileva_valori_spinner(
+        var servizio_val = TabelloneTurni().rileva_valori_spinner(
             root,
             R.id.servizio_input,
             R.array.servzio_input_array,
             root.findViewById(R.id.servizio_input)
         )
-        var orario_val = rileva_valori_spinner(
+        var orario_val = TabelloneTurni().rileva_valori_spinner(
             root,
             R.id.orario_input,
             R.array.orario_input_array,
             root.findViewById(R.id.orario_input)
         )
-        var giorno_val = rileva_valori_spinner(
+        var giorno_val = TabelloneTurni().rileva_valori_spinner(
             root,
             R.id.giorno_input,
             R.array.giorno_input_array,
             root.findViewById(R.id.giorno_input)
         )
-        var grado_val = rileva_valori_spinner(
+        var grado_val = TabelloneTurni().rileva_valori_spinner(
             root,
             R.id.grado_input,
             R.array.grado_input_array,
@@ -66,7 +64,7 @@ class TabelloneTurniVolontario : Fragment() {
             "Elliot Alderson" // TODO questo nome è temporaneo, serve solamente per provare il funzionamento della tabella
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            var id_string = id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            var id_string = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
             val res = resources
             val id_trovato = res.getIdentifier(id_string, "id", requireContext().packageName)
             segnami_cancellami_btn_function(id_trovato, root, nome_val)
@@ -75,25 +73,24 @@ class TabelloneTurniVolontario : Fragment() {
         }
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
-            var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            var id = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
             disponibilita_btn_function(id)
             Toast.makeText(requireActivity(), "Disponibilità assegnata", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
-            vf_volontario.setDisplayedChild(1); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            vf_volontario.setDisplayedChild(TabelloneTurni().setta_settimana_corrente())
             //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             //disponibilita_btn_function(id)
-            //Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
-            vf_volontario.setDisplayedChild(2); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            vf_volontario.setDisplayedChild(TabelloneTurni().setta_settimana_corrente())
             //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
             //disponibilita_btn_function(id)
-            //Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
-
         return root
     }
 
@@ -106,7 +103,7 @@ class TabelloneTurniVolontario : Fragment() {
 
     /*
     Metodo per far fiunzionare il pulsante della cancellazione
-     */
+    */
     fun segnami_cancellami_btn_function(id_passed: Int, root: View, nome_milite: String) {
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
         var textView = root.findViewById<TextView>(id_passed)
@@ -114,98 +111,12 @@ class TabelloneTurniVolontario : Fragment() {
         textView.setText(nome_milite)
     }
 
-    /*
-    Metodo per la costruzione dell'id per riempire la tabella nella schermata del tabellone dei turni
-    ogni id corrispone al luogo di posizionamento nella tabella
-     */
-    fun id_builder(
-        servizio_val: Int,
-        giorno_val: Int,
-        orario_val: Int,
-        grado_val: Int
-    ): String {
-        val servizio = when (servizio_val) { //turno_118_mar_mat_3
-            0 -> "118"
-            1 -> "h24"
-            else -> {
-                "118"
-            }
-
-        }
-        val giorno = when (giorno_val) {
-            0 -> "lun"
-            1 -> "mar"
-            2 -> "mer"
-            3 -> "gio"
-            4 -> "ven"
-            5 -> "sab"
-            6 -> "dom"
-            else -> {
-                "lun"
-            }
-        }
-        val orario = when (orario_val) {
-            0 -> "mat"
-            1 -> "pom"
-            2 -> "ser"
-            else -> {
-                "mat"
-            }
-        }
-        val grado = when (grado_val) {
-            0 -> "1"
-            1 -> "2"
-            2 -> "3"
-            else -> {
-                "1"
-            }
-        }
-        return "turno" + "_" + servizio + "_" + giorno + "_" + orario + "_" + grado
-    }
-
-    /*
-    Metodo per rilevarela posizione del valore dello  spinner selezionato nel
-    TabelloneTurniCentralinista una volta selezionato il valore viene ritornato il valore dello
-    spinner tramite il valore ret_posizion
-    */
-    fun rileva_valori_spinner(
-        root: View,
-        spinner: Int,
-        id_array: Int,
-        dropdown: Spinner?
-    ): Int {
-        //var mTestArray = getResources().getStringArray(id_array);
-        var ret_position = 0
-        //val adapter = ArrayAdapter(requireActivity(), spinner, mTestArray)//TODO due righe non necessarie
-        //dropdown?.setAdapter(adapter)
-        dropdown?.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>,
-                view: View,
-                position: Int,
-                id: Long
-            ) {
-                // TODO qui si deve settare il valore di ritorno
-                ret_position = position
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        })
-        return ret_position
-    }
 
 
-    /*
-    Metodo per rilevare la settimana corrente, cioè il giorno corrispondente al lunedì e alla
-    domenica, in questo modo si stabiliscono le date nella tabella che mostra a display i nomi dei
-    militi prenotati.
-     */
-    fun setta_settimana_corrente() {
-        //Prendi le informazione dal db dell'admin della settimana h24 e 118
-        //Setta la settimana in base alle informazioni presentate
-        //TODO implementare metodo per rilevare la settimana
-    }
+
+
+
+
 
 }
 
