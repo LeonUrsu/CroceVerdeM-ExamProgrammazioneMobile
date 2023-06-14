@@ -25,7 +25,7 @@ class TabelloneTurniVolontario : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
-        vf_volontario.setDisplayedChild(2); //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+        vf_volontario.setDisplayedChild(2); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
         var servizio_val = rileva_valori_spinner(
             root,
@@ -77,6 +77,21 @@ class TabelloneTurniVolontario : Fragment() {
             disponibilita_btn_function(id)
             Toast.makeText(requireActivity(), "Disponibilità assegnata", Toast.LENGTH_SHORT).show()
         }
+        val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
+        settimana_n_btn.setOnClickListener {
+            vf_volontario.setDisplayedChild(1); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            //disponibilita_btn_function(id)
+            //Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
+        }
+        val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
+        settimana_n_plus_btn.setOnClickListener {
+            vf_volontario.setDisplayedChild(2); //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+            //var id = id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            //disponibilita_btn_function(id)
+            //Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
+        }
+
         return root
     }
 
@@ -179,6 +194,18 @@ class TabelloneTurniVolontario : Fragment() {
         return ret_position
     }
 
+
+
+    /*
+    Metodo per rilevare la settimana corrente, cioè il giorno corrispondente al lunedì e alla
+    domenica, in questo modo si stabiliscono le date nella tabella che mostra a display i nomi dei
+    militi prenotati.
+     */
+    fun setta_settimana_corrente(){
+        //Prendi le informazione dal db dell'admin della settimana h24 e 118
+        //Setta la settimana in base alle informazioni presentate
+        //TODO implementare metodo per rilevare la settimana
+    }
 
 }
 

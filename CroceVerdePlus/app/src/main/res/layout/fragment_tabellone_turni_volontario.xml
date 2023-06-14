@@ -11,8 +11,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <include
             android:id="@+id/include2"
@@ -26,29 +27,29 @@
 
     <Spinner
         android:id="@+id/grado_input"
-        android:entries="@array/grado_input_array"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginStart="48dp"
+        android:entries="@array/grado_input_array"
         app:layout_constraintStart_toEndOf="@+id/servizio_input"
         app:layout_constraintTop_toTopOf="@+id/servizio_input" />
 
     <Spinner
         android:id="@+id/servizio_input"
-        android:entries="@array/servzio_input_array"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="20dp"
+        android:entries="@array/servzio_input_array"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/vf_volontario" />
 
     <Spinner
         android:id="@+id/giorno_input"
-        android:entries="@array/giorno_input_array"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
+        android:entries="@array/giorno_input_array"
         app:layout_constraintEnd_toEndOf="@+id/servizio_input"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/servizio_input"
@@ -78,14 +79,38 @@
 
     <Spinner
         android:id="@+id/orario_input"
-        android:entries="@array/orario_input_array"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
+        android:entries="@array/orario_input_array"
         app:layout_constraintEnd_toEndOf="@+id/grado_input"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/grado_input"
         app:layout_constraintTop_toBottomOf="@+id/grado_input" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/settimana_n"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="settimana n" />
+
+        <Button
+            android:id="@+id/settimana_n_plus_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="settimana n +1" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

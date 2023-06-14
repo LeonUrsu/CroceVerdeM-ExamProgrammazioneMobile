@@ -7,13 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".TabelloneTurniCentralinista">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="409dp"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/settimana_n"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="settimana n" />
+
+        <Button
+            android:id="@+id/settimana_n_plus_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="settimana n +1" />
+    </LinearLayout>
+
     <ViewFlipper
         android:id="@+id/vf"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
         <include
             android:id="@+id/include1"
             layout="@layout/table_118" />
@@ -48,12 +74,12 @@
         android:id="@+id/servizio_input"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="404dp"
+        android:layout_marginTop="20dp"
         android:entries="@array/servzio_input_array"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/vf" />
 
     <Spinner
         android:id="@+id/giorno_input"
