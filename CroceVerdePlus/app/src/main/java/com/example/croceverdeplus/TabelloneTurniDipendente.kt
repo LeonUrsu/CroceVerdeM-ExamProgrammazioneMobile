@@ -20,15 +20,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class TabelloneTurniDipendente : Fragment() {
-    //TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //TODO: i seguenti due metodi dovranno essere implementati per cambiare il tabellone dei turni sullo stesso fragment
-        //findViewById<View>(R.id.tabellone_turni_118).setVisibility(View.VISIBLE)
-        //findViewById<View>(R.id.tabellone_turni_h24_118).setVisibility(View.GONE)
     }
 
     override fun onCreateView(

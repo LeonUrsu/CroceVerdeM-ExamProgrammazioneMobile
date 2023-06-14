@@ -163,7 +163,6 @@ class TabelloneTurniVolontario : Fragment() {
         return "turno" + "_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
-
     /*
     Metodo per rilevarela posizione del valore dello  spinner selezionato nel
     TabelloneTurniCentralinista una volta selezionato il valore viene ritornato il valore dello
@@ -197,13 +196,12 @@ class TabelloneTurniVolontario : Fragment() {
     }
 
 
-
     /*
     Metodo per rilevare la settimana corrente, cioè il giorno corrispondente al lunedì e alla
     domenica, in questo modo si stabiliscono le date nella tabella che mostra a display i nomi dei
     militi prenotati.
      */
-    fun setta_settimana_corrente(){
+    fun setta_settimana_corrente() {
         //Prendi le informazione dal db dell'admin della settimana h24 e 118
         //Setta la settimana in base alle informazioni presentate
         //TODO implementare metodo per rilevare la settimana
