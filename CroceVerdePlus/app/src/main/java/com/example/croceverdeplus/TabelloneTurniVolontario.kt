@@ -26,8 +26,6 @@ class TabelloneTurniVolontario : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
-
-
         val numero_tabella = TabelloneTurni().setta_settimana_corrente()
         vf_volontario.setDisplayedChild(numero_tabella) //TODO qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
@@ -116,32 +114,6 @@ class TabelloneTurniVolontario : Fragment() {
     }
 
 
-    fun riempi_spinner_con_militi(
-        spinner: Spinner,
-        root: View,
-        servizio_val: Int,
-        giorno_val: Int,
-        orario_val: Int,
-        grado_val: Int
-    ) {
-        val militi: Array<String> = arrayOf("Red", "Blue", "White", "Yellow", "Black", "Green", "Purple", "Orange", "Grey")//TODO militi ricevuti da DB
-        //var array_fltrati = filtra_militi(militi ,servizio_val, giorno_val, orario_val, grado_val)//TODO
-        var data = ArrayList<String>()
-        val convert_from_spinner: Spinner = root.findViewById(R.id.milite_input)
-        spinner.adapter =
-            ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, data)
-    }
-
-    /*
-    fun filtra_militi(array : Array<Milite>, servizio_val: Int, grado_val: Int){
-        val array_filtrato : Array<Milite> = Array<Milite>()
-
-        array.forEach {
-            when(grado_val)
-        }
-    }
-
-     */
 
 }
 
