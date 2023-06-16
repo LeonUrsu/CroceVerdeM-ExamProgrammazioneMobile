@@ -9,9 +9,10 @@ class Database {
 
     private val db = Firebase.firestore
 
-    fun addUser(username: String, password: String) {
-
-        val user = User(username, password)
+    fun addUser(nome: String, cognome: String,
+                    dataDiNascita: String, residenza: String) {
+    //username: String, password: String,
+        val user = User(nome, cognome, dataDiNascita, residenza)
 
         db.collection("users")
             .add(user)
