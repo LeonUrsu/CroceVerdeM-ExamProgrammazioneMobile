@@ -4,9 +4,26 @@ package com.example.croceverdeplus
 data class User(
     val username: String? = null,
     val password: String? = null,
-    val nome: String? = null,
-    val cognome: String? = null,
-    val dataDiNascita: String? = null,
-    val residenza: String? = null,) {
+    var nome: String? = null,
+    var cognome: String? = null,
+    var dataDiNascita: String? = null,
+    var residenza: String? = null,
+    val idLog: Int? = null,) {
 
+    constructor(  nome: String?,  cognome: String?,
+                  dataDiNascita: String?, residenza: String?) : this() {
+        this.nome = nome
+        this.cognome = cognome
+        this.dataDiNascita = dataDiNascita
+        this.residenza = residenza
+
+    }
+
+    constructor(  nome: String?,  cognome: String?,
+                  dataDiNascita: String?) : this() {
+        this.nome = nome
+        this.cognome = cognome
+        this.dataDiNascita = dataDiNascita
+
+    }
 }

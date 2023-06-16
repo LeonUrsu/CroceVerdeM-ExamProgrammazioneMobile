@@ -19,6 +19,7 @@ class Database {
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
                 //Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(requireActivity(), "Aggiunto", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
                 Log.w(ContentValues.TAG, "Error adding document", e)
@@ -26,11 +27,14 @@ class Database {
 
     }
 
-    fun deleteUser(username: String, password: String) {
+    fun deleteUser(nome: String, cognome: String,
+                   dataDiNascita: String, residenza: String) {
 
         db.collection("users")
-            .whereEqualTo("username", username)
-            .whereEqualTo("password", password)
+            .whereEqualTo("nome", nome)
+            .whereEqualTo("cognome", cognome)
+            .whereEqualTo("dataDiNascita", dataDiNascita)
+            .whereEqualTo("residenza", residenza)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {

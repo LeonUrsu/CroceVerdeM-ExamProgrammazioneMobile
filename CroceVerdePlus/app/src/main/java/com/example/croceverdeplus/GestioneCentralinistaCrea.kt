@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class GestioneCentralinistaCrea : Fragment() {
 
@@ -33,6 +34,8 @@ class GestioneCentralinistaCrea : Fragment() {
 
             data.addUser(nome.text.toString(), cognome.text.toString(),
                             dataDiNascita.text.toString(), residenza.text.toString())
+
+            Toast.makeText(requireActivity(), "Centralinista creato", Toast.LENGTH_SHORT).show()
 
         }
 
