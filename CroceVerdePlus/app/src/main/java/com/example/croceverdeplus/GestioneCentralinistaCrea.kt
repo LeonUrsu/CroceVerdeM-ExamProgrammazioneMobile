@@ -33,7 +33,7 @@ class GestioneCentralinistaCrea : Fragment() {
         button.setOnClickListener{
 
             data.addUser(nome.text.toString(), cognome.text.toString(),
-                            dataDiNascita.text.toString(), residenza.text.toString())
+                            dataDiNascita.text.toString(), residenza.text.toString(), null)
 
             Toast.makeText(requireActivity(), "Centralinista creato", Toast.LENGTH_SHORT).show()
 

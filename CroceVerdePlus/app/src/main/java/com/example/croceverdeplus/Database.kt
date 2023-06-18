@@ -10,16 +10,15 @@ class Database {
     private val db = Firebase.firestore
 
     fun addUser(nome: String, cognome: String,
-                    dataDiNascita: String, residenza: String) {
-    //username: String, password: String,
-        val user = User(nome, cognome, dataDiNascita, residenza)
+                    dataDiNascita: String, residenza: String, grado: Grado?) {
+
+        val user = User(nome, cognome, dataDiNascita, residenza, grado)
 
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
-                //Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
-                //Toast.makeText(requireActivity(), "Aggiunto", Toast.LENGTH_SHORT).show()
+
             }
             .addOnFailureListener { e ->
                 Log.w(ContentValues.TAG, "Error adding document", e)

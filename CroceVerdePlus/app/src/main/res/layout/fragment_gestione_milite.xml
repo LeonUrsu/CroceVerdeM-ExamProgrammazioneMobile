@@ -15,14 +15,14 @@
         android:layout_height="154dp"
         android:layout_marginTop="86dp"
         android:layout_marginBottom="371dp"
-        app:layout_constraintBottom_toTopOf="@+id/cancella_centralinista_btn"
+        app:layout_constraintBottom_toTopOf="@+id/cancella_milite_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/nome_text_centralinista"
+        android:id="@+id/nome_text_milite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
@@ -31,13 +31,13 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
     <TextView
-        android:id="@+id/cognome_text_centralinista"
+        android:id="@+id/cognome_text_milite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="cognome"
-        app:layout_constraintStart_toStartOf="@+id/nome_text_centralinista"
-        app:layout_constraintTop_toBottomOf="@+id/nome_text_centralinista" />
+        app:layout_constraintStart_toStartOf="@+id/nome_text_milite"
+        app:layout_constraintTop_toBottomOf="@+id/nome_text_milite" />
 
     <TextView
         android:id="@+id/indirizzo_milite_text"
@@ -45,20 +45,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="indirizzo"
-        app:layout_constraintStart_toStartOf="@+id/data_di_nascita_text_centralinista"
-        app:layout_constraintTop_toBottomOf="@+id/data_di_nascita_text_centralinista" />
+        app:layout_constraintStart_toStartOf="@+id/data_di_nascita_text_milite"
+        app:layout_constraintTop_toBottomOf="@+id/data_di_nascita_text_milite" />
 
     <TextView
-        android:id="@+id/data_di_nascita_text_centralinista"
+        android:id="@+id/data_di_nascita_text_milite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="data di nascita"
-        app:layout_constraintStart_toStartOf="@+id/cognome_text_centralinista"
-        app:layout_constraintTop_toBottomOf="@+id/cognome_text_centralinista" />
+        app:layout_constraintStart_toStartOf="@+id/cognome_text_milite"
+        app:layout_constraintTop_toBottomOf="@+id/cognome_text_milite" />
 
     <Button
-        android:id="@+id/cancella_centralinista_btn"
+        android:id="@+id/cancella_milite_btn"
         android:layout_width="210dp"
         android:layout_height="50dp"
         android:layout_marginBottom="58dp"
