@@ -29,6 +29,16 @@ class GestioneCentralinista : Fragment() {
         val residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
         val button: Button = root.findViewById(R.id.cancella_centralinista_btn)
 
+        val listViewFragment = parentFragment as? GestioneTuttiCentralinisti
+        val selectedItem = listViewFragment?.selectedItem
+
+        selectedItem?.let {
+            nome.text = it
+            cognome.text = it
+            dataDiNascita.text = it
+            residenza.text = it
+        }
+
         val data = Database()
 
         button.setOnClickListener{
