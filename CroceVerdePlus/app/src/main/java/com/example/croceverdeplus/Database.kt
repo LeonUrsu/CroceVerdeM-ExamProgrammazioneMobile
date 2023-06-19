@@ -10,7 +10,7 @@ class Database {
     private val db = Firebase.firestore
 
     fun addUser(nome: String, cognome: String,
-                    dataDiNascita: String, residenza: String, grado: Grado?) {
+                    dataDiNascita: String, residenza: String, grado: String?) {
 
         val user = User(nome, cognome, dataDiNascita, residenza, grado)
 

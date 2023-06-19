@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,6 +29,20 @@ class GestioneTuttiCentralinisti : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_centralinisti, container, false)
+
+        val fragmentManager = requireActivity().supportFragmentManager
+        val button: Button = root.findViewById(R.id.imageButton4)
+
+        button.setOnClickListener {
+            val newFragment = GestioneCentralinistaCrea()
+
+            val transaction = fragmentManager.beginTransaction()
+
+            transaction.replace(R.id.fragment_container, newFragment)
+
+            transaction.commit()
+        }
+
         listView = root.findViewById(R.id.lista_centralinisti)
         db = FirebaseFirestore.getInstance()
         loadDataFromDB()

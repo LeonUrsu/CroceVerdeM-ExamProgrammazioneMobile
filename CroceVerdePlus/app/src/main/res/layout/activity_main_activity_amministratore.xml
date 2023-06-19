@@ -10,8 +10,8 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
+        android:layout_width="206dp"
+        android:layout_height="52dp"
         android:layout_marginTop="28dp"
         android:backgroundTint="#656363"
         android:text="Gestisci militi"
@@ -62,8 +62,9 @@
             android:backgroundTint="#656363"
             android:text="Ripristina ultimo backup"
             android:theme="@style/CV_buttons"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
-            tools:layout_editor_absoluteX="13dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/button13"

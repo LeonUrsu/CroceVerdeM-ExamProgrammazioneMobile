@@ -44,23 +44,25 @@ class GestioneMiliteModificaCrea : Fragment() {
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 selectedGrado = parent.getItemAtPosition(position) as Grado
+                val selectedString = selectedGrado.toString()
+
+                //messo fuori o dentro onItemSelectedListener
+                val data = Database()
+
+                button.setOnClickListener{
+
+                    data.addUser(nome.text.toString(), cognome.text.toString(),
+                        dataDiNascita.text.toString(), residenza.text.toString(),
+                        selectedString)
+
+                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 Toast.makeText(requireActivity(), "Seleziona un grado", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        val data = Database()
-
-        button.setOnClickListener{
-
-            data.addUser(nome.text.toString(), cognome.text.toString(),
-                dataDiNascita.text.toString(), residenza.text.toString(),
-                selectedGrado)
-
-            Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
-
         }
 
 
