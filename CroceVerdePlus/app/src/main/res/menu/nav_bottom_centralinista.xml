@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item
         android:id="@+id/tabellone"
-        android:icon="@drawable/baseline_table_chart_24"
-        android:title="Tabellone" />
+        android:title="@string/tabellone"
+        android:icon="@drawable/baseline_table_chart_24"/>
     <item
         android:id="@+id/account"
-        android:icon="@drawable/baseline_account_circle_24"
-        android:title="Account" />
+        android:title="@string/account"
+        android:icon="@drawable/baseline_account_circle_24"/>
 </menu>
