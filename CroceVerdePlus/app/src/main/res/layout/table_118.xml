@@ -53,7 +53,6 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/table_cell_rectangle"
             android:text="7 - 14" />
 
         <TextView
@@ -61,7 +60,6 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/table_cell_rectangle"
             android:text="14 - 21" />
 
         <TextView
@@ -69,7 +67,6 @@
             android:layout_width="0dip"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/table_cell_rectangle"
             android:text="21 - 7" />
     </TableRow>
 
@@ -80,7 +77,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView55"
+            android:id="@+id/lunedi118"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -96,24 +93,20 @@
             android:background="@drawable/table_cell_rectangle"
             android:orientation="vertical">
 
-
             <TextView
                 android:id="@+id/turno_118_lun_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,20 +119,17 @@
             <TextView
                 android:id="@+id/turno_118_lun_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -152,20 +142,17 @@
             <TextView
                 android:id="@+id/turno_118_lun_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_lun_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -178,7 +165,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView74"
+            android:id="@+id/martedi118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -197,20 +184,17 @@
             <TextView
                 android:id="@+id/turno_118_mar_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -223,20 +207,17 @@
             <TextView
                 android:id="@+id/turno_118_mar_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -249,20 +230,17 @@
             <TextView
                 android:id="@+id/turno_118_mar_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mar_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -275,7 +253,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView93"
+            android:id="@+id/mercoledi118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -294,20 +272,17 @@
             <TextView
                 android:id="@+id/turno_118_mer_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -320,20 +295,17 @@
             <TextView
                 android:id="@+id/turno_118_mer_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -346,20 +318,17 @@
             <TextView
                 android:id="@+id/turno_118_mer_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_mer_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -372,7 +341,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView112"
+            android:id="@+id/giovedi118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -391,20 +360,17 @@
             <TextView
                 android:id="@+id/turno_118_gio_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -417,20 +383,17 @@
             <TextView
                 android:id="@+id/turno_118_gio_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -443,20 +406,17 @@
             <TextView
                 android:id="@+id/turno_118_gio_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_gio_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -469,7 +429,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView131"
+            android:id="@+id/venerdi118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -488,20 +448,17 @@
             <TextView
                 android:id="@+id/turno_118_ven_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -514,20 +471,17 @@
             <TextView
                 android:id="@+id/turno_118_ven_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -540,20 +494,17 @@
             <TextView
                 android:id="@+id/turno_118_ven_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_ven_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -566,7 +517,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView150"
+            android:id="@+id/sabato118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -585,20 +536,17 @@
             <TextView
                 android:id="@+id/turno_118_sab_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -611,20 +559,17 @@
             <TextView
                 android:id="@+id/turno_118_sab_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -637,20 +582,17 @@
             <TextView
                 android:id="@+id/turno_118_sab_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_sab_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 
@@ -663,7 +605,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView169"
+            android:id="@+id/domenica118"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -682,20 +624,17 @@
             <TextView
                 android:id="@+id/turno_118_dom_mat_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_mat_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_mat_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -708,20 +647,17 @@
             <TextView
                 android:id="@+id/turno_118_dom_pom_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_pom_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_pom_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
@@ -734,20 +670,17 @@
             <TextView
                 android:id="@+id/turno_118_dom_ser_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_ser_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/turno_118_dom_ser_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
 

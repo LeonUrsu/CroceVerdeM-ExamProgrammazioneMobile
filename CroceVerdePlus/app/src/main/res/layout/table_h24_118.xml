@@ -105,7 +105,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView55"
+            android:id="@+id/lunedi118h24"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -263,7 +263,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView74"
+            android:id="@+id/martedi118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -420,7 +420,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView93"
+            android:id="@+id/mercoledi118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -577,7 +577,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView112"
+            android:id="@+id/giovedi118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -734,7 +734,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView131"
+            android:id="@+id/venerdi118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -891,7 +891,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView150"
+            android:id="@+id/sabato118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
@@ -1048,7 +1048,7 @@
         android:theme="@style/CVP_nomi">
 
         <TextView
-            android:id="@+id/textView169"
+            android:id="@+id/domenica118h24"
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
