@@ -2,4 +2,5 @@
     <string name="app_name">CroceVerdePlus</string>
     <string name="tabellone">Tabellone</string>
     <string name="account">Account</string>
+    <string name="checklist">Checklist</string>
 </resources>

@@ -3,13 +3,13 @@
     <item
         android:id="@+id/checklist"
         android:icon="@drawable/baseline_checklist_24"
-        android:title="Checklist" />
+        android:title="@string/checklist" />
     <item
         android:id="@+id/tabellone"
         android:icon="@drawable/baseline_table_chart_24"
-        android:title="Tabellone" />
+        android:title="@string/tabellone" />
     <item
         android:id="@+id/account"
         android:icon="@drawable/baseline_account_circle_24"
-        android:title="Account" />
+        android:title="@string/account" />
 </menu>
