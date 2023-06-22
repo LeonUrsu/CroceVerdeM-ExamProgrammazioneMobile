@@ -18,6 +18,7 @@ class TabelloneTurniVolontario : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -87,13 +88,13 @@ class TabelloneTurniVolontario : Fragment() {
         settimana_n_btn.setOnClickListener {
             val tipo_settimana = true // TODO : valore ricevuto dallle settimana ricevute dal DB
             vf_volontario.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(tipo_settimana))
-            TabelloneTurni().tipo_settimana(tipo_settimana,root)
-            }
+            TabelloneTurni().tipo_settimana(tipo_settimana, root)
+        }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
             vf_volontario.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(tipo_settimana))
-            TabelloneTurni().tipo_settimana(tipo_settimana,root)
+            TabelloneTurni().tipo_settimana(tipo_settimana, root)
         }
         return root
     }

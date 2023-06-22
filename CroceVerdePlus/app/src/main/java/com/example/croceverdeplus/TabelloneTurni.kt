@@ -27,13 +27,9 @@ class TabelloneTurni {
     TabelloneTurniCentralinista una volta selezionato il valore viene ritornato il valore dello
     spinner tramite il valore ret_posizion
     */
-    fun rileva_valori_spinner(
-        root: View, spinner: Int, id_array: Int, dropdown: Spinner?
+    fun rileva_valori_spinner(dropdown: Spinner?
     ): Int {
-        //var mTestArray = getResources().getStringArray(id_array);
         var ret_position = 0
-        //val adapter = ArrayAdapter(requireActivity(), spinner, mTestArray)//TODO due righe non necessarie
-        //dropdown?.setAdapter(adapter)
         dropdown?.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>, view: View, position: Int, id: Long

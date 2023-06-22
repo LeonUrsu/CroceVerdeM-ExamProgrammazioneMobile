@@ -26,31 +26,21 @@ class TabelloneTurniCentralinista : Fragment() {
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
         vf_centralinista.setDisplayedChild(2); //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al databse
-        var servizio_val = TabelloneTurni().rileva_valori_spinner(
+        var servizio_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
+        var orario_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.orario_input))
+        var giorno_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.giorno_input))
+        var grado_val = TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.grado_input))
+        var milite_val = gestione_spinner_con_militi(
+            root.findViewById(R.id.milite_input),
             root,
-            R.id.servizio_input,
-            R.array.servzio_input_array,
-            root.findViewById(R.id.servizio_input)
+            servizio_val,
+            giorno_val,
+            orario_val,
+            grado_val
         )
-        var orario_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.orario_input,
-            R.array.orario_input_array,
-            root.findViewById(R.id.orario_input)
-        )
-        var giorno_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.giorno_input,
-            R.array.giorno_input_array,
-            root.findViewById(R.id.giorno_input)
-        )
-        var grado_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.grado_input,
-            R.array.grado_input_array,
-            root.findViewById(R.id.grado_input)
-        )
-
 
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
@@ -62,16 +52,24 @@ class TabelloneTurniCentralinista : Fragment() {
         settimana_n_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(false))
             val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
-            vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(tipo_settimana))
-            TabelloneTurni().tipo_settimana(tipo_settimana,root)
+            vf_centralinista.setDisplayedChild(
+                TabelloneTurni().setta_settimana_corrente(
+                    tipo_settimana
+                )
+            )
+            TabelloneTurni().tipo_settimana(tipo_settimana, root)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(true))
             val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
-            vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(tipo_settimana))
-            TabelloneTurni().tipo_settimana(tipo_settimana,root)
+            vf_centralinista.setDisplayedChild(
+                TabelloneTurni().setta_settimana_corrente(
+                    tipo_settimana
+                )
+            )
+            TabelloneTurni().tipo_settimana(tipo_settimana, root)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         return root
@@ -89,7 +87,7 @@ class TabelloneTurniCentralinista : Fragment() {
         orario_val: Int,
         grado_val: Int
     ) {
-        val array_colors: Array<String> = arrayOf(
+        val array_militi: Array<String> = arrayOf(
             "Red",
             "Blue",
             "White",
@@ -99,12 +97,9 @@ class TabelloneTurniCentralinista : Fragment() {
             "Purple",
             "Orange",
             "Grey"
-        )//TODO ricve militi da DB ma non qui
-        //var array_fltrati = filtra_militi(militi ,servizio_val, giorno_val, orario_val, grado_val)//TODO filtrare militi tramite il metodo e i valori
-        popula_spinner_militi(
-            root,
-            array_colors
-        ) // riempie lo spinner con la lista di militi passata
+        )//TODO ricve militi da DB
+        //var array_fltrati = filtra_militi(militi, servizio_val, giorno_val, orario_val, grado_val)//TODO filtrare militi tramite il metodo e i valori
+        popula_spinner_militi(root, array_militi)//riempie lo spinner con la lista di militi passata
     }
 
     /*
