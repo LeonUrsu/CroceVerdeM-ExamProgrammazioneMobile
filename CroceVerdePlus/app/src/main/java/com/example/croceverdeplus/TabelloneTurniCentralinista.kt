@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
+
 
 class TabelloneTurniCentralinista : Fragment() {
     var arrayMiliti = null
@@ -41,17 +43,27 @@ class TabelloneTurniCentralinista : Fragment() {
             orario_val,
             grado_val
         )
+        var settimane_ricevute = Database().ricevi_tabelle()
 
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
             var id = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
-            segna_cancella_btn_function(id)
+            segna_cancella_btn_function(
+                settimane_ricevute,
+                root,
+                servizio_val,
+                giorno_val,
+                orario_val,
+                grado_val,
+                root.findViewById<TextView>(R.id.milite_input).toString(),
+                resources.getIdentifier(id, "id", requireContext().packageName)
+            )
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(false))
-            val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
+            val tipo_settimana = settimane_ricevute[0].tipoSettimana
             vf_centralinista.setDisplayedChild(
                 TabelloneTurni().setta_settimana_corrente(
                     tipo_settimana
@@ -63,7 +75,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(true))
-            val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
+            val tipo_settimana = settimane_ricevute[1].tipoSettimana
             vf_centralinista.setDisplayedChild(
                 TabelloneTurni().setta_settimana_corrente(tipo_settimana)
             )
@@ -73,9 +85,20 @@ class TabelloneTurniCentralinista : Fragment() {
         return root
     }
 
-    fun segna_cancella_btn_function(id: String) {
-        //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
+    fun segna_cancella_btn_function(
+        settimane_ricevute: Array<Tabella>,
+        root: View,
+        servizio_val: Int,
+        giorno_val: Int,
+        orario_val: Int,
+        grado_val: Int,
+        nomeCognome_val: String,
+        id_var: Int
+    ) {
+        //TODO if nella tabella nella casella segnata è già registrato il milite, cambia il testo del "Button" e cancella da DB il milite della casella
+        //TODO else nella tabella nella casella segnata non è segnato nessun milite segna il milite nel DB ovviamente il controllo va fatto sulla tabella del DB
     }
+
 
     /*
     Metodo per gestire lo spinner con i militi inseriti

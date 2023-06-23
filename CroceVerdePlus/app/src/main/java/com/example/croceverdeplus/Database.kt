@@ -58,4 +58,13 @@ class Database {
         return array_militi
     }
 
+    /*
+    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
+    in ordine cronologico
+    */
+    fun ricevi_tabelle(): Array<Tabella> {
+        var tabelle : Array<Tabella> = emptyArray<Tabella>()
+        return tabelle
+    }
+
 }
