@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.ViewFlipper
 
 class TabelloneTurni {
 
@@ -16,9 +15,9 @@ class TabelloneTurni {
    settiamna = False -> sta per 118
     */
     fun setta_settimana_corrente(settimana: Boolean): Int {
-        //TODO Prendi le informazione dal db dell'admin della settimana h24 e 118 le informazioni devono essere due oggetti: prima settimana, seconda settimana
-        //TODO prima settimana = possiede il valore "tipologia" che dice che è h24/118
-        //TODO seconda settimana = possiede il valore "tipologia" che dice che è 118
+        // TODO Prendi le informazione dal db dell'admin della settimana h24 e 118 le informazioni devono essere due oggetti: prima settimana, seconda settimana
+        // TODO prima settimana = possiede il valore "tipologia" che dice che è h24/118
+        // TODO seconda settimana = possiede il valore "tipologia" che dice che è 118
         return if (settimana) 1 else 2
     }
 
@@ -27,7 +26,8 @@ class TabelloneTurni {
     TabelloneTurniCentralinista una volta selezionato il valore viene ritornato il valore dello
     spinner tramite il valore ret_posizion
     */
-    fun rileva_valori_spinner(dropdown: Spinner?
+    fun rileva_valori_spinner(
+        dropdown: Spinner?
     ): Int {
         var ret_position = 0
         dropdown?.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
@@ -89,7 +89,6 @@ class TabelloneTurni {
         return "turno" + "_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
-
     /*
     Metodo per trovare dalla stringa il numero nella risorsa da segnare
      */
@@ -138,16 +137,18 @@ class TabelloneTurni {
     }
 
     /*
-Metodo per decidere il tipo di riuempimento di date in bse al tipo della settimana passato
- */
-    fun tipo_settimana(tipo_settimana: Boolean, root: View){
+    Metodo per decidere il tipo di riempimento di date in base al tipo della settimana ricevuto dal
+    metodo, se arriva il tipo solo 118 si attiva "setta_date_tabelloni_118()" mentre se arriva il tipo
+    118/h24 si attiva il metodo setta_date_tabelloni_h24_118()"
+    */
+    fun tipo_settimana(tipo_settimana: Boolean, root: View) {
         if (tipo_settimana) TabelloneTurni().setta_date_tabelloni_h24_118(
             Tabella(),
             root
         ) else TabelloneTurni().setta_date_tabelloni_118(
             Tabella(),
             root
-        ) // TODO : obj due oggetto tabellone vanno settate le date
+        ) //TODO : obj due oggetti tabellone vanno settate le date
     }
 
 }

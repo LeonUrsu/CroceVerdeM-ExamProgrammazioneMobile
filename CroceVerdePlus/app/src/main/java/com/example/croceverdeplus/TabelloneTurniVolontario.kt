@@ -30,31 +30,13 @@ class TabelloneTurniVolontario : Fragment() {
             TabelloneTurni().setta_settimana_corrente(true) // TODO : valore booleano ricevuto dal DB
         vf_volontario.setDisplayedChild(numero_tabella) //TODO : qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO : si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
-        var servizio_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.servizio_input,
-            R.array.servzio_input_array,
-            root.findViewById(R.id.servizio_input)
-        )
-        var orario_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.orario_input,
-            R.array.orario_input_array,
-            root.findViewById(R.id.orario_input)
-        )
-        var giorno_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.giorno_input,
-            R.array.giorno_input_array,
-            root.findViewById(R.id.giorno_input)
-        )
-        var grado_val = TabelloneTurni().rileva_valori_spinner(
-            root,
-            R.id.grado_input,
-            R.array.grado_input_array,
-            root.findViewById(R.id.grado_input)
-        )
-
+        var servizio_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
+        var orario_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.orario_input))
+        var giorno_val =
+            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.giorno_input))
+        var grado_val = TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.grado_input))
         /*TODO questo metodo serve per rilevare i nomi dei militi che andranno ad essere registrati
            nel turno scelto, la rilevazione deve essere effettuata tramite il metodo sottostante oppure tramite altro metodo tramite il database
         var nome_val = rileva_valori_spinner(
