@@ -77,6 +77,9 @@ class TabelloneTurniCentralinista : Fragment() {
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni l tabella dei militi
     }
 
+    /*
+    Metodo per gestire lo spinner con i militi inseriti
+     */
     fun gestione_spinner_con_militi(
         spinner: Spinner,
         root: View,
@@ -85,33 +88,31 @@ class TabelloneTurniCentralinista : Fragment() {
         orario_val: Int,
         grado_val: Int
     ) {
-        val array_militi: Array<String> = arrayOf(
-            "Marco Polo",
-            "Ellit Alderson",
-            "Walter White",
-            "Jessie Pinkman",
-            "Ollie Brown",
-            "Leon Ursu",
-            "Patrizia Giacovelli",
-            "Elisa Romoli",
-            "Hank Grey",
-            "Madison Clark",
-            "Gerald of Rivia"
-        ) //TODO ricevere militi da DB
-        //var array_fltrati = filtra_militi(array_militi, servizio_val, giorno_val, orario_val, grado_val) // TODO filtrare militi tramite il metodo e i valori
-        popula_spinner_militi(root, array_militi)//riempie lo spinner con la lista di militi passata
+        val array_ricevuto: ArrayList<Milite> = Database().ricevi_array_militi()
+        var array_fltrati = filtra_militi(array_ricevuto, servizio_val, giorno_val)
+        val array_militi_string = militi_list_to_string_list(array_fltrati)
+        popula_spinner_militi(root, array_militi_string)
     }
+
+    /*
+    Metodo per avere una lista di nomi da una lista di militi
+    */
+    fun militi_list_to_string_list(vecchia: MutableList<Milite>): Array<String> {
+        var array = mutableListOf<String>()
+        vecchia.forEach { array.add(it.nomeCognomeSpinner) }
+        return array.toTypedArray()
+    }
+
 
     /*
     Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato
     */
     fun filtra_militi(
-        array: Array<Milite>,
+        array: MutableList<Milite>,
         servizio_val: Int,
         grado_val: Int
     ): MutableList<Milite> {
         //TODO forse il DB deve registrare i militi in tabelle diverse a seconda del grado
-        val arrat_filtrato: MutableList<Milite> = arrayListOf()
         var grado118prima = true
         var grado118seconda = true
         var grado118terza = true
@@ -137,11 +138,11 @@ class TabelloneTurniCentralinista : Fragment() {
                 && it.gradoh24prima == gradoh24prima
                 && it.gradoh24seconda == gradoh24seconda
                 && it.gradoh24terza == gradoh24terza
-            ) {
-                arrat_filtrato.add(it)
+            ) else {
+                array.remove(it)
             }
         }
-        return arrat_filtrato
+        return array
     }
 
     /*

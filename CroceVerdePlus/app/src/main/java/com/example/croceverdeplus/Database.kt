@@ -49,4 +49,13 @@ class Database {
             }
 
     }
+
+    /*
+    Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
+     */
+    fun ricevi_array_militi():ArrayList<Milite>{
+        var array_militi = ArrayList<Milite>()
+        return array_militi
+    }
+
 }
