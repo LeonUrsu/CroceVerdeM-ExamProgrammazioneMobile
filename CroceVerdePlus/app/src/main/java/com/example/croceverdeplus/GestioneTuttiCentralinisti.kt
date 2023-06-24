@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.FirebaseFirestore
@@ -30,13 +31,13 @@ class GestioneTuttiCentralinisti : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_centralinisti, container, false)
 
-        val fragmentManager = requireActivity().supportFragmentManager
-        val button: Button = root.findViewById(R.id.imageButton4)
+        //val fragmentManager = requireActivity().supportFragmentManager
+        val button: Button = root.findViewById(R.id.button5)
 
         button.setOnClickListener {
             val newFragment = GestioneCentralinistaCrea()
 
-            val transaction = fragmentManager.beginTransaction()
+            val transaction = childFragmentManager.beginTransaction()
 
             transaction.replace(R.id.fragment_container, newFragment)
 
@@ -78,7 +79,7 @@ class GestioneTuttiCentralinisti : Fragment() {
     }
 
     private fun navigateToGestioneCentralinista(selectedUser: String) {
-        val fragment = GestioneCentralinista()
+    val fragment = GestioneCentralinista()
         val bundle = Bundle()
         bundle.putString("selectedUser", selectedUser)
         fragment.arguments = bundle
@@ -86,5 +87,7 @@ class GestioneTuttiCentralinisti : Fragment() {
             .replace(R.id.fragment_container, fragment, "fragment_gestione_centralinista")
             .addToBackStack(null)
             .commit()
+
+
     }
 }

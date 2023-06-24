@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentAmministratore">
+
+    <fragment
+        android:id="@+id/fragmentAmministratore"
+        android:name="com.example.croceverdeplus.FragmentAmministratore"
+        android:label="fragment_amministratore"
+        tools:layout="@layout/fragment_amministratore" >
+        <action
+            android:id="@+id/action_fragmentAmministratore_to_gestioneTuttiCentralinisti"
+            app:destination="@id/gestioneTuttiCentralinisti" />
+    </fragment>
+    <fragment
+        android:id="@+id/gestioneTuttiCentralinisti"
+        android:name="com.example.croceverdeplus.GestioneTuttiCentralinisti"
+        android:label="fragment_gestione_tutti_centralinisti"
+        tools:layout="@layout/fragment_gestione_tutti_centralinisti" >
+        <action
+            android:id="@+id/action_gestioneTuttiCentralinisti_to_gestioneCentralinista"
+            app:destination="@id/gestioneCentralinista" />
+        <action
+            android:id="@+id/action_gestioneTuttiCentralinisti_to_gestioneCentralinistaCrea"
+            app:destination="@id/gestioneCentralinistaCrea" />
+    </fragment>
+    <fragment
+        android:id="@+id/gestioneCentralinista"
+        android:name="com.example.croceverdeplus.GestioneCentralinista"
+        android:label="fragment_gestione_centralinista"
+        tools:layout="@layout/fragment_gestione_centralinista" />
+    <fragment
+        android:id="@+id/gestioneCentralinistaCrea"
+        android:name="com.example.croceverdeplus.GestioneCentralinistaCrea"
+        android:label="fragment_gestione_centralinista_crea"
+        tools:layout="@layout/fragment_gestione_centralinista_crea" />
+</navigation>
