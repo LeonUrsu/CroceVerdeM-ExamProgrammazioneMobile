@@ -30,7 +30,11 @@
         android:id="@+id/gestioneCentralinista"
         android:name="com.example.croceverdeplus.GestioneCentralinista"
         android:label="fragment_gestione_centralinista"
-        tools:layout="@layout/fragment_gestione_centralinista" />
+        tools:layout="@layout/fragment_gestione_centralinista" >
+        <argument
+            android:name="selectedUser"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/gestioneCentralinistaCrea"
         android:name="com.example.croceverdeplus.GestioneCentralinistaCrea"

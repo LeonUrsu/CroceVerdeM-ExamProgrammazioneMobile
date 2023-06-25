@@ -10,9 +10,9 @@ class Database {
     private val db = Firebase.firestore
 
     fun addUser(nome: String, cognome: String,
-                    dataDiNascita: String, residenza: String, grado: String?) {
+                    dataDiNascita: String, residenza: String) {
 
-        val user = User(nome, cognome, dataDiNascita, residenza, grado)
+        val user = User(nome, cognome, dataDiNascita, residenza)
 
         db.collection("users")
             .add(user)
@@ -49,6 +49,24 @@ class Database {
             }
 
     }
+
+    fun addUserM(nome: String, cognome: String,
+                dataDiNascita: String, residenza: String, grado: String) {
+
+        val user = User(nome, cognome, dataDiNascita, residenza, grado)
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
+            }
+            .addOnFailureListener { e ->
+                Log.w(ContentValues.TAG, "Error adding document", e)
+            }
+
+    }
+
 
     /*
     Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del

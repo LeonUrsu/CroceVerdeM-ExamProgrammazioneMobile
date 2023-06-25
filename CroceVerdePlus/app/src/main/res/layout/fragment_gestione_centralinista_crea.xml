@@ -20,45 +20,46 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextText2"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="36dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Cognome"
-            app:layout_constraintBottom_toTopOf="@+id/editTextDate"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Cognome"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextText4"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:ems="10"
-            android:inputType="text"
-            android:text="Residenza"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="384dp" />
+    <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Data di nascita"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextDate"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="36dp"
-            android:ems="10"
-            android:inputType="date"
-            android:text="Data di nascita"
-            app:layout_constraintBottom_toTopOf="@+id/editTextText4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent" />
+    <EditText
+        android:id="@+id/editTextText4"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="276dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Residenza"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+    <Button
             android:id="@+id/button4"
             android:layout_width="150dp"
             android:layout_height="50dp"

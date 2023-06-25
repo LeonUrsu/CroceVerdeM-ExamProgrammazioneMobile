@@ -51,9 +51,9 @@ class GestioneMiliteModificaCrea : Fragment() {
 
                 button.setOnClickListener{
 
-                    data.addUser(nome.text.toString(), cognome.text.toString(),
+                    data.addUserM(nome.text.toString(), cognome.text.toString(),
                         dataDiNascita.text.toString(), residenza.text.toString(),
-                        selectedString)
+                        selectedGrado!!.toString())
 
                     Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
 

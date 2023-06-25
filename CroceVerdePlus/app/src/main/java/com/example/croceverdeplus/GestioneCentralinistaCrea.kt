@@ -24,7 +24,7 @@ class GestioneCentralinistaCrea : Fragment() {
 
         val nome: EditText = root.findViewById(R.id.editTextText3)
         val cognome: EditText = root.findViewById(R.id.editTextText2)
-        val dataDiNascita: EditText = root.findViewById(R.id.editTextDate)
+        val dataDiNascita: EditText = root.findViewById(R.id.editTextText)
         val residenza: EditText = root.findViewById(R.id.editTextText4)
         val button: Button = root.findViewById(R.id.button4)
 
@@ -33,7 +33,7 @@ class GestioneCentralinistaCrea : Fragment() {
         button.setOnClickListener{
 
             data.addUser(nome.text.toString(), cognome.text.toString(),
-                            dataDiNascita.text.toString(), residenza.text.toString(), null)
+                            dataDiNascita.text.toString(), residenza.text.toString())
 
             Toast.makeText(requireActivity(), "Centralinista creato", Toast.LENGTH_SHORT).show()
 
