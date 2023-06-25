@@ -8,7 +8,7 @@ data class User(
     var cognome: String? = null,
     var dataDiNascita: String? = null,
     var residenza: String? = null,
-    val idLog: Int? = null,
+    val ruolo: String? = null,
     var grado: Grado? = null) {
 
     constructor(  nome: String?,  cognome: String?,

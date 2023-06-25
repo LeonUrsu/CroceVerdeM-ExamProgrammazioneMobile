@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.random.Random
 
 class Database {
 
@@ -14,10 +15,31 @@ class Database {
 
         val user = User(nome, cognome, dataDiNascita, residenza)
 
+        val username = nome + "." + cognome
+
+        val password = (1..5)
+            .map {
+                when (Random.nextInt(3)) {
+                    0 -> Random.nextInt(48, 58).toChar() // Numeri da '0' a '9'
+                    1 -> Random.nextInt(65, 91).toChar() // Lettere maiuscole da 'A' a 'Z'
+                    else -> Random.nextInt(97, 123).toChar() // Lettere minuscole da 'a' a 'z'
+                }
+            }
+            .joinToString("")
+
+        val ruolo = "Centralinista"
+
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
+                db.collection("users")
+                    .document(documentReference.id).update("username", username)
+                db.collection("users")
+                    .document(documentReference.id).update("password", password)
+                db.collection("users")
+                    .document(documentReference.id).update("ruolo", ruolo)
 
             }
             .addOnFailureListener { e ->
