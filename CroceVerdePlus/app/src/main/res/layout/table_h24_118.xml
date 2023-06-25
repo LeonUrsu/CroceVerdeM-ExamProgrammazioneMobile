@@ -488,12 +488,12 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/turno_h24_mer_ser_2"
+                android:id="@+id/turno_h24_mer_ser_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/turno_h24_mer_ser_3"
+                android:id="@+id/turno_h24_mer_ser_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

@@ -111,7 +111,7 @@ class TabelloneTurni {
     la cosa ricevuta e un oggetto di configurazione da li si estraggono le date
     la tabella con 118 corrisponde al valore true
      */
-    fun setta_date_tabelloni_h24_118(tabella: Tabella, root: View) {
+    fun setta_date_tabelloni_h24_118(tabella: Tabella118h24, root: View) {
         (root.findViewById(R.id.lunedi118h24) as TextView).setText(tabella.lunedi.toString())
         (root.findViewById(R.id.martedi118h24) as TextView).setText(tabella.martedi.toString())
         (root.findViewById(R.id.mercoledi118h24) as TextView).setText(tabella.mercoledi.toString())
@@ -126,7 +126,7 @@ class TabelloneTurni {
     la cosa ricevuta e un oggetto di configurazione da li si estraggono le date
     la tabella con 118 corrisponde al valore false
     */
-    fun setta_date_tabelloni_118(tabella: Tabella, root: View) {
+    fun setta_date_tabelloni_118(tabella: Tabella118h24, root: View) {
         (root.findViewById(R.id.lunedi118) as TextView).setText(tabella.lunedi.toString())
         (root.findViewById(R.id.martedi118) as TextView).setText(tabella.martedi.toString())
         (root.findViewById(R.id.mercoledi118) as TextView).setText(tabella.mercoledi.toString())
@@ -143,10 +143,10 @@ class TabelloneTurni {
     */
     fun tipo_settimana(tipo_settimana: Boolean, root: View) {
         if (tipo_settimana) TabelloneTurni().setta_date_tabelloni_h24_118(
-            Tabella(),
+            Tabella118h24(),
             root
         ) else TabelloneTurni().setta_date_tabelloni_118(
-            Tabella(),
+            Tabella118h24(),
             root
         ) //TODO : obj due oggetti tabellone vanno settate le date
     }
