@@ -9,7 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.ListView
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GestioneTuttiMiliti : Fragment() {
@@ -29,6 +31,14 @@ class GestioneTuttiMiliti : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_militi, container, false)
 
+        val buttonM: Button = root.findViewById(R.id.button6)
+
+        buttonM.setOnClickListener {
+
+            findNavController().navigate(R.id.action_gestioneTuttiMiliti_to_gestioneMiliteModificaCrea)
+
+        }
+
         listView = root.findViewById(R.id.lista_militi)
         db = FirebaseFirestore.getInstance()
         loadDataFromDB()
@@ -43,8 +53,10 @@ class GestioneTuttiMiliti : Fragment() {
             for (document in querySnapshot) {
                 val nome = document.getString("nome")
                 val cognome = document.getString("cognome")
+                val dataDiNascita = document.getString("dataDiNascita")
+                val residenza = document.getString("residenza")
                 if (nome != null && cognome != null) {
-                    val userInfo = "$nome $cognome"
+                    val userInfo = "$nome $cognome $dataDiNascita $residenza"
                     userList.add(userInfo)
                 }
             }
@@ -65,14 +77,8 @@ class GestioneTuttiMiliti : Fragment() {
     }
 
     private fun navigateToGestioneMilite(selectedUser: String) {
-        val fragment = GestioneMilite()
-        val bundle = Bundle()
-        bundle.putString("selectedUser", selectedUser)
-        fragment.arguments = bundle
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment, "fragment_gestione_milite")
-            .addToBackStack(null)
-            .commit()
+        val action = GestioneTuttiMilitiDirections.actionGestioneTuttiMilitiToGestioneMilite(selectedUser)
+        findNavController().navigate(action)
     }
 
 

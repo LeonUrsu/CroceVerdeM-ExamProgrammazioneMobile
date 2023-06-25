@@ -1,13 +1,14 @@
 package com.example.croceverdeplus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 
 
 class GestioneCentralinista : Fragment() {
@@ -23,21 +24,21 @@ class GestioneCentralinista : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_centralinista, container, false)
 
-        val nome: TextView = root.findViewById(R.id.nome_text_centralinista)
-        val cognome: TextView = root.findViewById(R.id.cognome_text_centralinista)
-        val dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_centralinista)
-        val residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
+        val args: GestioneCentralinistaArgs by navArgs()
+
+        var nome: TextView = root.findViewById(R.id.nome_text_centralinista)
+        var cognome: TextView = root.findViewById(R.id.cognome_text_centralinista)
+        var dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_centralinista)
+        var residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
         val button: Button = root.findViewById(R.id.cancella_centralinista_btn)
 
-        val listViewFragment = parentFragment as? GestioneTuttiCentralinisti
-        val selectedItem = listViewFragment?.selectedItem
+        val selectedUser = args.selectedUser
 
-        selectedItem?.let {
-            nome.text = it
-            cognome.text = it
-            dataDiNascita.text = it
-            residenza.text = it
-        }
+        val userParts = selectedUser.split(" ")
+        nome.text = userParts[0]
+        cognome.text = userParts[1]
+        dataDiNascita.text = userParts[2]
+        residenza.text = userParts[3]
 
         val data = Database()
 

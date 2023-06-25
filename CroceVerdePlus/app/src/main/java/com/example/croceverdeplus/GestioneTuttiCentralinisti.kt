@@ -2,6 +2,7 @@ package com.example.croceverdeplus
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.provider.Settings.Global.putString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +10,9 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.FrameLayout
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 
 class GestioneTuttiCentralinisti : Fragment() {
@@ -35,13 +36,8 @@ class GestioneTuttiCentralinisti : Fragment() {
         val button: Button = root.findViewById(R.id.button5)
 
         button.setOnClickListener {
-            val newFragment = GestioneCentralinistaCrea()
 
-            val transaction = childFragmentManager.beginTransaction()
-
-            transaction.replace(R.id.fragment_container, newFragment)
-
-            transaction.commit()
+            findNavController().navigate(R.id.action_gestioneTuttiCentralinisti_to_gestioneCentralinistaCrea)
         }
 
         listView = root.findViewById(R.id.lista_centralinisti)
@@ -57,8 +53,10 @@ class GestioneTuttiCentralinisti : Fragment() {
             for (document in querySnapshot) {
                 val nome = document.getString("nome")
                 val cognome = document.getString("cognome")
+                val dataDiNascita = document.getString("dataDiNascita")
+                val residenza = document.getString("residenza")
                 if (nome != null && cognome != null) {
-                    val userInfo = "$nome $cognome"
+                    val userInfo = "$nome $cognome $dataDiNascita $residenza"
                     userList.add(userInfo)
                 }
             }
@@ -79,14 +77,10 @@ class GestioneTuttiCentralinisti : Fragment() {
     }
 
     private fun navigateToGestioneCentralinista(selectedUser: String) {
-    val fragment = GestioneCentralinista()
-        val bundle = Bundle()
-        bundle.putString("selectedUser", selectedUser)
-        fragment.arguments = bundle
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment, "fragment_gestione_centralinista")
-            .addToBackStack(null)
-            .commit()
+
+        val action = GestioneTuttiCentralinistiDirections.actionGestioneTuttiCentralinistiToGestioneCentralinista(selectedUser)
+        findNavController().navigate(action)
+
 
 
     }

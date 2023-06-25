@@ -4,22 +4,49 @@ import android.content.ContentValues
 import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import kotlin.random.Random
 
 class Database {
 
     private val db = Firebase.firestore
 
+<<<<<<< HEAD
     fun addUser(
         nome: String, cognome: String,
         dataDiNascita: String, residenza: String, grado: String?
     ) {
+=======
+    fun addUser(nome: String, cognome: String,
+                    dataDiNascita: String, residenza: String) {
+>>>>>>> 9c84ae964e9ee87c741267228ef659d01b59da0f
 
-        val user = User(nome, cognome, dataDiNascita, residenza, grado)
+        val user = User(nome, cognome, dataDiNascita, residenza)
+
+        val username = nome + "." + cognome
+
+        val password = (1..5)
+            .map {
+                when (Random.nextInt(3)) {
+                    0 -> Random.nextInt(48, 58).toChar() // Numeri da '0' a '9'
+                    1 -> Random.nextInt(65, 91).toChar() // Lettere maiuscole da 'A' a 'Z'
+                    else -> Random.nextInt(97, 123).toChar() // Lettere minuscole da 'a' a 'z'
+                }
+            }
+            .joinToString("")
+
+        val ruolo = "Centralinista"
 
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
                 Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
+                db.collection("users")
+                    .document(documentReference.id).update("username", username)
+                db.collection("users")
+                    .document(documentReference.id).update("password", password)
+                db.collection("users")
+                    .document(documentReference.id).update("ruolo", ruolo)
 
             }
             .addOnFailureListener { e ->
@@ -64,6 +91,24 @@ class Database {
             }
 
     }
+
+    fun addUserM(nome: String, cognome: String,
+                dataDiNascita: String, residenza: String, grado: String) {
+
+        val user = User(nome, cognome, dataDiNascita, residenza, grado)
+
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+
+            }
+            .addOnFailureListener { e ->
+                Log.w(ContentValues.TAG, "Error adding document", e)
+            }
+
+    }
+
 
     /*
     Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
