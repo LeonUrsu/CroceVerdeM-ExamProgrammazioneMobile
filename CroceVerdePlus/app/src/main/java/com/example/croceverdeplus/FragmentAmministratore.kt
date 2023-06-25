@@ -22,14 +22,20 @@ class FragmentAmministratore : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_amministratore, container, false)
 
-        val button: Button = root.findViewById(R.id.button8)
+        val buttonCen: Button = root.findViewById(R.id.button8)
+        val buttonMil: Button = root.findViewById(R.id.button7)
 
-        button.setOnClickListener{
+        buttonCen.setOnClickListener{
 
             root.findNavController().navigate(R.id.gestioneTuttiCentralinisti)
 
         }
 
+        buttonMil.setOnClickListener{
+
+            root.findNavController().navigate(R.id.gestioneTuttiMiliti)
+
+        }
 
         return root
     }
