@@ -63,10 +63,34 @@
         <argument
             android:name="selectedUser"
             app:argType="string" />
+        <action
+            android:id="@+id/action_gestioneMilite_to_gestioneModificaMilite"
+            app:destination="@id/gestioneModificaMilite" />
     </fragment>
     <fragment
         android:id="@+id/gestioneMiliteModificaCrea"
         android:name="com.example.croceverdeplus.GestioneMiliteModificaCrea"
         android:label="fragment_gestione_milite_modifica_crea"
         tools:layout="@layout/fragment_gestione_milite_modifica_crea" />
+    <fragment
+        android:id="@+id/gestioneModificaMilite"
+        android:name="com.example.croceverdeplus.GestioneModificaMilite"
+        android:label="fragment_gestione_modifica_milite"
+        tools:layout="@layout/fragment_gestione_modifica_milite" >
+        <argument
+            android:name="nome"
+            app:argType="string" />
+        <argument
+            android:name="cognome"
+            app:argType="string" />
+        <argument
+            android:name="dataDiNascita"
+            app:argType="string" />
+        <argument
+            android:name="residenza"
+            app:argType="string" />
+        <argument
+            android:name="grado"
+            app:argType="string" />
+    </fragment>
 </navigation>

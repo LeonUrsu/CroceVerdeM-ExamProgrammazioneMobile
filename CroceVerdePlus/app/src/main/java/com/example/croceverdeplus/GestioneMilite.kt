@@ -57,7 +57,10 @@ class GestioneMilite : Fragment() {
 
         buttonModify.setOnClickListener{
 
-            //findNavController().navigate(R.id.action_gestioneMilite_to_gestioneMiliteModificaCrea)
+            val action = GestioneMiliteDirections.actionGestioneMiliteToGestioneModificaMilite(
+                nome.text as String, cognome.text as String, dataDiNascita.text as String,
+                residenza.text as String, grado.text as String)
+            findNavController().navigate(action)
         }
 
         return root

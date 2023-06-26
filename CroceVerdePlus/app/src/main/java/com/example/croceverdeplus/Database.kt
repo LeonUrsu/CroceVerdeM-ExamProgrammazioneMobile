@@ -170,6 +170,39 @@ private val db = Firebase.firestore
 
     }
 
+    fun modifyUserM(
+        nome: String, cognome: String,
+        dataDiNascita: String, residenza: String, grado: String
+    ) {
+
+        db.collection("militi")
+            .whereEqualTo("nome", nome)
+            .whereEqualTo("cognome", cognome)
+            .whereEqualTo("dataDiNascita", dataDiNascita)
+            .whereEqualTo("residenza", residenza)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
+                    db.collection("militi")
+                        .document(document.id).update("nome", nome)
+                    db.collection("militi")
+                        .document(document.id).update("cognome", cognome)
+                    db.collection("militi")
+                        .document(document.id).update("dataDiNascita", dataDiNascita)
+                    db.collection("militi")
+                        .document(document.id).update("residenza", residenza)
+                    db.collection("militi")
+                        .document(document.id).update("grado", grado)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }
+
+    }
+
+
     /*
 Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
  */
