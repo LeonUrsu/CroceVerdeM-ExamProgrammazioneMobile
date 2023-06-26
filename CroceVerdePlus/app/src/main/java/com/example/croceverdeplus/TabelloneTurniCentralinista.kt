@@ -57,7 +57,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(false))
-            val tipo_settimana = settimane_ricevute[0].tipoSettimana
+            val tipo_settimana = true
             vf_centralinista.setDisplayedChild(
                 TabelloneTurni().setta_settimana_corrente(
                     tipo_settimana
@@ -69,7 +69,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(true))
-            val tipo_settimana = settimane_ricevute[1].tipoSettimana
+            val tipo_settimana = false
             vf_centralinista.setDisplayedChild(
                 TabelloneTurni().setta_settimana_corrente(tipo_settimana)
             )
