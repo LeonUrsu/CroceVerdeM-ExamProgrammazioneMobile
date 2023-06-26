@@ -33,7 +33,20 @@
         android:ems="10"
         android:inputType="text"
         android:text="Cognome"
-        app:layout_constraintBottom_toTopOf="@+id/editTextdata"
+        app:layout_constraintBottom_toTopOf="@+id/editTextData"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextData"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Data di nascita"
+        app:layout_constraintBottom_toTopOf="@+id/editTextresidenza"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,19 +74,6 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextnome" />
-
-    <EditText
-        android:id="@+id/editTextdata"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
-        android:ems="10"
-        android:inputType="date"
-        android:text="Data di nascita"
-        app:layout_constraintBottom_toTopOf="@+id/editTextresidenza"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonMilite"

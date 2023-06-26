@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 
 class GestioneMilite : Fragment() {
 
@@ -41,6 +42,11 @@ class GestioneMilite : Fragment() {
                 grado.text.toString())
 
             Toast.makeText(requireActivity(), "Milite eliminato", Toast.LENGTH_SHORT).show()
+        }
+
+        buttonModify.setOnClickListener{
+
+            //findNavController().navigate(R.id.action_gestioneMilite_to_gestioneMiliteModificaCrea)
         }
 
         return root

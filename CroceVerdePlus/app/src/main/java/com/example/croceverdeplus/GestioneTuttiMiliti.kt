@@ -55,7 +55,7 @@ class GestioneTuttiMiliti : Fragment() {
                 val cognome = document.getString("cognome")
                 val dataDiNascita = document.getString("dataDiNascita")
                 val residenza = document.getString("residenza")
-                val grado = document.getString("grado")
+                val grado = document.get("grado")
                 if (nome != null && cognome != null) {
                     val userInfo = "$nome $cognome $dataDiNascita $residenza $grado"
                     userList.add(userInfo)

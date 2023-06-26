@@ -8,16 +8,16 @@ data class Militi(
     var dataDiNascita: String? = null,
     var residenza: String? = null,
     val ruolo: String? = null,
-    var grado: Array<String>? = arrayOf("grado118prima", "grado118seconda", "grado118terza")) {
+    var grado: List<String>? = listOf("grado118prima", "grado118seconda", "grado118terza")) {
 
 
     constructor(nome: String?, cognome: String?,
-        dataDiNascita: String?, residenza: String?, grado: Array<String>?) : this() {
+        dataDiNascita: String?, residenza: String?, grado: String) : this() {
         this.nome = nome
         this.cognome = cognome
         this.dataDiNascita = dataDiNascita
         this.residenza = residenza
-        this.grado = grado
+        this.grado = listOf(grado)
 
     }
 }
