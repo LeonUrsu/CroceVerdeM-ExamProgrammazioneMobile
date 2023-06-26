@@ -8,7 +8,8 @@ data class Militi(
     var dataDiNascita: String? = null,
     var residenza: String? = null,
     val ruolo: String? = null,
-    var grado: List<String>? = listOf("grado118prima", "grado118seconda", "grado118terza")) {
+    var grado: List<String>? = listOf("grado118prima", "grado118seconda", "grado118terza",
+                                      "gradoh24prima","gradoh24seconda","gradoh24terza")) {
 
 
     constructor(nome: String?, cognome: String?,

@@ -135,7 +135,7 @@ private val db = Firebase.firestore
 
     fun deleteUserM(
         nome: String, cognome: String,
-        dataDiNascita: String, residenza: String, grado: String
+        dataDiNascita: String, residenza: String
     ) {
 
         db.collection("militi")
@@ -143,7 +143,6 @@ private val db = Firebase.firestore
             .whereEqualTo("cognome", cognome)
             .whereEqualTo("dataDiNascita", dataDiNascita)
             .whereEqualTo("residenza", residenza)
-            .whereEqualTo("grado", grado)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
