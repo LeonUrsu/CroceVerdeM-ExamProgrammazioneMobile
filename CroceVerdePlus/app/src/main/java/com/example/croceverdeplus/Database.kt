@@ -1,14 +1,19 @@
 package com.example.croceverdeplus
 
+import android.app.Activity
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.util.Log
+import android.widget.Toast
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlin.random.Random
 
 class Database {
 
-private val db = Firebase.firestore
+    private val db = Firebase.firestore
 
     fun addUser(
         nome: String, cognome: String,
@@ -114,38 +119,53 @@ private val db = Firebase.firestore
 
 
     /*
-Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
- */
+    Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
+     */
     fun ricevi_array_militi(): ArrayList<Milite> {
         var array_militi = ArrayList<Milite>()
         return array_militi
     }
 
-    /*
-Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
-in ordine cronologico
-*/
-    fun ricevi_info_tabelle(): Array<Tabella118h24> {
-        var tabelle: Array<Tabella118h24> = emptyArray<Tabella118h24>()
-        return tabelle
-    }
 
     /*
-Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
-univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già
-presente qualcuno nel turno
- */
+    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
+    in ordine cronologico
+    */
+    fun ricevi_info_tabelle(): DocumentSnapshot? {
+        val docRef = db.collection("tabelle").document("tabella_118")
+        var documento : DocumentSnapshot? = null
+        docRef.get()
+        .addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                documento = document
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }
+        .addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+        return documento
+    }
+
+
+
+    /*
+    Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
+    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già
+    presente qualcuno nel turno
+     */
     fun segna_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
         return true // per ora ho impostato un valore fisso di ritorno true
     }
 
     /*
-Metodo per cancellare un milite nel turno passato tramite id come String, ogni casella ha un suo
-univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa che
-non è presente nessun milite nel turno e quindi si è verificato un errore
- */
+    Metodo per cancellare un milite nel turno passato tramite id come String, ogni casella ha un suo
+    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa che
+    non è presente nessun milite nel turno e quindi si è verificato un errore
+     */
     fun cancella_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
         return true // per ora ho impostato un valore fisso di ritorno true
     }
-
 }

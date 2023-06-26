@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.Task
+import com.google.firebase.firestore.DocumentSnapshot
 
 
 class TabelloneTurniVolontario : Fragment() {
@@ -45,8 +45,7 @@ class TabelloneTurniVolontario : Fragment() {
             R.array.nome_input_array,
             root.findViewById(R.id.nome_input)
          */
-        var nome_val =
-            "Elliot Alderson" // TODO questo nome è temporaneo, serve solamente per provare il funzionamento della tabella
+
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
             val id_trovato = TabelloneTurni().id_int_val_builder(
@@ -57,8 +56,8 @@ class TabelloneTurniVolontario : Fragment() {
                 grado_val,
                 requireContext().packageName
             )
-            segnami_cancellami_btn_function(id_trovato, root, nome_val)
-            Toast.makeText(requireActivity(), "segnato o cancellato", Toast.LENGTH_SHORT).show()
+            segnami_cancellami_btn_function(id_trovato, root)
+            //todo(da fare segna cancella)
         }
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
@@ -81,6 +80,7 @@ class TabelloneTurniVolontario : Fragment() {
         return root
     }
 
+
     /*
     Metodo per fornire la propria disponibilità per effettaure il turno
      */
@@ -88,15 +88,13 @@ class TabelloneTurniVolontario : Fragment() {
         //TODO al click bisogna che il sistema mandi nel database i dati
     }
 
-
     /*
     Metodo per far fiunzionare il pulsante della cancellazione
     */
-    fun segnami_cancellami_btn_function(id_passed: Int, root: View, nome_milite: String) {
+    fun segnami_cancellami_btn_function(id_passed: Int, root: View) {
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni la tabella dei militi
         var textView = root.findViewById<TextView>(id_passed)
         //TODO bisogna anche che permetta di cancellarsi se è il tunro in cui si vuole cancellare
-        textView.setText(nome_milite)
     }
 
 
