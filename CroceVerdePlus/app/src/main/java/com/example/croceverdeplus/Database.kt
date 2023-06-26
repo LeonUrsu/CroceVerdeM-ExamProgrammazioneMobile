@@ -95,10 +95,10 @@ private val db = Firebase.firestore
         dataDiNascita: String, residenza: String, grado: String
     ) {
 
-        val user = User(nome, cognome, dataDiNascita, residenza, grado)
+        val militi = Militi(nome, cognome, dataDiNascita, residenza, grado)
 
         db.collection("users")
-            .add(user)
+            .add(militi)
             .addOnSuccessListener { documentReference ->
                 Log.d(
                     ContentValues.TAG,
@@ -112,6 +112,43 @@ private val db = Firebase.firestore
 
     }
 
+    fun deleteUserM(
+        nome: String, cognome: String,
+        dataDiNascita: String, residenza: String, grado: String
+    ) {
+
+        db.collection("militi")
+            .whereEqualTo("nome", nome)
+            .whereEqualTo("cognome", cognome)
+            .whereEqualTo("dataDiNascita", dataDiNascita)
+            .whereEqualTo("residenza", residenza)
+            .whereEqualTo("grado", grado)
+            .get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
+                    db.collection("militi").document(document.id)
+                        .delete()
+                        .addOnSuccessListener {
+                            Log.d(
+                                ContentValues.TAG,
+                                "DocumentSnapshot successfully deleted!"
+                            )
+                        }
+                        .addOnFailureListener { e ->
+                            Log.w(
+                                ContentValues.TAG,
+                                "Error deleting document",
+                                e
+                            )
+                        }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }
+
+    }
 
     /*
 Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
