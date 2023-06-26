@@ -14,7 +14,6 @@ import android.widget.Toast
 
 class GestioneMiliteModificaCrea : Fragment() {
 
-    private var selectedGrado: Grado? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +27,18 @@ class GestioneMiliteModificaCrea : Fragment() {
 
         val nome: EditText = root.findViewById(R.id.editTextnome)
         val cognome: EditText = root.findViewById(R.id.editTextcognome)
-        val dataDiNascita: EditText = root.findViewById(R.id.editTextdata)
+        val dataDiNascita: EditText = root.findViewById(R.id.editTextData)
         val residenza: EditText = root.findViewById(R.id.editTextresidenza)
         val button: Button = root.findViewById(R.id.buttonMilite)
 
         val spinner: Spinner = root.findViewById(R.id.spinner)
-        val userList = listOf(User())
-        val userGradi = userList.map { it.grado }
+
+        val userList = listOf(Militi())
+        val userGradi = mutableListOf<String>()
+
+        userList.firstOrNull()?.grado?.forEach { grado ->
+            userGradi.add(grado)
+        }
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -43,17 +47,17 @@ class GestioneMiliteModificaCrea : Fragment() {
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                selectedGrado = parent.getItemAtPosition(position) as Grado
-                val selectedString = selectedGrado.toString()
+                val selectedGrado = parent.getItemAtPosition(position) as? String
 
-                //messo fuori o dentro onItemSelectedListener
+
                 val data = Database()
 
                 button.setOnClickListener{
 
                     data.addUserM(nome.text.toString(), cognome.text.toString(),
                         dataDiNascita.text.toString(), residenza.text.toString(),
-                        selectedGrado!!.toString())
+                        selectedGrado!!
+                    )
 
                     Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
 
