@@ -8,17 +8,12 @@ import kotlin.random.Random
 
 class Database {
 
-    private val db = Firebase.firestore
+private val db = Firebase.firestore
 
-<<<<<<< HEAD
     fun addUser(
         nome: String, cognome: String,
-        dataDiNascita: String, residenza: String, grado: String?
+        dataDiNascita: String, residenza: String
     ) {
-=======
-    fun addUser(nome: String, cognome: String,
-                    dataDiNascita: String, residenza: String) {
->>>>>>> 9c84ae964e9ee87c741267228ef659d01b59da0f
 
         val user = User(nome, cognome, dataDiNascita, residenza)
 
@@ -39,7 +34,10 @@ class Database {
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
-                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d(
+                    ContentValues.TAG,
+                    "DocumentSnapshot added with ID: ${documentReference.id}"
+                )
 
                 db.collection("users")
                     .document(documentReference.id).update("username", username)
@@ -92,15 +90,20 @@ class Database {
 
     }
 
-    fun addUserM(nome: String, cognome: String,
-                dataDiNascita: String, residenza: String, grado: String) {
+    fun addUserM(
+        nome: String, cognome: String,
+        dataDiNascita: String, residenza: String, grado: String
+    ) {
 
         val user = User(nome, cognome, dataDiNascita, residenza, grado)
 
         db.collection("users")
             .add(user)
             .addOnSuccessListener { documentReference ->
-                Log.d(ContentValues.TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d(
+                    ContentValues.TAG,
+                    "DocumentSnapshot added with ID: ${documentReference.id}"
+                )
 
             }
             .addOnFailureListener { e ->
@@ -111,36 +114,36 @@ class Database {
 
 
     /*
-    Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
-     */
+Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
+ */
     fun ricevi_array_militi(): ArrayList<Milite> {
         var array_militi = ArrayList<Milite>()
         return array_militi
     }
 
     /*
-    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
-    in ordine cronologico
-    */
+Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
+in ordine cronologico
+*/
     fun ricevi_info_tabelle(): Array<Tabella118h24> {
         var tabelle: Array<Tabella118h24> = emptyArray<Tabella118h24>()
         return tabelle
     }
 
     /*
-    Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
-    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già
-    presente qualcuno nel turno
-     */
+Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
+univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già
+presente qualcuno nel turno
+ */
     fun segna_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
         return true // per ora ho impostato un valore fisso di ritorno true
     }
 
     /*
-    Metodo per cancellare un milite nel turno passato tramite id come String, ogni casella ha un suo
-    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa che
-    non è presente nessun milite nel turno e quindi si è verificato un errore
-     */
+Metodo per cancellare un milite nel turno passato tramite id come String, ogni casella ha un suo
+univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa che
+non è presente nessun milite nel turno e quindi si è verificato un errore
+ */
     fun cancella_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
         return true // per ora ho impostato un valore fisso di ritorno true
     }

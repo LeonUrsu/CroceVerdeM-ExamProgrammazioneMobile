@@ -106,12 +106,11 @@ class TabelloneTurniCentralinista : Fragment() {
     ) {
         //TODO prima di invocare il seguente metodo bisogna verificare se è presente qualcuno nel turno che è stato selezionato e quindi cambiare il testo del Button in cancella_milite
         //resources.getIdentifier(id, "id", requireContext().packageName // TODO questa riga serwve per trovare la casella tramite nonme della stringa7 e modificare il nome al suo interno
-        var risultato : Boolean = Database().segna_milite_nel_turno(id_casella, nomeCognome_val)
-        if (risultato == false) Database().cancella_milite_nel_turno(id_casella, nomeCognome_val)
+        //var risultato : Boolean = Database().segna(id_casella, nomeCognome_val)
+        //if (risultato == false) Database().cancella_milite_nel_turno(id_casella, nomeCognome_val)
         //TODO if nella tabella nella casella segnata è già registrato il milite, cambia il testo del "Button" e cancella da DB il milite della casella
         //TODO else nella tabella nella casella segnata non è segnato nessun milite segna il milite nel DB ovviamente il controllo va fatto sulla tabella del DB
     }
-
 
     /*
     Metodo per gestire lo spinner con i militi inseriti
@@ -138,7 +137,6 @@ class TabelloneTurniCentralinista : Fragment() {
         vecchia.forEach { array.add(it.nomeCognomeSpinner) }
         return array.toTypedArray()
     }
-
 
     /*
     Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato

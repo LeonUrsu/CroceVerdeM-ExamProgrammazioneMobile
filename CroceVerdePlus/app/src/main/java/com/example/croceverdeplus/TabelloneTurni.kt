@@ -112,6 +112,7 @@ class TabelloneTurni {
     la tabella con 118 corrisponde al valore true
      */
     fun setta_date_tabelloni_h24_118(tabella: Tabella118h24, root: View) {
+        /*
         (root.findViewById(R.id.lunedi118h24) as TextView).setText(tabella.lunedi.toString())
         (root.findViewById(R.id.martedi118h24) as TextView).setText(tabella.martedi.toString())
         (root.findViewById(R.id.mercoledi118h24) as TextView).setText(tabella.mercoledi.toString())
@@ -119,6 +120,7 @@ class TabelloneTurni {
         (root.findViewById(R.id.venerdi118h24) as TextView).setText(tabella.venerdi.toString())
         (root.findViewById(R.id.sabato118h24) as TextView).setText(tabella.sabato.toString())
         (root.findViewById(R.id.domenica118h24) as TextView).setText(tabella.domenica.toString())
+         */
     }
 
     /*
@@ -127,6 +129,7 @@ class TabelloneTurni {
     la tabella con 118 corrisponde al valore false
     */
     fun setta_date_tabelloni_118(tabella: Tabella118h24, root: View) {
+        /*
         (root.findViewById(R.id.lunedi118) as TextView).setText(tabella.lunedi.toString())
         (root.findViewById(R.id.martedi118) as TextView).setText(tabella.martedi.toString())
         (root.findViewById(R.id.mercoledi118) as TextView).setText(tabella.mercoledi.toString())
@@ -134,6 +137,7 @@ class TabelloneTurni {
         (root.findViewById(R.id.venerdi118) as TextView).setText(tabella.venerdi.toString())
         (root.findViewById(R.id.sabato118) as TextView).setText(tabella.sabato.toString())
         (root.findViewById(R.id.domenica118) as TextView).setText(tabella.domenica.toString())
+         */
     }
 
     /*
