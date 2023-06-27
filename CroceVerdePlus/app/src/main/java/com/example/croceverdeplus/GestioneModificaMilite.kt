@@ -88,7 +88,7 @@ class GestioneModificaMilite : Fragment() {
                                 db.collection("militi")
                                     .document(document.id).update("residenza", residenza.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("grado", selectedGrado.toString())
+                                    .document(document.id).update("grado", "[$selectedGrado]")
                                 db.collection("militi")
                                     .document(document.id).update("username", nome.text.toString() + "." + cognome.text.toString())
                             }
