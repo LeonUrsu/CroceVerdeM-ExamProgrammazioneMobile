@@ -58,8 +58,8 @@ class GestioneMilite : Fragment() {
         buttonModify.setOnClickListener{
 
             val action = GestioneMiliteDirections.actionGestioneMiliteToGestioneModificaMilite(
-                nome.text as String, cognome.text as String, dataDiNascita.text as String,
-                residenza.text as String, grado.text as String)
+                nome.text.toString(), cognome.text.toString(), dataDiNascita.text.toString(),
+                residenza.text.toString())
             findNavController().navigate(action)
         }
 
