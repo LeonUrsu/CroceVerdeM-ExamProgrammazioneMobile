@@ -1,7 +1,7 @@
 package com.example.croceverdeplus
 
 
-data class User(
+data class Centralinisti(
     val username: String? = null,
     val password: String? = null,
     var nome: String? = null,

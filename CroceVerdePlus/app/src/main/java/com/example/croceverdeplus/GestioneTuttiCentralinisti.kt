@@ -47,7 +47,7 @@ class GestioneTuttiCentralinisti : Fragment() {
     }
 
     private fun loadDataFromDB() {
-        val usersCollection = db.collection("users")
+        val usersCollection = db.collection("centralinisti")
         usersCollection.get().addOnSuccessListener { querySnapshot ->
             val userList = mutableListOf<String>()
             for (document in querySnapshot) {
