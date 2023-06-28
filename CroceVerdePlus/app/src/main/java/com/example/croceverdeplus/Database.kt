@@ -1,12 +1,14 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
+<<<<<<< HEAD
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
+=======
+>>>>>>> 9de80ad4277996934ede37fcf0c24110a6b1b84a
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -22,7 +24,7 @@ class Database {
         dataDiNascita: String, residenza: String
     ) {
 
-        val user = User(nome, cognome, dataDiNascita, residenza)
+        val centralinisti = Centralinisti(nome, cognome, dataDiNascita, residenza)
 
         val username = nome + "." + cognome
 
@@ -38,19 +40,19 @@ class Database {
 
         val ruolo = "Centralinista"
 
-        db.collection("users")
-            .add(user)
+        db.collection("centralinisti")
+            .add(centralinisti)
             .addOnSuccessListener { documentReference ->
                 Log.d(
                     ContentValues.TAG,
                     "DocumentSnapshot added with ID: ${documentReference.id}"
                 )
 
-                db.collection("users")
+                db.collection("centralinisti")
                     .document(documentReference.id).update("username", username)
-                db.collection("users")
+                db.collection("centralinisti")
                     .document(documentReference.id).update("password", password)
-                db.collection("users")
+                db.collection("centralinisti")
                     .document(documentReference.id).update("ruolo", ruolo)
 
             }
@@ -65,7 +67,7 @@ class Database {
         dataDiNascita: String, residenza: String
     ) {
 
-        db.collection("users")
+        db.collection("centralinisti")
             .whereEqualTo("nome", nome)
             .whereEqualTo("cognome", cognome)
             .whereEqualTo("dataDiNascita", dataDiNascita)
@@ -74,7 +76,7 @@ class Database {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
-                    db.collection("users").document(document.id)
+                    db.collection("centralinisti").document(document.id)
                         .delete()
                         .addOnSuccessListener {
                             Log.d(
@@ -176,39 +178,6 @@ class Database {
             }
 
     }
-
-    fun modifyUserM(
-        nome: String, cognome: String,
-        dataDiNascita: String, residenza: String, grado: String
-    ) {
-
-        db.collection("militi")
-            .whereEqualTo("nome", nome)
-            .whereEqualTo("cognome", cognome)
-            .whereEqualTo("dataDiNascita", dataDiNascita)
-            .whereEqualTo("residenza", residenza)
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
-                    db.collection("militi")
-                        .document(document.id).update("nome", nome)
-                    db.collection("militi")
-                        .document(document.id).update("cognome", cognome)
-                    db.collection("militi")
-                        .document(document.id).update("dataDiNascita", dataDiNascita)
-                    db.collection("militi")
-                        .document(document.id).update("residenza", residenza)
-                    db.collection("militi")
-                        .document(document.id).update("grado", grado)
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
-            }
-
-    }
-
 
     /*
     Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del

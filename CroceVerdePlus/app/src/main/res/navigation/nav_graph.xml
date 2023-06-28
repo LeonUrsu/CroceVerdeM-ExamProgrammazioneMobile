@@ -89,8 +89,5 @@
         <argument
             android:name="residenza"
             app:argType="string" />
-        <argument
-            android:name="grado"
-            app:argType="string" />
     </fragment>
 </navigation>

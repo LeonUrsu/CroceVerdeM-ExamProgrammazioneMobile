@@ -80,15 +80,17 @@ class GestioneModificaMilite : Fragment() {
                             for (document in documents) {
                                 Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
                                 db.collection("militi")
-                                    .document(document.id).update("nome", nome)
+                                    .document(document.id).update("nome", nome.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("cognome", cognome)
+                                    .document(document.id).update("cognome", cognome.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("dataDiNascita", dataDiNascita)
+                                    .document(document.id).update("dataDiNascita", dataDiNascita.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("residenza", residenza)
+                                    .document(document.id).update("residenza", residenza.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("grado", selectedGrado)
+                                    .document(document.id).update("grado", "[$selectedGrado]")
+                                db.collection("militi")
+                                    .document(document.id).update("username", nome.text.toString() + "." + cognome.text.toString())
                             }
                         }
                         .addOnFailureListener { exception ->
