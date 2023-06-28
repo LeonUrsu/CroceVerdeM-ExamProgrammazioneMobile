@@ -11,6 +11,8 @@ import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class TabelloneTurniVolontario : Fragment() {
@@ -63,7 +65,13 @@ class TabelloneTurniVolontario : Fragment() {
         disponibilita_btn.setOnClickListener {
             var id = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
             disponibilita_btn_function(id)
-            Toast.makeText(requireActivity(), "Disponibilità assegnata", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(requireActivity(), "Disponibilità assegnata", Toast.LENGTH_SHORT).show()
+            var date =
+                Database().ricevi_tabelle_test(root, requireActivity())!!.getTimestamp("data_lunedi")
+            val simpleDate = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+            val currentDate = date
+            println(" Current DateTime is -"+currentDate)
+            Toast.makeText(requireActivity(),date.toString(),Toast.LENGTH_SHORT).show()
         }
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {

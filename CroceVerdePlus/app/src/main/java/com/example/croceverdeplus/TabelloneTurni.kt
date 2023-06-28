@@ -124,7 +124,7 @@ class TabelloneTurni {
     la tabella con 118 corrisponde al valore false
     */
     private fun setta_info_tabella_118(view: View) {
-        val db: DocumentSnapshot? = Database().ricevi_info_tabelle()
+        val db: DocumentSnapshot? = Database().ricevi_tabelle("tabella_118")
         if (db != null) {
             view.findViewById<TextView>(R.id.turno_118_dom_mat_1)
                 .setText(db.getString("turno_118_dom_mat_1"))
@@ -267,7 +267,7 @@ class TabelloneTurni {
     la tabella con 118 corrisponde al valore false
     */
     private fun setta_info_tabella_118_h24(view: View) {
-        val db: DocumentSnapshot? = Database().ricevi_info_tabelle()
+        val db: DocumentSnapshot? = Database().ricevi_tabelle("tabella_118_h24")
         if (db != null) {
             view.findViewById<TextView>(R.id.turno_118_lun_mat_1)
                 .setText(db.getString("turno_118_dom_mat_1"))

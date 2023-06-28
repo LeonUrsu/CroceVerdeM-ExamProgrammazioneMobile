@@ -45,7 +45,7 @@ class TabelloneTurniCentralinista : Fragment() {
             grado_val
         )
         //setta_tabelle_con_militi()
-        var settimane_ricevute = Database().ricevi_info_tabelle()
+        var settimane_ricevute = Database().ricevi_tabelle("tabella_118")
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
             var id_casella = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
@@ -53,6 +53,7 @@ class TabelloneTurniCentralinista : Fragment() {
                 root.findViewById<TextView>(R.id.milite_input).toString(),
                 id_casella)
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
+
         }
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
@@ -84,7 +85,7 @@ class TabelloneTurniCentralinista : Fragment() {
      */
     fun setta_info_tabelle() {
         TODO("Not yet implemented")
-        var tabelle = Database().ricevi_info_tabelle()
+        var tabelle = Database().ricevi_tabelle("tabella_118")
         tabelle
         /*
         for (i in 0 until booksJSONArray.length()) {
