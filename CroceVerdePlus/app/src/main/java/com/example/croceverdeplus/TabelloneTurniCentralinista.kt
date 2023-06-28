@@ -27,7 +27,6 @@ class TabelloneTurniCentralinista : Fragment() {
             inflater.inflate(R.layout.fragment_tabellone_turni_centralinista, container, false)
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
         vf_centralinista.setDisplayedChild(2); //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
-        setta_info_tabelle()
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al databse
         var servizio_val =
             TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
@@ -45,7 +44,6 @@ class TabelloneTurniCentralinista : Fragment() {
             grado_val
         )
         //setta_tabelle_con_militi()
-        var settimane_ricevute = Database().ricevi_tabelle("tabella_118")
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
             var id_casella = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
@@ -78,24 +76,6 @@ class TabelloneTurniCentralinista : Fragment() {
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         return root
-    }
-
-    /*
-    Metodo per settare la tabella con i militi ricevuti
-     */
-    fun setta_info_tabelle() {
-        TODO("Not yet implemented")
-        var tabelle = Database().ricevi_tabelle("tabella_118")
-        tabelle
-        /*
-        for (i in 0 until booksJSONArray.length()) {
-            val book = booksJSONArray.getJSONObject(i)
-            println("${book.get("book_name")} by ${book.get("author")}")
-        }
-        */
-
-
-
     }
 
     /*

@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.sql.Timestamp
 import kotlin.random.Random
@@ -101,7 +102,6 @@ class Database {
         nome: String, cognome: String,
         dataDiNascita: String, residenza: String, grado: String
     ) {
-
         val militi = Militi(nome, cognome, dataDiNascita, residenza, grado)
 
         val username = nome + "." + cognome
@@ -185,37 +185,42 @@ class Database {
         return array_militi
     }
 
+    /*
+    fun trova_tabelle_e_date(): Boolean {
+        var documento1 = ricevi_tabella_118_h24()
+        var documento2 = ricevi_tabella_118_h24()
+        if (documento1 == null || documento2 == null) return false
+        var time1 = documento1.data_lunedi
+        var time2 = documento2.data_lunedi
+        if (time1 == null || time2 == null) return false
+        var comparato = time1.compareTo(time2)
+        if (comparato <= 0) {
+            settimana1 = documento2
+            settimana2 = documento1
+            data_lunedi_settimana1 = Timestamp(time1.seconds * 1000)
+            data_lunedi_settimana2 = Timestamp(time2.seconds * 1000)
+        } else {
+            settimana1 = documento2
+            settimana2 = documento1
+            data_lunedi_settimana1 = Timestamp(time2.seconds * 1000)
+            data_lunedi_settimana2 = Timestamp(time1.seconds * 1000)
+        }
+        return true
+    }
+
+     */
 
     /*
     Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
     in ordine cronologico
     */
-    fun ricevi_tabelle(tabella : String): DocumentSnapshot? {
-        val docRef = db.collection("tabelle").document(tabella)
-        var documento : DocumentSnapshot? = null
-        docRef.get()
-        .addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                documento = document
-            } else {
-                Log.d(TAG, "No such document")
-            }
-        }
-        .addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
-        return documento
-    }
-
-    fun ricevi_tabelle_test(root : View, activity: Activity): DocumentSnapshot? {
-        val docRef = db.collection("tabelle").document("tabella_118")
-        var documento : DocumentSnapshot? = null
+    fun ricevi_tabella_118_h24(){
+        val docRef = db.collection("tabelle").document("tabella_118_h24")
         docRef.get()
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                    documento = document
+                    document.toObject<Tabella118>() //TODO (fare qualcosa con questo oggetto)
                 } else {
                     Log.d(TAG, "No such document")
                 }
@@ -223,8 +228,29 @@ class Database {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
-        return documento
     }
+
+    /*
+    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
+    in ordine cronologico
+    */
+    fun ricevi_tabella_118(){
+        val docRef = db.collection("tabelle").document("tabella_118")
+        docRef.get()
+            .addOnSuccessListener { document ->
+                if (document != null) {
+                    Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                    document.toObject<Tabella118>() //TODO (fare qualcosa con questo oggetto)
+                } else {
+                    Log.d(TAG, "No such document")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "get failed with ", exception)
+            }
+    }
+
+
 
 
     /*
