@@ -11,10 +11,6 @@ import android.widget.TextView
 
 class ProfiloCentralinista : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,8 +26,9 @@ class ProfiloCentralinista : Fragment() {
     }
 
     fun set_info_centralinista(my_root : View, nome : String, cognome : String, data_di_nascita : String){
-        my_root.findViewById<TextView>(R.id.nome_text_centralinista).setText(nome)
-        my_root.findViewById<TextView>(R.id.cognome_text_centralinista).setText(cognome)
-        my_root.findViewById<TextView>(R.id.data_di_nascita_text_centralinista).setText(data_di_nascita) //TODO controllate type se String o Datetime
+        my_root.findViewById<TextView>(R.id.nome_text_centralinista).text = nome
+        my_root.findViewById<TextView>(R.id.cognome_text_centralinista).text = cognome
+        my_root.findViewById<TextView>(R.id.data_di_nascita_text_centralinista).text =
+            data_di_nascita //TODO controllate type se String o Datetime
     }
 }

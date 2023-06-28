@@ -54,9 +54,10 @@ class ProfiloVolontarioDipendente : Fragment() {
         val nome = "nome"
         val cognome = "cognome"
         val datadinacita = "11/09/2012"
-        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(nome)
-        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(cognome)
-        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).setText(datadinacita)
+        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).text = nome
+        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).text = cognome
+        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
+            datadinacita
     }
 
     fun exit_function(act: Activity){

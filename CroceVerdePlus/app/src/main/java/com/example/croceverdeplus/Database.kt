@@ -1,17 +1,10 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
-import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
-import android.view.View
-import android.widget.Toast
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import java.sql.Timestamp
 import kotlin.random.Random
 
 class Database {
@@ -19,160 +12,120 @@ class Database {
     private val db = Firebase.firestore
 
     fun addUser(
-        nome: String, cognome: String,
-        dataDiNascita: String, residenza: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
 
         val centralinisti = Centralinisti(nome, cognome, dataDiNascita, residenza)
 
         val username = nome + "." + cognome
 
-        val password = (1..5)
-            .map {
+        val password = (1..5).map {
                 when (Random.nextInt(3)) {
                     0 -> Random.nextInt(48, 58).toChar() // Numeri da '0' a '9'
                     1 -> Random.nextInt(65, 91).toChar() // Lettere maiuscole da 'A' a 'Z'
                     else -> Random.nextInt(97, 123).toChar() // Lettere minuscole da 'a' a 'z'
                 }
-            }
-            .joinToString("")
+            }.joinToString("")
 
         val ruolo = "Centralinista"
 
-        db.collection("centralinisti")
-            .add(centralinisti)
+        db.collection("centralinisti").add(centralinisti)
             .addOnSuccessListener { documentReference ->
                 Log.d(
-                    ContentValues.TAG,
-                    "DocumentSnapshot added with ID: ${documentReference.id}"
+                    TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
                 )
 
-                db.collection("centralinisti")
-                    .document(documentReference.id).update("username", username)
-                db.collection("centralinisti")
-                    .document(documentReference.id).update("password", password)
-                db.collection("centralinisti")
-                    .document(documentReference.id).update("ruolo", ruolo)
+                db.collection("centralinisti").document(documentReference.id)
+                    .update("username", username)
+                db.collection("centralinisti").document(documentReference.id)
+                    .update("password", password)
+                db.collection("centralinisti").document(documentReference.id).update("ruolo", ruolo)
 
-            }
-            .addOnFailureListener { e ->
-                Log.w(ContentValues.TAG, "Error adding document", e)
+            }.addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
             }
 
     }
 
     fun deleteUser(
-        nome: String, cognome: String,
-        dataDiNascita: String, residenza: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
 
-        db.collection("centralinisti")
-            .whereEqualTo("nome", nome)
-            .whereEqualTo("cognome", cognome)
-            .whereEqualTo("dataDiNascita", dataDiNascita)
-            .whereEqualTo("residenza", residenza)
-            .get()
+        db.collection("centralinisti").whereEqualTo("nome", nome).whereEqualTo("cognome", cognome)
+            .whereEqualTo("dataDiNascita", dataDiNascita).whereEqualTo("residenza", residenza).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
-                    db.collection("centralinisti").document(document.id)
-                        .delete()
+                    Log.d(TAG, "${document.data} => ${document.id}")
+                    db.collection("centralinisti").document(document.id).delete()
                         .addOnSuccessListener {
                             Log.d(
-                                ContentValues.TAG,
-                                "DocumentSnapshot successfully deleted!"
+                                TAG, "DocumentSnapshot successfully deleted!"
                             )
-                        }
-                        .addOnFailureListener { e ->
+                        }.addOnFailureListener { e ->
                             Log.w(
-                                ContentValues.TAG,
-                                "Error deleting document",
-                                e
+                                TAG, "Error deleting document", e
                             )
                         }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }.addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
             }
 
     }
 
     fun addUserM(
-        nome: String, cognome: String,
-        dataDiNascita: String, residenza: String, grado: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String, grado: String
     ) {
         val militi = Militi(nome, cognome, dataDiNascita, residenza, grado)
 
         val username = nome + "." + cognome
 
-        val password = (1..5)
-            .map {
+        val password = (1..5).map {
                 when (Random.nextInt(3)) {
                     0 -> Random.nextInt(48, 58).toChar() // Numeri da '0' a '9'
                     1 -> Random.nextInt(65, 91).toChar() // Lettere maiuscole da 'A' a 'Z'
                     else -> Random.nextInt(97, 123).toChar() // Lettere minuscole da 'a' a 'z'
                 }
-            }
-            .joinToString("")
+            }.joinToString("")
 
         val ruolo = "Milite"
 
-        db.collection("militi")
-            .add(militi)
-            .addOnSuccessListener { documentReference ->
+        db.collection("militi").add(militi).addOnSuccessListener { documentReference ->
                 Log.d(
-                    ContentValues.TAG,
-                    "DocumentSnapshot added with ID: ${documentReference.id}"
+                    TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
                 )
 
-                db.collection("militi")
-                    .document(documentReference.id).update("username", username)
-                db.collection("militi")
-                    .document(documentReference.id).update("password", password)
-                db.collection("militi")
-                    .document(documentReference.id).update("ruolo", ruolo)
+                db.collection("militi").document(documentReference.id).update("username", username)
+                db.collection("militi").document(documentReference.id).update("password", password)
+                db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
 
-            }
-            .addOnFailureListener { e ->
-                Log.w(ContentValues.TAG, "Error adding document", e)
+            }.addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
             }
 
     }
 
     fun deleteUserM(
-        nome: String, cognome: String,
-        dataDiNascita: String, residenza: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
 
-        db.collection("militi")
-            .whereEqualTo("nome", nome)
-            .whereEqualTo("cognome", cognome)
-            .whereEqualTo("dataDiNascita", dataDiNascita)
-            .whereEqualTo("residenza", residenza)
-            .get()
+        db.collection("militi").whereEqualTo("nome", nome).whereEqualTo("cognome", cognome)
+            .whereEqualTo("dataDiNascita", dataDiNascita).whereEqualTo("residenza", residenza).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    Log.d(ContentValues.TAG, "${document.data} => ${document.id}")
-                    db.collection("militi").document(document.id)
-                        .delete()
-                        .addOnSuccessListener {
+                    Log.d(TAG, "${document.data} => ${document.id}")
+                    db.collection("militi").document(document.id).delete().addOnSuccessListener {
                             Log.d(
-                                ContentValues.TAG,
-                                "DocumentSnapshot successfully deleted!"
+                                TAG, "DocumentSnapshot successfully deleted!"
                             )
-                        }
-                        .addOnFailureListener { e ->
+                        }.addOnFailureListener { e ->
                             Log.w(
-                                ContentValues.TAG,
-                                "Error deleting document",
-                                e
+                                TAG, "Error deleting document", e
                             )
                         }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(ContentValues.TAG, "Error getting documents: ", exception)
+            }.addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents: ", exception)
             }
 
     }
@@ -214,18 +167,16 @@ class Database {
     Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
     in ordine cronologico
     */
-    fun ricevi_tabella_118_h24(){
+    fun ricevi_tabella_118_h24() {
         val docRef = db.collection("tabelle").document("tabella_118_h24")
-        docRef.get()
-            .addOnSuccessListener { document ->
+        docRef.get().addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                     document.toObject<Tabella118>() //TODO (fare qualcosa con questo oggetto)
                 } else {
                     Log.d(TAG, "No such document")
                 }
-            }
-            .addOnFailureListener { exception ->
+            }.addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
     }
@@ -234,23 +185,19 @@ class Database {
     Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
     in ordine cronologico
     */
-    fun ricevi_tabella_118(){
+    fun ricevi_tabella_118() {
         val docRef = db.collection("tabelle").document("tabella_118")
-        docRef.get()
-            .addOnSuccessListener { document ->
+        docRef.get().addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                     document.toObject<Tabella118>() //TODO (fare qualcosa con questo oggetto)
                 } else {
                     Log.d(TAG, "No such document")
                 }
-            }
-            .addOnFailureListener { exception ->
+            }.addOnFailureListener { exception ->
                 Log.d(TAG, "get failed with ", exception)
             }
     }
-
-
 
 
     /*

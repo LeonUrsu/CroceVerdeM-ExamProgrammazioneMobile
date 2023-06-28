@@ -15,9 +15,6 @@ import androidx.fragment.app.Fragment
 
 class TabelloneTurniCentralinista : Fragment() {
     var arrayMiliti = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +23,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_centralinista, container, false)
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
-        vf_centralinista.setDisplayedChild(2); //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+        vf_centralinista.displayedChild = 2 //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al databse
         var servizio_val =
             TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
@@ -55,23 +52,19 @@ class TabelloneTurniCentralinista : Fragment() {
         }
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
-            vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(false))
+            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(false)
             val tipo_settimana = true
-            vf_centralinista.setDisplayedChild(
-                TabelloneTurni().setta_settimana_corrente(
-                    tipo_settimana
-                )
+            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(
+                tipo_settimana
             )
             TabelloneTurni().tipo_settimana(tipo_settimana)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
-            vf_centralinista.setDisplayedChild(TabelloneTurni().setta_settimana_corrente(true))
+            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(true)
             val tipo_settimana = false
-            vf_centralinista.setDisplayedChild(
-                TabelloneTurni().setta_settimana_corrente(tipo_settimana)
-            )
+            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(tipo_settimana)
             TabelloneTurni().tipo_settimana(tipo_settimana)
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
@@ -172,7 +165,7 @@ class TabelloneTurniCentralinista : Fragment() {
             )
         gameKindArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         val convert_from_spinner: Spinner = root.findViewById(R.id.milite_input)
-        convert_from_spinner.setAdapter(gameKindArray)
+        convert_from_spinner.adapter = gameKindArray
     }
 
 }

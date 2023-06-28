@@ -61,8 +61,8 @@ class LogIn {
             return idUser
         } else {
             if (username.text.toString().isEmpty() && password.text.toString().isEmpty()) {
-                username.error = "Username non valido";
-                password.error = "Password non valida";
+                username.error = "Username non valido"
+                password.error = "Password non valida"
             }
         }
         return 0

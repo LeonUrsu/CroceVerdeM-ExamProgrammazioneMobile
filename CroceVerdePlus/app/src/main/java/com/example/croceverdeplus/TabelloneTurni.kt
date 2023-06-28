@@ -36,7 +36,7 @@ class TabelloneTurni {
         dropdown: Spinner?
     ): Int {
         var ret_position = 0
-        dropdown?.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+        dropdown?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>, view: View, position: Int, id: Long
             ) {
@@ -46,7 +46,7 @@ class TabelloneTurni {
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
-        })
+        }
         return ret_position
     }
 
@@ -140,146 +140,83 @@ class TabelloneTurni {
             val lunedi =
                 Instant.ofEpochMilli(milli).atZone(ZoneId.systemDefault()).toLocalDateTime()
             val formatter = DateTimeFormatter.ofPattern("dd/MM")
-            root.findViewById<TextView>(R.id.lunedi118).setText("Lunedì "+lunedi.format(formatter))
-            root.findViewById<TextView>(R.id.martedi118).setText("Martedì "+lunedi.plusDays(1).format(formatter))
-            root.findViewById<TextView>(R.id.mercoledi118).setText("Mercoledì "+lunedi.plusDays(2).format(formatter))
-            root.findViewById<TextView>(R.id.giovedi118).setText("Giovedì "+lunedi.plusDays(3).format(formatter))
-            root.findViewById<TextView>(R.id.venerdi118).setText("Venerdì "+lunedi.plusDays(4).format(formatter))
-            root.findViewById<TextView>(R.id.sabato118).setText("Sabato "+lunedi.plusDays(5).format(formatter))
-            root.findViewById<TextView>(R.id.domenica118).setText("Domenica "+lunedi.plusDays(6).format(formatter))
+            root.findViewById<TextView>(R.id.lunedi118).text = "Lunedì "+lunedi.format(formatter)
+            root.findViewById<TextView>(R.id.martedi118).text = "Martedì "+lunedi.plusDays(1).format(formatter)
+            root.findViewById<TextView>(R.id.mercoledi118).text = "Mercoledì "+lunedi.plusDays(2).format(formatter)
+            root.findViewById<TextView>(R.id.giovedi118).text = "Giovedì "+lunedi.plusDays(3).format(formatter)
+            root.findViewById<TextView>(R.id.venerdi118).text = "Venerdì "+lunedi.plusDays(4).format(formatter)
+            root.findViewById<TextView>(R.id.sabato118).text = "Sabato "+lunedi.plusDays(5).format(formatter)
+            root.findViewById<TextView>(R.id.domenica118).text = "Domenica "+lunedi.plusDays(6).format(formatter)
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_1)
-                .setText(tabella.turno_118_dom_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_2)
-                .setText(tabella.turno_118_lun_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_3)
-                .setText(tabella.turno_118_lun_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_1)
-                .setText(tabella.turno_118_lun_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_2)
-                .setText(tabella.turno_118_lun_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_3)
-                .setText(tabella.turno_118_lun_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_1)
-                .setText(tabella.turno_118_lun_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_2)
-                .setText(tabella.turno_118_lun_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_3)
-                .setText(tabella.turno_118_lun_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_1).text = tabella.turno_118_dom_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_2).text = tabella.turno_118_lun_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_mat_3).text = tabella.turno_118_lun_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_1).text = tabella.turno_118_lun_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_2).text = tabella.turno_118_lun_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_pom_3).text = tabella.turno_118_lun_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_1).text = tabella.turno_118_lun_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_2).text = tabella.turno_118_lun_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_lun_ser_3).text = tabella.turno_118_lun_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_1)
-                .setText(tabella.turno_118_mar_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_2)
-                .setText(tabella.turno_118_mar_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_3)
-                .setText(tabella.turno_118_mar_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_1)
-                .setText(tabella.turno_118_mar_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_2)
-                .setText(tabella.turno_118_mar_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_3)
-                .setText(tabella.turno_118_mar_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_1)
-                .setText(tabella.turno_118_mar_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_2)
-                .setText(tabella.turno_118_mar_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_3)
-                .setText(tabella.turno_118_mar_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_1).text = tabella.turno_118_mar_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_2).text = tabella.turno_118_mar_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_mat_3).text = tabella.turno_118_mar_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_1).text = tabella.turno_118_mar_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_2).text = tabella.turno_118_mar_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_pom_3).text = tabella.turno_118_mar_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_1).text = tabella.turno_118_mar_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_2).text = tabella.turno_118_mar_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mar_ser_3).text = tabella.turno_118_mar_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_1)
-                .setText(tabella.turno_118_mer_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_2)
-                .setText(tabella.turno_118_mer_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_3)
-                .setText(tabella.turno_118_mer_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_1)
-                .setText(tabella.turno_118_mer_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_2)
-                .setText(tabella.turno_118_mer_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_3)
-                .setText(tabella.turno_118_mer_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_1)
-                .setText(tabella.turno_118_mer_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_2)
-                .setText(tabella.turno_118_mer_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_3)
-                .setText(tabella.turno_118_mer_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_1).text = tabella.turno_118_mer_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_2).text = tabella.turno_118_mer_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_mat_3).text = tabella.turno_118_mer_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_1).text = tabella.turno_118_mer_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_2).text = tabella.turno_118_mer_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_pom_3).text = tabella.turno_118_mer_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_1).text = tabella.turno_118_mer_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_2).text = tabella.turno_118_mer_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_mer_ser_3).text = tabella.turno_118_mer_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_1)
-                .setText(tabella.turno_118_gio_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_2)
-                .setText(tabella.turno_118_gio_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_3)
-                .setText(tabella.turno_118_gio_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_1)
-                .setText(tabella.turno_118_gio_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_2)
-                .setText(tabella.turno_118_gio_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_3)
-                .setText(tabella.turno_118_gio_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_1)
-                .setText(tabella.turno_118_gio_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_2)
-                .setText(tabella.turno_118_gio_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_3)
-                .setText(tabella.turno_118_gio_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_1).text = tabella.turno_118_gio_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_2).text = tabella.turno_118_gio_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_mat_3).text = tabella.turno_118_gio_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_1).text = tabella.turno_118_gio_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_2).text = tabella.turno_118_gio_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_pom_3).text = tabella.turno_118_gio_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_1).text = tabella.turno_118_gio_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_2).text = tabella.turno_118_gio_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_gio_ser_3).text = tabella.turno_118_gio_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_1)
-                .setText(tabella.turno_118_ven_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_2)
-                .setText(tabella.turno_118_ven_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_3)
-                .setText(tabella.turno_118_ven_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_1)
-                .setText(tabella.turno_118_ven_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_2)
-                .setText(tabella.turno_118_ven_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_3)
-                .setText(tabella.turno_118_ven_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_1)
-                .setText(tabella.turno_118_ven_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_2)
-                .setText(tabella.turno_118_ven_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_3)
-                .setText(tabella.turno_118_ven_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_1).text = tabella.turno_118_ven_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_2).text = tabella.turno_118_ven_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_mat_3).text = tabella.turno_118_ven_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_1).text = tabella.turno_118_ven_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_2).text = tabella.turno_118_ven_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_pom_3).text = tabella.turno_118_ven_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_1).text = tabella.turno_118_ven_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_2).text = tabella.turno_118_ven_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_ven_ser_3).text = tabella.turno_118_ven_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_1)
-                .setText(tabella.turno_118_sab_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_2)
-                .setText(tabella.turno_118_sab_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_3)
-                .setText(tabella.turno_118_sab_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_1)
-                .setText(tabella.turno_118_sab_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_2)
-                .setText(tabella.turno_118_sab_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_3)
-                .setText(tabella.turno_118_sab_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_1)
-                .setText(tabella.turno_118_sab_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_2)
-                .setText(tabella.turno_118_sab_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_3)
-                .setText(tabella.turno_118_sab_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_1).text = tabella.turno_118_sab_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_2).text = tabella.turno_118_sab_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_mat_3).text = tabella.turno_118_sab_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_1).text = tabella.turno_118_sab_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_2).text = tabella.turno_118_sab_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_pom_3).text = tabella.turno_118_sab_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_1).text = tabella.turno_118_sab_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_2).text = tabella.turno_118_sab_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_sab_ser_3).text = tabella.turno_118_sab_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_1)
-                .setText(tabella.turno_118_dom_mat_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_2)
-                .setText(tabella.turno_118_dom_mat_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_3)
-                .setText(tabella.turno_118_dom_mat_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_1)
-                .setText(tabella.turno_118_dom_pom_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_2)
-                .setText(tabella.turno_118_dom_pom_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_3)
-                .setText(tabella.turno_118_dom_pom_3)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_1)
-                .setText(tabella.turno_118_dom_ser_1)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_2)
-                .setText(tabella.turno_118_dom_ser_2)
-            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_3)
-                .setText(tabella.turno_118_dom_ser_3)
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_1).text = tabella.turno_118_dom_mat_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_2).text = tabella.turno_118_dom_mat_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_mat_3).text = tabella.turno_118_dom_mat_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_1).text = tabella.turno_118_dom_pom_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_2).text = tabella.turno_118_dom_pom_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_pom_3).text = tabella.turno_118_dom_pom_3
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_1).text = tabella.turno_118_dom_ser_1
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_2).text = tabella.turno_118_dom_ser_2
+            root.findViewById<TextView>(R.id.tabella118_turno_118_dom_ser_3).text = tabella.turno_118_dom_ser_3
         }
     }
 
@@ -294,279 +231,154 @@ class TabelloneTurni {
             val lunedi =
                 Instant.ofEpochMilli(milli).atZone(ZoneId.systemDefault()).toLocalDateTime()
             val formatter = DateTimeFormatter.ofPattern("dd/MM")
-            root.findViewById<TextView>(R.id.lunedi118h24).setText("Lunedì "+lunedi.format(formatter))
-            root.findViewById<TextView>(R.id.martedi118h24).setText("Martedì "+lunedi.plusDays(1).format(formatter))
-            root.findViewById<TextView>(R.id.mercoledi118h24).setText("Mercoledì "+lunedi.plusDays(2).format(formatter))
-            root.findViewById<TextView>(R.id.giovedi118h24).setText("Giovedì "+lunedi.plusDays(3).format(formatter))
-            root.findViewById<TextView>(R.id.venerdi118h24).setText("Venerdì "+lunedi.plusDays(4).format(formatter))
-            root.findViewById<TextView>(R.id.sabato118h24).setText("Sabato "+lunedi.plusDays(5).format(formatter))
-            root.findViewById<TextView>(R.id.domenica118h24).setText("Domenica "+lunedi.plusDays(6).format(formatter))
+            root.findViewById<TextView>(R.id.lunedi118h24).text = "Lunedì "+lunedi.format(formatter)
+            root.findViewById<TextView>(R.id.martedi118h24).text = "Martedì "+lunedi.plusDays(1).format(formatter)
+            root.findViewById<TextView>(R.id.mercoledi118h24).text =
+                "Mercoledì "+lunedi.plusDays(2).format(formatter)
+            root.findViewById<TextView>(R.id.giovedi118h24).text = "Giovedì "+lunedi.plusDays(3).format(formatter)
+            root.findViewById<TextView>(R.id.venerdi118h24).text = "Venerdì "+lunedi.plusDays(4).format(formatter)
+            root.findViewById<TextView>(R.id.sabato118h24).text = "Sabato "+lunedi.plusDays(5).format(formatter)
+            root.findViewById<TextView>(R.id.domenica118h24).text = "Domenica "+lunedi.plusDays(6).format(formatter)
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_1)
-                .setText(tabella.turno_118_dom_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_2)
-                .setText(tabella.turno_118_lun_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_3)
-                .setText(tabella.turno_118_lun_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_1)
-                .setText(tabella.turno_118_lun_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_2)
-                .setText(tabella.turno_118_lun_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_3)
-                .setText(tabella.turno_118_lun_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_1)
-                .setText(tabella.turno_118_lun_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_2)
-                .setText(tabella.turno_118_lun_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_3)
-                .setText(tabella.turno_118_lun_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_1).text = tabella.turno_118_dom_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_2).text = tabella.turno_118_lun_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_mat_3).text = tabella.turno_118_lun_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_1).text = tabella.turno_118_lun_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_2).text = tabella.turno_118_lun_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_pom_3).text = tabella.turno_118_lun_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_1).text = tabella.turno_118_lun_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_2).text = tabella.turno_118_lun_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_lun_ser_3).text = tabella.turno_118_lun_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_1)
-                .setText(tabella.turno_118_mar_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_2)
-                .setText(tabella.turno_118_mar_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_3)
-                .setText(tabella.turno_118_mar_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_1)
-                .setText(tabella.turno_118_mar_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_2)
-                .setText(tabella.turno_118_mar_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_3)
-                .setText(tabella.turno_118_mar_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_1)
-                .setText(tabella.turno_118_mar_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_2)
-                .setText(tabella.turno_118_mar_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_3)
-                .setText(tabella.turno_118_mar_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_1).text = tabella.turno_118_mar_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_2).text = tabella.turno_118_mar_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_mat_3).text = tabella.turno_118_mar_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_1).text = tabella.turno_118_mar_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_2).text = tabella.turno_118_mar_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_pom_3).text = tabella.turno_118_mar_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_1).text = tabella.turno_118_mar_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_2).text = tabella.turno_118_mar_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mar_ser_3).text = tabella.turno_118_mar_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_1)
-                .setText(tabella.turno_118_mer_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_2)
-                .setText(tabella.turno_118_mer_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_3)
-                .setText(tabella.turno_118_mer_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_1)
-                .setText(tabella.turno_118_mer_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_2)
-                .setText(tabella.turno_118_mer_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_3)
-                .setText(tabella.turno_118_mer_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_1)
-                .setText(tabella.turno_118_mer_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_2)
-                .setText(tabella.turno_118_mer_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_3)
-                .setText(tabella.turno_118_mer_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_1).text = tabella.turno_118_mer_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_2).text = tabella.turno_118_mer_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_mat_3).text = tabella.turno_118_mer_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_1).text = tabella.turno_118_mer_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_2).text = tabella.turno_118_mer_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_pom_3).text = tabella.turno_118_mer_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_1).text = tabella.turno_118_mer_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_2).text = tabella.turno_118_mer_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_mer_ser_3).text = tabella.turno_118_mer_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_1)
-                .setText(tabella.turno_118_gio_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_2)
-                .setText(tabella.turno_118_gio_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_3)
-                .setText(tabella.turno_118_gio_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_1)
-                .setText(tabella.turno_118_gio_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_2)
-                .setText(tabella.turno_118_gio_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_3)
-                .setText(tabella.turno_118_gio_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_1)
-                .setText(tabella.turno_118_gio_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_2)
-                .setText(tabella.turno_118_gio_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_3)
-                .setText(tabella.turno_118_gio_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_1).text = tabella.turno_118_gio_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_2).text = tabella.turno_118_gio_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_mat_3).text = tabella.turno_118_gio_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_1).text = tabella.turno_118_gio_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_2).text = tabella.turno_118_gio_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_pom_3).text = tabella.turno_118_gio_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_1).text = tabella.turno_118_gio_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_2).text = tabella.turno_118_gio_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_gio_ser_3).text = tabella.turno_118_gio_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_1)
-                .setText(tabella.turno_118_ven_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_2)
-                .setText(tabella.turno_118_ven_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_3)
-                .setText(tabella.turno_118_ven_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_1)
-                .setText(tabella.turno_118_ven_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_2)
-                .setText(tabella.turno_118_ven_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_3)
-                .setText(tabella.turno_118_ven_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_1)
-                .setText(tabella.turno_118_ven_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_2)
-                .setText(tabella.turno_118_ven_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_3)
-                .setText(tabella.turno_118_ven_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_1).text = tabella.turno_118_ven_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_2).text = tabella.turno_118_ven_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_mat_3).text = tabella.turno_118_ven_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_1).text = tabella.turno_118_ven_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_2).text = tabella.turno_118_ven_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_pom_3).text = tabella.turno_118_ven_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_1).text = tabella.turno_118_ven_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_2).text = tabella.turno_118_ven_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_ven_ser_3).text = tabella.turno_118_ven_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_1)
-                .setText(tabella.turno_118_sab_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_2)
-                .setText(tabella.turno_118_sab_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_3)
-                .setText(tabella.turno_118_sab_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_1)
-                .setText(tabella.turno_118_sab_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_2)
-                .setText(tabella.turno_118_sab_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_3)
-                .setText(tabella.turno_118_sab_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_1)
-                .setText(tabella.turno_118_sab_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_2)
-                .setText(tabella.turno_118_sab_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_3)
-                .setText(tabella.turno_118_sab_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_1).text = tabella.turno_118_sab_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_2).text = tabella.turno_118_sab_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_mat_3).text = tabella.turno_118_sab_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_1).text = tabella.turno_118_sab_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_2).text = tabella.turno_118_sab_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_pom_3).text = tabella.turno_118_sab_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_1).text = tabella.turno_118_sab_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_2).text = tabella.turno_118_sab_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_sab_ser_3).text = tabella.turno_118_sab_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_1)
-                .setText(tabella.turno_118_dom_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_2)
-                .setText(tabella.turno_118_dom_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_3)
-                .setText(tabella.turno_118_dom_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_1)
-                .setText(tabella.turno_118_dom_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_2)
-                .setText(tabella.turno_118_dom_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_3)
-                .setText(tabella.turno_118_dom_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_1)
-                .setText(tabella.turno_118_dom_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_2)
-                .setText(tabella.turno_118_dom_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_3)
-                .setText(tabella.turno_118_dom_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_1).text = tabella.turno_118_dom_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_2).text = tabella.turno_118_dom_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_mat_3).text = tabella.turno_118_dom_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_1).text = tabella.turno_118_dom_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_2).text = tabella.turno_118_dom_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_pom_3).text = tabella.turno_118_dom_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_1).text = tabella.turno_118_dom_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_2).text = tabella.turno_118_dom_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_118_dom_ser_3).text = tabella.turno_118_dom_ser_3
             //---------------------------------------------------
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_1)
-                .setText(tabella.turno_h24_lun_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_2)
-                .setText(tabella.turno_h24_lun_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_3)
-                .setText(tabella.turno_h24_lun_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_1)
-                .setText(tabella.turno_h24_lun_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_2)
-                .setText(tabella.turno_h24_lun_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_3)
-                .setText(tabella.turno_h24_lun_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_1)
-                .setText(tabella.turno_h24_lun_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_2)
-                .setText(tabella.turno_h24_lun_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_3)
-                .setText(tabella.turno_h24_lun_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_1).text = tabella.turno_h24_lun_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_2).text = tabella.turno_h24_lun_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_mat_3).text = tabella.turno_h24_lun_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_1).text = tabella.turno_h24_lun_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_2).text = tabella.turno_h24_lun_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_pom_3).text = tabella.turno_h24_lun_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_1).text = tabella.turno_h24_lun_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_2).text = tabella.turno_h24_lun_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_lun_ser_3).text = tabella.turno_h24_lun_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_1)
-                .setText(tabella.turno_h24_mar_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_2)
-                .setText(tabella.turno_h24_mar_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_3)
-                .setText(tabella.turno_h24_mar_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_1)
-                .setText(tabella.turno_h24_mar_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_2)
-                .setText(tabella.turno_h24_mar_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_3)
-                .setText(tabella.turno_h24_mar_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_1)
-                .setText(tabella.turno_h24_mar_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_2)
-                .setText(tabella.turno_h24_mar_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_3)
-                .setText(tabella.turno_h24_mar_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_1).text = tabella.turno_h24_mar_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_2).text = tabella.turno_h24_mar_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_mat_3).text = tabella.turno_h24_mar_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_1).text = tabella.turno_h24_mar_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_2).text = tabella.turno_h24_mar_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_pom_3).text = tabella.turno_h24_mar_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_1).text = tabella.turno_h24_mar_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_2).text = tabella.turno_h24_mar_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mar_ser_3).text = tabella.turno_h24_mar_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_1)
-                .setText(tabella.turno_h24_mer_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_2)
-                .setText(tabella.turno_h24_mer_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_3)
-                .setText(tabella.turno_h24_mer_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_1)
-                .setText(tabella.turno_h24_mer_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_2)
-                .setText(tabella.turno_h24_mer_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_3)
-                .setText(tabella.turno_h24_mer_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_1)
-                .setText(tabella.turno_h24_mer_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_2)
-                .setText(tabella.turno_h24_mer_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_3)
-                .setText(tabella.turno_h24_mer_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_1).text = tabella.turno_h24_mer_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_2).text = tabella.turno_h24_mer_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_mat_3).text = tabella.turno_h24_mer_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_1).text = tabella.turno_h24_mer_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_2).text = tabella.turno_h24_mer_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_pom_3).text = tabella.turno_h24_mer_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_1).text = tabella.turno_h24_mer_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_2).text = tabella.turno_h24_mer_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_mer_ser_3).text = tabella.turno_h24_mer_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_1)
-                .setText(tabella.turno_h24_gio_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_2)
-                .setText(tabella.turno_h24_gio_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_3)
-                .setText(tabella.turno_h24_gio_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_1)
-                .setText(tabella.turno_h24_gio_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_2)
-                .setText(tabella.turno_h24_gio_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_3)
-                .setText(tabella.turno_h24_gio_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_1)
-                .setText(tabella.turno_h24_gio_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_2)
-                .setText(tabella.turno_h24_gio_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_3)
-                .setText(tabella.turno_h24_gio_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_1).text = tabella.turno_h24_gio_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_2).text = tabella.turno_h24_gio_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_mat_3).text = tabella.turno_h24_gio_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_1).text = tabella.turno_h24_gio_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_2).text = tabella.turno_h24_gio_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_pom_3).text = tabella.turno_h24_gio_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_1).text = tabella.turno_h24_gio_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_2).text = tabella.turno_h24_gio_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_gio_ser_3).text = tabella.turno_h24_gio_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_1)
-                .setText(tabella.turno_h24_ven_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_2)
-                .setText(tabella.turno_h24_ven_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_3)
-                .setText(tabella.turno_h24_ven_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_1)
-                .setText(tabella.turno_h24_ven_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_2)
-                .setText(tabella.turno_h24_ven_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_3)
-                .setText(tabella.turno_h24_ven_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_1)
-                .setText(tabella.turno_h24_ven_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_2)
-                .setText(tabella.turno_h24_ven_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_3)
-                .setText(tabella.turno_h24_ven_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_1).text = tabella.turno_h24_ven_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_2).text = tabella.turno_h24_ven_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_mat_3).text = tabella.turno_h24_ven_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_1).text = tabella.turno_h24_ven_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_2).text = tabella.turno_h24_ven_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_pom_3).text = tabella.turno_h24_ven_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_1).text = tabella.turno_h24_ven_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_2).text = tabella.turno_h24_ven_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_ven_ser_3).text = tabella.turno_h24_ven_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_1)
-                .setText(tabella.turno_h24_sab_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_2)
-                .setText(tabella.turno_h24_sab_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_3)
-                .setText(tabella.turno_h24_sab_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_1)
-                .setText(tabella.turno_h24_sab_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_2)
-                .setText(tabella.turno_h24_sab_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_3)
-                .setText(tabella.turno_h24_sab_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_1)
-                .setText(tabella.turno_h24_sab_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_2)
-                .setText(tabella.turno_h24_sab_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_3)
-                .setText(tabella.turno_h24_sab_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_1).text = tabella.turno_h24_sab_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_2).text = tabella.turno_h24_sab_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_mat_3).text = tabella.turno_h24_sab_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_1).text = tabella.turno_h24_sab_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_2).text = tabella.turno_h24_sab_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_pom_3).text = tabella.turno_h24_sab_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_1).text = tabella.turno_h24_sab_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_2).text = tabella.turno_h24_sab_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_sab_ser_3).text = tabella.turno_h24_sab_ser_3
 
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_1)
-                .setText(tabella.turno_h24_dom_mat_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_2)
-                .setText(tabella.turno_h24_dom_mat_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_3)
-                .setText(tabella.turno_h24_dom_mat_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_1)
-                .setText(tabella.turno_h24_dom_pom_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_2)
-                .setText(tabella.turno_h24_dom_pom_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_3)
-                .setText(tabella.turno_h24_dom_pom_3)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_1)
-                .setText(tabella.turno_h24_dom_ser_1)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_2)
-                .setText(tabella.turno_h24_dom_ser_2)
-            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_3)
-                .setText(tabella.turno_h24_dom_ser_3)
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_1).text = tabella.turno_h24_dom_mat_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_2).text = tabella.turno_h24_dom_mat_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_mat_3).text = tabella.turno_h24_dom_mat_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_1).text = tabella.turno_h24_dom_pom_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_2).text = tabella.turno_h24_dom_pom_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_pom_3).text = tabella.turno_h24_dom_pom_3
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_1).text = tabella.turno_h24_dom_ser_1
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_2).text = tabella.turno_h24_dom_ser_2
+            root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_3).text = tabella.turno_h24_dom_ser_3
         }
 
 

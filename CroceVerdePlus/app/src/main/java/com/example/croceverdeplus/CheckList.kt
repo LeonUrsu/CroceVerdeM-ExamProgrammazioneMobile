@@ -13,10 +13,6 @@ import androidx.fragment.app.Fragment
 
 class CheckList : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,8 +22,8 @@ class CheckList : Fragment() {
         val linearLayout = root.findViewById(R.id.checkListVolontario) as LinearLayout
         array_from_xml().forEach {
             val check = CheckBox(requireContext())
-            check.setHint("$it")
-            check.setTextSize(20F)
+            check.hint = "$it"
+            check.textSize = 20F
             linearLayout.addView(check)
         }
 
@@ -59,10 +55,10 @@ class CheckList : Fragment() {
             val nome = "nome"
             val cognome = "cognome"
             val datadinacita = "11/09/2012"
-            root.findViewById<TextView>(R.id.nome_text_profilo_volontario).setText(nome)
-            root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).setText(cognome)
-            root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
-                .setText(datadinacita)
+            root.findViewById<TextView>(R.id.nome_text_profilo_volontario).text = nome
+            root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).text = cognome
+            root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
+                datadinacita
 
         }
     }

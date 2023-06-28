@@ -25,10 +25,6 @@ class TabelloneTurniVolontario : Fragment() {
     var data_lunedi_settimana2: Timestamp? = null
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +34,7 @@ class TabelloneTurniVolontario : Fragment() {
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
         val numero_tabella =
             TabelloneTurni().setta_settimana_corrente(true) // TODO : valore booleano ricevuto dal DB
-        vf_volontario.setDisplayedChild(numero_tabella) //TODO : qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
+        vf_volontario.displayedChild = numero_tabella //TODO : qui si cambia settimana H24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
         //TODO : si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al database
         var servizio_val =
             TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
@@ -91,7 +87,7 @@ class TabelloneTurniVolontario : Fragment() {
             else
 
              */
-            vf_volontario.setDisplayedChild(1)
+            vf_volontario.displayedChild = 1
             //TODO (setta settimana con date)
         }
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
@@ -105,7 +101,7 @@ class TabelloneTurniVolontario : Fragment() {
             )
             else
             */
-            vf_volontario.setDisplayedChild(2)
+            vf_volontario.displayedChild = 2
             //TODO (setta settimana con date)
         }
         return root
@@ -175,11 +171,11 @@ class TabelloneTurniVolontario : Fragment() {
                 val cal: Calendar = Calendar.getInstance()
                 //time.time
                 if (time != null) {
-                    cal.setTimeInMillis(time.seconds)
+                    cal.timeInMillis = time.seconds
                 }
                 var text =
                     cal.get(Calendar.DAY_OF_MONTH).toString() + cal.get(Calendar.MONTH).toString()
-                root.findViewById<TextView>(id_view).setText(text)
+                root.findViewById<TextView>(id_view).text = text
             }
         }
     }

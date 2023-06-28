@@ -13,8 +13,8 @@ class MainActivityCentralinista : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_centralinista)
         loadFragment(TabelloneTurniCentralinista())
-        bottomNav = findViewById(R.id.bottomNavCentralinista) as BottomNavigationView
-        bottomNav.setSelectedItemId(R.id.tabellone)
+        bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavCentralinista)
+        bottomNav.selectedItemId = R.id.tabellone
         bottomNav.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.tabellone -> {
