@@ -226,6 +226,7 @@ class Database {
         return documento
     }
 
+
     /*
     Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
     univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già

@@ -113,9 +113,11 @@ class TabelloneTurni {
     metodo, se arriva il tipo solo 118 si attiva "setta_date_tabelloni_118()" mentre se arriva il tipo
     118/h24 si attiva il metodo setta_date_tabelloni_h24_118()"
     */
-    fun tipo_settimana(tipo_settimana: Boolean, root: View) {
-        if (tipo_settimana) setta_info_tabella_118_h24(root)
-        else setta_info_tabella_118(root) //TODO : obj due oggetti tabellone vanno settate le date
+    fun tipo_settimana(tipo_settimana: Boolean): Int {
+        if (tipo_settimana == false) return 1
+        else return 2
+        //if (tipo_settimana) setta_info_tabella_118_h24(root)
+        //else setta_info_tabella_118(root) //TODO : obj due oggetti tabellone vanno settate le date
     }
 
     /*
