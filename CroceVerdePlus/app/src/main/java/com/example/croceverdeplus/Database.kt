@@ -1,14 +1,12 @@
 package com.example.croceverdeplus
 
+import android.app.Activity
 import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.util.Log
-<<<<<<< HEAD
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.tasks.Task
-=======
->>>>>>> 9de80ad4277996934ede37fcf0c24110a6b1b84a
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
