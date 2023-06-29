@@ -50,6 +50,7 @@ class Database {
             }
     }
 
+
     fun deleteUser(
         nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
@@ -143,8 +144,7 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
 
         val ruolo = "Milite"
 
-<<<<<<< HEAD
-        db.collection("militi").add(militi).addOnSuccessListener { documentReference ->
+        db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
             Log.d(
                 TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
             )
@@ -152,8 +152,7 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             db.collection("militi").document(documentReference.id).update("username", username)
             db.collection("militi").document(documentReference.id).update("password", password)
             db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
-=======
-        db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
+            db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
                 Log.d(
                     TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
                 )
@@ -161,13 +160,13 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
                 db.collection("militi").document(documentReference.id).update("username", username)
                 db.collection("militi").document(documentReference.id).update("password", password)
                 db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
-                db.collection("militi").document(documentReference.id).update("cognomeNomeSpinner", cognomenomespinner)
->>>>>>> d7147b87466690e869ddb193227079d2dae03c03
+                db.collection("militi").document(documentReference.id)
+                    .update("cognomeNomeSpinner", cognomenomespinner)
 
-        }.addOnFailureListener { e ->
-            Log.w(TAG, "Error adding document", e)
+            }.addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
         }
-
     }
 
     fun deleteUserM(
