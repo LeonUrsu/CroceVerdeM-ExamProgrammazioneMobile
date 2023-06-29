@@ -14,7 +14,13 @@ data class Milite(
     var grado118terza: Boolean? = null,
     var gradoh24prima: Boolean? = null,
     var gradoh24seconda: Boolean? = null,
-    var gradoh24terza: Boolean? = null) {
+    var gradoh24terza: Boolean? = null,
+    var oreTurno118prima: Int? = null,
+    var oreTurno118seconda: Int? = null,
+    var oreTurno118terza: Int? = null,
+    var oreTurnoh24prima: Int? = null,
+    var oreTurnoh24seconda: Int? = null,
+    var oreTurnoh24terza: Int? = null) {
 
 
     constructor(nome: String?, cognome: String?,
