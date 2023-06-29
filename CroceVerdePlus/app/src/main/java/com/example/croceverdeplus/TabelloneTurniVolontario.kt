@@ -20,7 +20,7 @@ import com.google.firebase.firestore.ktx.toObject
 
 class TabelloneTurniVolontario : Fragment() {
 
-    var nomecogomeLoggato = "" //TODO passare il nome dal login al main al tabellone
+    var cognomeNomeSpinner = "" //TODO passare il nome dal login al main al tabellone
 
 
     override fun onCreateView(
@@ -38,27 +38,16 @@ class TabelloneTurniVolontario : Fragment() {
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            val id_trovato = TabelloneTurni().id_int_val_builder(
-                resources,
-                requireContext().packageName,
-                root,
-                TabelloneTurni().tipo_settimana(vf_volontario)
-            )
-            Toast.makeText(requireActivity(), id_trovato.toString(), Toast.LENGTH_SHORT).show()
-            //segnami_cancellami_btn_function(id_trovato, root) //TODO (da fare segna/cancella)
+            Toast.makeText(requireActivity(), "segnato ", Toast.LENGTH_SHORT).show()
+            segnami_cancellami_btn_function(root, vf_volontario)
         }
 
 
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
-            val id_trovato = TabelloneTurni().id_int_val_builder(
-                resources,
-                requireContext().packageName,
-                root,
-                TabelloneTurni().tipo_settimana(vf_volontario)
-            )
-            Toast.makeText(requireActivity(), id_trovato.toString(), Toast.LENGTH_SHORT).show()
-            //disponibilita_btn_function(id) //TODO (da fare disponibilità btn)
+            Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
+            disponibilita_btn_function(root, vf_volontario) //TODO (da fare disponibilità btn)
+            //TODO per la disponibilita potei fare una lista separata e il nome del milite disponibile si colora diverde o blu nella lista dei militi del centralinista
         }
 
 
@@ -77,9 +66,6 @@ class TabelloneTurniVolontario : Fragment() {
 
         return root
     }
-    
-
-
 
 
     /*
@@ -118,7 +104,17 @@ class TabelloneTurniVolontario : Fragment() {
     /*
     Metodo per fornire la propria disponibilità per effettaure il turno
     */
-    fun disponibilita_btn_function(id: String) {
+    fun disponibilita_btn_function(root: View, vf_volontario: ViewFlipper) {
+        var id_string = TabelloneTurni().rileva_valori_spinner(
+            root,
+            TabelloneTurni().tipo_settimana(vf_volontario)
+        )
+        val id_trovato = TabelloneTurni().id_int_val_builder(
+            id_string,
+            resources,
+            requireContext().packageName,
+            root
+        )
         //TODO al click bisogna che il sistema mandi nel database i dati
     }
 
@@ -127,10 +123,24 @@ class TabelloneTurniVolontario : Fragment() {
     Metodo per far funzionare il pulsante di essere segnati o cancellare da un turno
     id_passed = id passato per il turno in questione
     */
-    fun segnami_cancellami_btn_function(id_passed: Int, root: View) {
-        //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni la tabella dei militi
-        var textView = root.findViewById<TextView>(id_passed)
-        //TODO bisogna anche che permetta di cancellarsi se è il tunro in cui si vuole cancellare
+    fun segnami_cancellami_btn_function(root: View, vf_volontario: ViewFlipper) {
+        var id_string = TabelloneTurni().rileva_valori_spinner(
+            root,
+            TabelloneTurni().tipo_settimana(vf_volontario)
+        )
+        val id_trovato = TabelloneTurni().id_int_val_builder(
+            id_string,
+            resources,
+            requireContext().packageName,
+            root
+        )
+        var milite = cognomeNomeSpinner
+        var tabella = ""
+        if (id_string.contains("tabella118h24")) {
+            tabella = "tabella_118_h24"
+        } else tabella = "tabella_118"
+        Database().segna_o_cancella_milite_dal_turno(tabella, id_string, milite)
+        root.findViewById<TextView>(id_trovato).setText(cognomeNomeSpinner)
     }
 
 

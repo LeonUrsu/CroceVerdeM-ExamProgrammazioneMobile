@@ -34,8 +34,9 @@ class TabelloneTurni {
     /*
     Metodo per rilevare il nome presente nello spinner dei militi disponibili per il turno
      */
-    fun rileva_nomi_spinner(root : View, tipo_settimana: Boolean ): String {
-        val nome_cognome: String = root.findViewById<Spinner>(R.id.milite_input).getSelectedItem().toString()
+    fun rileva_nomi_spinner(root: View, tipo_settimana: Boolean): String {
+        val nome_cognome: String =
+            root.findViewById<Spinner>(R.id.milite_input).getSelectedItem().toString()
         return nome_cognome
     }
 
@@ -45,21 +46,6 @@ class TabelloneTurni {
     spinner tramite il valore ret_posizion
     */
     fun rileva_valori_spinner(root: View, tipo_settimana: Boolean): String {
-        /*
-        var ret_position = 0
-        dropdown?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>, view: View, position: Int, id: Long
-            ) {
-                // TODO qui si deve settare il valore di ritorno
-                ret_position = position
-                orario = position
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-        }
-        return ret_position*/
         val servizio_val: String =
             root.findViewById<Spinner>(R.id.servizio_input).getSelectedItem().toString()
         val orario_val: String =
@@ -127,13 +113,12 @@ class TabelloneTurni {
     Metodo per trovare dalla stringa il numero nella risorsa da segnare
      */
     fun id_int_val_builder(
+        id_string: String,
         resources: Resources,
         context: String,
         root: View,
-        tipo_settimana: Boolean
     ): Int {
-
-        var id_string = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana)
+        //var id_string = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana)
         val res = resources
         val id_trovato = res.getIdentifier(id_string, "id", context)
         return id_trovato
