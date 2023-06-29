@@ -38,8 +38,8 @@ class TabelloneTurniVolontario : Fragment() {
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            Toast.makeText(requireActivity(), "segnato ", Toast.LENGTH_SHORT).show()
             segnami_cancellami_btn_function(root, vf_volontario)
+            Toast.makeText(requireActivity(), "segnato ", Toast.LENGTH_SHORT).show()
         }
 
 
@@ -140,7 +140,8 @@ class TabelloneTurniVolontario : Fragment() {
             tabella = "tabella_118_h24"
         } else tabella = "tabella_118"
         Database().segna_o_cancella_milite_dal_turno(tabella, id_string, milite)
-        root.findViewById<TextView>(id_trovato).setText(cognomeNomeSpinner)
+        TabelloneTurni().setta_settiamna_118_h24(root)
+        TabelloneTurni().setta_settiamna_118(root)
     }
 
 

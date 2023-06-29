@@ -18,18 +18,6 @@ import java.time.format.DateTimeFormatter
 
 class TabelloneTurni {
 
-    /*
-   Metodo per stabilire se il primo pulsante corrisponde alla settimana solo 118 oppure 118/H24
-   si passa il valore booleano per capire che tipo di settiaman serve in quel caso
-   settiamna = True -> sta per H24/118
-   settiamna = False -> sta per 118
-    */
-    fun setta_settimana_corrente(settimana: Boolean): Int {
-        // TODO Prendi le informazione dal db dell'admin della settimana h24 e 118 le informazioni devono essere due oggetti: prima settimana, seconda settimana
-        // TODO prima settimana = possiede il valore "tipologia" che dice che è h24/118
-        // TODO seconda settimana = possiede il valore "tipologia" che dice che è 118
-        return if (settimana) 1 else 2
-    }
 
     /*
     Metodo per rilevare il nome presente nello spinner dei militi disponibili per il turno

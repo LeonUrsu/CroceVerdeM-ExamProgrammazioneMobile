@@ -235,7 +235,7 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                document.toObject<Tabella118>() //TODO (fare qualcosa con questo oggetto)
+                document.toObject<Tabella118>()
             } else {
                 Log.d(TAG, "No such document")
             }

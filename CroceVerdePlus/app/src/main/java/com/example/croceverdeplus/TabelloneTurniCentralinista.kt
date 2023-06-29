@@ -29,8 +29,6 @@ class TabelloneTurniCentralinista : Fragment() {
         TabelloneTurni().setta_settiamna_118_h24(root)
         TabelloneTurni().setta_settiamna_118(root)
 
-        //TODO questo metodo serve per rilevare i nomi dei militi che andranno ad essere registrati nel turno scelto, la rilevazione deve essere effettuata tramite il metodo sottostante oppure tramite altro metodo tramite il database
-
 
         //setta_tabelle_con_militi()
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
@@ -64,38 +62,21 @@ class TabelloneTurniCentralinista : Fragment() {
     Metodo per segnare o cancellare un milite dal turno nel database
      */
     fun segna_cancella_btn_function(root: View, vf_centralinista: ViewFlipper) {
+        //TODO bisogna settare lo spinner che faccia vedere solamente i militi conb il grado adatt a svolgere il turno selezionato
         val milite = root.findViewById<Spinner>(R.id.milite_input).getSelectedItem().toString()
         var id_string = TabelloneTurni().rileva_valori_spinner(
             root,
             TabelloneTurni().tipo_settimana(vf_centralinista)
-        )
-        val id_turno = TabelloneTurni().id_int_val_builder(
-            id_string,
-            resources,
-            requireContext().packageName,
-            root
         )
         var tabella = ""
         if (id_string.contains("tabella118h24")) {
             tabella = "tabella_118_h24"
         } else tabella = "tabella_118"
         Database().segna_o_cancella_milite_dal_turno(tabella, id_string, milite)
-        /*
-        val washingtonRef = db.collection("cities").document("DC")
-        // Set the "isCapital" field of the city 'DC'
-        washingtonRef
-            .update("capital", true)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
-            .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
-*/
-        //TODO prima di invocare il seguente metodo bisogna verificare se è presente qualcuno nel turno che è stato selezionato e quindi cambiare il testo del Button in cancella_milite
-        //resources.getIdentifier(id, "id", requireContext().packageName // TODO questa riga serwve per trovare la casella tramite nonme della stringa7 e modificare il nome al suo interno
-        //var risultato : Boolean = Database().segna(id_casella, nomeCognome_val)
-        //if (risultato == false) Database().cancella_milite_nel_turno(id_casella, nomeCognome_val)
-        //TODO al Milite che viene segnato o cancellato bisogna aggiungere o togliere le ore di lavoro per le statistiche
-        //TODO if nella tabella nella casella segnata è già registrato il milite, cambia il testo del "Button" e cancella da DB il milite della casella
-        //TODO else nella tabella nella casella segnata non è segnato nessun milite segna il milite nel DB ovviamente il controllo va fatto sulla tabella del DB
+        TabelloneTurni().setta_settiamna_118_h24(root)
+        TabelloneTurni().setta_settiamna_118(root)
     }
+
 
     /*
     Metodo per gestire lo spinner con i militi inseriti
@@ -131,7 +112,6 @@ class TabelloneTurniCentralinista : Fragment() {
         servizio_val: Int,
         grado_val: Int
     ): MutableList<Milite> {
-        //TODO forse il DB deve registrare i militi in tabelle diverse a seconda del grado
         var grado118prima = true
         var grado118seconda = true
         var grado118terza = true
