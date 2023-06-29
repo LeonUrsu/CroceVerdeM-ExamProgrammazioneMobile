@@ -29,22 +29,22 @@ class GestioneMiliteModificaCrea : Fragment() {
 
         val spinner: Spinner = root.findViewById(R.id.spinner)
 
-        val userList = listOf(Militi())
-        val userGradi = mutableListOf<String>()
+        val milite = Milite()
 
-        userList.firstOrNull()?.grado?.forEach { grado ->
-            userGradi.add(grado)
-        }
+        val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
+                                "gradoh24prima","gradoh24seconda","gradoh24terza", "")
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
+        spinner.setSelection(6)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGrado = parent.getItemAtPosition(position) as? String
 
+                setGrado(selectedGrado, milite)
 
                 val data = Database()
 
@@ -52,10 +52,12 @@ class GestioneMiliteModificaCrea : Fragment() {
 
                     data.addUserM(nome.text.toString(), cognome.text.toString(),
                         dataDiNascita.text.toString(), residenza.text.toString(),
-                        selectedGrado!!
+                        milite.grado118prima, milite.grado118seconda,
+                        milite.grado118terza, milite.gradoh24prima,
+                        milite.gradoh24seconda, milite.gradoh24terza
                     )
-
-                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+                    if (selectedGrado == "") Toast.makeText(requireActivity(), "Milite creato senza grado", Toast.LENGTH_SHORT).show()
+                    else Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
 
                 }
             }
@@ -67,6 +69,70 @@ class GestioneMiliteModificaCrea : Fragment() {
 
 
         return root
+    }
+
+}
+
+fun setGrado(selectedGrado: String?, milite: Milite) {
+
+
+    when(selectedGrado) {
+        "grado118prima" -> {
+            milite.grado118prima = true
+            milite.grado118seconda = false
+            milite.grado118terza = false
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = false
+        }
+        "grado118seconda" -> {
+            milite.grado118prima = false
+            milite.grado118seconda = true
+            milite.grado118terza = false
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = false
+        }
+        "grado118terza" -> {
+            milite.grado118prima = false
+            milite.grado118seconda = false
+            milite.grado118terza = true
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = false
+        }
+        "gradoh24prima" -> {
+            milite.grado118prima = false
+            milite.grado118seconda = false
+            milite.grado118terza = false
+            milite.gradoh24prima = true
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = false
+        }
+        "gradoh24seconda" -> {
+            milite.grado118prima = false
+            milite.grado118seconda = false
+            milite.grado118terza = false
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = true
+            milite.gradoh24terza = false
+        }
+        "gradoh24terza" -> {
+            milite.grado118prima = false
+            milite.grado118seconda = false
+            milite.grado118terza = false
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = true
+        }
+        else -> {
+            milite.grado118prima = false
+            milite.grado118seconda = false
+            milite.grado118terza = false
+            milite.gradoh24prima = false
+            milite.gradoh24seconda = false
+            milite.gradoh24terza = false
+        }
     }
 
 }

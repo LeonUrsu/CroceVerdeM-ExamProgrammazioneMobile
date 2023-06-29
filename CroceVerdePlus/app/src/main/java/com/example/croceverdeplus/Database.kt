@@ -119,9 +119,15 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
 
 
     fun addUserM(
-        nome: String, cognome: String, dataDiNascita: String, residenza: String, grado: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String,
+        grado118prima: Boolean?, grado118seconda: Boolean?,
+        grado118terza: Boolean?, gradoh24prima: Boolean?,
+        gradoh24seconda: Boolean?, gradoh24terza: Boolean?
     ) {
-        val militi = Militi(nome, cognome, dataDiNascita, residenza, grado)
+        val milite = Milite(nome, cognome, dataDiNascita, residenza,
+                            grado118prima, grado118seconda,
+                            grado118terza, gradoh24prima,
+                            gradoh24seconda, gradoh24terza)
 
         val username = nome + "." + cognome
 
@@ -133,8 +139,11 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             }
         }.joinToString("")
 
+        val cognomenomespinner= nome + "" + cognome
+
         val ruolo = "Milite"
 
+<<<<<<< HEAD
         db.collection("militi").add(militi).addOnSuccessListener { documentReference ->
             Log.d(
                 TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
@@ -143,6 +152,17 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             db.collection("militi").document(documentReference.id).update("username", username)
             db.collection("militi").document(documentReference.id).update("password", password)
             db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
+=======
+        db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
+                Log.d(
+                    TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
+                )
+
+                db.collection("militi").document(documentReference.id).update("username", username)
+                db.collection("militi").document(documentReference.id).update("password", password)
+                db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
+                db.collection("militi").document(documentReference.id).update("cognomeNomeSpinner", cognomenomespinner)
+>>>>>>> d7147b87466690e869ddb193227079d2dae03c03
 
         }.addOnFailureListener { e ->
             Log.w(TAG, "Error adding document", e)
