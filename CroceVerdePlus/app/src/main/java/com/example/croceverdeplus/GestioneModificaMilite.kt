@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.ktx.firestore
@@ -45,12 +44,12 @@ class GestioneModificaMilite : Fragment() {
         val residenzaM = args.residenza
 
 
-        val userList = listOf(Militi())
+        val userList = listOf(Milite())
         val userGradi = mutableListOf<String>()
 
-        userList.firstOrNull()?.grado?.forEach { grado ->
-            userGradi.add(grado)
-        }
+        //userList.firstOrNull()?.grado?.forEach { grado ->
+            //userGradi.add(grado)
+        //}
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

@@ -98,9 +98,15 @@ class Database {
     }
 
     fun addUserM(
-        nome: String, cognome: String, dataDiNascita: String, residenza: String, grado: String
+        nome: String, cognome: String, dataDiNascita: String, residenza: String,
+        grado118prima: Boolean?, grado118seconda: Boolean?,
+        grado118terza: Boolean?, gradoh24prima: Boolean?,
+        gradoh24seconda: Boolean?, gradoh24terza: Boolean?
     ) {
-        val militi = Militi(nome, cognome, dataDiNascita, residenza, grado)
+        val milite = Milite(nome, cognome, dataDiNascita, residenza,
+                            grado118prima, grado118seconda,
+                            grado118terza, gradoh24prima,
+                            gradoh24seconda, gradoh24terza)
 
         val username = nome + "." + cognome
 
@@ -112,9 +118,11 @@ class Database {
                 }
             }.joinToString("")
 
+        val cognomenomespinner= nome + "" + cognome
+
         val ruolo = "Milite"
 
-        db.collection("militi").add(militi).addOnSuccessListener { documentReference ->
+        db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
                 Log.d(
                     TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
                 )
@@ -122,6 +130,7 @@ class Database {
                 db.collection("militi").document(documentReference.id).update("username", username)
                 db.collection("militi").document(documentReference.id).update("password", password)
                 db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
+                db.collection("militi").document(documentReference.id).update("cognomeNomeSpinner", cognomenomespinner)
 
             }.addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
