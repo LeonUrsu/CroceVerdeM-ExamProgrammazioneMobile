@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
@@ -87,8 +88,7 @@ class Database {
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
-                var militi: MutableList<String> = mutableListOf<String>()
-                //document.toObject<Tabella118>()
+                var militi: MutableList<String> = mutableListOf()
                 for (document in result) {
                     var nome_temp = document.getString("cognomeNomeSpinner")
                     if (nome_temp != null)
