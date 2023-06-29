@@ -28,7 +28,9 @@
     </string-array>
 
     <string-array name="presidi_ambulanza_array">
-        <item>Targa Data FirmaAttrezzature e materialiBombola 1 Bar</item>
+        <item>Targa Data Firma</item>
+        <item>Attrezzature e materiali</item>
+        <item>Bombola 1 Bar</item>
         <item>Bombola 2 Bar</item>
         <item>Bombola P.P.S</item>
         <item>Venturi</item>
@@ -37,15 +39,20 @@
         <item>Occhiali di protezione</item>
         <item>Maschere</item>
         <item>Annule orofaringee</item>
-        <item>Filtro Fonendoscopio</item>
-        <item>SfigmanometroSaturimetro o fissoBende</item>
+        <item>Filtro</item>
+        <item>Fonendoscopio</item>
+        <item>Sfigmanometro</item>
+        <item>Saturimetro</item>
+        <item>FissoBende</item>
         <item>Cerotti</item>
-        <item>DisinfettanteGhiaccio spray e sintetico in buste</item>
+        <item>Disinfettante</item>
+        <item>Ghiaccio spray e sintetico in buste</item>
         <item>Telo termoisolante</item>
         <item>Barella</item>
         <item>Ferma testa</item>
         <item>Cinghia frontale  e mentoniera</item>
-        <item>RagnoEstricatore di sicurezza KED</item>
+        <item>Ragno</item>
+        <item>Estricatore di sicurezza KED</item>
         <item>Lenzuola e teli di ricambioGuanti</item>
         <item>Contenitore aghi usati</item>
         <item>Forbici di Robin</item>
@@ -66,10 +73,5 @@
         <item>Mascherine</item>
         <item>Telo termico</item>
     </string-array>
-
-
-
-
-
 
 </resources>

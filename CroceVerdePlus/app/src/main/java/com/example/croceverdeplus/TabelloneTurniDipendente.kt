@@ -17,20 +17,22 @@ class TabelloneTurniDipendente : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_tabellone_turni_dipendente, container, false)
         val vf_dipendente = root.findViewById(R.id.vf_dipendente) as ViewFlipper
+
+        TabelloneTurni().setta_settiamna_118_h24(root)
+        TabelloneTurni().setta_settiamna_118(root)
+
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
-            val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
-            vf_dipendente.displayedChild = TabelloneTurni().setta_settimana_corrente(tipo_settimana)
-            TabelloneTurni().tipo_settimana(tipo_settimana)
+            vf_dipendente.displayedChild = 1
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
+
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
-            val tipo_settimana = false // TODO : valore ricevuto dallle settimana ricevute dal DB
-            vf_dipendente.displayedChild = TabelloneTurni().setta_settimana_corrente(tipo_settimana)
-            TabelloneTurni().tipo_settimana(tipo_settimana)
+            vf_dipendente.displayedChild = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
+
         return root
     }
 

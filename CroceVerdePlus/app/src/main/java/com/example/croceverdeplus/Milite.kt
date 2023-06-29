@@ -3,7 +3,7 @@ package com.example.croceverdeplus
 class Milite {
     var nome = ""
     var cognome = ""
-    var nomeCognomeSpinner = nome + " " + cognome
+    var cognomeNomeSpinner = cognome + " " + nome
     var grado118prima = true
     var grado118seconda = true
     var grado118terza = true

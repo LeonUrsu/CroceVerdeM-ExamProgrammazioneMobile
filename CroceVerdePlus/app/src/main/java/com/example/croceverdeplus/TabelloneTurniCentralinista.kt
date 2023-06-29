@@ -23,51 +23,49 @@ class TabelloneTurniCentralinista : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_centralinista, container, false)
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
-        vf_centralinista.displayedChild = 2 //TODO qui si cambia settimana h24/118 & 118, si passa il valore 1 o 2 una volta implementato il metodo di scelta in amministratore
-        //TODO si deve implementare il modo per far vedere la lista dei volontari disponibili ne tabellone turni tramite richiesta al databse
-        var servizio_val =
-            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.servizio_input))
-        var orario_val =
-            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.orario_input))
-        var giorno_val =
-            TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.giorno_input))
-        var grado_val = TabelloneTurni().rileva_valori_spinner(root.findViewById(R.id.grado_input))
-        var milite_val = gestione_spinner_con_militi(
-            root.findViewById(R.id.milite_input),
+        vf_centralinista.displayedChild = 2
+
+        TabelloneTurni().setta_settiamna_118_h24(root)
+        TabelloneTurni().setta_settiamna_118(root)
+
+        var milite_val = null
+        /*TODO questo metodo serve per rilevare i nomi dei militi che andranno ad essere registrati
+           nel turno scelto, la rilevazione deve essere effettuata tramite il metodo sottostante oppure tramite altro metodo tramite il database
+        nome_turno = rileva_valori_spinner(
             root,
-            servizio_val,
-            giorno_val,
-            orario_val,
-            grado_val
-        )
+            R.id.grado_input,
+            R.array.nome_input_array,
+            root.findViewById(R.id.nome_input)
+         */
         //setta_tabelle_con_militi()
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
-            var id_casella = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            //var id_casella = TabelloneTurni().id_builder(servizio_val, giorno_val, orario_val, grado_val)
+            /*
             segna_cancella_btn_function(
                 root.findViewById<TextView>(R.id.milite_input).toString(),
                 id_casella)
+
+             */
+
+
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
 
         }
+
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
-            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(false)
-            val tipo_settimana = true
-            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(
-                tipo_settimana
-            )
-            TabelloneTurni().tipo_settimana(tipo_settimana)
+            vf_centralinista.displayedChild = 1
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
+
+
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
-            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(true)
-            val tipo_settimana = false
-            vf_centralinista.displayedChild = TabelloneTurni().setta_settimana_corrente(tipo_settimana)
-            TabelloneTurni().tipo_settimana(tipo_settimana)
+            vf_centralinista.displayedChild = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
+
         return root
     }
 
@@ -108,7 +106,7 @@ class TabelloneTurniCentralinista : Fragment() {
     */
     fun militi_list_to_string_list(vecchia: MutableList<Milite>): Array<String> {
         var array = mutableListOf<String>()
-        vecchia.forEach { array.add(it.nomeCognomeSpinner) }
+        vecchia.forEach { array.add(it.cognomeNomeSpinner) }
         return array.toTypedArray()
     }
 
