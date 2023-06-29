@@ -16,6 +16,5 @@ data class Centralinisti(
         this.cognome = cognome
         this.dataDiNascita = dataDiNascita
         this.residenza = residenza
-
     }
     }

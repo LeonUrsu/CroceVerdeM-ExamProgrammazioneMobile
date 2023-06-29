@@ -25,6 +25,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
         vf_centralinista.displayedChild = 2
 
+        Database().get_users {  }
         TabelloneTurni().setta_settiamna_118_h24(root)
         TabelloneTurni().setta_settiamna_118(root)
 
@@ -106,7 +107,7 @@ class TabelloneTurniCentralinista : Fragment() {
     */
     fun militi_list_to_string_list(vecchia: MutableList<Milite>): Array<String> {
         var array = mutableListOf<String>()
-        vecchia.forEach { array.add(it.cognomeNomeSpinner) }
+        vecchia.forEach { array.add(it.cognomeNomeSpinner.toString()) }
         return array.toTypedArray()
     }
 

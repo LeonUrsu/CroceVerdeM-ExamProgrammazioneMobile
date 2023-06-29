@@ -73,9 +73,28 @@ class Database {
 
     }
 
-
-    fun get_users(){
+    /*
+    Metodo per recuperare i militidal db
+     */
+    fun get_users(funzione_passata: (militi : MutableList<String>) -> Unit){
         db.collection("militi")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                var militi: MutableList<String> = mutableListOf<String>()
+                //document.toObject<Tabella118>()
+                for (document in result){
+                    var nome_temp = document.getString("cognomeNomeSpinner")
+                    if (nome_temp != null)
+                        militi.add(nome_temp)
+                }
+                funzione_passata(militi) // TODO (queta funzione deve settare il valore segli spinner in centralinista)
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
     }
 
     fun addUserM(
