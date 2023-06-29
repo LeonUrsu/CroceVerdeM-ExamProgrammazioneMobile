@@ -124,7 +124,8 @@ class TabelloneTurniVolontario : Fragment() {
 
 
     /*
-    Metodo per far funzionare il pulsante di segnare e cancellare
+    Metodo per far funzionare il pulsante di essere segnati o cancellare da un turno
+    id_passed = id passato per il turno in questione
     */
     fun segnami_cancellami_btn_function(id_passed: Int, root: View) {
         //TODO al click bisogna che il sistema mandi nel database i dati della registrazione e aggiorni la tabella dei militi

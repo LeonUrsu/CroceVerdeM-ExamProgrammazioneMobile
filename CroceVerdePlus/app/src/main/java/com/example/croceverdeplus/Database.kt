@@ -73,6 +73,11 @@ class Database {
 
     }
 
+
+    fun get_users(){
+        db.collection("militi")
+    }
+
     fun addUserM(
         nome: String, cognome: String, dataDiNascita: String, residenza: String, grado: String
     ) {

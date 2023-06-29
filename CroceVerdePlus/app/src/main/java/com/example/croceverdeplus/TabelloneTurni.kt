@@ -30,7 +30,7 @@ class TabelloneTurni {
         // TODO seconda settimana = possiede il valore "tipologia" che dice che è 118
         return if (settimana) 1 else 2
     }
-    
+
     /*
     Metodo per rilevare il nome presente nello spinner dei militi disponibili per il turno
      */
