@@ -30,7 +30,7 @@ class TabelloneTurniVolontario : Fragment() {
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
-        val numero_tabella = 1 //118 quindi false
+        val numero_tabella = 1
         vf_volontario.displayedChild = numero_tabella
 
         TabelloneTurni().setta_settiamna_118_h24(root)

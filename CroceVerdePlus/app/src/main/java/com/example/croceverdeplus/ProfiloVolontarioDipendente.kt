@@ -30,7 +30,8 @@ class ProfiloVolontarioDipendente : Fragment() {
             container,
             false
         )
-        var cognomeNomeSpinner = "Mario Rossi" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
+        var cognomeNomeSpinner =
+            "Rossi Mario" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
         setta_info_profilo(root, cognomeNomeSpinner)
         val logout = root.findViewById(R.id.logout) as Button
         logout.setOnClickListener { exit_function(requireActivity()) }
@@ -40,7 +41,7 @@ class ProfiloVolontarioDipendente : Fragment() {
     /*
     Metodo per settare il nome e cognome e data di nascita del milite nel suo profilo
      */
-    fun setta_info_profilo(root : View, cognomeNomeSpinner : String){
+    fun setta_info_profilo(root: View, cognomeNomeSpinner: String) {
         val db = Firebase.firestore
         db.collection("")
             .get()
@@ -50,15 +51,24 @@ class ProfiloVolontarioDipendente : Fragment() {
                 }
                 for (document in result) {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner)
-                        root.findViewById<TextView>(R.id.nome_text_profilo_volontario).text = document.getString("nome")
-                        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).text = document.getString("cognome")
-                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text = document.getString("dataDiNascita")
-                        root.findViewById<TextView>(R.id.prima_118).text = document.getString("oreTurno118prima")
-                        root.findViewById<TextView>(R.id.seconda_118).text = document.getString("oreTurno118seconda")
-                        root.findViewById<TextView>(R.id.terza_118).text = document.getString("oreTurno118terza")
-                        root.findViewById<TextView>(R.id.prima_h24).text = document.getString("oreTurnoh24prima")
-                        root.findViewById<TextView>(R.id.seconda_h24).text = document.getString("oreTurnoh24seconda")
-                        root.findViewById<TextView>(R.id.terza_h24).text = document.getString("oreTurnoh24terza")
+                        root.findViewById<TextView>(R.id.nome_text_profilo_volontario)
+                            .setText(document.getString("nome"))
+                    root.findViewById<TextView>(R.id.cognome_text_profilo_volontario)
+                        .setText(document.getString("cognome"))
+                    root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
+                        .setText(document.getString("dataDiNascita"))
+                    root.findViewById<TextView>(R.id.prima_118)
+                        .setText(document.getString("oreTurno118prima"))
+                    root.findViewById<TextView>(R.id.seconda_118)
+                        .setText(document.getString("oreTurno118seconda"))
+                    root.findViewById<TextView>(R.id.terza_118)
+                        .setText(document.getString("oreTurno118terza"))
+                    root.findViewById<TextView>(R.id.prima_h24)
+                        .setText(document.getString("oreTurnoh24prima"))
+                    root.findViewById<TextView>(R.id.seconda_h24)
+                        .setText(document.getString("oreTurnoh24seconda"))
+                    root.findViewById<TextView>(R.id.terza_h24)
+                        .setText(document.getString("oreTurnoh24terza"))
                 }
             }
             .addOnFailureListener { exception ->
@@ -66,7 +76,7 @@ class ProfiloVolontarioDipendente : Fragment() {
             }
     }
 
-    fun exit_function(act: Activity){
+    fun exit_function(act: Activity) {
         val intent = Intent(act, MainActivity::class.java)
         startActivity(intent)
     }

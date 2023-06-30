@@ -32,7 +32,6 @@ class TabelloneTurniDipendente : Fragment() {
             vf_dipendente.displayedChild = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
-
         return root
     }
 

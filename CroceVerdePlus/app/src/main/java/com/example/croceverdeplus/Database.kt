@@ -6,11 +6,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Toast
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.io.Serializable
 import kotlin.random.Random
+
 
 class Database {
 
@@ -125,10 +128,12 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
         grado118terza: Boolean?, gradoh24prima: Boolean?,
         gradoh24seconda: Boolean?, gradoh24terza: Boolean?
     ) {
-        val milite = Milite(nome, cognome, dataDiNascita, residenza,
-                            grado118prima, grado118seconda,
-                            grado118terza, gradoh24prima,
-                            gradoh24seconda, gradoh24terza)
+        val milite = Milite(
+            nome, cognome, dataDiNascita, residenza,
+            grado118prima, grado118seconda,
+            grado118terza, gradoh24prima,
+            gradoh24seconda, gradoh24terza
+        )
 
         val username = nome + "." + cognome
 
@@ -140,7 +145,7 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             }
         }.joinToString("")
 
-        val cognomenomespinner= cognome + " " + nome
+        val cognomenomespinner = cognome + " " + nome
 
         val ruolo = "Milite"
 
@@ -150,12 +155,13 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             db.collection("militi").document(documentReference.id).update("username", username)
             db.collection("militi").document(documentReference.id).update("password", password)
             db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
-            db.collection("militi").document(documentReference.id).update("cognomeNomeSpinner", cognomenomespinner)
+            db.collection("militi").document(documentReference.id)
+                .update("cognomeNomeSpinner", cognomenomespinner)
 
-            }.addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
-            }
+        }.addOnFailureListener { e ->
+            Log.w(TAG, "Error adding document", e)
         }
+    }
 
     fun deleteUserM(
         nome: String, cognome: String, dataDiNascita: String, residenza: String
@@ -252,16 +258,26 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
     /*
     Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
      */
-    fun segna_o_cancella_milite_dal_turno(tabella: String, turno: String, nome: String) {
+    fun segna_o_cancella_milite_dal_turno(
+        tabella: String,
+        turno: String,
+        nomeCognomeSpinner: String
+    ) {
+        //TODO (In questo punto prima di fare qulasiasi cosa bisogna controllare se il milite ha il grado necesario per iscriversi al turno)
         val docRef = db.collection("tabelle").document(tabella)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 if (document.getString(turno) == "") {
-                    segna_milite(nome, tabella, turno)
+                    var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno)
+                    if(autorizzazioneMilite)
+                        segna_milite(nomeCognomeSpinner, tabella, turno)
+                        aggiungi_ore_lavorate(nomeCognomeSpinner, turno)
                 } else
-                    if (document.getString(turno) == nome) {
-                        cancella_milite(nome, turno)
+                    if (document.getString(turno) == nomeCognomeSpinner) {
+                        cancella_milite(nomeCognomeSpinner, turno)
+                        rimuovi_ore_lavorate(nomeCognomeSpinner, turno)
+
                     }
             } else {
                 Log.d(TAG, "No such document")
@@ -272,11 +288,57 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
     }
 
     /*
+    Metodo per verificare il gradfo del milite e se ritorna true allora il milite è autorizzato a prenotarsi nel turno
+     */
+    private fun varifica_grado_milite(document: DocumentSnapshot, turno: String): Boolean {
+        var turno = trova_campo(turno)!![0]
+        turno = when (turno) {
+            "1181" -> "grado118prima"
+            "1182" -> "grado118seconda"
+            "1183" -> "grado118terza"
+            "h241" -> "gradoh24prima"
+            "h242" -> "gradoh24seconda"
+            "h243" -> "gradoh24terza"
+            else -> {
+                "gradoh24terza"
+            }
+        }
+        var risultato = document.getBoolean(turno)
+        if (risultato != null && risultato == true)
+            return true
+        else return false
+    }
+
+    /*
+    Metodo per rimuovere le ore lavorate da un milite se si cancella da un turno
+     */
+    private fun rimuovi_ore_lavorate(cognomeNomeSpinner: String, turno: String) {
+        db.collection("militi")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                for (document in result) {
+                    if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        val militeRef = db.collection("militi").document(document.id)
+                        val risultati = trova_campo(turno)
+                        var decrementValue: Long = risultati!!.get(1).toLong() * -1
+                        var oreTurno = risultati.get(0)
+                        militeRef.update(oreTurno, FieldValue.increment(decrementValue))
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+    }
+
+    /*
     Metodo per segnare un milite passato tl tabellone dei turni e aggiungere le sue ore
      */
     fun segna_milite(nome: String, tabella: String, turno: String) {
         aggiorna_tabellone_milite(nome, tabella, turno)
-        //TODO (fare l'aggiunta delle ore al profilo del milite)
     }
 
     /*
@@ -284,7 +346,6 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
      */
     fun cancella_milite(tabella: String, turno: String) {
         aggiorna_tabellone_milite("", tabella, turno)
-        //TODO (fare la rimozione delle ore al profilo del milite)
     }
 
     /*
@@ -299,6 +360,73 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             .update(turno, nome)
             .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+    }
+
+
+    /*
+    Metodo per trovare dove aggiungere le ore che il milite
+     */
+    fun trova_campo(turno: String): Array<String>? {
+        val number = 13
+        var str = ""
+        if (turno.length == number) {
+            return null
+        } else if (turno.length > number) {
+            str = turno.substring(turno.length - number)
+        } else {
+            // whatever is appropriate in this case
+            throw IllegalArgumentException("word has fewer than 13 characters!");
+        }
+        var servizio = str.substring(0, 2)
+        var orario = str.substring(8, 10)
+        orario = when (orario) {
+            "mat" -> "7"
+            "pom" -> "7"
+            "ser" -> "10"
+            else -> {
+                "0"
+            }
+        }
+        var grado = str.substring(12)
+        var formato = servizio + grado
+        var turno = when (formato) {
+            "1181" -> "oreTurno118prima"
+            "1182" -> "oreTurno118seconda"
+            "1183" -> "oreTurno118terza"
+            "h241" -> "oreTurnoh24prima"
+            "h242" -> "oreTurnoh24seconda"
+            "h243" -> "oreTurnoh24terza"
+            else -> {
+                "oreTurnoh24terza"
+            }
+        }
+        return arrayOf(turno, orario)
+    }
+
+
+    /*
+    Metodo per aggiungere ad un milite le ore a cui si è prenotato, in questo modo le sue statistiche verranno aggiornate con le ore dovute
+     */
+    fun aggiungi_ore_lavorate(cognomeNomeSpinner: String, turno: String) {
+        db.collection("militi")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                for (document in result) {
+                    if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        val militeRef = db.collection("militi").document(document.id)
+                        val risultati = trova_campo(turno)
+                        var incrementValue: Long = risultati!!.get(1).toLong()
+                        var oreTurno = risultati.get(0)
+                        militeRef.update(oreTurno, FieldValue.increment(incrementValue))
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
     }
 
     fun disponibilita_milite(nome: String) {
@@ -322,21 +450,5 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             }
     }
 
-    /*
-    Metodo per segnare un milite nel turno passato tramite id come String, ogni casella ha un suo
-    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa cheè già
-    presente qualcuno nel turno
-     */
-    fun segna_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
-        return true // per ora ho impostato un valore fisso di ritorno true
-    }
 
-    /*
-    Metodo per cancellare un milite nel turno passato tramite id come String, ogni casella ha un suo
-    univoco id_casella, return "true" l'operazione è andata a buon fine, return "false" significa che
-    non è presente nessun milite nel turno e quindi si è verificato un errore
-     */
-    fun cancella_milite_nel_turno(id_casella: String, nomeCognome_val: String): Boolean {
-        return true // per ora ho impostato un valore fisso di ritorno true
-    }
 }
