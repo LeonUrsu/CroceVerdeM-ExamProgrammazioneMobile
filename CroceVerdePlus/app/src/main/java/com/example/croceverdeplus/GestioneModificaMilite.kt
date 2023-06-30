@@ -44,22 +44,20 @@ class GestioneModificaMilite : Fragment() {
         val residenzaM = args.residenza
 
 
-        val userList = listOf(Milite())
-        val userGradi = mutableListOf<String>()
+        //val milite = Milite()
 
-        //userList.firstOrNull()?.grado?.forEach { grado ->
-            //userGradi.add(grado)
-        //}
+        val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
+            "gradoh24prima","gradoh24seconda","gradoh24terza")
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGrado = parent.getItemAtPosition(position) as? String
 
+                //setGrado(selectedGrado, milite)
 
                 val db = Firebase.firestore
 
@@ -83,9 +81,45 @@ class GestioneModificaMilite : Fragment() {
                                 db.collection("militi")
                                     .document(document.id).update("residenza", residenza.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("grado", "[$selectedGrado]")
-                                db.collection("militi")
                                     .document(document.id).update("username", nome.text.toString() + "." + cognome.text.toString())
+                                db.collection("militi")
+                                    .document(document.id).update("cognomeNomeSpinner", cognome.text.toString() + " " + nome.text.toString())
+                                if (selectedGrado == "grado118prima" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("grado118prima", true,
+                                            "grado118seconda", false, "grado118terza", false,
+                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
+                                }
+                                if (selectedGrado == "grado118seconda" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("grado118seconda", false,
+                                            "grado118seconda", true, "grado118terza", false,
+                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
+                                }
+                                if (selectedGrado == "grado118terza" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("grado118terza", false,
+                                            "grado118seconda", false, "grado118terza", true,
+                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
+                                }
+                                if (selectedGrado == "gradoh24prima" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("gradoh24prima", false,
+                                            "grado118seconda", false, "grado118terza", false,
+                                            "gradoh24prima", true, "gradoh24seconda", false, "gradoh24terza", false)
+                                }
+                                if (selectedGrado == "gradoh24seconda" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("gradoh24seconda", false,
+                                            "grado118seconda", false, "grado118terza", false,
+                                            "gradoh24prima", false, "gradoh24seconda", true, "gradoh24terza", false)
+                                }
+                                if (selectedGrado == "gradoh24terza" ) {
+                                    db.collection("militi")
+                                        .document(document.id).update("gradoh24terza", false,
+                                            "grado118seconda", false, "grado118terza", false,
+                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", true)
+                                }
                             }
                         }
                         .addOnFailureListener { exception ->
@@ -114,5 +148,4 @@ class GestioneModificaMilite : Fragment() {
         return root
     }
 }
-
 

@@ -82,12 +82,14 @@ class GestioneTuttiMiliti : Fragment() {
                     val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24terza"
                     userList.add(userInfo)
                 }
-                if (grado118prima == false && grado118seconda == false &&
+                /*if (grado118prima == false && grado118seconda == false &&
                     grado118terza == false && gradoh24prima == false &&
                     gradoh24seconda == false && gradoh24terza == false) {
                     val userInfo = "$nome $cognome $dataDiNascita $residenza NessunGrado"
                     userList.add(userInfo)
                 }
+
+                 */
 
             }
             setupListView(userList)

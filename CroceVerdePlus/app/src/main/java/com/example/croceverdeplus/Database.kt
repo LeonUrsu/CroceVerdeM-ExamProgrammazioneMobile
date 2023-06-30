@@ -20,7 +20,7 @@ class Database {
         nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
 
-        val centralinisti = Centralinisti(nome, cognome, dataDiNascita, residenza)
+        val centralinista = Centralinisti(nome, cognome, dataDiNascita, residenza)
 
         val username = nome + "." + cognome
 
@@ -34,7 +34,7 @@ class Database {
 
         val ruolo = "Centralinista"
 
-        db.collection("centralinisti").add(centralinisti)
+        db.collection("centralinisti").add(centralinista)
             .addOnSuccessListener { documentReference ->
                 Log.d(
                     TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
@@ -140,34 +140,22 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             }
         }.joinToString("")
 
-        val cognomenomespinner= nome + "" + cognome
+        val cognomenomespinner= cognome + " " + nome
 
         val ruolo = "Milite"
 
         db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
-            Log.d(
-                TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
-            )
+            Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
 
             db.collection("militi").document(documentReference.id).update("username", username)
             db.collection("militi").document(documentReference.id).update("password", password)
             db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
-            db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
-                Log.d(
-                    TAG, "DocumentSnapshot added with ID: ${documentReference.id}"
-                )
-
-                db.collection("militi").document(documentReference.id).update("username", username)
-                db.collection("militi").document(documentReference.id).update("password", password)
-                db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
-                db.collection("militi").document(documentReference.id)
-                    .update("cognomeNomeSpinner", cognomenomespinner)
+            db.collection("militi").document(documentReference.id).update("cognomeNomeSpinner", cognomenomespinner)
 
             }.addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
         }
-    }
 
     fun deleteUserM(
         nome: String, cognome: String, dataDiNascita: String, residenza: String

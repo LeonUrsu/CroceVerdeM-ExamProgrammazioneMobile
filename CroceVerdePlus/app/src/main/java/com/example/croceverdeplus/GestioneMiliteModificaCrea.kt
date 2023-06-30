@@ -32,13 +32,13 @@ class GestioneMiliteModificaCrea : Fragment() {
         val milite = Milite()
 
         val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
-                                "gradoh24prima","gradoh24seconda","gradoh24terza", "")
+                                "gradoh24prima","gradoh24seconda","gradoh24terza")
 
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        spinner.setSelection(6)
+        //spinner.setSelection(6)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -56,8 +56,8 @@ class GestioneMiliteModificaCrea : Fragment() {
                         milite.grado118terza, milite.gradoh24prima,
                         milite.gradoh24seconda, milite.gradoh24terza
                     )
-                    if (selectedGrado == "") Toast.makeText(requireActivity(), "Milite creato senza grado", Toast.LENGTH_SHORT).show()
-                    else Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
 
                 }
             }
