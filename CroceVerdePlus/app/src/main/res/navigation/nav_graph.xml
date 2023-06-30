@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_fragmentAmministratore_to_gestioneTuttiMiliti"
             app:destination="@id/gestioneTuttiMiliti" />
+        <action
+            android:id="@+id/action_fragmentAmministratore_to_gestioneSettimanaH24"
+            app:destination="@id/gestioneSettimanaH24" />
     </fragment>
     <fragment
         android:id="@+id/gestioneTuttiCentralinisti"
@@ -90,4 +93,9 @@
             android:name="residenza"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/gestioneSettimanaH24"
+        android:name="com.example.croceverdeplus.GestioneSettimanaH24"
+        android:label="fragment_gestione_settimana_h24"
+        tools:layout="@layout/fragment_gestione_settimana_h24" />
 </navigation>

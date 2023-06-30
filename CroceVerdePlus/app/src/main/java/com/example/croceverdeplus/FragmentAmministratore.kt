@@ -19,6 +19,7 @@ class FragmentAmministratore : Fragment() {
 
         val buttonCen: Button = root.findViewById(R.id.button8)
         val buttonMil: Button = root.findViewById(R.id.button7)
+        val buttonSett: Button = root.findViewById(R.id.button13)
 
         buttonCen.setOnClickListener{
 
@@ -29,6 +30,12 @@ class FragmentAmministratore : Fragment() {
         buttonMil.setOnClickListener{
 
             root.findNavController().navigate(R.id.gestioneTuttiMiliti)
+
+        }
+
+        buttonSett.setOnClickListener{
+
+            root.findNavController().navigate(R.id.gestioneSettimanaH24)
 
         }
 
