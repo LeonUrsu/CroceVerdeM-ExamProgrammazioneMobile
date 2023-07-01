@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,31 +14,64 @@ class MainActivity : AppCompatActivity() {
         val username: EditText = findViewById(R.id.username_input)
         val password: EditText = findViewById(R.id.password_input)
         val button: Button = findViewById(R.id.accedi)
-        val l = LogIn()
+
         button.setOnClickListener {
-            if (l.gestioneAccesso(username, password) == 1) {
+
+            /*val firestore = FirebaseFirestore.getInstance()
+
+                val militiCollection = firestore.collection("militi")
+                val centralinistiCollection = firestore.collection("centralinisti")
+
+                militiCollection.whereEqualTo("username", username.text.toString()).whereEqualTo("password", password.text.toString()).get()
+                    .addOnSuccessListener { querySnapshot ->
+                        if (!querySnapshot.isEmpty) {
+                            // L'utente è presente nella collezione "militi"
+                            val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                            startActivity(intent)
+                        } else {
+                            centralinistiCollection.whereEqualTo("username", username.text.toString()).whereEqualTo("password", password.text.toString()).get()
+                                .addOnSuccessListener { centralinistiQuerySnapshot ->
+                                    if (!centralinistiQuerySnapshot.isEmpty) {
+                                        // L'utente è presente nella collezione "centralinisti"
+                                        val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
+                                        startActivity(intent)
+                                    } else {
+                                        if(username.text.toString() == "a" && password.text.toString() == "p"){
+                                            val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
+                                            startActivity(intent)
+                                        }
+                                    }
+                                }
+                        }
+
+             */
+
+            if (gestioneAccesso(username, password) == 1) {
                 val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 2) {
+            if (gestioneAccesso(username, password) == 2) {
                 val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 3) {
+            if (gestioneAccesso(username, password) == 3) {
                 val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
                 startActivity(intent)
             }
-            if (l.gestioneAccesso(username, password) == 4) {
+            if (gestioneAccesso(username, password) == 4) {
                 val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
                 startActivity(intent)
             }
-        }
-    }
-}
 
-class LogIn {
+        }
+
+        }
+
+
+
     //TODO probabilmente questa classe va dichiarata nel Login.kt e usata tramite import
     fun gestioneAccesso(username: EditText, password: EditText): Int {
+
         val idUser: Int
 
         if (username.text.toString() == "a" && password.text.toString() == "") {
@@ -66,8 +100,11 @@ class LogIn {
             }
         }
         return 0
+
     }
 }
+
+
 //android:theme="@style/Theme.AppCompat" ... > riga eliminata da androidmanifest perchè causava un errore gradle
 
 //-----------------------------
