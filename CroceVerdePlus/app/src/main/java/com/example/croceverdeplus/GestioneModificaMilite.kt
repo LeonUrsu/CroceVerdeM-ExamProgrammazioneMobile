@@ -43,6 +43,11 @@ class GestioneModificaMilite : Fragment() {
 
         val residenzaM = args.residenza
 
+        nome.setText(nomeM)
+        cognome.setText(cognomeM)
+        dataDiNascita.setText(dataDiNascitaM)
+        residenza.setText(residenzaM)
+
 
         val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
             "gradoh24prima","gradoh24seconda","gradoh24terza")
@@ -118,6 +123,8 @@ class GestioneModificaMilite : Fragment() {
                                             "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", true)
                                 }
                             }
+
+                            Toast.makeText(requireActivity(), "Milite aggiornato", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { exception ->
                             Log.w(ContentValues.TAG, "Error getting documents: ", exception)
