@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -22,6 +23,8 @@ class GestioneCentralinista : Fragment() {
 
         val args: GestioneCentralinistaArgs by navArgs()
 
+        val immProfilo: ImageView = root.findViewById(R.id.imageView4)
+        immProfilo.setImageResource(R.drawable.accountimage)
         var nome: TextView = root.findViewById(R.id.nome_text_centralinista)
         var cognome: TextView = root.findViewById(R.id.cognome_text_centralinista)
         var dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_centralinista)
