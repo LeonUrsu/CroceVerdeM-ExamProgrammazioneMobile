@@ -27,7 +27,7 @@ class GestioneTuttiCentralinisti : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_centralinisti, container, false)
 
-        //val fragmentManager = requireActivity().supportFragmentManager
+
         val button: Button = root.findViewById(R.id.button5)
 
         button.setOnClickListener {

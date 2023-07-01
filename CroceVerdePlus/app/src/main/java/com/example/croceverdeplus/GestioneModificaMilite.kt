@@ -44,8 +44,6 @@ class GestioneModificaMilite : Fragment() {
         val residenzaM = args.residenza
 
 
-        //val milite = Milite()
-
         val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
             "gradoh24prima","gradoh24seconda","gradoh24terza")
 
@@ -57,7 +55,6 @@ class GestioneModificaMilite : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGrado = parent.getItemAtPosition(position) as? String
 
-                //setGrado(selectedGrado, milite)
 
                 val db = Firebase.firestore
 
@@ -125,18 +122,6 @@ class GestioneModificaMilite : Fragment() {
                         .addOnFailureListener { exception ->
                             Log.w(ContentValues.TAG, "Error getting documents: ", exception)
                         }
-
-
-
-                    /*data.modifyUserM(nome.text.toString(), cognome.text.toString(),
-                        dataDiNascita.text.toString(), residenza.text.toString(),
-                        selectedGrado!!
-                    )
-
-                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
-
-
-                     */
                 }
             }
 
