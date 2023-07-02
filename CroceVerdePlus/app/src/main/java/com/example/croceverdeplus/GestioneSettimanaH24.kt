@@ -88,28 +88,31 @@ class GestioneSettimanaH24 : Fragment() {
         }
 
         buttonOk.setOnClickListener {
-            if (password.text.toString() == "password") {
-                if (clickSett1 == true) {
-                    db.collection("tabelle")
-                        .document("tabella_118").update("data_lunedi", nextWeekStart)
-                    db.collection("tabelle")
-                        .document("tabella_118_h24").update("data_lunedi", currentWeekStart)
+            db.collection("amministratori").whereEqualTo("password", password.text.toString()).get()
+                .addOnSuccessListener { querySnapshot ->
+                    if (!querySnapshot.isEmpty) {
+                        if (clickSett1 == true) {
+                            db.collection("tabelle")
+                                .document("tabella_118").update("data_lunedi", nextWeekStart)
+                            db.collection("tabelle")
+                                .document("tabella_118_h24").update("data_lunedi", currentWeekStart)
 
-                    updateTabelle()
+                            updateTabelle()
 
+                        }
+                        if (clickSett2 == true) {
+                            db.collection("tabelle")
+                                .document("tabella_118").update("data_lunedi", currentWeekStart)
+                            db.collection("tabelle")
+                                .document("tabella_118_h24").update("data_lunedi", nextWeekStart)
+
+                            updateTabelle()
+                        }
+
+
+
+                    }
                 }
-                if (clickSett2 == true) {
-                    db.collection("tabelle")
-                        .document("tabella_118").update("data_lunedi", currentWeekStart)
-                    db.collection("tabelle")
-                        .document("tabella_118_h24").update("data_lunedi", nextWeekStart)
-
-                    updateTabelle()
-                }
-
-
-
-            }
 
 
         }
