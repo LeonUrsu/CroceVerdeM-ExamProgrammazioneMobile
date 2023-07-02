@@ -1,11 +1,14 @@
 package com.example.croceverdeplus
+import android.content.ContentValues
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
+import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
@@ -32,10 +35,20 @@ class MainActivity : AppCompatActivity() {
             militiCollection.whereEqualTo("username", username.text.toString())
                 .whereEqualTo("password", password.text.toString()).get()
                 .addOnSuccessListener { querySnapshot ->
-                    if (!querySnapshot.isEmpty) {
-                        // L'utente è presente nella collezione "militi"
-                        val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
-                        startActivity(intent)
+                    if (!querySnapshot.isEmpty) { // L'utente è presente nella collezione "militi"
+
+                        val documentId = querySnapshot.documents[0].id
+                        militiCollection.document(documentId).get()
+                            .addOnSuccessListener { documentSnapshot ->
+                                    val volontario = documentSnapshot.getBoolean("volontario") //Ottengo il valore del campo "volontario"
+                                    if (volontario == true) {
+                                        val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                                        startActivity(intent)
+                                    } else {
+                                        val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
+                                        startActivity(intent)
+                                    }
+                            }
                     } else {
                         centralinistiCollection.whereEqualTo("username", username.text.toString())
                             .whereEqualTo("password", password.text.toString()).get()
@@ -56,13 +69,49 @@ class MainActivity : AppCompatActivity() {
                                                 startActivity(intent)
 
                                             }
+                                            if (username.text.toString().isNotEmpty() && password.text.toString().isNotEmpty() && querySnapshot.isEmpty){
+                                                Toast.makeText(this@MainActivity, "Utente non trovato", Toast.LENGTH_SHORT).show()
+                                                loading.visibility = View.INVISIBLE
+                                            }
+                                            if (username.text.toString().isEmpty() && password.text.toString().isEmpty() && querySnapshot.isEmpty) {
+                                                username.error = "Inserisci username"
+                                                password.error = "Inserisci password"
+                                                loading.visibility = View.INVISIBLE
+                                            }
+                                            if (username.text.toString().isEmpty() && querySnapshot.isEmpty){
+                                                username.error = "Inserisci username"
+                                                loading.visibility = View.INVISIBLE
+                                            }
+                                            if (password.text.toString().isEmpty() && querySnapshot.isEmpty) {
+                                                password.error = "Inserisci password"
+                                                loading.visibility = View.INVISIBLE
+                                            }
                                         }
                                 }
+                                /*if (username.text.toString().isEmpty() && password.text.toString().isEmpty()) {
+                                    username.error = "Inserisci username"
+                                    password.error = "Inserisci password"
+                                    loading.visibility = View.INVISIBLE
+                                }
+                                if (username.text.toString().isEmpty()){
+                                    username.error = "Inserisci username"
+                                    loading.visibility = View.INVISIBLE
+                                }
+                                if (password.text.toString().isEmpty()) {
+                                    password.error = "Inserisci password"
+                                    loading.visibility = View.INVISIBLE
+                                }
+
+                                 */
+
                             }
                     }
                 }
 
+
              */
+
+
 
             if (gestioneAccesso(username, password) == 1) {
                     val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
@@ -81,11 +130,13 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
 
+
+
             }
 
 
         }
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
+    /*override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         val loading: ProgressBar = findViewById(R.id.progressBar)
 
@@ -94,32 +145,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+     */
+
     }
-
-
-            /*if (gestioneAccesso(username, password) == 1) {
-                val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
-                startActivity(intent)
-            }
-            if (gestioneAccesso(username, password) == 2) {
-                val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
-                startActivity(intent)
-            }
-            if (gestioneAccesso(username, password) == 3) {
-                val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
-                startActivity(intent)
-            }
-            if (gestioneAccesso(username, password) == 4) {
-                val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
-                startActivity(intent)
-            }
-
-        }
-
-             */
-
-
-
 
 
     //TODO probabilmente questa classe va dichiarata nel Login.kt e usata tramite import
