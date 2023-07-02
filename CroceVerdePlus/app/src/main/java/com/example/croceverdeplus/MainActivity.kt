@@ -2,8 +2,10 @@ package com.example.croceverdeplus
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {
@@ -14,39 +16,88 @@ class MainActivity : AppCompatActivity() {
         val username: EditText = findViewById(R.id.username_input)
         val password: EditText = findViewById(R.id.password_input)
         val button: Button = findViewById(R.id.accedi)
+        //val loading: ProgressBar = findViewById(R.id.progressBar)
+
 
         button.setOnClickListener {
 
-            /*val firestore = FirebaseFirestore.getInstance()
+            /*loading.visibility = View.VISIBLE
 
-                val militiCollection = firestore.collection("militi")
-                val centralinistiCollection = firestore.collection("centralinisti")
+            val firestore = FirebaseFirestore.getInstance()
 
-                militiCollection.whereEqualTo("username", username.text.toString()).whereEqualTo("password", password.text.toString()).get()
-                    .addOnSuccessListener { querySnapshot ->
-                        if (!querySnapshot.isEmpty) {
-                            // L'utente è presente nella collezione "militi"
-                            val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
-                            startActivity(intent)
-                        } else {
-                            centralinistiCollection.whereEqualTo("username", username.text.toString()).whereEqualTo("password", password.text.toString()).get()
-                                .addOnSuccessListener { centralinistiQuerySnapshot ->
-                                    if (!centralinistiQuerySnapshot.isEmpty) {
-                                        // L'utente è presente nella collezione "centralinisti"
-                                        val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
-                                        startActivity(intent)
-                                    } else {
-                                        if(username.text.toString() == "a" && password.text.toString() == "p"){
-                                            val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
-                                            startActivity(intent)
+            val militiCollection = firestore.collection("militi")
+            val centralinistiCollection = firestore.collection("centralinisti")
+            val amministratoriCollection = firestore.collection("amministratori")
+
+            militiCollection.whereEqualTo("username", username.text.toString())
+                .whereEqualTo("password", password.text.toString()).get()
+                .addOnSuccessListener { querySnapshot ->
+                    if (!querySnapshot.isEmpty) {
+                        // L'utente è presente nella collezione "militi"
+                        val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                        startActivity(intent)
+                    } else {
+                        centralinistiCollection.whereEqualTo("username", username.text.toString())
+                            .whereEqualTo("password", password.text.toString()).get()
+                            .addOnSuccessListener { centralinistiQuerySnapshot ->
+                                if (!centralinistiQuerySnapshot.isEmpty) {
+                                    // L'utente è presente nella collezione "centralinisti"
+                                    val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    amministratoriCollection.whereEqualTo(
+                                        "username",
+                                        username.text.toString()
+                                    ).whereEqualTo("password", password.text.toString()).get()
+                                        .addOnSuccessListener { querySnapshot ->
+                                            if (!querySnapshot.isEmpty) {
+                                                // L'utente è presente nella collezione "amministratori"
+                                                val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
+                                                startActivity(intent)
+
+                                            }
                                         }
-                                    }
                                 }
-                        }
+                            }
+                    }
+                }
 
              */
 
             if (gestioneAccesso(username, password) == 1) {
+                    val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
+                    startActivity(intent)
+                }
+                if (gestioneAccesso(username, password) == 2) {
+                    val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
+                    startActivity(intent)
+                }
+                if (gestioneAccesso(username, password) == 3) {
+                    val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
+                    startActivity(intent)
+                }
+                if (gestioneAccesso(username, password) == 4) {
+                    val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                    startActivity(intent)
+                }
+
+            }
+
+
+        }
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        val loading: ProgressBar = findViewById(R.id.progressBar)
+
+        if (hasFocus) {
+            loading.visibility = View.INVISIBLE
+        }
+    }
+
+    }
+
+
+            /*if (gestioneAccesso(username, password) == 1) {
                 val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
                 startActivity(intent)
             }
@@ -65,7 +116,9 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        }
+             */
+
+
 
 
 
@@ -102,7 +155,8 @@ class MainActivity : AppCompatActivity() {
         return 0
 
     }
-}
+
+
 
 
 //android:theme="@style/Theme.AppCompat" ... > riga eliminata da androidmanifest perchè causava un errore gradle

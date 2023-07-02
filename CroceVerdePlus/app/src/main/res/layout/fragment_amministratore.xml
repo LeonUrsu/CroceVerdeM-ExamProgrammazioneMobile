@@ -23,7 +23,7 @@
     <Button
         android:id="@+id/button7"
         android:layout_width="206dp"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#656363"
         android:text="Gestisci militi"
@@ -36,7 +36,7 @@
     <Button
         android:id="@+id/button10"
         android:layout_width="206dp"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:backgroundTint="#656363"
         android:onClick="esci_btn"
@@ -49,7 +49,7 @@
     <Button
         android:id="@+id/button8"
         android:layout_width="206dp"
-        android:layout_height="52dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="#656363"
         android:text="Gestisci Centralinisti"
         android:theme="@style/CV_buttons"
@@ -59,8 +59,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
-        android:layout_width="226dp"
-        android:layout_height="191dp"
+        android:layout_width="224dp"
+        android:layout_height="197dp"
         android:layout_marginTop="32dp"
         android:background="@drawable/danger_red_tv_border"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -70,7 +70,7 @@
         <Button
             android:id="@+id/button12"
             android:layout_width="206dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="#656363"
             android:text="Ripristina ultimo backup"
@@ -82,7 +82,7 @@
         <Button
             android:id="@+id/button13"
             android:layout_width="206dp"
-            android:layout_height="52dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:backgroundTint="#656363"
             android:text="Scegli settimana H24"
