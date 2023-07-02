@@ -137,7 +137,9 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             volontario, dipendente
         )
 
-        val username = nome + "." + cognome
+        val nomeSenzaSpazi = nome.replace("\\s".toRegex(), "")
+        val cognomeSenzaSpazi = cognome.replace("\\s".toRegex(), "")
+        val username = nomeSenzaSpazi + "." + cognomeSenzaSpazi
 
         val password = (1..5).map {
             when (Random.nextInt(3)) {

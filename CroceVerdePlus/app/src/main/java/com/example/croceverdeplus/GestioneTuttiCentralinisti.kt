@@ -51,7 +51,7 @@ class GestioneTuttiCentralinisti : Fragment() {
                 val dataDiNascita = document.getString("dataDiNascita")
                 val residenza = document.getString("residenza")
                 if (nome != null && cognome != null) {
-                    val userInfo = "$nome $cognome $dataDiNascita $residenza"
+                    val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza"
                     userList.add(userInfo)
                 }
             }

@@ -43,6 +43,7 @@ class GestioneModificaMilite : Fragment() {
 
         val residenzaM = args.residenza
 
+
         nome.setText(nomeM)
         cognome.setText(cognomeM)
         dataDiNascita.setText(dataDiNascitaM)
@@ -65,6 +66,9 @@ class GestioneModificaMilite : Fragment() {
 
                 buttonModify.setOnClickListener{
 
+                    val nomeSenzaSpazi = nome.text.replace("\\s".toRegex(), "")
+                    val cognomeSenzaSpazi = cognome.text.replace("\\s".toRegex(), "")
+
                     db.collection("militi")
                         .whereEqualTo("nome", nomeM)
                         .whereEqualTo("cognome", cognomeM)
@@ -83,7 +87,7 @@ class GestioneModificaMilite : Fragment() {
                                 db.collection("militi")
                                     .document(document.id).update("residenza", residenza.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("username", nome.text.toString() + "." + cognome.text.toString())
+                                    .document(document.id).update("username", nomeSenzaSpazi + "." + cognomeSenzaSpazi)
                                 db.collection("militi")
                                     .document(document.id).update("cognomeNomeSpinner", cognome.text.toString() + " " + nome.text.toString())
                                 if (selectedGrado == "grado118prima" ) {

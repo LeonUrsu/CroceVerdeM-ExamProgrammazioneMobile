@@ -35,7 +35,7 @@ class GestioneMilite : Fragment() {
 
         val selectedUser = args.selectedUser
 
-        val userParts = selectedUser.split(" ")
+        val userParts = selectedUser.split("\n")
         nome.text = userParts[0]
         cognome.text = userParts[1]
         dataDiNascita.text = userParts[2]

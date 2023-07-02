@@ -62,53 +62,53 @@ class GestioneTuttiMiliti : Fragment() {
 
                 if (volontario == true) {
                     if (grado118prima == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118prima Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118prima\nVolontario"
                         userList.add(userInfo)
                     }
                     if (grado118seconda == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118seconda Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118seconda\nVolontario"
                         userList.add(userInfo)
                     }
                     if (grado118terza == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118terza Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118terza\nVolontario"
                         userList.add(userInfo)
                     }
                     if (gradoh24prima == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24prima Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24prima\nVolontario"
                         userList.add(userInfo)
                     }
                     if (gradoh24seconda == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24seconda Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24seconda\nVolontario"
                         userList.add(userInfo)
                     }
                     if (gradoh24terza == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24terza Volontario"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24terza\nVolontario"
                         userList.add(userInfo)
                     }
                 }
                 if (dipendente == true){
                     if (grado118prima == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118prima Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118prima\nDipendente"
                         userList.add(userInfo)
                     }
                     if (grado118seconda == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118seconda Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118seconda\nDipendente"
                         userList.add(userInfo)
                     }
                     if (grado118terza == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Grado118terza Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGrado118terza\nDipendente"
                         userList.add(userInfo)
                     }
                     if (gradoh24prima == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24prima Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24prima\nDipendente"
                         userList.add(userInfo)
                     }
                     if (gradoh24seconda == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24seconda Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24seconda\nDipendente"
                         userList.add(userInfo)
                     }
                     if (gradoh24terza == true) {
-                        val userInfo = "$nome $cognome $dataDiNascita $residenza Gradoh24terza Dipendente"
+                        val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza\nGradoh24terza\nDipendente"
                         userList.add(userInfo)
                     }
                 }
