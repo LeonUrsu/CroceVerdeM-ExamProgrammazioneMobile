@@ -1,13 +1,14 @@
 package com.example.croceverdeplus
 
 data class Milite(
-    val username: String? = null,
+    var username: String? = null,
     val password: String? = null,
     var nome: String? = null,
     var cognome: String? = null,
     var dataDiNascita: String? = null,
     var residenza: String? = null,
-    val ruolo: String? = null,
+    var volontario: Boolean? = null,
+    var dipendente: Boolean? = null,
     var cognomeNomeSpinner: String? = null,
     var grado118prima: Boolean? = null,
     var grado118seconda: Boolean? = null,
@@ -27,7 +28,8 @@ data class Milite(
         dataDiNascita: String?, residenza: String?,
                 grado118prima: Boolean?, grado118seconda: Boolean?,
                 grado118terza: Boolean?, gradoh24prima: Boolean?,
-                gradoh24seconda: Boolean?, gradoh24terza: Boolean?) : this() {
+                gradoh24seconda: Boolean?, gradoh24terza: Boolean?,
+                volontario: Boolean?, dipendente: Boolean?) : this() {
         this.nome = nome
         this.cognome = cognome
         this.dataDiNascita = dataDiNascita
@@ -38,6 +40,8 @@ data class Milite(
         this.gradoh24prima = gradoh24prima
         this.gradoh24seconda = gradoh24seconda
         this.gradoh24terza = gradoh24terza
+        this.volontario = volontario
+        this.dipendente = dipendente
 
     }
 }
