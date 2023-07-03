@@ -43,32 +43,33 @@ class ProfiloVolontarioDipendente : Fragment() {
      */
     fun setta_info_profilo(root: View, cognomeNomeSpinner: String) {
         val db = Firebase.firestore
-        db.collection("")
+        db.collection("militi")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
                     Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
                 }
                 for (document in result) {
-                    if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner)
+                    if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
                         root.findViewById<TextView>(R.id.nome_text_profilo_volontario)
                             .setText(document.getString("nome"))
-                    root.findViewById<TextView>(R.id.cognome_text_profilo_volontario)
-                        .setText(document.getString("cognome"))
-                    root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
-                        .setText(document.getString("dataDiNascita"))
-                    root.findViewById<TextView>(R.id.prima_118)
-                        .setText(document.getString("oreTurno118prima"))
-                    root.findViewById<TextView>(R.id.seconda_118)
-                        .setText(document.getString("oreTurno118seconda"))
-                    root.findViewById<TextView>(R.id.terza_118)
-                        .setText(document.getString("oreTurno118terza"))
-                    root.findViewById<TextView>(R.id.prima_h24)
-                        .setText(document.getString("oreTurnoh24prima"))
-                    root.findViewById<TextView>(R.id.seconda_h24)
-                        .setText(document.getString("oreTurnoh24seconda"))
-                    root.findViewById<TextView>(R.id.terza_h24)
-                        .setText(document.getString("oreTurnoh24terza"))
+                        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario)
+                            .setText(document.getString("cognome"))
+                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
+                            .setText(document.getString("dataDiNascita"))
+                        root.findViewById<TextView>(R.id.prima_118)
+                            .setText(document.getString("oreTurno118prima"))
+                        root.findViewById<TextView>(R.id.seconda_118)
+                            .setText(document.getString("oreTurno118seconda"))
+                        root.findViewById<TextView>(R.id.terza_118)
+                            .setText(document.getString("oreTurno118terza"))
+                        root.findViewById<TextView>(R.id.prima_h24)
+                            .setText(document.getString("oreTurnoh24prima"))
+                        root.findViewById<TextView>(R.id.seconda_h24)
+                            .setText(document.getString("oreTurnoh24seconda"))
+                        root.findViewById<TextView>(R.id.terza_h24)
+                            .setText(document.getString("oreTurnoh24terza"))
+                    }
                 }
             }
             .addOnFailureListener { exception ->

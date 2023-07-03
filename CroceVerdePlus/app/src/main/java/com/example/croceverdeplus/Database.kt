@@ -6,12 +6,14 @@ import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import java.io.Serializable
+import java.time.Instant
+import java.time.ZoneId
 import kotlin.random.Random
 
 
@@ -107,8 +109,8 @@ class Database {
 
 
     /*
-Metodo per polulare lo spinner dei militi per segnarli sul tabellone
- */
+    Metodo per polulare lo spinner dei militi per segnarli sul tabellone
+    */
     fun set_spinner(root: View, militi_array: MutableList<String>, act: Activity) {
         val gameKindArray: ArrayAdapter<String> =
             ArrayAdapter<String>(
@@ -196,29 +198,6 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
         return array_militi
     }
 
-    /*
-    fun trova_tabelle_e_date(): Boolean {
-        var documento1 = ricevi_tabella_118_h24()
-        var documento2 = ricevi_tabella_118_h24()
-        if (documento1 == null || documento2 == null) return false
-        var time1 = documento1.data_lunedi
-        var time2 = documento2.data_lunedi
-        if (time1 == null || time2 == null) return false
-        var comparato = time1.compareTo(time2)
-        if (comparato <= 0) {
-            settimana1 = documento2
-            settimana2 = documento1
-            data_lunedi_settimana1 = Timestamp(time1.seconds * 1000)
-            data_lunedi_settimana2 = Timestamp(time2.seconds * 1000)
-        } else {
-            settimana1 = documento2
-            settimana2 = documento1
-            data_lunedi_settimana1 = Timestamp(time2.seconds * 1000)
-            data_lunedi_settimana2 = Timestamp(time1.seconds * 1000)
-        }
-        return true
-    }
-     */
 
     /*
     Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
@@ -270,9 +249,9 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 if (document.getString(turno) == "") {
                     var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno)
-                    if(autorizzazioneMilite)
+                    if (autorizzazioneMilite)
                         segna_milite(nomeCognomeSpinner, tabella, turno)
-                        aggiungi_ore_lavorate(nomeCognomeSpinner, turno)
+                    aggiungi_ore_lavorate(nomeCognomeSpinner, turno)
                 } else
                     if (document.getString(turno) == nomeCognomeSpinner) {
                         cancella_milite(nomeCognomeSpinner, turno)
@@ -286,6 +265,127 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
             Log.d(TAG, "get failed with ", exception)
         }
     }
+
+    /*
+    Metodo per aggiungere un oggetto generrico alla collection passata tramite valore String
+     */
+    fun <T : Any> aggiungi_documento_a_db(ogg: T, collection: String) {
+        db.collection(collection)
+            .add(ogg)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error adding document", e)
+            }
+    }
+
+    /*
+    Metodo per aggiungere un oggetto generrico alla collection passata tramite valore String
+     */
+    fun cerca_disponibilita_centralinista(cognomeNomeSpinner: String) {
+        db.collection("disponibilita")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                for (document in result) {
+                    //Trovare le dispobilita per il cnetralinsta
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+    }
+
+    /*
+    Metodo per registrare le disponibilità nel db
+     */
+    fun disponibilita_btn(cognomeNomeSpinner : String, root: View, ) {
+        //TODO deve rilevare il id turno
+        //TODO dal id turno trovo la data del tunro
+        var tipo_settimana = ""
+        var tipo_settimana_bool = false
+        if (TabelloneTurniVolontario().tipo_settimana == 1)
+            tipo_settimana = "tabella_118"
+        else{
+            tipo_settimana = "tabella_118_h24"
+            tipo_settimana_bool = true
+        }
+        val docRef = db.collection("tabelle").document(tipo_settimana)
+        docRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                var turno = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana_bool)
+                var tabella = rileva_nome_tabella_dal_turno(turno)
+                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document.getTimestamp("dataLunedi")!!, turno)
+                costruisci_trasmetti_disponibilità(dataDisponibilita, cognomeNomeSpinner)
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+
+        //TODO Preparo un oggetto da registrare nel DB con data del turno in cui il milite è disponibile
+    }
+
+
+    /*
+    Metodo per rilevare la il nome della settimana dal turno passato
+     */
+    private fun rileva_nome_tabella_dal_turno(turno : String): String {
+        var settimana = ""
+        if (turno.contains("turno118h24"))
+            settimana = "settimana_118_h24"
+        else settimana = "settimana_118"
+        return settimana
+    }
+
+    /*
+    Metodo per costruire la data della disponibilità del milite
+     */
+    private fun costruisci_data_disponibilita_in_Long(dataLunedi : Timestamp, turno: String): Long {
+        var data = dataLunedi!!.seconds * 1000
+        val lunedi =
+            Instant.ofEpochMilli(data.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
+        var str = turno.substring(turno.length - 9)
+        str = str.substring(0, 3)
+        //tabella118_turno_118_lun_mat_1
+        val giorno: Int = when (str) {
+            "lun" -> 0
+            "mar" -> 1
+            "mer" -> 2
+            "gio" -> 3
+            "ven" -> 4
+            "sab" -> 5
+            "dom" -> 6
+            else -> {
+                0
+            }
+        }
+        var millis = lunedi.plusDays(giorno.toLong()).second.toLong() * 1000 //data in millesecondi
+        return millis
+    }
+
+
+    /*
+    Metodo per costruire un oggetto disponibilità e mandartlo nel DB
+     */
+    private fun costruisci_trasmetti_disponibilità(dataDisponibilita: Long, cognomeNomeSpinner: String) {
+        var collection = "disponibilità"
+        class Disponibilita{
+            var nomeCognomeSpinner : String? = null
+            var dataDisponibilita : Long? = null
+        }
+        var ogg = Disponibilita()
+            ogg.nomeCognomeSpinner = cognomeNomeSpinner
+            ogg.dataDisponibilita = dataDisponibilita
+        aggiungi_documento_a_db(ogg, collection)
+    }
+
 
     /*
     Metodo per verificare il gradfo del milite e se ritorna true allora il milite è autorizzato a prenotarsi nel turno
@@ -423,27 +523,6 @@ Metodo per polulare lo spinner dei militi per segnarli sul tabellone
                         militeRef.update(oreTurno, FieldValue.increment(incrementValue))
                     }
                 }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
-
-    fun disponibilita_milite(nome: String) {
-        db.collection("")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-                var militi: MutableList<String> = mutableListOf<String>()
-                //document.toObject<Tabella118>()
-                for (document in result) {
-                    var nome_temp = document.getString("cognomeNomeSpinner")
-                    if (nome_temp != null)
-                        militi.add(nome_temp)
-                }
-                //set_spinner(root, militi, act)
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)

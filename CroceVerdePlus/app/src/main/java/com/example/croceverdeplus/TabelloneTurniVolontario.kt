@@ -1,10 +1,7 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
-import android.content.ContentValues
 import android.icu.util.Calendar
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,14 +11,12 @@ import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
 import com.google.firebase.Timestamp
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
 
 
 class TabelloneTurniVolontario : Fragment() {
 
     var cognomeNomeSpinner = "" //TODO passare il nome dal login al main al tabellone
-
+    var tipo_settimana : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,15 +40,16 @@ class TabelloneTurniVolontario : Fragment() {
 
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
-            Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
-            disponibilita_btn_function(root, vf_volontario) //TODO (da fare disponibilità btn)
-            //TODO per la disponibilita potei fare una lista separata e il nome del milite disponibile si colora diverde o blu nella lista dei militi del centralinista
+            //Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
+            Database().disponibilita_btn(cognomeNomeSpinner, root)
+            //TODO forse bisogna mettere un altro spinner per specificare il tipo di settimana alla qualce si vuole prenotare
         }
 
 
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_volontario.displayedChild = 1
+            tipo_settimana = 1
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
 
@@ -61,6 +57,7 @@ class TabelloneTurniVolontario : Fragment() {
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_volontario.displayedChild = 2
+            tipo_settimana = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
 
@@ -109,14 +106,19 @@ class TabelloneTurniVolontario : Fragment() {
             root,
             TabelloneTurni().tipo_settimana(vf_volontario)
         )
-        val id_trovato = TabelloneTurni().id_int_val_builder(
-            id_string,
-            resources,
-            requireContext().packageName,
-            root
+        //val dataTunro = data_turno_disponibilità()
+        //if (dataTunro == false) return
+        val data = hashMapOf(
+            "turno" to id_string,
+            "cognomeNomeSpinner" to cognomeNomeSpinner,
+            //"dataTurno" to data_turno_disponibilità()
         )
+        //Database().
+        //TabelloneTurni().rileva_data_turno(turno,dataLunedi)
         //TODO al click bisogna che il sistema mandi nel database i dati
     }
+
+
 
 
     /*

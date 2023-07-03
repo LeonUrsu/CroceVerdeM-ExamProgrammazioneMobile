@@ -1,14 +1,13 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
 import android.content.ContentValues
 import android.content.res.Resources
 import android.util.Log
 import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.ViewFlipper
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.time.Instant
@@ -122,6 +121,36 @@ class TabelloneTurni {
             return true
         return true
     }
+
+    fun rileva_data_turno(turno: String, dataLunedi: Timestamp): Array<Any> {
+        var data = dataLunedi!!.seconds * 1000
+        val lunedi =
+            Instant.ofEpochMilli(data.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
+        var settimana = ""
+        if (turno.contains("turno118h24"))
+            settimana = "settimana_118_h24"
+        else settimana = "settimana_118"
+        var str = turno.substring(turno.length - 9)
+        str = str.substring(0, 3)
+        //tabella118_turno_118_lun_mat_1
+        val giorno: Int = when (str) {
+            "lun" -> 0
+            "mar" -> 1
+            "mer" -> 2
+            "gio" -> 3
+            "ven" -> 4
+            "sab" -> 5
+            "dom" -> 6
+            else -> {
+                0
+            }
+        }
+        var millis = lunedi.plusDays(giorno.toLong()).second.toLong() * 1000 //data in millesecondi
+        var hashmap = hashMapOf("data" to millis, "tipo_tabella" to settimana)
+        //Database().aggiungi_documento_a_db(hashmap,"disponibilita")
+        return arrayOf(millis, settimana)
+    }
+
 
     fun rileva_nome_milite(root: View, tipo_settimana: Boolean) {
         var nome_milite = TabelloneTurni().rileva_nomi_spinner(root, tipo_settimana)
@@ -621,9 +650,5 @@ Metodo Per settare la tabella 118
             root.findViewById<TextView>(R.id.tabella118h24_turno_h24_dom_ser_3).text =
                 tabella.turno_h24_dom_ser_3
         }
-
-
     }
-
-
 }
