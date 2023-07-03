@@ -15,7 +15,7 @@ import com.google.firebase.Timestamp
 
 class TabelloneTurniVolontario : Fragment() {
 
-    var cognomeNomeSpinner = "" //TODO passare il nome dal login al main al tabellone
+    var cognomeNomeSpinner = "Rossi Mario" //TODO passare il nome dal login al main al tabellone
     var tipo_settimana : Int = 0
 
     override fun onCreateView(

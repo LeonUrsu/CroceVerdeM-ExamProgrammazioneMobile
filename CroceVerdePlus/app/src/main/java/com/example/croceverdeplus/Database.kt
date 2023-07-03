@@ -13,7 +13,11 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZoneOffset
+import java.time.temporal.ChronoField
 import kotlin.random.Random
 
 
@@ -306,8 +310,6 @@ class Database {
     Metodo per registrare le disponibilità nel db
      */
     fun disponibilita_btn(cognomeNomeSpinner : String, root: View, ) {
-        //TODO deve rilevare il id turno
-        //TODO dal id turno trovo la data del tunro
         var tipo_settimana = ""
         var tipo_settimana_bool = false
         if (TabelloneTurniVolontario().tipo_settimana == 1)
@@ -321,8 +323,7 @@ class Database {
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 var turno = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana_bool)
-                var tabella = rileva_nome_tabella_dal_turno(turno)
-                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document.getTimestamp("dataLunedi")!!, turno)
+                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document.getTimestamp("data_lunedi")!!, turno)
                 costruisci_trasmetti_disponibilità(dataDisponibilita, cognomeNomeSpinner)
             } else {
                 Log.d(TAG, "No such document")
@@ -330,8 +331,6 @@ class Database {
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
-
-        //TODO Preparo un oggetto da registrare nel DB con data del turno in cui il milite è disponibile
     }
 
 
@@ -349,10 +348,10 @@ class Database {
     /*
     Metodo per costruire la data della disponibilità del milite
      */
-    private fun costruisci_data_disponibilita_in_Long(dataLunedi : Timestamp, turno: String): Long {
+    private fun costruisci_data_disponibilita_in_Long(dataLunedi : Timestamp, turno: String): Long? {
         var data = dataLunedi!!.seconds * 1000
         val lunedi =
-            Instant.ofEpochMilli(data.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
+            Instant.ofEpochMilli(data).atZone(ZoneId.systemDefault()).toLocalDateTime()
         var str = turno.substring(turno.length - 9)
         str = str.substring(0, 3)
         //tabella118_turno_118_lun_mat_1
@@ -368,15 +367,17 @@ class Database {
                 0
             }
         }
-        var millis = lunedi.plusDays(giorno.toLong()).second.toLong() * 1000 //data in millesecondi
-        return millis
+        var localDateTime = lunedi.plusDays(giorno.toLong())
+       //var millis_long = localDateTime.getLong(ChronoField.EPOCH_DAY)   //data in millesecondi
+        var millis_long = localDateTime.atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
+        return millis_long
     }
 
 
     /*
     Metodo per costruire un oggetto disponibilità e mandartlo nel DB
      */
-    private fun costruisci_trasmetti_disponibilità(dataDisponibilita: Long, cognomeNomeSpinner: String) {
+    private fun costruisci_trasmetti_disponibilità(dataDisponibilita: Long?, cognomeNomeSpinner: String) {
         var collection = "disponibilità"
         class Disponibilita{
             var nomeCognomeSpinner : String? = null
