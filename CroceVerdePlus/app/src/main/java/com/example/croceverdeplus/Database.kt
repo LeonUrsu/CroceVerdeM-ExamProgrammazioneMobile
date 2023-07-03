@@ -525,7 +525,7 @@ class Database {
     Metodo per cercare mel database i militi e aggiungerli nella listview del centralinista in modo
     che lui possa vedere i militi disponibili per fare turno
      */
-    fun cerca_militi_disponibili(root:View, context : Context) {
+    fun cerca_militi_disponibili(root: View, context: Context) {
         db.collection("disponibilità")
             .get()
             .addOnSuccessListener { result ->
@@ -548,21 +548,27 @@ class Database {
     /*
     Metodo per caricare la disponibilità dei militi e vedersli in una scrollview
      */
-    private fun carica_disponibilità_nel_fragment(root: View, disponibilita: MutableList<Disponibilita>, context : Context) {
+    private fun carica_disponibilità_nel_fragment(
+        root: View,
+        disponibilita: MutableList<Disponibilita>,
+        context: Context
+    ) {
         val linearLayout = root.findViewById(R.id.militi_disponibili_layout) as LinearLayout
-        disponibilita.forEach{
+        disponibilita.forEach {
             it.nomeCognomeSpinner
             val dis = TextView(context)
             var long_time = it.dataDisponibilita?.toLong()
             if (long_time == null) long_time = 0.toLong()
-            var localdatatime = LocalDateTime.ofInstant(Instant.ofEpochMilli(long_time), ZoneOffset.UTC)
-            dis.hint = "${it.nomeCognomeSpinner}  ${it.turnoDisponibilita}  ${localdatatime.toLocalDate()}"
+            var localdatatime =
+                LocalDateTime.ofInstant(Instant.ofEpochMilli(long_time), ZoneOffset.UTC)
+            dis.hint =
+                "${it.nomeCognomeSpinner}  ${it.turnoDisponibilita}  ${localdatatime.toLocalDate()}"
             dis.textSize = 20F
             linearLayout.addView(dis)
         }
     }
 
-    fun popula_lista_checklist(root: View, contex : Context) {
+    fun popula_lista_checklist(root: View, contex: Context) {
         db.collection("presidi_ambulanza_118")
             .get()
             .addOnSuccessListener { result ->
@@ -584,7 +590,11 @@ class Database {
     /*
     Metodo per caricare i presidi dell'ambulanza nel fragment
      */
-    private fun carica_presidi_ambulanza_nel_fragment(root: View, context: Context, presidi : MutableList<String>) {
+    private fun carica_presidi_ambulanza_nel_fragment(
+        root: View,
+        context: Context,
+        presidi: MutableList<String>
+    ) {
         val linearLayout = root.findViewById(R.id.checkListVolontario) as LinearLayout
         presidi.forEach {
             val presidio = CheckBox(context)
@@ -592,6 +602,29 @@ class Database {
             presidio.textSize = 20F
             linearLayout.addView(presidio)
         }
+    }
+
+
+    fun popula_spinner_militi_filtrati(root: View, act: Activity) {
+        db.collection("militi")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                var militi: MutableList<Milite> = mutableListOf()
+                for (document in result) { militi.add(document.toObject<Milite>()) }
+                val servizio_val: String =
+                    root.findViewById<Spinner>(R.id.servizio_input).selectedItem.toString()
+                val grado_val: String =
+                    root.findViewById<Spinner>(R.id.grado_input).selectedItem.toString()
+                TabelloneTurni().filtra_militi(militi, servizio_val, grado_val)
+                //militi.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it.cognomeNomeSpinner }))
+                //set_spinner(root, militi, act)
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
     }
 
 

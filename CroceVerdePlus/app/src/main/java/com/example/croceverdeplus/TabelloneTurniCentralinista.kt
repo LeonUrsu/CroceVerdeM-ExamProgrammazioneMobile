@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 
 
 class TabelloneTurniCentralinista : Fragment() {
-
+    var arrayMiliti : MutableList<Milite>? = null
     var tipo_settimana : Int = 0
 
     override fun onCreateView(
@@ -25,8 +25,8 @@ class TabelloneTurniCentralinista : Fragment() {
             inflater.inflate(R.layout.fragment_tabellone_turni_centralinista, container, false)
         val vf_centralinista = root.findViewById(R.id.vf) as ViewFlipper
         vf_centralinista.displayedChild = 2
-
         Database().popula_spinner_militi(root, requireActivity())
+        //root.findViewById<Spinner>(R.id.milite_input).setOnClickListener{ Database.popula_spinner_militi_filtrati(root, requireActivity()) }
         TabelloneTurni().setta_settiamna_118_h24(root)
         TabelloneTurni().setta_settiamna_118(root)
 
@@ -89,8 +89,8 @@ class TabelloneTurniCentralinista : Fragment() {
         grado_val: Int
     ) {
         val array_ricevuto: ArrayList<Milite> = Database().ricevi_array_militi()
-        var array_fltrati = filtra_militi(array_ricevuto, servizio_val, giorno_val)
-        val array_militi_string = militi_list_to_string_list(array_fltrati)
+        //var array_fltrati = filtra_militi(array_ricevuto, servizio_val, giorno_val)
+        //val array_militi_string = militi_list_to_string_list(array_fltrati)
         //popula_spinner_militi(root, array_militi_string)
     }
 
@@ -103,45 +103,7 @@ class TabelloneTurniCentralinista : Fragment() {
         return array.toTypedArray()
     }
 
-    /*
-    Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato
-    */
-    fun filtra_militi(
-        array: MutableList<Milite>,
-        servizio_val: Int,
-        grado_val: Int
-    ): MutableList<Milite> {
-        var grado118prima = true
-        var grado118seconda = true
-        var grado118terza = true
-        var gradoh24prima = true
-        var gradoh24seconda = true
-        var gradoh24terza = true
-        if (grado_val == 1) {
-            grado118prima = false
-            grado118seconda = false
-            grado118terza = false
-        }
-        if (servizio_val == 1) {
-            gradoh24prima = false
-        }
-        if (servizio_val == 2) {
-            gradoh24prima = false
-            gradoh24seconda = false
-        }
-        array.forEach {
-            if (it.grado118prima == grado118prima
-                && it.grado118seconda == grado118seconda
-                && it.grado118terza == grado118terza
-                && it.gradoh24prima == gradoh24prima
-                && it.gradoh24seconda == gradoh24seconda
-                && it.gradoh24terza == gradoh24terza
-            ) else {
-                array.remove(it)
-            }
-        }
-        return array
-    }
+
 
 
 }

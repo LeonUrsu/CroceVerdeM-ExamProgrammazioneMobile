@@ -199,6 +199,51 @@ Metodo Per settare la tabella 118
     }
 
     /*
+    Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato
+    */ //TODO (BIsogna trovare il odo di filtrare i militi in base ai parametri che sono stati passati)
+    fun filtra_militi(
+        array: MutableList<Milite>,
+        servizio_val: String,
+        grado_val: String
+    ): MutableList<Milite> {
+        var grado118prima = true
+        var grado118seconda = true
+        var grado118terza = true
+        var gradoh24prima = true
+        var gradoh24seconda = true
+        var gradoh24terza = true
+
+
+        if (servizio_val == "h24") {
+            grado118prima = false
+            grado118terza = false
+            grado118seconda = false
+            if (grado_val == "1a") {
+                gradoh24prima = false
+            }
+            if (grado_val == "2a") {
+                gradoh24prima = false
+                gradoh24seconda = false
+            }
+        }
+        if (servizio_val == "118")
+
+        array.forEach {
+            if (it.grado118prima == grado118prima
+                && it.grado118seconda == grado118seconda
+                && it.grado118terza == grado118terza
+                && it.gradoh24prima == gradoh24prima
+                && it.gradoh24seconda == gradoh24seconda
+                && it.gradoh24terza == gradoh24terza
+            ) else {
+                array.remove(it)
+            }
+        }
+        return array
+    }
+
+
+    /*
     Metodo per settare le date su una tabella
     la cosa ricevuta e un oggetto di configurazione da li si estraggono le date
     la tabella con 118 corrisponde al valore false
