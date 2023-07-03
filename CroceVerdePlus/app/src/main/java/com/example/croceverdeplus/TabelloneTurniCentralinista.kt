@@ -14,7 +14,8 @@ import androidx.fragment.app.Fragment
 
 
 class TabelloneTurniCentralinista : Fragment() {
-    var arrayMiliti = null
+
+    var tipo_settimana : Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,17 +34,14 @@ class TabelloneTurniCentralinista : Fragment() {
         //setta_tabelle_con_militi()
         val segna_cancella_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segna_cancella_btn.setOnClickListener {
-
-
             segna_cancella_btn_function(root, vf_centralinista)
-
             Toast.makeText(requireActivity(), "Segnato", Toast.LENGTH_SHORT).show()
-
         }
 
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_centralinista.displayedChild = 1
+            tipo_settimana = 1
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
 
@@ -51,6 +49,7 @@ class TabelloneTurniCentralinista : Fragment() {
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_centralinista.displayedChild = 2
+            tipo_settimana = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
 

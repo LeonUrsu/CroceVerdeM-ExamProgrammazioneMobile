@@ -11,6 +11,8 @@ import android.widget.ViewFlipper
 
 class TabelloneTurniDipendente : Fragment() {
 
+    var tipo_settimana : Int = 0
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,12 +26,14 @@ class TabelloneTurniDipendente : Fragment() {
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_dipendente.displayedChild = 1
+            tipo_settimana = 1
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
 
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {
             vf_dipendente.displayedChild = 2
+            tipo_settimana = 2
             Toast.makeText(requireActivity(), "Settimana cambiata", Toast.LENGTH_SHORT).show()
         }
         return root

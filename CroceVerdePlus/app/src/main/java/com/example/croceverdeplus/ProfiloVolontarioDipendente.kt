@@ -27,7 +27,7 @@ class ProfiloVolontarioDipendente : Fragment() {
             false
         )
         var cognomeNomeSpinner =
-            "Rossi Mario" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
+            "Di Natale Antonio" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
         setta_info_profilo(root, cognomeNomeSpinner)
         val logout = root.findViewById(R.id.logout) as Button
         logout.setOnClickListener { exit_function(requireActivity()) }
