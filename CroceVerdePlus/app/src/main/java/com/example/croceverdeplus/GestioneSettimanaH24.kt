@@ -2,29 +2,20 @@ package com.example.croceverdeplus
 
 import android.content.ContentValues
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
-import android.graphics.drawable.LayerDrawable
-import android.graphics.drawable.ShapeDrawable
-import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Bundle
-import android.text.format.DateUtils.formatDateRange
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ToggleButton
+import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-import java.util.TimeZone
 
 
 class GestioneSettimanaH24 : Fragment() {
@@ -127,7 +118,7 @@ private fun setButtonStyle(button: Button, color: Int) {
 
 
 // Ottengo la data di inizio(lunedì) e fine(domenica) settimana in base ad una data specifica(corrente)
-private fun getWeekDates(date: Date): Pair<Date, Date> {
+internal fun getWeekDates(date: Date): Pair<Date, Date> {
     val calendar = Calendar.getInstance()
     calendar.time = date
 
