@@ -23,7 +23,7 @@ class TabelloneTurni {
      */
     fun rileva_nomi_spinner(root: View, tipo_settimana: Boolean): String {
         val nome_cognome: String =
-            root.findViewById<Spinner>(R.id.milite_input).getSelectedItem().toString()
+            root.findViewById<Spinner>(R.id.milite_input).selectedItem.toString()
         return nome_cognome
     }
 
@@ -34,13 +34,13 @@ class TabelloneTurni {
     */
     fun rileva_valori_spinner(root: View, tipo_settimana: Boolean): String {
         val servizio_val: String =
-            root.findViewById<Spinner>(R.id.servizio_input).getSelectedItem().toString()
+            root.findViewById<Spinner>(R.id.servizio_input).selectedItem.toString()
         val orario_val: String =
-            root.findViewById<Spinner>(R.id.orario_input).getSelectedItem().toString()
+            root.findViewById<Spinner>(R.id.orario_input).selectedItem.toString()
         val giorno_val: String =
-            root.findViewById<Spinner>(R.id.giorno_input).getSelectedItem().toString()
+            root.findViewById<Spinner>(R.id.giorno_input).selectedItem.toString()
         val grado_val: String =
-            root.findViewById<Spinner>(R.id.grado_input).getSelectedItem().toString()
+            root.findViewById<Spinner>(R.id.grado_input).selectedItem.toString()
         return id_builder(tipo_settimana, servizio_val, giorno_val, orario_val, grado_val)
     }
 
@@ -123,7 +123,7 @@ class TabelloneTurni {
     }
 
     fun rileva_data_turno(turno: String, dataLunedi: Timestamp): Array<Any> {
-        var data = dataLunedi!!.seconds * 1000
+        var data = dataLunedi.seconds * 1000
         val lunedi =
             Instant.ofEpochMilli(data.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
         var settimana = ""

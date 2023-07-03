@@ -28,7 +28,6 @@
     </string-array>
 
     <string-array name="presidi_ambulanza_array">
-        <item>Targa Data Firma</item>
         <item>Attrezzature e materiali</item>
         <item>Bombola 1 Bar</item>
         <item>Bombola 2 Bar</item>
@@ -38,7 +37,7 @@
         <item>Aerosol</item>
         <item>Occhiali di protezione</item>
         <item>Maschere</item>
-        <item>Annule orofaringee</item>
+        <item>Cannule orofaringee</item>
         <item>Filtro</item>
         <item>Fonendoscopio</item>
         <item>Sfigmanometro</item>
@@ -50,7 +49,7 @@
         <item>Telo termoisolante</item>
         <item>Barella</item>
         <item>Ferma testa</item>
-        <item>Cinghia frontale  e mentoniera</item>
+        <item>Cinghia frontale e mentoniera</item>
         <item>Ragno</item>
         <item>Estricatore di sicurezza KED</item>
         <item>Lenzuola e teli di ricambioGuanti</item>

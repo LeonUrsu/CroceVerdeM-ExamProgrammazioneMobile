@@ -21,6 +21,10 @@ class MainActivityCentralinista : AppCompatActivity() {
                     loadFragment(TabelloneTurniCentralinista())
                     true
                 }
+                R.id.militi_disponibili -> {
+                    loadFragment(MilitiDisponibili())
+                    true
+                }
                 R.id.account -> {
                     loadFragment(ProfiloCentralinista())
                     true

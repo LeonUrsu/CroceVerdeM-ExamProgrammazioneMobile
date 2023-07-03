@@ -2,10 +2,14 @@ package com.example.croceverdeplus
 
 import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.Spinner
+import android.widget.TextView
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
@@ -13,11 +17,9 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.time.Instant
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.ZoneOffset
-import java.time.temporal.ChronoField
 import kotlin.random.Random
 
 
@@ -248,7 +250,6 @@ class Database {
         turno: String,
         nomeCognomeSpinner: String
     ) {
-        //TODO (In questo punto prima di fare qulasiasi cosa bisogna controllare se il milite ha il grado necesario per iscriversi al turno)
         val docRef = db.collection("tabelle").document(tabella)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
@@ -287,34 +288,14 @@ class Database {
     }
 
     /*
-    Metodo per aggiungere un oggetto generrico alla collection passata tramite valore String
-     */
-    fun cerca_disponibilita_centralinista(cognomeNomeSpinner: String) {
-        db.collection("disponibilita")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-                for (document in result) {
-                    //Trovare le dispobilita per il cnetralinsta
-
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
-
-    /*
     Metodo per registrare le disponibilità nel db
      */
-    fun disponibilita_btn(cognomeNomeSpinner : String, root: View, ) {
+    fun disponibilita_btn(cognomeNomeSpinner: String, root: View) {
         var tipo_settimana = ""
         var tipo_settimana_bool = false
         if (TabelloneTurniVolontario().tipo_settimana == 1)
             tipo_settimana = "tabella_118"
-        else{
+        else {
             tipo_settimana = "tabella_118_h24"
             tipo_settimana_bool = true
         }
@@ -323,8 +304,11 @@ class Database {
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 var turno = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana_bool)
-                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document.getTimestamp("data_lunedi")!!, turno)
-                costruisci_trasmetti_disponibilità(dataDisponibilita, cognomeNomeSpinner)
+                var dataDisponibilita = costruisci_data_disponibilita_in_Long(
+                    document.getTimestamp("data_lunedi")!!,
+                    turno
+                )
+                costruisci_trasmetti_disponibilità(dataDisponibilita, cognomeNomeSpinner, turno)
             } else {
                 Log.d(TAG, "No such document")
             }
@@ -337,7 +321,7 @@ class Database {
     /*
     Metodo per rilevare la il nome della settimana dal turno passato
      */
-    private fun rileva_nome_tabella_dal_turno(turno : String): String {
+    private fun rileva_nome_tabella_dal_turno(turno: String): String {
         var settimana = ""
         if (turno.contains("turno118h24"))
             settimana = "settimana_118_h24"
@@ -348,13 +332,12 @@ class Database {
     /*
     Metodo per costruire la data della disponibilità del milite
      */
-    private fun costruisci_data_disponibilita_in_Long(dataLunedi : Timestamp, turno: String): Long? {
-        var data = dataLunedi!!.seconds * 1000
+    private fun costruisci_data_disponibilita_in_Long(dataLunedi: Timestamp, turno: String): Long? {
+        var data = dataLunedi.seconds * 1000
         val lunedi =
             Instant.ofEpochMilli(data).atZone(ZoneId.systemDefault()).toLocalDateTime()
         var str = turno.substring(turno.length - 9)
         str = str.substring(0, 3)
-        //tabella118_turno_118_lun_mat_1
         val giorno: Int = when (str) {
             "lun" -> 0
             "mar" -> 1
@@ -368,7 +351,7 @@ class Database {
             }
         }
         var localDateTime = lunedi.plusDays(giorno.toLong())
-       //var millis_long = localDateTime.getLong(ChronoField.EPOCH_DAY)   //data in millesecondi
+        //var millis_long = localDateTime.getLong(ChronoField.EPOCH_DAY)   //data in millesecondi
         var millis_long = localDateTime.atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
         return millis_long
     }
@@ -377,15 +360,23 @@ class Database {
     /*
     Metodo per costruire un oggetto disponibilità e mandartlo nel DB
      */
-    private fun costruisci_trasmetti_disponibilità(dataDisponibilita: Long?, cognomeNomeSpinner: String) {
+    private fun costruisci_trasmetti_disponibilità(
+        dataDisponibilita: Long?,
+        cognomeNomeSpinner: String,
+        turno: String
+    ) {
         var collection = "disponibilità"
-        class Disponibilita{
-            var nomeCognomeSpinner : String? = null
-            var dataDisponibilita : Long? = null
+
+        class Disponibilita {
+            var nomeCognomeSpinner: String? = null
+            var dataDisponibilita: Long? = null
+            var turnoDisponibilita: String? = null
         }
+
         var ogg = Disponibilita()
-            ogg.nomeCognomeSpinner = cognomeNomeSpinner
-            ogg.dataDisponibilita = dataDisponibilita
+        ogg.nomeCognomeSpinner = cognomeNomeSpinner
+        ogg.dataDisponibilita = dataDisponibilita
+        ogg.turnoDisponibilita = turno
         aggiungi_documento_a_db(ogg, collection)
     }
 
@@ -407,9 +398,7 @@ class Database {
             }
         }
         var risultato = document.getBoolean(turno)
-        if (risultato != null && risultato == true)
-            return true
-        else return false
+        return risultato != null && risultato == true
     }
 
     /*
@@ -478,7 +467,7 @@ class Database {
             str = turno.substring(turno.length - number)
         } else {
             // whatever is appropriate in this case
-            throw IllegalArgumentException("word has fewer than 13 characters!");
+            throw IllegalArgumentException("word has fewer than 13 characters!")
         }
         var servizio = str.substring(0, 2)
         var orario = str.substring(8, 10)
@@ -530,6 +519,79 @@ class Database {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
             }
+    }
+
+    /*
+    Metodo per cercare mel database i militi e aggiungerli nella listview del centralinista in modo
+    che lui possa vedere i militi disponibili per fare turno
+     */
+    fun cerca_militi_disponibili(root:View, context : Context) {
+        db.collection("disponibilità")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                var disponibilita: MutableList<Disponibilita> = mutableListOf()
+                for (document in result) {
+                    var dis = document.toObject<Disponibilita>()
+                    disponibilita.add(dis)
+                }
+                carica_disponibilità_nel_fragment(root, disponibilita, context)
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+
+    }
+
+    /*
+    Metodo per caricare la disponibilità dei militi e vedersli in una scrollview
+     */
+    private fun carica_disponibilità_nel_fragment(root: View, disponibilita: MutableList<Disponibilita>, context : Context) {
+        val linearLayout = root.findViewById(R.id.militi_disponibili_layout) as LinearLayout
+        disponibilita.forEach{
+            it.nomeCognomeSpinner
+            val dis = TextView(context)
+            var long_time = it.dataDisponibilita?.toLong()
+            if (long_time == null) long_time = 0.toLong()
+            var localdatatime = LocalDateTime.ofInstant(Instant.ofEpochMilli(long_time), ZoneOffset.UTC)
+            dis.hint = "${it.nomeCognomeSpinner}  ${it.turnoDisponibilita}  ${localdatatime.toLocalDate()}"
+            dis.textSize = 20F
+            linearLayout.addView(dis)
+        }
+    }
+
+    fun popula_lista_checklist(root: View, contex : Context) {
+        db.collection("presidi_ambulanza_118")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+                var presidi_list: MutableList<String> = mutableListOf()
+                for (document in result) {
+                    document.getString("nome_presidio")?.let { presidi_list.add(it) }
+                }
+                carica_presidi_ambulanza_nel_fragment(root, contex, presidi_list)
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+
+    }
+
+    /*
+    Metodo per caricare i presidi dell'ambulanza nel fragment
+     */
+    private fun carica_presidi_ambulanza_nel_fragment(root: View, context: Context, presidi : MutableList<String>) {
+        val linearLayout = root.findViewById(R.id.checkListVolontario) as LinearLayout
+        presidi.forEach {
+            val presidio = CheckBox(context)
+            presidio.hint = "$it"
+            presidio.textSize = 20F
+            linearLayout.addView(presidio)
+        }
     }
 
 

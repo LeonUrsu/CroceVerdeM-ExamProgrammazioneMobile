@@ -63,7 +63,7 @@ class TabelloneTurniCentralinista : Fragment() {
      */
     fun segna_cancella_btn_function(root: View, vf_centralinista: ViewFlipper) {
         //TODO bisogna settare lo spinner che faccia vedere solamente i militi conb il grado adatt a svolgere il turno selezionato
-        val milite = root.findViewById<Spinner>(R.id.milite_input).getSelectedItem().toString()
+        val milite = root.findViewById<Spinner>(R.id.milite_input).selectedItem.toString()
         var id_string = TabelloneTurni().rileva_valori_spinner(
             root,
             TabelloneTurni().tipo_settimana(vf_centralinista)

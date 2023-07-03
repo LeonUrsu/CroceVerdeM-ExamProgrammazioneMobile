@@ -16,10 +16,6 @@ import com.google.firebase.ktx.Firebase
 
 class ProfiloVolontarioDipendente : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,24 +47,18 @@ class ProfiloVolontarioDipendente : Fragment() {
                 }
                 for (document in result) {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
-                        root.findViewById<TextView>(R.id.nome_text_profilo_volontario)
-                            .setText(document.getString("nome"))
-                        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario)
-                            .setText(document.getString("cognome"))
-                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario)
-                            .setText(document.getString("dataDiNascita"))
-                        root.findViewById<TextView>(R.id.prima_118)
-                            .setText(document.getString("oreTurno118prima"))
-                        root.findViewById<TextView>(R.id.seconda_118)
-                            .setText(document.getString("oreTurno118seconda"))
-                        root.findViewById<TextView>(R.id.terza_118)
-                            .setText(document.getString("oreTurno118terza"))
-                        root.findViewById<TextView>(R.id.prima_h24)
-                            .setText(document.getString("oreTurnoh24prima"))
-                        root.findViewById<TextView>(R.id.seconda_h24)
-                            .setText(document.getString("oreTurnoh24seconda"))
-                        root.findViewById<TextView>(R.id.terza_h24)
-                            .setText(document.getString("oreTurnoh24terza"))
+                        root.findViewById<TextView>(R.id.nome_text_profilo_volontario).text =
+                            document.getString("nome")
+                        root.findViewById<TextView>(R.id.cognome_text_profilo_volontario).text =
+                            document.getString("cognome")
+                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
+                            document.getString("dataDiNascita")
+                        root.findViewById<TextView>(R.id.prima_118).text = document.getString("oreTurno118prima")
+                        root.findViewById<TextView>(R.id.seconda_118).text = document.getString("oreTurno118seconda")
+                        root.findViewById<TextView>(R.id.terza_118).text = document.getString("oreTurno118terza")
+                        root.findViewById<TextView>(R.id.prima_h24).text = document.getString("oreTurnoh24prima")
+                        root.findViewById<TextView>(R.id.seconda_h24).text = document.getString("oreTurnoh24seconda")
+                        root.findViewById<TextView>(R.id.terza_h24).text = document.getString("oreTurnoh24terza")
                     }
                 }
             }

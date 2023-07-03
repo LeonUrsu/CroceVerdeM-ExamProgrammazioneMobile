@@ -34,7 +34,261 @@
                 android:id="@+id/checkListVolontario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical">
+
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Attrezzature e materiali" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bombola 1 Bar" />
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bombola 2 Bar" />
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bombola P.P.S" />
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Venturi" />
+
+                <CheckBox
+                    android:id="@+id/checkBox6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pediatrica" />
+
+                <CheckBox
+                    android:id="@+id/checkBox7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aerosol" />
+
+                <CheckBox
+                    android:id="@+id/checkBox8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Occhiali di protezione" />
+
+                <CheckBox
+                    android:id="@+id/checkBox9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Maschere" />
+
+                <CheckBox
+                    android:id="@+id/checkBox10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cannule orofaringee" />
+
+                <CheckBox
+                    android:id="@+id/checkBox11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fonendoscopio" />
+
+                <CheckBox
+                    android:id="@+id/checkBox12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sfigmanometro" />
+
+                <CheckBox
+                    android:id="@+id/checkBox13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saturimetro" />
+
+                <CheckBox
+                    android:id="@+id/checkBox14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="FissoBende" />
+
+                <CheckBox
+                    android:id="@+id/checkBox15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cerotti" />
+
+                <CheckBox
+                    android:id="@+id/checkBox16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Disinfettante" />
+
+                <CheckBox
+                    android:id="@+id/checkBox17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ghiaccio spray e sintetico in buste" />
+
+                <CheckBox
+                    android:id="@+id/checkBox18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telo termoisolante" />
+
+                <CheckBox
+                    android:id="@+id/checkBox19"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Barella" />
+
+                <CheckBox
+                    android:id="@+id/checkBox20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ferma testa" />
+
+                <CheckBox
+                    android:id="@+id/checkBox21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cinghia frontale e mentoniera" />
+
+                <CheckBox
+                    android:id="@+id/checkBox22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ragno" />
+
+                <CheckBox
+                    android:id="@+id/checkBox23"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estricatore di sicurezza KED" />
+
+                <CheckBox
+                    android:id="@+id/checkBox24"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lenzuola e teli di ricambioGuanti" />
+
+                <CheckBox
+                    android:id="@+id/checkBox25"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contenitore aghi usati" />
+
+                <CheckBox
+                    android:id="@+id/checkBox26"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Forbici di Robin" />
+
+                <CheckBox
+                    android:id="@+id/checkBox27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Laccio femorale" />
+
+                <CheckBox
+                    android:id="@+id/checkBox28"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aspiratore" />
+
+                <CheckBox
+                    android:id="@+id/checkBox29"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sondini" />
+
+                <CheckBox
+                    android:id="@+id/checkBox30"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aspirazione e naso gastrici" />
+
+                <CheckBox
+                    android:id="@+id/checkBox31"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Kit scasso" />
+
+                <CheckBox
+                    android:id="@+id/checkBox32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="EstintoreZaino per adulti" />
+
+                <CheckBox
+                    android:id="@+id/checkBox33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Saturimetro" />
+
+                <CheckBox
+                    android:id="@+id/checkBox34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Fonendoscopio" />
+
+                <CheckBox
+                    android:id="@+id/checkBox35"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sfigmanometro" />
+
+                <CheckBox
+                    android:id="@+id/checkBox36"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ghiaccio" />
+
+                <CheckBox
+                    android:id="@+id/checkBox37"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Garze" />
+
+                <CheckBox
+                    android:id="@+id/checkBox38"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Disinfettante" />
+
+                <CheckBox
+                    android:id="@+id/checkBox39"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pallone di ambu" />
+
+                <CheckBox
+                    android:id="@+id/checkBox40"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ambu" />
+
+                <CheckBox
+                    android:id="@+id/checkBox41"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mascherine" />
+
+                <CheckBox
+                    android:id="@+id/checkBox42"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Telo termico" />
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 

@@ -40,8 +40,8 @@ class TabelloneTurniVolontario : Fragment() {
 
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
         disponibilita_btn.setOnClickListener {
-            //Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
             Database().disponibilita_btn(cognomeNomeSpinner, root)
+            Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
             //TODO forse bisogna mettere un altro spinner per specificare il tipo di settimana alla qualce si vuole prenotare
         }
 
@@ -115,7 +115,6 @@ class TabelloneTurniVolontario : Fragment() {
         )
         //Database().
         //TabelloneTurni().rileva_data_turno(turno,dataLunedi)
-        //TODO al click bisogna che il sistema mandi nel database i dati
     }
 
 
