@@ -128,16 +128,20 @@ class Database {
         nome: String, cognome: String, dataDiNascita: String, residenza: String,
         grado118prima: Boolean?, grado118seconda: Boolean?,
         grado118terza: Boolean?, gradoh24prima: Boolean?,
-        gradoh24seconda: Boolean?, gradoh24terza: Boolean?
+        gradoh24seconda: Boolean?, gradoh24terza: Boolean?,
+        volontario: Boolean?, dipendente: Boolean?
     ) {
         val milite = Milite(
             nome, cognome, dataDiNascita, residenza,
             grado118prima, grado118seconda,
             grado118terza, gradoh24prima,
-            gradoh24seconda, gradoh24terza
+            gradoh24seconda, gradoh24terza,
+            volontario, dipendente
         )
 
-        val username = nome + "." + cognome
+        val nomeSenzaSpazi = nome.replace("\\s".toRegex(), "")
+        val cognomeSenzaSpazi = cognome.replace("\\s".toRegex(), "")
+        val username = nomeSenzaSpazi + "." + cognomeSenzaSpazi
 
         val password = (1..5).map {
             when (Random.nextInt(3)) {
@@ -149,14 +153,12 @@ class Database {
 
         val cognomenomespinner = cognome + " " + nome
 
-        val ruolo = "Milite"
 
         db.collection("militi").add(milite).addOnSuccessListener { documentReference ->
             Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
 
             db.collection("militi").document(documentReference.id).update("username", username)
             db.collection("militi").document(documentReference.id).update("password", password)
-            db.collection("militi").document(documentReference.id).update("ruolo", ruolo)
             db.collection("militi").document(documentReference.id)
                 .update("cognomeNomeSpinner", cognomenomespinner)
 

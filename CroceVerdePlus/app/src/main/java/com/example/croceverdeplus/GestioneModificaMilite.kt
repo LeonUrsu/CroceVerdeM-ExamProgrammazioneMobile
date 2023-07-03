@@ -44,7 +44,11 @@ class GestioneModificaMilite : Fragment() {
         val residenzaM = args.residenza
 
 
-        //val milite = Milite()
+        nome.setText(nomeM)
+        cognome.setText(cognomeM)
+        dataDiNascita.setText(dataDiNascitaM)
+        residenza.setText(residenzaM)
+
 
         val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
             "gradoh24prima","gradoh24seconda","gradoh24terza")
@@ -57,11 +61,13 @@ class GestioneModificaMilite : Fragment() {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGrado = parent.getItemAtPosition(position) as? String
 
-                //setGrado(selectedGrado, milite)
 
                 val db = Firebase.firestore
 
                 buttonModify.setOnClickListener{
+
+                    val nomeSenzaSpazi = nome.text.replace("\\s".toRegex(), "")
+                    val cognomeSenzaSpazi = cognome.text.replace("\\s".toRegex(), "")
 
                     db.collection("militi")
                         .whereEqualTo("nome", nomeM)
@@ -81,7 +87,7 @@ class GestioneModificaMilite : Fragment() {
                                 db.collection("militi")
                                     .document(document.id).update("residenza", residenza.text.toString())
                                 db.collection("militi")
-                                    .document(document.id).update("username", nome.text.toString() + "." + cognome.text.toString())
+                                    .document(document.id).update("username", nomeSenzaSpazi + "." + cognomeSenzaSpazi)
                                 db.collection("militi")
                                     .document(document.id).update("cognomeNomeSpinner", cognome.text.toString() + " " + nome.text.toString())
                                 if (selectedGrado == "grado118prima" ) {
@@ -121,22 +127,12 @@ class GestioneModificaMilite : Fragment() {
                                             "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", true)
                                 }
                             }
+
+                            Toast.makeText(requireActivity(), "Milite aggiornato", Toast.LENGTH_SHORT).show()
                         }
                         .addOnFailureListener { exception ->
                             Log.w(ContentValues.TAG, "Error getting documents: ", exception)
                         }
-
-
-
-                    /*data.modifyUserM(nome.text.toString(), cognome.text.toString(),
-                        dataDiNascita.text.toString(), residenza.text.toString(),
-                        selectedGrado!!
-                    )
-
-                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
-
-
-                     */
                 }
             }
 

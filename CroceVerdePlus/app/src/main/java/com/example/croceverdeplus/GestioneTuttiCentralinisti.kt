@@ -27,7 +27,7 @@ class GestioneTuttiCentralinisti : Fragment() {
     ): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_centralinisti, container, false)
 
-        //val fragmentManager = requireActivity().supportFragmentManager
+
         val button: Button = root.findViewById(R.id.button5)
 
         button.setOnClickListener {
@@ -51,7 +51,7 @@ class GestioneTuttiCentralinisti : Fragment() {
                 val dataDiNascita = document.getString("dataDiNascita")
                 val residenza = document.getString("residenza")
                 if (nome != null && cognome != null) {
-                    val userInfo = "$nome $cognome $dataDiNascita $residenza"
+                    val userInfo = "$nome\n$cognome\n$dataDiNascita\n$residenza"
                     userList.add(userInfo)
                 }
             }

@@ -12,22 +12,5 @@ class MainActivityAmministratore : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_activity_amministratore)
 
-
-        //val navController = this.findNavController(R.id.nav_host_fragment)
-
-
-        /*val buttonAccedi: Button = findViewById(R.id.button8)
-
-        buttonAccedi.setOnClickListener {
-            val newFragment = GestioneTuttiCentralinisti()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, newFragment)
-                .commit()
-
-        }
-
-
-         */
-
     }
 }

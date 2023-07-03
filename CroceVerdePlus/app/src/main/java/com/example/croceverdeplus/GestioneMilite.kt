@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
@@ -22,6 +23,8 @@ class GestioneMilite : Fragment() {
 
         val args: GestioneMiliteArgs by navArgs()
 
+        val immProfilo: ImageView = root.findViewById(R.id.imageView4)
+        immProfilo.setImageResource(R.drawable.accountimage)
         val nome: TextView = root.findViewById(R.id.nome_text_milite)
         val cognome: TextView = root.findViewById(R.id.cognome_text_milite)
         val dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_milite)
@@ -32,7 +35,7 @@ class GestioneMilite : Fragment() {
 
         val selectedUser = args.selectedUser
 
-        val userParts = selectedUser.split(" ")
+        val userParts = selectedUser.split("\n")
         nome.text = userParts[0]
         cognome.text = userParts[1]
         dataDiNascita.text = userParts[2]

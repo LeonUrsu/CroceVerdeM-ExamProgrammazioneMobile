@@ -18,12 +18,13 @@ import android.widget.EditText
 import android.widget.ToggleButton
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
-
+import java.util.TimeZone
 
 
 class GestioneSettimanaH24 : Fragment() {
@@ -46,6 +47,7 @@ class GestioneSettimanaH24 : Fragment() {
         val buttonOk: Button = root.findViewById(R.id.button)
         val db = Firebase.firestore
 
+
         val currentDate = Calendar.getInstance().time
 
         // Data di inizio e fine della settimana corrente
@@ -61,8 +63,6 @@ class GestioneSettimanaH24 : Fragment() {
         buttonSettimana1.text = "${formatDateRange(currentWeekStart, currentWeekEnd)}"
         buttonSettimana2.text = "${formatDateRange(nextWeekStart, nextWeekEnd)}"
 
-        //Log.d(ContentValues.TAG, "${currentWeekStart}")
-        //DEVO CONVERTIRE CURRENTWEEKSTART IN TIMESTAMP
 
 
         val selectedButtonColor = Color.parseColor("#2BB107")
@@ -88,23 +88,33 @@ class GestioneSettimanaH24 : Fragment() {
         }
 
         buttonOk.setOnClickListener {
-            if (password.text.toString() == "password") {
-                if (clickSett1 == true) {
-                    db.collection("tabelle")
-                        .document("tabella_118").update("data_lunedi", nextWeekStart)
-                    db.collection("tabelle")
-                        .document("tabella_118_h24").update("data_lunedi", currentWeekStart)
+            db.collection("amministratori").whereEqualTo("password", password.text.toString()).get()
+                .addOnSuccessListener { querySnapshot ->
+                    if (!querySnapshot.isEmpty) {
+                        if (clickSett1 == true) {
+                            db.collection("tabelle")
+                                .document("tabella_118").update("data_lunedi", nextWeekStart)
+                            db.collection("tabelle")
+                                .document("tabella_118_h24").update("data_lunedi", currentWeekStart)
 
+                            updateTabelle()
+
+                        }
+                        if (clickSett2 == true) {
+                            db.collection("tabelle")
+                                .document("tabella_118").update("data_lunedi", currentWeekStart)
+                            db.collection("tabelle")
+                                .document("tabella_118_h24").update("data_lunedi", nextWeekStart)
+
+                            updateTabelle()
+                        }
+
+
+
+                    }
                 }
-                if (clickSett2 == true) {
-                    db.collection("tabelle")
-                        .document("tabella_118").update("data_lunedi", currentWeekStart)
-                    db.collection("tabelle")
-                        .document("tabella_118_h24").update("data_lunedi", nextWeekStart)
 
-                }
 
-            }
         }
 
         return root
@@ -147,11 +157,252 @@ private fun getNextMonday(date: Date): Date {
     return calendar.time
 }
 
-// Da coppia di date a string
+//Per formattare in String
 private fun formatDateRange(start: Date, end: Date): String {
     val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
     return "${dateFormat.format(start)} - ${dateFormat.format(end)}"
 }
 
+
+private fun updateTabelle() {
+    val db = Firebase.firestore
+
+    val docRef = db.collection("tabelle").document("tabella_118")
+
+    val updates = hashMapOf<String, Any>(
+        "turno_118_dom_mat_1" to "",
+        "turno_118_dom_mat_2" to "",
+        "turno_118_dom_mat_3" to "",
+        "turno_118_dom_pom_1" to "",
+        "turno_118_dom_pom_2" to "",
+        "turno_118_dom_pom_3" to "",
+        "turno_118_dom_ser_1" to "",
+        "turno_118_dom_ser_2" to "",
+        "turno_118_dom_ser_3" to "",
+
+        "turno_118_gio_mat_1" to "",
+        "turno_118_gio_mat_2" to "",
+        "turno_118_gio_mat_3" to "",
+        "turno_118_gio_pom_1" to "",
+        "turno_118_gio_pom_2" to "",
+        "turno_118_gio_pom_3" to "",
+        "turno_118_gio_ser_1" to "",
+        "turno_118_gio_ser_2" to "",
+        "turno_118_gio_ser_3" to "",
+
+        "turno_118_lun_mat_1" to "",
+        "turno_118_lun_mat_2" to "",
+        "turno_118_lun_mat_3" to "",
+        "turno_118_lun_pom_1" to "",
+        "turno_118_lun_pom_2" to "",
+        "turno_118_lun_pom_3" to "",
+        "turno_118_lun_ser_1" to "",
+        "turno_118_lun_ser_2" to "",
+        "turno_118_lun_ser_3" to "",
+
+        "turno_118_mar_mat_1" to "",
+        "turno_118_mar_mat_2" to "",
+        "turno_118_mar_mat_3" to "",
+        "turno_118_mar_pom_1" to "",
+        "turno_118_mar_pom_2" to "",
+        "turno_118_mar_pom_3" to "",
+        "turno_118_mar_ser_1" to "",
+        "turno_118_mar_ser_2" to "",
+        "turno_118_mar_ser_3" to "",
+
+        "turno_118_mer_mat_1" to "",
+        "turno_118_mer_mat_2" to "",
+        "turno_118_mer_mat_3" to "",
+        "turno_118_mer_pom_1" to "",
+        "turno_118_mer_pom_2" to "",
+        "turno_118_mer_pom_3" to "",
+        "turno_118_mer_ser_1" to "",
+        "turno_118_mer_ser_2" to "",
+        "turno_118_mer_ser_3" to "",
+
+        "turno_118_sab_mat_1" to "",
+        "turno_118_sab_mat_2" to "",
+        "turno_118_sab_mat_3" to "",
+        "turno_118_sab_pom_1" to "",
+        "turno_118_sab_pom_2" to "",
+        "turno_118_sab_pom_3" to "",
+        "turno_118_sab_ser_1" to "",
+        "turno_118_sab_ser_2" to "",
+        "turno_118_sab_ser_3" to "",
+
+        "turno_118_ven_mat_1" to "",
+        "turno_118_ven_mat_2" to "",
+        "turno_118_ven_mat_3" to "",
+        "turno_118_ven_pom_1" to "",
+        "turno_118_ven_pom_2" to "",
+        "turno_118_ven_pom_3" to "",
+        "turno_118_ven_ser_1" to "",
+        "turno_118_ven_ser_2" to "",
+        "turno_118_ven_ser_3" to "",
+    )
+
+    docRef.update(updates)
+        .addOnSuccessListener {
+            Log.w(ContentValues.TAG, "Tabella118 aggiornata con successo")
+        }
+        .addOnFailureListener { e ->
+            Log.w(ContentValues.TAG, "Errore nell'aggiornamento della tabella118", e)
+        }
+
+
+    val docRefH24 = db.collection("tabelle").document("tabella_118_h24")
+
+    val updatesH24 = hashMapOf<String, Any>(
+        "turno_118_dom_mat_1" to "",
+        "turno_118_dom_mat_2" to "",
+        "turno_118_dom_mat_3" to "",
+        "turno_118_dom_pom_1" to "",
+        "turno_118_dom_pom_2" to "",
+        "turno_118_dom_pom_3" to "",
+        "turno_118_dom_ser_1" to "",
+        "turno_118_dom_ser_2" to "",
+        "turno_118_dom_ser_3" to "",
+
+        "turno_118_gio_mat_1" to "",
+        "turno_118_gio_mat_2" to "",
+        "turno_118_gio_mat_3" to "",
+        "turno_118_gio_pom_1" to "",
+        "turno_118_gio_pom_2" to "",
+        "turno_118_gio_pom_3" to "",
+        "turno_118_gio_ser_1" to "",
+        "turno_118_gio_ser_2" to "",
+        "turno_118_gio_ser_3" to "",
+
+        "turno_118_lun_mat_1" to "",
+        "turno_118_lun_mat_2" to "",
+        "turno_118_lun_mat_3" to "",
+        "turno_118_lun_pom_1" to "",
+        "turno_118_lun_pom_2" to "",
+        "turno_118_lun_pom_3" to "",
+        "turno_118_lun_ser_1" to "",
+        "turno_118_lun_ser_2" to "",
+        "turno_118_lun_ser_3" to "",
+
+        "turno_118_mar_mat_1" to "",
+        "turno_118_mar_mat_2" to "",
+        "turno_118_mar_mat_3" to "",
+        "turno_118_mar_pom_1" to "",
+        "turno_118_mar_pom_2" to "",
+        "turno_118_mar_pom_3" to "",
+        "turno_118_mar_ser_1" to "",
+        "turno_118_mar_ser_2" to "",
+        "turno_118_mar_ser_3" to "",
+
+        "turno_118_mer_mat_1" to "",
+        "turno_118_mer_mat_2" to "",
+        "turno_118_mer_mat_3" to "",
+        "turno_118_mer_pom_1" to "",
+        "turno_118_mer_pom_2" to "",
+        "turno_118_mer_pom_3" to "",
+        "turno_118_mer_ser_1" to "",
+        "turno_118_mer_ser_2" to "",
+        "turno_118_mer_ser_3" to "",
+
+        "turno_118_sab_mat_1" to "",
+        "turno_118_sab_mat_2" to "",
+        "turno_118_sab_mat_3" to "",
+        "turno_118_sab_pom_1" to "",
+        "turno_118_sab_pom_2" to "",
+        "turno_118_sab_pom_3" to "",
+        "turno_118_sab_ser_1" to "",
+        "turno_118_sab_ser_2" to "",
+        "turno_118_sab_ser_3" to "",
+
+        "turno_118_ven_mat_1" to "",
+        "turno_118_ven_mat_2" to "",
+        "turno_118_ven_mat_3" to "",
+        "turno_118_ven_pom_1" to "",
+        "turno_118_ven_pom_2" to "",
+        "turno_118_ven_pom_3" to "",
+        "turno_118_ven_ser_1" to "",
+        "turno_118_ven_ser_2" to "",
+        "turno_118_ven_ser_3" to "",
+
+
+        "turno_h24_dom_mat_1" to "",
+        "turno_h24_dom_mat_2" to "",
+        "turno_h24_dom_mat_3" to "",
+        "turno_h24_dom_pom_1" to "",
+        "turno_h24_dom_pom_2" to "",
+        "turno_h24_dom_pom_3" to "",
+        "turno_h24_dom_ser_1" to "",
+        "turno_h24_dom_ser_2" to "",
+        "turno_h24_dom_ser_3" to "",
+
+        "turno_h24_gio_mat_1" to "",
+        "turno_h24_gio_mat_2" to "",
+        "turno_h24_gio_mat_3" to "",
+        "turno_h24_gio_pom_1" to "",
+        "turno_h24_gio_pom_2" to "",
+        "turno_h24_gio_pom_3" to "",
+        "turno_h24_gio_ser_1" to "",
+        "turno_h24_gio_ser_2" to "",
+        "turno_h24_gio_ser_3" to "",
+
+        "turno_h24_lun_mat_1" to "",
+        "turno_h24_lun_mat_2" to "",
+        "turno_h24_lun_mat_3" to "",
+        "turno_h24_lun_pom_1" to "",
+        "turno_h24_lun_pom_2" to "",
+        "turno_h24_lun_pom_3" to "",
+        "turno_h24_lun_ser_1" to "",
+        "turno_h24_lun_ser_2" to "",
+        "turno_h24_lun_ser_3" to "",
+
+        "turno_h24_mar_mat_1" to "",
+        "turno_h24_mar_mat_2" to "",
+        "turno_h24_mar_mat_3" to "",
+        "turno_h24_mar_pom_1" to "",
+        "turno_h24_mar_pom_2" to "",
+        "turno_h24_mar_pom_3" to "",
+        "turno_h24_mar_ser_1" to "",
+        "turno_h24_mar_ser_2" to "",
+        "turno_h24_mar_ser_3" to "",
+
+        "turno_h24_mer_mat_1" to "",
+        "turno_h24_mer_mat_2" to "",
+        "turno_h24_mer_mat_3" to "",
+        "turno_h24_mer_pom_1" to "",
+        "turno_h24_mer_pom_2" to "",
+        "turno_h24_mer_pom_3" to "",
+        "turno_h24_mer_ser_1" to "",
+        "turno_h24_mer_ser_2" to "",
+        "turno_h24_mer_ser_3" to "",
+
+        "turno_h24_sab_mat_1" to "",
+        "turno_h24_sab_mat_2" to "",
+        "turno_h24_sab_mat_3" to "",
+        "turno_h24_sab_pom_1" to "",
+        "turno_h24_sab_pom_2" to "",
+        "turno_h24_sab_pom_3" to "",
+        "turno_h24_sab_ser_1" to "",
+        "turno_h24_sab_ser_2" to "",
+        "turno_h24_sab_ser_3" to "",
+
+        "turno_h24_ven_mat_1" to "",
+        "turno_h24_ven_mat_2" to "",
+        "turno_h24_ven_mat_3" to "",
+        "turno_h24_ven_pom_1" to "",
+        "turno_h24_ven_pom_2" to "",
+        "turno_h24_ven_pom_3" to "",
+        "turno_h24_ven_ser_1" to "",
+        "turno_h24_ven_ser_2" to "",
+        "turno_h24_ven_ser_3" to "",
+
+    )
+
+    docRefH24.update(updatesH24)
+        .addOnSuccessListener {
+            Log.w(ContentValues.TAG, "Tabella118H24 aggiornata con successo")
+        }
+        .addOnFailureListener { e ->
+            Log.w(ContentValues.TAG, "Errore nell'aggiornamento della tabella118H24", e)
+        }
+}
 
 

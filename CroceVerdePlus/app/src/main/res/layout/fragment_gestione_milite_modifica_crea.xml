@@ -13,23 +13,23 @@
     <EditText
         android:id="@+id/editTextnome"
         android:layout_width="300dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="125dp"
-        android:layout_marginBottom="295dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Nome"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
+        app:layout_constraintBottom_toTopOf="@+id/editTextcognome"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editTextcognome"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Cognome"
         android:inputType="text"
@@ -42,7 +42,7 @@
         android:id="@+id/editTextData"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Data di nascita"
         android:inputType="text"
@@ -55,7 +55,7 @@
         android:id="@+id/editTextresidenza"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="Residenza"
         android:inputType="text"
@@ -67,13 +67,22 @@
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="300dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="211dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/spinner3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="204dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextnome" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonMilite"
@@ -84,7 +93,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

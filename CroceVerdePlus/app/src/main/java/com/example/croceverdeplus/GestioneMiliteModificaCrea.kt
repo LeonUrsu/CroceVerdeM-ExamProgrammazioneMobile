@@ -28,8 +28,41 @@ class GestioneMiliteModificaCrea : Fragment() {
         val button: Button = root.findViewById(R.id.buttonMilite)
 
         val spinner: Spinner = root.findViewById(R.id.spinner)
+        val spinnerRuolo: Spinner = root.findViewById(R.id.spinner3)
 
         val milite = Milite()
+
+
+        val userRuolo = listOf("Volontario", "Dipendente")
+
+        val adapterRuolo = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userRuolo)
+        adapterRuolo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerRuolo.adapter = adapterRuolo
+
+
+        spinnerRuolo.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedRuolo = parent.getItemAtPosition(position) as? String
+
+                if (selectedRuolo == "Volontario"){
+                    milite.volontario = true
+                    milite.dipendente = false
+                }
+                if (selectedRuolo == "Dipendente"){
+                    milite.volontario = false
+                    milite.dipendente = true
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                Toast.makeText(requireActivity(), "Seleziona un ruolo", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
         val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
                                 "gradoh24prima","gradoh24seconda","gradoh24terza")
@@ -38,13 +71,15 @@ class GestioneMiliteModificaCrea : Fragment() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
-        //spinner.setSelection(6)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedGrado = parent.getItemAtPosition(position) as? String
 
                 setGrado(selectedGrado, milite)
+
+
+
 
                 val data = Database()
 
@@ -54,8 +89,8 @@ class GestioneMiliteModificaCrea : Fragment() {
                         dataDiNascita.text.toString(), residenza.text.toString(),
                         milite.grado118prima, milite.grado118seconda,
                         milite.grado118terza, milite.gradoh24prima,
-                        milite.gradoh24seconda, milite.gradoh24terza
-                    )
+                        milite.gradoh24seconda, milite.gradoh24terza,
+                        milite.volontario, milite.dipendente)
 
                     Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
 
