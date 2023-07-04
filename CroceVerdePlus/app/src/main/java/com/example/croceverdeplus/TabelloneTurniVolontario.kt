@@ -72,7 +72,7 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
     */
     fun segnami_cancellami_btn_function(root: View) {
         var id_turno = TabelloneTurni().rileva_valori_spinner(root)
-        Database().segna_o_cancella_milite_dal_turno(
+        Database().segna_o_cancella_milite_dal_turno_volontario(
             nome_tipo_tabella,
             id_turno,
             cognomeNomeSpinner, root

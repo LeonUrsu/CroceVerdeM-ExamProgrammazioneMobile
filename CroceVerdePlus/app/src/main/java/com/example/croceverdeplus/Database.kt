@@ -295,6 +295,38 @@ class Database {
         else return "tabella_118"
     }
 
+    /*
+    Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
+     */
+    fun segna_o_cancella_milite_dal_turno_volontario(
+        nome_tipo_tabella: String,
+        turno: String,
+        cognomeNomeSpinner: String, root: View
+    ) {
+        val docRef = db.collection("tabelle").document(nome_tipo_tabella)
+        docRef.get().addOnSuccessListener { document ->
+            if (document != null) {
+                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
+                var presenzaMilite = document.getString(turno)
+                if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
+                    var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno) // TODO il volontario ha bisogno di questo metodo
+                    if (autorizzazioneMilite){
+                        aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
+                        aggiungi_ore_lavorate(cognomeNomeSpinner, turno)}
+                } else
+                    if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
+                        aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
+                        rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                    }
+            } else {
+                Log.d(TAG, "No such document")
+            }
+        }.addOnFailureListener { exception ->
+            Log.d(TAG, "get failed with ", exception)
+        }
+    }
+
+
     private fun stabilisci_nome_turno(turno: String): String {
         var nuovo_turno = ""
         if (turno.contains("tabella118h24"))
@@ -427,8 +459,9 @@ class Database {
                 "gradoh24terza"
             }
         }
-        var risultato = document.getBoolean(turno)
-        return risultato != null && risultato == true
+       //TODO (confrontare il gradoturno con il grado del milite)
+
+        return true
     }
 
     /*
