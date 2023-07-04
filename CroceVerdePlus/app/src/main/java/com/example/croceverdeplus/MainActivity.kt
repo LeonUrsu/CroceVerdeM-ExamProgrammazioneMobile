@@ -25,10 +25,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
 
             loading.visibility = View.VISIBLE
-            val tabelloneTurniVolontario = TabelloneTurniVolontario()
-            val profiloVolontarioDipendente = ProfiloVolontarioDipendente()
-            val profiloCentralinista = ProfiloCentralinista()
-            val bundle = Bundle()
+            //val tabelloneTurniVolontario = TabelloneTurniVolontario()
+            //val profiloVolontarioDipendente = ProfiloVolontarioDipendente()
+            //val profiloCentralinista = ProfiloCentralinista()
+            //val bundle = Bundle()
 
             val firestore = FirebaseFirestore.getInstance()
 
@@ -45,16 +45,18 @@ class MainActivity : AppCompatActivity() {
                         militiCollection.document(documentId).get()
                             .addOnSuccessListener { documentSnapshot ->
                                 val cognomeNome = documentSnapshot.getString("cognomeNomeSpinner")
-                                bundle.putString("cognomeNomeSpinner", cognomeNome)
-                                tabelloneTurniVolontario.arguments = bundle
-                                profiloVolontarioDipendente.arguments = bundle
+                                //bundle.putString("cognomeNomeSpinner", cognomeNome)
+                                //tabelloneTurniVolontario.arguments = bundle
+                                //profiloVolontarioDipendente.arguments = bundle
 
                                 val volontario = documentSnapshot.getBoolean("volontario") //Ottengo il valore del campo "volontario"
                                 if (volontario == true) {
                                     val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                                    intent.putExtra("cognomeNomeSpinner", cognomeNome)
                                     startActivity(intent)
                                 } else {
                                     val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
+                                    intent.putExtra("cognomeNomeSpinner", cognomeNome)
                                     startActivity(intent)
                                 }
                             }
@@ -70,10 +72,11 @@ class MainActivity : AppCompatActivity() {
                                     centralinistiCollection.document(documentId).get()
                                         .addOnSuccessListener { documentSnapshot ->
                                             val cognomeNome = documentSnapshot.getString("cognomeNomeSpinner")
-                                            bundle.putString("cognomeNomeSpinner", cognomeNome)
-                                            profiloCentralinista.arguments = bundle
+                                            //bundle.putString("cognomeNomeSpinner", cognomeNome)
+                                            //profiloCentralinista.arguments = bundle
 
                                             val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
+                                            intent.putExtra("cognomeNomeSpinner", cognomeNome)
                                             startActivity(intent)
                                         }
                                 } else {

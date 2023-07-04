@@ -1,6 +1,8 @@
 package com.example.croceverdeplus
+import android.content.ContentValues
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -11,6 +13,9 @@ class MainActivityVolontario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_volontario)
+
+        val cognomeNome = intent.getStringExtra("cognomeNomeSpinner")
+
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavVolontario)
         bottomNav.selectedItemId = R.id.tabellone
         loadFragment(TabelloneTurniVolontario())
