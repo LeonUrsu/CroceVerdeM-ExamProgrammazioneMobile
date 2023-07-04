@@ -65,18 +65,17 @@ class MainActivity : AppCompatActivity() {
                                 if (!centralinistiQuerySnapshot.isEmpty) {
                                     // L'utente è presente nella collezione "centralinisti"
 
-                                    val documentId = querySnapshot.documents[0].id
+                                    val documentId = centralinistiQuerySnapshot.documents[0].id
 
                                     centralinistiCollection.document(documentId).get()
                                         .addOnSuccessListener { documentSnapshot ->
-                                            val cognomeNome =
-                                                documentSnapshot.getString("cognomeNomeSpinner")
+                                            val cognomeNome = documentSnapshot.getString("cognomeNomeSpinner")
                                             bundle.putString("cognomeNomeSpinner", cognomeNome)
                                             profiloCentralinista.arguments = bundle
-                                        }
 
-                                    val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
-                                    startActivity(intent)
+                                            val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
+                                            startActivity(intent)
+                                        }
                                 } else {
                                     amministratoriCollection.whereEqualTo(
                                         "username",
