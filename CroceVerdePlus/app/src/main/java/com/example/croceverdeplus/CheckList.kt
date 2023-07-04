@@ -13,7 +13,8 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 
 class CheckList : Fragment() {
-    var cognomeNomeSpinner : String = "Rossi Mario" //TODO deve essere passato
+    val bundle = arguments
+    val cognomeNomeSpinner: String = bundle?.getString("cognomeNomeSpinner").toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

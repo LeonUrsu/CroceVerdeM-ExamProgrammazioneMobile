@@ -16,6 +16,9 @@ import com.google.firebase.ktx.Firebase
 
 class ProfiloVolontarioDipendente : Fragment() {
 
+    val bundle = arguments
+    val cognomeNomeSpinner = bundle?.getString("cognomeNomeSpinner").toString()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,11 +28,7 @@ class ProfiloVolontarioDipendente : Fragment() {
             container,
             false
         )
-        val bundle = arguments
-        val variable = bundle?.getString("cognomeNomeSpinner")
-
-        var cognomeNomeSpinner =
-            "Di Natale Antonio" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
+        root.findViewById<Button>(R.id.logout).setOnClickListener { exit_function(requireActivity()) }
         setta_info_profilo(root, cognomeNomeSpinner)
         val logout = root.findViewById(R.id.logout) as Button
         logout.setOnClickListener { exit_function(requireActivity()) }

@@ -17,7 +17,8 @@ import com.google.firebase.Timestamp
 
 class TabelloneTurniVolontario : Fragment() {
 
-    var cognomeNomeSpinner = "Rossi Mario" //TODO passare il nome dal login al main al tabellone
+    val bundle = arguments
+    val cognomeNomeSpinner: String = bundle?.getString("cognomeNomeSpinner").toString()
     var tipo_tabella: Int = 0
     var nome_tipo_tabella: String = ""
 
@@ -39,7 +40,7 @@ class TabelloneTurniVolontario : Fragment() {
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
-            segnami_cancellami_btn_function(root, vf_volontario, requireActivity())
+            segnami_cancellami_btn_function(root)
             Toast.makeText(requireActivity(), "segnato", Toast.LENGTH_SHORT).show()
         }
 
@@ -75,7 +76,7 @@ class TabelloneTurniVolontario : Fragment() {
     Metodo per far funzionare il pulsante di essere segnati o cancellare da un turno
     id_passed = id passato per il turno in questione
     */
-    fun segnami_cancellami_btn_function(root: View, vf_volontario: ViewFlipper, act: Activity) {
+    fun segnami_cancellami_btn_function(root: View) {
         var id_turno = TabelloneTurni().rileva_valori_spinner(root)
         Database().segna_o_cancella_milite_dal_turno(
             nome_tipo_tabella,

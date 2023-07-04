@@ -9,11 +9,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class ProfiloCentralinista : Fragment() {
+
+    val bundle = arguments
+    val cognomeNomeSpinner: String = bundle?.getString("cognomeNomeSpinner").toString()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,10 +25,12 @@ class ProfiloCentralinista : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_profilo_centralinista, container, false)
+        setta_info_profilo(root, cognomeNomeSpinner)
+        root.findViewById<Button>(R.id.logout).setOnClickListener { exit_function(requireActivity()) }
         return root
     }
 
-    fun exit_function(act: Activity){
+    fun exit_function(act: Activity) {
         val intent = Intent(act, MainActivity::class.java)
         startActivity(intent)
     }
