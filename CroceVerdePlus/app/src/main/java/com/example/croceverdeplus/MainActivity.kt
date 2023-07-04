@@ -19,12 +19,16 @@ class MainActivity : AppCompatActivity() {
         val username: EditText = findViewById(R.id.username_input)
         val password: EditText = findViewById(R.id.password_input)
         val button: Button = findViewById(R.id.accedi)
-        //val loading: ProgressBar = findViewById(R.id.progressBar)
+        val loading: ProgressBar = findViewById(R.id.progressBar)
 
 
         button.setOnClickListener {
 
-            /*loading.visibility = View.VISIBLE
+            loading.visibility = View.VISIBLE
+            val tabelloneTurniVolontario = TabelloneTurniVolontario()
+            val profiloVolontarioDipendente = ProfiloVolontarioDipendente()
+            val profiloCentralinista = ProfiloCentralinista()
+            val bundle = Bundle()
 
             val firestore = FirebaseFirestore.getInstance()
 
@@ -36,18 +40,23 @@ class MainActivity : AppCompatActivity() {
                 .whereEqualTo("password", password.text.toString()).get()
                 .addOnSuccessListener { querySnapshot ->
                     if (!querySnapshot.isEmpty) { // L'utente è presente nella collezione "militi"
-
                         val documentId = querySnapshot.documents[0].id
+
                         militiCollection.document(documentId).get()
                             .addOnSuccessListener { documentSnapshot ->
-                                    val volontario = documentSnapshot.getBoolean("volontario") //Ottengo il valore del campo "volontario"
-                                    if (volontario == true) {
-                                        val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
-                                        startActivity(intent)
-                                    } else {
-                                        val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
-                                        startActivity(intent)
-                                    }
+                                val cognomeNome = documentSnapshot.getString("cognomeNomeSpinner")
+                                bundle.putString("cognomeNomeSpinner", cognomeNome)
+                                tabelloneTurniVolontario.arguments = bundle
+                                profiloVolontarioDipendente.arguments = bundle
+
+                                val volontario = documentSnapshot.getBoolean("volontario") //Ottengo il valore del campo "volontario"
+                                if (volontario == true) {
+                                    val intent = Intent(this@MainActivity, MainActivityVolontario::class.java)
+                                    startActivity(intent)
+                                } else {
+                                    val intent = Intent(this@MainActivity, MainActivityDipendente::class.java)
+                                    startActivity(intent)
+                                }
                             }
                     } else {
                         centralinistiCollection.whereEqualTo("username", username.text.toString())
@@ -55,6 +64,17 @@ class MainActivity : AppCompatActivity() {
                             .addOnSuccessListener { centralinistiQuerySnapshot ->
                                 if (!centralinistiQuerySnapshot.isEmpty) {
                                     // L'utente è presente nella collezione "centralinisti"
+
+                                    val documentId = querySnapshot.documents[0].id
+
+                                    centralinistiCollection.document(documentId).get()
+                                        .addOnSuccessListener { documentSnapshot ->
+                                            val cognomeNome =
+                                                documentSnapshot.getString("cognomeNomeSpinner")
+                                            bundle.putString("cognomeNomeSpinner", cognomeNome)
+                                            profiloCentralinista.arguments = bundle
+                                        }
+
                                     val intent = Intent(this@MainActivity, MainActivityCentralinista::class.java)
                                     startActivity(intent)
                                 } else {
@@ -88,7 +108,7 @@ class MainActivity : AppCompatActivity() {
                                             }
                                         }
                                 }
-                                /*if (username.text.toString().isEmpty() && password.text.toString().isEmpty()) {
+                                if (username.text.toString().isEmpty() && password.text.toString().isEmpty()) {
                                     username.error = "Inserisci username"
                                     password.error = "Inserisci password"
                                     loading.visibility = View.INVISIBLE
@@ -102,18 +122,18 @@ class MainActivity : AppCompatActivity() {
                                     loading.visibility = View.INVISIBLE
                                 }
 
-                                 */
+
 
                             }
                     }
                 }
 
 
-             */
 
 
 
-            if (gestioneAccesso(username, password) == 1) {
+
+            /*if (gestioneAccesso(username, password) == 1) {
                     val intent = Intent(this@MainActivity, MainActivityAmministratore::class.java)
                     startActivity(intent)
                 }
@@ -131,12 +151,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
 
+             */
+
 
             }
 
 
         }
-    /*override fun onWindowFocusChanged(hasFocus: Boolean) {
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         val loading: ProgressBar = findViewById(R.id.progressBar)
 
@@ -145,11 +167,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-     */
 
     }
 
-
+/*
     //TODO probabilmente questa classe va dichiarata nel Login.kt e usata tramite import
     fun gestioneAccesso(username: EditText, password: EditText): Int {
 
@@ -182,8 +203,12 @@ class MainActivity : AppCompatActivity() {
         }
         return 0
 
+
+
     }
 
+
+ */
 
 
 

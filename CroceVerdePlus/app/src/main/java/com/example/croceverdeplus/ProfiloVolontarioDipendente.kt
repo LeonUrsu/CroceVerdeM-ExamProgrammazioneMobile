@@ -26,6 +26,9 @@ class ProfiloVolontarioDipendente : Fragment() {
             container,
             false
         )
+        val bundle = arguments
+        val variable = bundle?.getString("cognomeNomeSpinner")
+
         var cognomeNomeSpinner =
             "Di Natale Antonio" //TODO (questo nome deve essere ricevuto in qualche modo per poter ricevere i dati dal database e aggiornare le cose)
         setta_info_profilo(root, cognomeNomeSpinner)
