@@ -1,6 +1,5 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
-
 
 class TabelloneTurniCentralinista : Fragment() {
     var tipo_tabella: Int = 0

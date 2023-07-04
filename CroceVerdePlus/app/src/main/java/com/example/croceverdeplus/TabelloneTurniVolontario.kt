@@ -1,24 +1,18 @@
 package com.example.croceverdeplus
 
-import android.app.Activity
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.TextView
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
-import com.google.firebase.Timestamp
 
-
-class TabelloneTurniVolontario : Fragment() {
+class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
 
     val bundle = arguments
-    val cognomeNomeSpinner: String = bundle?.getString("cognomeNomeSpinner").toString()
     var tipo_tabella: Int = 0
     var nome_tipo_tabella: String = ""
 

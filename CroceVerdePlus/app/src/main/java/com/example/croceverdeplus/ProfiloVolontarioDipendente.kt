@@ -14,10 +14,7 @@ import android.widget.TextView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class ProfiloVolontarioDipendente : Fragment() {
-
-    val bundle = arguments
-    val cognomeNomeSpinner = bundle?.getString("cognomeNomeSpinner").toString()
+class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +26,7 @@ class ProfiloVolontarioDipendente : Fragment() {
             false
         )
         root.findViewById<Button>(R.id.logout).setOnClickListener { exit_function(requireActivity()) }
-        setta_info_profilo(root, cognomeNomeSpinner)
+        setta_info_profilo(root, this.cognomeNomeSpinner)
         val logout = root.findViewById(R.id.logout) as Button
         logout.setOnClickListener { exit_function(requireActivity()) }
         return root

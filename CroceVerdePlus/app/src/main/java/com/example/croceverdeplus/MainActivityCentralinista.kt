@@ -11,6 +11,7 @@ class MainActivityCentralinista : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val cognomeNome = intent.getStringExtra("cognomeNomeSpinner").toString()
         setContentView(R.layout.activity_main_centralinista)
         loadFragment(TabelloneTurniCentralinista())
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavCentralinista)
@@ -26,7 +27,7 @@ class MainActivityCentralinista : AppCompatActivity() {
                     true
                 }
                 R.id.account -> {
-                    loadFragment(ProfiloCentralinista())
+                    loadFragment(ProfiloCentralinista(cognomeNome))
                     true
                 }
                 else -> {

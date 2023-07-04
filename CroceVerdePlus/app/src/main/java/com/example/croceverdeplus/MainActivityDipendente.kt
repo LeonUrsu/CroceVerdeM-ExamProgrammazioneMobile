@@ -11,6 +11,7 @@ class MainActivityDipendente : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val cognomeNome = intent.getStringExtra("cognomeNomeSpinner").toString()
         setContentView(R.layout.activity_main_dipendente)
         loadFragment(TabelloneTurniDipendente())
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavDipendente)
@@ -22,11 +23,11 @@ class MainActivityDipendente : AppCompatActivity() {
                     true
                 }
                 R.id.account -> {
-                    loadFragment(ProfiloVolontarioDipendente())
+                    loadFragment(ProfiloVolontarioDipendente(cognomeNome))
                     true
                 }
                 R.id.checklist -> {
-                    loadFragment(CheckList())
+                    loadFragment(CheckList(cognomeNome))
                     true
                 }
                 else -> {

@@ -12,9 +12,7 @@ import androidx.fragment.app.Fragment
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-class CheckList : Fragment() {
-    val bundle = arguments
-    val cognomeNomeSpinner: String = bundle?.getString("cognomeNomeSpinner").toString()
+class CheckList(val cognomeNomeSpinner: String) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
