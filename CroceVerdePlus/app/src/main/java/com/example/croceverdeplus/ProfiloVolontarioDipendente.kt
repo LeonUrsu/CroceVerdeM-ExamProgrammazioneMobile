@@ -20,7 +20,6 @@ class ProfiloVolontarioDipendente : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var root = inflater.inflate(
             R.layout.fragment_profilo_volontario_dipendente,
             container,
@@ -53,12 +52,26 @@ class ProfiloVolontarioDipendente : Fragment() {
                             document.getString("cognome")
                         root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
                             document.getString("dataDiNascita")
-                        root.findViewById<TextView>(R.id.prima_118).text = document.getString("oreTurno118prima")
-                        root.findViewById<TextView>(R.id.seconda_118).text = document.getString("oreTurno118seconda")
-                        root.findViewById<TextView>(R.id.terza_118).text = document.getString("oreTurno118terza")
-                        root.findViewById<TextView>(R.id.prima_h24).text = document.getString("oreTurnoh24prima")
-                        root.findViewById<TextView>(R.id.seconda_h24).text = document.getString("oreTurnoh24seconda")
-                        root.findViewById<TextView>(R.id.terza_h24).text = document.getString("oreTurnoh24terza")
+                        var oreTurno118prima = "oreTurno118prima"
+                        var oreTurno118seconda = "oreTurno118seconda"
+                        var oreTurno118terza = "oreTurno118terza"
+                        var oreTurnoh24prima = "oreTurnoh24prima"
+                        var oreTurnoh24seconda = "oreTurnoh24seconda"
+                        var oreTurnoh24terza = "oreTurnoh24terza"
+                        root.findViewById<TextView>(R.id.prima_118).text =
+                            oreTurno118prima + "  " + document.getLong(oreTurno118prima).toString()
+                        root.findViewById<TextView>(R.id.seconda_118).text =
+                            oreTurno118seconda + "  " + document.getLong(oreTurno118seconda)
+                                .toString()
+                        root.findViewById<TextView>(R.id.terza_118).text =
+                            oreTurno118terza + "  " + document.getLong(oreTurno118terza).toString()
+                        root.findViewById<TextView>(R.id.prima_h24).text =
+                            oreTurnoh24prima + "  " + document.getLong(oreTurnoh24prima).toString()
+                        root.findViewById<TextView>(R.id.seconda_h24).text =
+                            oreTurnoh24seconda + "  " + document.getLong(oreTurnoh24seconda)
+                                .toString()
+                        root.findViewById<TextView>(R.id.terza_h24).text =
+                            oreTurnoh24terza + "  " + document.getLong(oreTurnoh24terza).toString()
                     }
                 }
             }

@@ -28,7 +28,7 @@ class CheckList : Fragment() {
     }
 
     fun salva_btn_function(root : View) {
-        //TODO implementare la rilevazione e il salvataggio nel database
+
         class ChecklistEseguita{
             var presidi_list: MutableList<String>? = null
             var cognomeNomeSpinner : String? = null
@@ -42,9 +42,6 @@ class CheckList : Fragment() {
         Database().aggiungi_documento_a_db(ogg, "checklist_eseguite")
         Toast.makeText(requireActivity(), "Checklist salvata", Toast.LENGTH_SHORT).show()
     }
-
-
-
 
 
 

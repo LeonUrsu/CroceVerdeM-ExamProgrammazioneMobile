@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
@@ -120,6 +121,21 @@ class Database {
     fun set_spinner(root: View, militi_array: MutableList<String>, act: Activity) {
         val gameKindArray: ArrayAdapter<String> =
             ArrayAdapter<String>(
+                act,
+                android.R.layout.simple_spinner_item,
+                militi_array
+            )
+        gameKindArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val convert_from_spinner: Spinner = root.findViewById(R.id.milite_input)
+        convert_from_spinner.adapter = gameKindArray
+    }
+
+    /*
+    Metodo per polulare lo spinner dei militi per segnarli sul tabellone
+    */
+    fun set_spinner_milite(root: View, militi_array: MutableList<Milite>, act: Activity) {
+        val gameKindArray: ArrayAdapter<Milite> =
+            ArrayAdapter<Milite>(
                 act,
                 android.R.layout.simple_spinner_item,
                 militi_array
@@ -246,24 +262,24 @@ class Database {
     Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
      */
     fun segna_o_cancella_milite_dal_turno(
-        tabella: String,
+        nome_tipo_tabella: String,
         turno: String,
-        nomeCognomeSpinner: String
+        cognomeNomeSpinner: String, root: View
     ) {
-        val docRef = db.collection("tabelle").document(tabella)
+        val docRef = db.collection("tabelle").document(nome_tipo_tabella)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                if (document.getString(turno) == "") {
-                    var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno)
-                    if (autorizzazioneMilite)
-                        segna_milite(nomeCognomeSpinner, tabella, turno)
-                    aggiungi_ore_lavorate(nomeCognomeSpinner, turno)
+                var presenzaMilite = document.getString(turno)
+                if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
+                    //var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno) // TODO il volontario ha bisogno di questo metodo
+                    //if (autorizzazioneMilite)
+                    aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
+                    aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
                 } else
-                    if (document.getString(turno) == nomeCognomeSpinner) {
-                        cancella_milite(nomeCognomeSpinner, turno)
-                        rimuovi_ore_lavorate(nomeCognomeSpinner, turno)
-
+                    if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
+                        aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
+                        rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
                     }
             } else {
                 Log.d(TAG, "No such document")
@@ -271,6 +287,24 @@ class Database {
         }.addOnFailureListener { exception ->
             Log.d(TAG, "get failed with ", exception)
         }
+    }
+
+    private fun stabilisci_nome_tabella(turno: String): String {
+        if (turno.contains("tabella118h24"))
+            return "tabella_118_h24"
+        else return "tabella_118"
+    }
+
+    private fun stabilisci_nome_turno(turno: String): String {
+        var nuovo_turno = ""
+        if (turno.contains("tabella118h24"))
+            nuovo_turno = turno.replace("tabella118h24_", "")
+        else {
+            if (turno.contains("tabella118_")) {
+                nuovo_turno = "tabella_118"
+            }
+        }
+        return nuovo_turno
     }
 
     /*
@@ -290,25 +324,21 @@ class Database {
     /*
     Metodo per registrare le disponibilità nel db
      */
-    fun disponibilita_btn(cognomeNomeSpinner: String, root: View) {
-        var tipo_settimana = ""
-        var tipo_settimana_bool = false
-        if (TabelloneTurniVolontario().tipo_settimana == 1)
-            tipo_settimana = "tabella_118"
-        else {
-            tipo_settimana = "tabella_118_h24"
-            tipo_settimana_bool = true
-        }
-        val docRef = db.collection("tabelle").document(tipo_settimana)
+    fun disponibilita_btn(cognomeNomeSpinner: String, root: View, nome_tipo_settimana: String) {
+        val docRef = db.collection("tabelle").document(nome_tipo_settimana)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                var turno = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana_bool)
+                var turno = TabelloneTurni().rileva_valori_spinner(root)
                 var dataDisponibilita = costruisci_data_disponibilita_in_Long(
                     document.getTimestamp("data_lunedi")!!,
                     turno
                 )
-                costruisci_trasmetti_disponibilità(dataDisponibilita, cognomeNomeSpinner, turno)
+                costruisci_trasmetti_disponibilità(
+                    dataDisponibilita,
+                    cognomeNomeSpinner,
+                    nome_tipo_settimana + "_" + turno
+                )
             } else {
                 Log.d(TAG, "No such document")
             }
@@ -427,30 +457,18 @@ class Database {
     }
 
     /*
-    Metodo per segnare un milite passato tl tabellone dei turni e aggiungere le sue ore
-     */
-    fun segna_milite(nome: String, tabella: String, turno: String) {
-        aggiorna_tabellone_milite(nome, tabella, turno)
-    }
-
-    /*
-    Metodo per cancellare un milite dal turno e rimuovere le ore dalla sua banca ore
-     */
-    fun cancella_milite(tabella: String, turno: String) {
-        aggiorna_tabellone_milite("", tabella, turno)
-    }
-
-    /*
     Metodo per aggiornare una tabella con un milite passato tramite il suo cognomeNomeSpinner
     nome = nome del milite
      */
-    fun aggiorna_tabellone_milite(nome: String, tabella: String, turno: String) {
+    fun aggiorna_tabellone_milite(nome: String, tabella: String, turno: String, root: View) {
         val washingtonRef = db.collection("tabelle").document(tabella)
-
-        // Set the "isCapital" field of the city 'DC'
         washingtonRef
             .update(turno, nome)
-            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
+            .addOnSuccessListener {
+                Log.d(TAG, "DocumentSnapshot successfully updated!")
+                TabelloneTurni().setta_settiamna_118_h24(root)
+                TabelloneTurni().setta_settiamna_118(root)
+            }
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
     }
 
@@ -604,8 +622,10 @@ class Database {
         }
     }
 
-
-    fun popula_spinner_militi_filtrati(root: View, act: Activity) {
+    /*
+    Metodo per popoare lo spinner con militi filtrati in base al grado staabilito dal centralinista
+     */
+    fun popula_spinner_militi_filtrati(servizio: String, grado: String, root: View, act: Activity) {
         db.collection("militi")
             .get()
             .addOnSuccessListener { result ->
@@ -613,14 +633,18 @@ class Database {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
                 var militi: MutableList<Milite> = mutableListOf()
-                for (document in result) { militi.add(document.toObject<Milite>()) }
-                val servizio_val: String =
-                    root.findViewById<Spinner>(R.id.servizio_input).selectedItem.toString()
-                val grado_val: String =
-                    root.findViewById<Spinner>(R.id.grado_input).selectedItem.toString()
-                TabelloneTurni().filtra_militi(militi, servizio_val, grado_val)
-                //militi.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it.cognomeNomeSpinner }))
-                //set_spinner(root, militi, act)
+                for (document in result) {
+                    militi.add(document.toObject<Milite>())
+                }
+                var militi_filtrati: MutableList<Milite> =
+                    TabelloneTurni().filtra_militi(militi, servizio, grado)
+                var militi_filtrati_string: MutableList<String> = mutableListOf()
+                for (milite in militi_filtrati) {
+                    if (milite.cognomeNomeSpinner != null)
+                        militi_filtrati_string.add(milite.cognomeNomeSpinner!!)
+                }
+                militi_filtrati_string.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it }))
+                set_spinner(root, militi_filtrati_string, act)
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)

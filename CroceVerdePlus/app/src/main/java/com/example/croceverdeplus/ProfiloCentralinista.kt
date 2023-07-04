@@ -1,13 +1,17 @@
 package com.example.croceverdeplus
 
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class ProfiloCentralinista : Fragment() {
 
@@ -25,10 +29,31 @@ class ProfiloCentralinista : Fragment() {
         startActivity(intent)
     }
 
-    fun set_info_centralinista(my_root : View, nome : String, cognome : String, data_di_nascita : String){
-        my_root.findViewById<TextView>(R.id.nome_text_centralinista).text = nome
-        my_root.findViewById<TextView>(R.id.cognome_text_centralinista).text = cognome
-        my_root.findViewById<TextView>(R.id.data_di_nascita_text_centralinista).text =
-            data_di_nascita //TODO controllate type se String o Datetime
+    /*
+    Metodo per settare il nome e cognome e data di nascita del milite nel suo profilo
+     */
+    fun setta_info_profilo(root: View, cognomeNomeSpinner: String) {
+        val db = Firebase.firestore
+        db.collection("centralinisti")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(ContentValues.TAG, "${document.id} => ${document.data}")
+                }
+                for (document in result) {
+                    if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        root.findViewById<TextView>(R.id.nome_text_centralinista).text =
+                            document.getString("nome")
+                        root.findViewById<TextView>(R.id.cognome_text_centralinista).text =
+                            document.getString("cognome")
+                        root.findViewById<TextView>(R.id.data_di_nascita_text_centralinista).text =
+                            document.getString("dataDiNascita")
+
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(ContentValues.TAG, "Error getting documents: ", exception)
+            }
     }
 }

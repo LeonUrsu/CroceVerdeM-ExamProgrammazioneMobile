@@ -20,14 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="settimana 1" />
+            android:text="sett 118" />
 
         <Button
             android:id="@+id/settimana_n_plus_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="settimana 2" />
+            android:text="sett 118/H24" />
     </LinearLayout>
 
     <ViewFlipper
@@ -38,14 +38,12 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-        <include
-            android:id="@+id/include3"
-            layout="@layout/table_118" />
-
         <include
             android:id="@+id/map3"
             layout="@layout/table_h24_118" />
+        <include
+            android:id="@+id/include3"
+            layout="@layout/table_118" />
 
     </ViewFlipper>
 

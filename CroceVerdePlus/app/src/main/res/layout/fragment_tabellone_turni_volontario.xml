@@ -14,33 +14,32 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
+        <include
+            android:id="@+id/map2"
+            layout="@layout/table_h24_118" />
         <include
             android:id="@+id/include2"
             layout="@layout/table_118" />
 
-        <include
-            android:id="@+id/map2"
-            layout="@layout/table_h24_118" />
-
     </ViewFlipper>
 
     <Spinner
-        android:id="@+id/grado_input"
+        android:id="@+id/grado_input_centralinista"
         android:layout_width="140dp"
         android:layout_height="50dp"
         android:layout_marginStart="48dp"
         android:entries="@array/grado_input_array"
-        app:layout_constraintStart_toEndOf="@+id/servizio_input"
-        app:layout_constraintTop_toTopOf="@+id/servizio_input" />
+        app:layout_constraintStart_toEndOf="@+id/servizio_input_centralinista"
+        app:layout_constraintTop_toTopOf="@+id/servizio_input_centralinista" />
 
     <Spinner
-        android:id="@+id/servizio_input"
+        android:id="@+id/servizio_input_centralinista"
         android:layout_width="140dp"
         android:layout_height="50dp"
-        android:layout_marginStart="40dp"
         android:layout_marginTop="20dp"
         android:entries="@array/servzio_input_array"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.199"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vf_volontario" />
 
@@ -50,10 +49,10 @@
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
         android:entries="@array/giorno_input_array"
-        app:layout_constraintEnd_toEndOf="@+id/servizio_input"
+        app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/servizio_input"
-        app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
+        app:layout_constraintStart_toStartOf="@+id/servizio_input_centralinista"
+        app:layout_constraintTop_toBottomOf="@+id/servizio_input_centralinista" />
 
     <Button
         android:id="@+id/segna_cancella_btn"
@@ -81,10 +80,10 @@
         android:layout_height="50dp"
         android:layout_marginTop="36dp"
         android:entries="@array/orario_input_array"
-        app:layout_constraintEnd_toEndOf="@+id/grado_input"
+        app:layout_constraintEnd_toEndOf="@+id/grado_input_centralinista"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/grado_input"
-        app:layout_constraintTop_toBottomOf="@+id/grado_input" />
+        app:layout_constraintStart_toStartOf="@+id/grado_input_centralinista"
+        app:layout_constraintTop_toBottomOf="@+id/grado_input_centralinista" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -100,14 +99,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="settimana 1" />
+            android:text="sett 118" />
 
         <Button
             android:id="@+id/settimana_n_plus_1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="settimana 2" />
+            android:text="Sett H24/118" />
     </LinearLayout>
 
 
