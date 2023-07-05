@@ -168,16 +168,17 @@ class TabelloneTurni {
     }
 
     /*
-    Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato
-    */ //TODO (BIsogna trovare il odo di filtrare i militi in base ai parametri che sono stati passati)
+    Metodo per filtrare l'array completo di militi in base al grado del servizio selezionato, se il milite
+    soddisfa i requisiti per svolgere i turni il milite verrà aggiunto alla lista dei filtrati
+    */ //TODO si può rendere più efficiente se il confronto nel when() non avviente con stringhe ma con numeri Int
     fun filtra_militi(
-        array: MutableList<Milite>,
+        militi: MutableList<Milite>,
         servizio_val: String,
         grado_val: String
     ): MutableList<Milite> {
-        val filtrati: MutableList<Milite> = mutableListOf()
-        array.forEach {
-            val risultato_verifica_grado = when(servizio_val + grado_val){
+        val militiFiltrati: MutableList<Milite> = mutableListOf()
+        militi.forEach {
+            val risultatoVerificaGrado = when(servizio_val + grado_val){
                 "1181a" -> it.grado118prima
                 "1182a" -> it.grado118prima
                 "1183a" -> it.grado118prima
@@ -186,9 +187,9 @@ class TabelloneTurni {
                 "h243a" -> it.gradoh24terza
                 else -> {false}
             }
-            if(risultato_verifica_grado != null && risultato_verifica_grado ) filtrati.add(it)
+            if(risultatoVerificaGrado != null && risultatoVerificaGrado ) militiFiltrati.add(it)
         }
-        return filtrati
+        return militiFiltrati
     }
 
 
