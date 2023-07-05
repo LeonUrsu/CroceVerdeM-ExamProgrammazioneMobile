@@ -11,8 +11,8 @@ class MainActivityCentralinista : AppCompatActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val cognomeNome = intent.getStringExtra("cognomeNomeSpinner").toString()
         setContentView(R.layout.activity_main_centralinista)
+        val cognomeNome = intent.getStringExtra("cognomeNomeSpinner").toString()
         loadFragment(TabelloneTurniCentralinista())
         bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavCentralinista)
         bottomNav.selectedItemId = R.id.tabellone

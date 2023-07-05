@@ -25,20 +25,20 @@
                     android:src="@drawable/accountimage" />
 
                 <TextView
-                    android:id="@+id/nome_text_profilo_volontario"
+                    android:id="@+id/nome_text_profilo_centralinista"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="Nome" />
 
 
                 <TextView
-                    android:id="@+id/cognome_text_profilo_volontario"
+                    android:id="@+id/cognome_text_profilo_centralinista"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:text="Cognome" />
 
                 <TextView
-                    android:id="@+id/data_di_nascita_text_profilo_volontario"
+                    android:id="@+id/data_di_nascita_text_profilo_centralinista"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="Data di nascita" />

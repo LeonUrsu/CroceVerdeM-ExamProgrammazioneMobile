@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
 class ProfiloCentralinista(val cognomeNomeSpinner: String) : Fragment() {
@@ -45,13 +46,10 @@ class ProfiloCentralinista(val cognomeNomeSpinner: String) : Fragment() {
                 }
                 for (document in result) {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
-                        root.findViewById<TextView>(R.id.nome_text_centralinista).text =
-                            document.getString("nome")
-                        root.findViewById<TextView>(R.id.cognome_text_centralinista).text =
-                            document.getString("cognome")
-                        root.findViewById<TextView>(R.id.data_di_nascita_text_centralinista).text =
-                            document.getString("dataDiNascita")
-
+                        val centralinista = document.toObject<Centralinisti>()
+                        root.findViewById<TextView>(R.id.nome_text_profilo_centralinista).setText(centralinista.nome.toString())
+                        root.findViewById<TextView>(R.id.cognome_text_profilo_centralinista).setText(centralinista.cognome)
+                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_centralinista).setText(centralinista.dataDiNascita.toString())
                     }
                 }
             }
