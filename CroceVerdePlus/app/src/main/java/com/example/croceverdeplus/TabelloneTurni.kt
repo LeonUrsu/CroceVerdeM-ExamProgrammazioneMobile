@@ -91,32 +91,6 @@ class TabelloneTurni {
         return "turno_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
-    /*
-    Metodo per trovare dalla stringa il numero nella risorsa da segnare
-     */
-    fun id_int_val_builder(
-        id_string: String,
-        resources: Resources,
-        context: String,
-        root: View,
-    ): Int {
-        //var id_string = TabelloneTurni().rileva_valori_spinner(root, tipo_settimana)
-        val res = resources
-        val id_trovato = res.getIdentifier(id_string, "id", context)
-        return id_trovato
-    }
-
-    /*
-    Metodo per vedere la tabella settata
-    */
-    fun tipo_settimana(vf: ViewFlipper): Boolean {
-        if (vf.displayedChild == 1)
-            return false
-        if (vf.displayedChild == 1)
-            return true
-        return true
-    }
-
     fun rileva_data_turno(turno: String, dataLunedi: Timestamp): Array<Any> {
         var data = dataLunedi.seconds * 1000
         val lunedi =
@@ -201,35 +175,18 @@ class TabelloneTurni {
         servizio_val: String,
         grado_val: String
     ): MutableList<Milite> {
-        var grado118prima = false
-        var grado118seconda = false
-        var grado118terza = false
-        var gradoh24prima = false
-        var gradoh24seconda = false
-        var gradoh24terza = false
-
-        when (servizio_val + grado_val) {
-            "1181a" -> grado118prima = true
-            "1182a" -> grado118prima = true
-            "1183a" -> grado118prima = true
-            "h241a" -> gradoh24prima = true
-            "h242a" -> gradoh24seconda = true
-            "h243a" -> gradoh24terza = true
-            else -> {
-                gradoh24terza = true
-            }
-        }
-        var filtrati: MutableList<Milite> = mutableListOf()
+        val filtrati: MutableList<Milite> = mutableListOf()
         array.forEach {
-            if (it.grado118prima == grado118prima && grado118prima == true
-                || it.grado118seconda == grado118seconda && grado118seconda == true
-                || it.grado118terza == grado118terza && grado118terza == true
-                || it.gradoh24prima == gradoh24prima && gradoh24prima == true
-                || it.gradoh24seconda == gradoh24seconda && gradoh24seconda == true
-                || it.gradoh24terza == gradoh24terza && gradoh24terza == true
-            ) {
-                filtrati.add(it)
+            val risultato_verifica_grado = when(servizio_val + grado_val){
+                "1181a" -> it.grado118prima
+                "1182a" -> it.grado118prima
+                "1183a" -> it.grado118prima
+                "h241a" -> it.gradoh24prima
+                "h242a" -> it.gradoh24seconda
+                "h243a" -> it.gradoh24terza
+                else -> {false}
             }
+            if(risultato_verifica_grado != null && risultato_verifica_grado ) filtrati.add(it)
         }
         return filtrati
     }

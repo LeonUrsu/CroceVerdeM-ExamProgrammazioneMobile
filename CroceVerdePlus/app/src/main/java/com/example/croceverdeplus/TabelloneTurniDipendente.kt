@@ -19,8 +19,10 @@ class TabelloneTurniDipendente : Fragment() {
         val root = inflater.inflate(R.layout.fragment_tabellone_turni_dipendente, container, false)
         val vf_dipendente = root.findViewById(R.id.vf_dipendente) as ViewFlipper
 
-        TabelloneTurni().setta_settiamna_118_h24(root)
-        TabelloneTurni().setta_settiamna_118(root)
+        //segue l'aggiornamento in tempo reale dei dati delle tabelle dal firebase db
+        var db = Database()
+        db.aggiorna_tabella_118_h24_in_tempo_reale(root)
+        db.aggiorna_tabella_118_in_tempo_reale(root)
 
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {

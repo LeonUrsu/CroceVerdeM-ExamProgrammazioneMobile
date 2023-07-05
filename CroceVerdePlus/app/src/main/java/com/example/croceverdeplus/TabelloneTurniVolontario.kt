@@ -1,10 +1,6 @@
 package com.example.croceverdeplus
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
-import android.provider.ContactsContract.Data
-import android.text.TextUtils.replace
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +9,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentTransaction
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
 
 class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
 
@@ -41,9 +33,11 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
         val spinner_servizio = root.findViewById<Spinner>(R.id.servizio_input_centralinista)
         spinner_servizio.setEnabled(false)
 
+        //segue l'aggiornamento in tempo reale dei dati delle tabelle dal firebase db
         var db = Database()
         db.aggiorna_tabella_118_h24_in_tempo_reale(root)
         db.aggiorna_tabella_118_in_tempo_reale(root)
+
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
@@ -79,8 +73,8 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
     }
 
     /*
-    Metodo per far funzionare il pulsante di essere segnati o cancellare da un turno
-    id_passed = id passato per il turno in questione
+    Metodo per far funzionare il pulsante del volontario nel momento in cui desidera essere
+    prenotato o cancellato in un determinato turno, una volta premuto verranno mandati dati nel db
     */
     fun segnami_cancellami_btn_function(root: View) {
         var id_turno = TabelloneTurni().rileva_valori_spinner(root)
@@ -90,6 +84,4 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
             cognomeNomeSpinner, root, requireActivity()
         )
     }
-
-
 }

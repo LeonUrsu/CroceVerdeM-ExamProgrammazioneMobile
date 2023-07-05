@@ -264,7 +264,7 @@ class Database {
     fun segna_o_cancella_milite_dal_turno(
         nome_tipo_tabella: String,
         turno: String,
-        cognomeNomeSpinner: String, root: View
+        cognomeNomeSpinner: String, root: View, act : Activity
     ) {
         val docRef = db.collection("tabelle").document(nome_tipo_tabella)
         docRef.get().addOnSuccessListener { document ->
@@ -274,10 +274,13 @@ class Database {
                 if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
                     aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                     aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
+                    Toast.makeText(act, "Milite segnato", Toast.LENGTH_SHORT).show()
                 } else
                     if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
                         aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                         rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                        Toast.makeText(act, "Milite cancellato", Toast.LENGTH_SHORT).show()
+
                     }
             } else {
                 Log.d(TAG, "No such document")
@@ -347,13 +350,12 @@ class Database {
                 aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                 aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
                 Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
-
             }
         } else
-            if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
+            if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA MILITE
                 aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                 rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
-                Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
+                Toast.makeText(act, "cancellato dal turno", Toast.LENGTH_SHORT).show()
 
             }
     }
