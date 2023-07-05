@@ -1,6 +1,10 @@
 package com.example.croceverdeplus
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.provider.ContactsContract.Data
+import android.text.TextUtils.replace
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,17 +13,24 @@ import android.widget.Spinner
 import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
 
     val bundle = arguments
     var tipo_tabella: Int = 0
     var nome_tipo_tabella: String = ""
+    var root: View? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
@@ -29,13 +40,14 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
 
         val spinner_servizio = root.findViewById<Spinner>(R.id.servizio_input_centralinista)
         spinner_servizio.setEnabled(false)
-        TabelloneTurni().setta_settiamna_118_h24(root)
-        TabelloneTurni().setta_settiamna_118(root)
+
+        var db = Database()
+        db.aggiorna_tabella_118_h24_in_tempo_reale(root)
+        db.aggiorna_tabella_118_in_tempo_reale(root)
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
             segnami_cancellami_btn_function(root)
-            Toast.makeText(requireActivity(), "segnato", Toast.LENGTH_SHORT).show()
         }
 
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
@@ -75,10 +87,8 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
         Database().segna_o_cancella_milite_dal_turno_volontario(
             nome_tipo_tabella,
             id_turno,
-            cognomeNomeSpinner, root
+            cognomeNomeSpinner, root, requireActivity()
         )
-        TabelloneTurni().setta_settiamna_118_h24(root)
-        TabelloneTurni().setta_settiamna_118(root)
     }
 
 

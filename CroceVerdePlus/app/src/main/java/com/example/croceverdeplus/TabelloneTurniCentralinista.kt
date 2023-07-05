@@ -47,7 +47,6 @@ class TabelloneTurniCentralinista : Fragment() {
                     requireActivity()
                 )
             }
-
             override fun onNothingSelected(parent: AdapterView<*>) {
             }
         }
@@ -76,7 +75,6 @@ class TabelloneTurniCentralinista : Fragment() {
                     requireActivity()
                 )
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
             }
         }

@@ -272,8 +272,6 @@ class Database {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 var presenzaMilite = document.getString(turno)
                 if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
-                    //var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno) // TODO il volontario ha bisogno di questo metodo
-                    //if (autorizzazioneMilite)
                     aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                     aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
                 } else
@@ -301,23 +299,18 @@ class Database {
     fun segna_o_cancella_milite_dal_turno_volontario(
         nome_tipo_tabella: String,
         turno: String,
-        cognomeNomeSpinner: String, root: View
+        cognomeNomeSpinner: String, root: View, act: Activity
     ) {
         val docRef = db.collection("tabelle").document(nome_tipo_tabella)
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                var presenzaMilite = document.getString(turno)
-                if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
-                    var autorizzazioneMilite: Boolean = varifica_grado_milite(document, turno) // TODO il volontario ha bisogno di questo metodo
-                    if (autorizzazioneMilite){
-                        aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
-                        aggiungi_ore_lavorate(cognomeNomeSpinner, turno)}
-                } else
-                    if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
-                        aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
-                        rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
-                    }
+                recupera_milite_gestisci_verifica(
+                    cognomeNomeSpinner,
+                    turno,
+                    document,
+                    nome_tipo_tabella, root, act
+                )
             } else {
                 Log.d(TAG, "No such document")
             }
@@ -326,17 +319,43 @@ class Database {
         }
     }
 
-
-    private fun stabilisci_nome_turno(turno: String): String {
-        var nuovo_turno = ""
-        if (turno.contains("tabella118h24"))
-            nuovo_turno = turno.replace("tabella118h24_", "")
-        else {
-            if (turno.contains("tabella118_")) {
-                nuovo_turno = "tabella_118"
+    fun gestisci_prenotazione_verifica_milite(
+        milite: Milite,
+        turno: String,
+        document: DocumentSnapshot,
+        cognomeNomeSpinner: String,
+        nome_tipo_tabella: String,
+        root: View, act: Activity
+    ) {
+        var campo = trova_campo(turno)!![2]
+        var autorizzazioneMilite = when (campo) {
+            "1181" -> milite.grado118prima
+            "1182" -> milite.grado118seconda
+            "1183" -> milite.grado118terza
+            "h241" -> milite.gradoh24prima
+            "h242" -> milite.gradoh24seconda
+            "h243" -> milite.gradoh24terza
+            else -> {
+                false
             }
         }
-        return nuovo_turno
+        var autorizzazioneMiliteCorretta =
+            if (autorizzazioneMilite == null) false else autorizzazioneMilite
+        var presenzaMilite = document.getString(turno)
+        if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
+            if (autorizzazioneMiliteCorretta) {
+                aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
+                aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
+                Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
+
+            }
+        } else
+            if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
+                aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
+                rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
+
+            }
     }
 
     /*
@@ -379,17 +398,6 @@ class Database {
         }
     }
 
-
-    /*
-    Metodo per rilevare la il nome della settimana dal turno passato
-     */
-    private fun rileva_nome_tabella_dal_turno(turno: String): String {
-        var settimana = ""
-        if (turno.contains("turno118h24"))
-            settimana = "settimana_118_h24"
-        else settimana = "settimana_118"
-        return settimana
-    }
 
     /*
     Metodo per costruire la data della disponibilità del milite
@@ -446,22 +454,34 @@ class Database {
     /*
     Metodo per verificare il gradfo del milite e se ritorna true allora il milite è autorizzato a prenotarsi nel turno
      */
-    private fun varifica_grado_milite(document: DocumentSnapshot, turno: String): Boolean {
-        var turno = trova_campo(turno)!![0]
-        turno = when (turno) {
-            "1181" -> "grado118prima"
-            "1182" -> "grado118seconda"
-            "1183" -> "grado118terza"
-            "h241" -> "gradoh24prima"
-            "h242" -> "gradoh24seconda"
-            "h243" -> "gradoh24terza"
-            else -> {
-                "gradoh24terza"
+    private fun recupera_milite_gestisci_verifica(
+        cognomeNomeSpinner: String,
+        turno: String,
+        document: DocumentSnapshot,
+        nome_tipo_tabella: String,
+        root: View, act: Activity
+    ) {
+        db.collection("militi")
+            .get()
+            .addOnSuccessListener { result ->
+                for (milite in result) {
+                    Log.d(TAG, "${milite.id} => ${milite.data}")
+                }
+                for (milite in result) {
+                    if (milite.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        gestisci_prenotazione_verifica_milite(
+                            milite.toObject<Milite>(),
+                            turno,
+                            document,
+                            cognomeNomeSpinner,
+                            nome_tipo_tabella, root, act
+                        )
+                    }
+                }
             }
-        }
-       //TODO (confrontare il gradoturno con il grado del milite)
-
-        return true
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
     }
 
     /*
@@ -520,8 +540,8 @@ class Database {
             // whatever is appropriate in this case
             throw IllegalArgumentException("word has fewer than 13 characters!")
         }
-        var servizio = str.substring(0, 2)
-        var orario = str.substring(8, 10)
+        var servizio = str.substring(0, 3)
+        var orario = str.substring(8, 11)
         orario = when (orario) {
             "mat" -> "7"
             "pom" -> "7"
@@ -543,9 +563,8 @@ class Database {
                 "oreTurnoh24terza"
             }
         }
-        return arrayOf(turno, orario)
+        return arrayOf(turno, orario, formato)
     }
-
 
     /*
     Metodo per aggiungere ad un milite le ore a cui si è prenotato, in questo modo le sue statistiche verranno aggiornate con le ore dovute
@@ -635,7 +654,6 @@ class Database {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
             }
-
     }
 
     /*
@@ -682,6 +700,48 @@ class Database {
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
             }
+    }
+
+    /*
+    Metodo per aggiornare la tabella H24/118 ìn tempo reale
+     */
+    fun aggiorna_tabella_118_h24_in_tempo_reale(root: View) {
+        val db = Firebase.firestore
+        val docRef = db.collection("tabelle").document("tabella_118_h24")
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            if (snapshot != null && snapshot.exists()) {
+                Log.d(TAG, "Current data: ${snapshot.data}")
+                var tabellaRicevuta = snapshot.toObject<Tabella118h24>()
+                TabelloneTurni().setta_info_tabella_118_h24(root, tabellaRicevuta)
+            } else {
+                Log.d(TAG, "Current data: null")
+            }
+        }
+    }
+
+    /*
+    Metodo per aggiornare la tabella H24/118 ìn tempo reale
+     */
+    fun aggiorna_tabella_118_in_tempo_reale(root: View) {
+        val db = Firebase.firestore
+        val docRef = db.collection("tabelle").document("tabella_118")
+        docRef.addSnapshotListener { snapshot, e ->
+            if (e != null) {
+                Log.w(TAG, "Listen failed.", e)
+                return@addSnapshotListener
+            }
+            if (snapshot != null && snapshot.exists()) {
+                Log.d(TAG, "Current data: ${snapshot.data}")
+                var tabellaRicevuta = snapshot.toObject<Tabella118>()
+                TabelloneTurni().setta_info_tabella_118(root, tabellaRicevuta)
+            } else {
+                Log.d(TAG, "Current data: null")
+            }
+        }
     }
 
 
