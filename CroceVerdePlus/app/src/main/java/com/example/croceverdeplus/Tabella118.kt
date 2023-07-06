@@ -6,6 +6,12 @@ import com.google.firebase.Timestamp
 class Tabella118 {
     var tipo_settimana: Boolean? = null
     var data_lunedi: Timestamp? = null
+    var data_martedi: Timestamp? = null
+    var data_mercoledi: Timestamp? = null
+    var data_giovedi: Timestamp? = null
+    var data_venerdi: Timestamp? = null
+    var data_sabato: Timestamp? = null
+    var data_domenica: Timestamp? = null
 
     var turno_118_lun_mat_1: String? = null
     var turno_118_lun_mat_2: String? = null

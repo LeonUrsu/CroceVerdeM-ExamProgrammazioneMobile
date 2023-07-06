@@ -173,7 +173,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 /*
-    //TODO probabilmente questa classe va dichiarata nel Login.kt e usata tramite import
     fun gestioneAccesso(username: EditText, password: EditText): Int {
 
         val idUser: Int

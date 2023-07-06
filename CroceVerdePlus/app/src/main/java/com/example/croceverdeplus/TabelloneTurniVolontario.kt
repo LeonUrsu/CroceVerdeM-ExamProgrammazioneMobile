@@ -42,6 +42,8 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
             segnami_cancellami_btn_function(root)
+            //TODO (esiste il bug che permette al milite di prenotarsi sullo tesso tunro due volte cioè come milite di 3a e milite di 2a)
+            //TODO (esiste imperfezzione per cui le ore delle statistiche vengono calcolate in base alle prenotazioni appena effettuate e non al tunro appena eseguito, questo è dovuto alla mancanza delle "cloud functions" nel piano base )
         }
 
         val disponibilita_btn = root.findViewById(R.id.disponibilita_btn) as Button
