@@ -33,6 +33,8 @@ class ProfiloCentralinista(val cognomeNomeSpinner: String) : Fragment() {
         startActivity(intent)
     }
 
+
+
     /*
     Metodo per settare il nome e cognome e data di nascita del milite nel suo profilo
      */

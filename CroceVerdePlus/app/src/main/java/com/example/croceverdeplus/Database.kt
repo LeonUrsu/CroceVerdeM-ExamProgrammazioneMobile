@@ -264,7 +264,7 @@ class Database {
     fun segna_o_cancella_milite_dal_turno(
         nome_tipo_tabella: String,
         turno: String,
-        cognomeNomeSpinner: String, root: View, act : Activity
+        cognomeNomeSpinner: String, root: View, act: Activity
     ) {
         val docRef = db.collection("tabelle").document(nome_tipo_tabella)
         docRef.get().addOnSuccessListener { document ->
@@ -330,8 +330,9 @@ class Database {
         nome_tipo_tabella: String,
         root: View, act: Activity
     ) {
-        var campo = trova_campo(turno)!![2]
-        var autorizzazioneMilite = when (campo) {
+        var risultato_campo = trova_campo(turno)
+        var campo = risultato_campo!![2]
+        var autorizzazioneGradoMilite = when (campo) {
             "1181" -> milite.grado118prima
             "1182" -> milite.grado118seconda
             "1183" -> milite.grado118terza
@@ -342,11 +343,17 @@ class Database {
                 false
             }
         }
-        var autorizzazioneMiliteCorretta =
-            if (autorizzazioneMilite == null) false else autorizzazioneMilite
+        var autorizzazoneMiliteDoppione = autorizzazione_prenotazione_turno_unica(
+            turno,
+            cognomeNomeSpinner,
+            risultato_campo[1],
+            document
+        )
+        var autorizzazioneGradoMiliteCorretta =
+            if (autorizzazioneGradoMilite == null) false else autorizzazioneGradoMilite
         var presenzaMilite = document.getString(turno)
         if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
-            if (autorizzazioneMiliteCorretta) {
+            if (autorizzazioneGradoMiliteCorretta && autorizzazoneMiliteDoppione) {
                 aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                 aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
                 Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
@@ -358,6 +365,31 @@ class Database {
                 Toast.makeText(act, "cancellato dal turno", Toast.LENGTH_SHORT).show()
 
             }
+    }
+
+    /*
+    Metodo per verificare se qualche altro milite è presente nello stesso turno ma su grado diverso
+    return = true se il milite non è presente nei turni
+           = false se il milite è presente nei turni
+     */
+    private fun autorizzazione_prenotazione_turno_unica(
+        turno: String,
+        cognomeNomeSpinner: String,
+        grado: String,
+        document: DocumentSnapshot
+    ): Boolean {
+        val turno1 = turno.replace("_" + grado, "1")
+        val turno2 = turno.replace("_" + grado, "2")
+        val turno3 = turno.replace("_" + grado, "3")
+        val risultato = when (cognomeNomeSpinner) {
+            document.getString(turno1) -> false
+            document.getString(turno2) -> false
+            document.getString(turno3) -> false
+            else -> {
+                true
+            }
+        }
+        return risultato
     }
 
     /*
@@ -383,10 +415,7 @@ class Database {
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 var turno = TabelloneTurni().rileva_valori_spinner(root)
-                var dataDisponibilita = costruisci_data_disponibilita_in_Long(
-                    document.getTimestamp("data_lunedi")!!,
-                    turno
-                )
+                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document, turno)
                 costruisci_trasmetti_disponibilità(
                     dataDisponibilita,
                     cognomeNomeSpinner,
@@ -401,6 +430,7 @@ class Database {
     }
 
 
+    /*
     /*
     Metodo per costruire la data della disponibilità del milite
      */
@@ -426,6 +456,31 @@ class Database {
         //var millis_long = localDateTime.getLong(ChronoField.EPOCH_DAY)   //data in millesecondi
         var millis_long = localDateTime.atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
         return millis_long
+    }
+     */
+
+    /*
+    Metodo per costruire la data della disponibilità del milite, si registra il long
+    */
+    private fun costruisci_data_disponibilita_in_Long(
+        document: DocumentSnapshot,
+        turno: String
+    ): Long {
+        val giorno = trova_giorno_dal_campo(turno)
+        val data_estratta = when (giorno) {
+            "lun" -> document.getTimestamp("data_lunedi")
+            "mar" -> document.getTimestamp("data_martedi")
+            "mer" -> document.getTimestamp("data_mercoledi")
+            "gio" -> document.getTimestamp("data_giovedi")
+            "ven" -> document.getTimestamp("data_venerdi")
+            "sab" -> document.getTimestamp("data_sabato")
+            "dom" -> document.getTimestamp("data_domenica")
+            else -> {
+                document.getTimestamp("data_lunedi")
+            }
+        }
+        val data_long = data_estratta!!.seconds * 1000
+        return data_long
     }
 
 
@@ -527,6 +582,23 @@ class Database {
             .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
     }
 
+    /*
+    Metodo che prende un turno e trova il giorno della settimana corrispondente
+     */
+    fun trova_giorno_dal_campo(turno: String): String? {
+        val number = 13
+        var str = ""
+        if (turno.length == number) {
+            return null
+        } else if (turno.length > number) {
+            str = turno.substring(turno.length - number)
+        } else {
+            // whatever is appropriate in this case
+            throw IllegalArgumentException("word has fewer than 13 characters!")
+        }
+        var giorno = str.substring(4, 7)
+        return giorno
+    }
 
     /*
     Metodo per trovare dove aggiungere le ore che il milite
@@ -565,7 +637,7 @@ class Database {
                 "oreTurnoh24terza"
             }
         }
-        return arrayOf(turno, orario, formato)
+        return arrayOf(turno, orario, formato, grado)
     }
 
     /*

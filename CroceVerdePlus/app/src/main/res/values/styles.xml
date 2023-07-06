@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="CroceVerdePlusNewStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="buttonStyle">@style/cv_stileBottoni</item>
+        <item name="colorPrimary">@color/CV_green</item>
+
+    </style>
+
 
     <style name="CVP_tabella">
         <item name="android:textSize">14sp</item>
@@ -53,5 +59,12 @@
         <item name="android:gravity">center</item>
         <item name="android:paddingTop">15sp</item>
     </style>
+
+    <style name="cv_stileBottoni" parent="Widget.AppCompat.Button">
+        <item name="android:background">@color/CV_green</item>
+    </style>
+    
+    
+
 
 </resources>

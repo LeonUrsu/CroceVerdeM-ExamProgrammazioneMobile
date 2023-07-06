@@ -1,6 +1,7 @@
 package com.example.croceverdeplus
 import android.content.ContentValues
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        getSupportActionBar()!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.CV_green)))
         setContentView(R.layout.fragment_login)
         title = "CroceVerdePlus"
         val username: EditText = findViewById(R.id.username_input)
