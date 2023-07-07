@@ -53,8 +53,8 @@ tools:context=".GestioneSettimanaH24">
 
         <EditText
             android:id="@+id/editTextTextPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="242dp"
+            android:layout_height="48dp"
             android:layout_marginBottom="16dp"
             android:ems="10"
             android:hint="password"

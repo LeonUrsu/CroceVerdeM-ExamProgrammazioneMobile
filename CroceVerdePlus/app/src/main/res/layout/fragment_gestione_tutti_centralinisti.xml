@@ -30,6 +30,7 @@
             android:id="@+id/button5"
             android:layout_width="66dp"
             android:layout_height="67dp"
+            android:background="@drawable/circular_button"
             android:text="+"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
