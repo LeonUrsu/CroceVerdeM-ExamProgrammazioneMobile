@@ -346,9 +346,8 @@ class Database {
         var autorizzazoneMiliteDoppione = autorizzazione_prenotazione_turno_unica(
             turno,
             cognomeNomeSpinner,
-            risultato_campo[1],
-            document
-        )
+            risultato_campo[3],
+            document)
         var autorizzazioneGradoMiliteCorretta =
             if (autorizzazioneGradoMilite == null) false else autorizzazioneGradoMilite
         var presenzaMilite = document.getString(turno)
@@ -363,7 +362,6 @@ class Database {
                 aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                 rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
                 Toast.makeText(act, "cancellato dal turno", Toast.LENGTH_SHORT).show()
-
             }
     }
 
@@ -378,13 +376,13 @@ class Database {
         grado: String,
         document: DocumentSnapshot
     ): Boolean {
-        val turno1 = turno.replace("_" + grado, "1")
-        val turno2 = turno.replace("_" + grado, "2")
-        val turno3 = turno.replace("_" + grado, "3")
+        val turno1passato = turno.replace("_" + grado, "_1")
+        val turno2passato = turno.replace("_" + grado, "_2")
+        val turno3passato = turno.replace("_" + grado, "_3")
         val risultato = when (cognomeNomeSpinner) {
-            document.getString(turno1) -> false
-            document.getString(turno2) -> false
-            document.getString(turno3) -> false
+            document.getString(turno1passato) -> false
+            document.getString(turno2passato) -> false
+            document.getString(turno3passato) -> false
             else -> {
                 true
             }
