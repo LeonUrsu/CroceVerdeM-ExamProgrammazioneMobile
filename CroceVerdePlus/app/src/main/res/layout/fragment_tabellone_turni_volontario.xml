@@ -6,10 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".TabelloneTurniVolontario">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vf_volontario"
+        app:layout_constraintVertical_bias="1.0">
+
+        <Spinner
+            android:id="@+id/servizio_input_centralinista"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:entries="@array/servzio_input_array"
+            app:layout_constraintBottom_toTopOf="@+id/orario_input"
+            app:layout_constraintEnd_toStartOf="@+id/giorno_input"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/orario_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:entries="@array/orario_input_array"
+            app:layout_constraintBottom_toTopOf="@+id/segna_cancella_btn"
+            app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/servizio_input_centralinista"
+            app:layout_constraintTop_toBottomOf="@+id/servizio_input_centralinista" />
+
+        <Spinner
+            android:id="@+id/grado_input_centralinista"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:entries="@array/grado_input_array"
+            app:layout_constraintBottom_toBottomOf="@+id/orario_input"
+            app:layout_constraintEnd_toEndOf="@+id/giorno_input"
+            app:layout_constraintStart_toStartOf="@+id/giorno_input"
+            app:layout_constraintTop_toTopOf="@+id/orario_input" />
+
+        <Spinner
+            android:id="@+id/giorno_input"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:entries="@array/giorno_input_array"
+            app:layout_constraintBottom_toBottomOf="@+id/servizio_input_centralinista"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/servizio_input_centralinista"
+            app:layout_constraintTop_toTopOf="@+id/servizio_input_centralinista" />
+
+        <Button
+            android:id="@+id/segna_cancella_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="Segnami Cancellami"
+            app:layout_constraintBottom_toTopOf="@+id/disponibilita_btn"
+            app:layout_constraintEnd_toEndOf="@+id/grado_input_centralinista"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/orario_input"
+            app:layout_constraintTop_toBottomOf="@+id/orario_input" />
+
+        <Button
+            android:id="@+id/disponibilita_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:text="Disponibilità"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/segna_cancella_btn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/segna_cancella_btn"
+            app:layout_constraintTop_toBottomOf="@+id/segna_cancella_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ViewFlipper
         android:id="@+id/vf_volontario"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,72 +103,11 @@
 
     </ViewFlipper>
 
-    <Spinner
-        android:id="@+id/grado_input_centralinista"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="48dp"
-        android:entries="@array/grado_input_array"
-        app:layout_constraintStart_toEndOf="@+id/servizio_input_centralinista"
-        app:layout_constraintTop_toTopOf="@+id/servizio_input_centralinista" />
-
-    <Spinner
-        android:id="@+id/servizio_input_centralinista"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="20dp"
-        android:entries="@array/servzio_input_array"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.199"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vf_volontario" />
-
-    <Spinner
-        android:id="@+id/giorno_input"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:entries="@array/giorno_input_array"
-        app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/servizio_input_centralinista"
-        app:layout_constraintTop_toBottomOf="@+id/servizio_input_centralinista" />
-
-    <Button
-        android:id="@+id/segna_cancella_btn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:text="Segnami Cancellami"
-        app:layout_constraintEnd_toEndOf="@+id/orario_input"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="@+id/giorno_input"
-        app:layout_constraintTop_toBottomOf="@+id/giorno_input" />
-
-    <Button
-        android:id="@+id/disponibilita_btn"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:text="Disponibilità"
-        app:layout_constraintEnd_toEndOf="@+id/segna_cancella_btn"
-        app:layout_constraintStart_toStartOf="@+id/segna_cancella_btn"
-        app:layout_constraintTop_toBottomOf="@+id/segna_cancella_btn" />
-
-    <Spinner
-        android:id="@+id/orario_input"
-        android:layout_width="140dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="36dp"
-        android:entries="@array/orario_input_array"
-        app:layout_constraintEnd_toEndOf="@+id/grado_input_centralinista"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/grado_input_centralinista"
-        app:layout_constraintTop_toBottomOf="@+id/grado_input_centralinista" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="55dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

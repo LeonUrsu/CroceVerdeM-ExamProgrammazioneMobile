@@ -2,11 +2,10 @@
 <resources>
 
     <style name="CroceVerdePlusNewStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textSize">18dp</item>
         <item name="buttonStyle">@style/cv_stileBottoni</item>
         <item name="colorPrimary">@color/CV_green</item>
-
     </style>
-
 
     <style name="CVP_tabella">
         <item name="android:textSize">14sp</item>
@@ -47,7 +46,6 @@
     <style name="CV_profilo">
         <item name="android:layout_width">230dp</item>
         <item name="android:layout_height">50dp</item>
-        <item name="android:textSize">18sp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">20dp</item>
     </style>
@@ -61,7 +59,7 @@
     </style>
 
     <style name="cv_stileBottoni" parent="Widget.AppCompat.Button">
-        <item name="android:background">@color/CV_green</item>
+        <item name="android:background">@drawable/cv_buttons </item>
     </style>
     
     
