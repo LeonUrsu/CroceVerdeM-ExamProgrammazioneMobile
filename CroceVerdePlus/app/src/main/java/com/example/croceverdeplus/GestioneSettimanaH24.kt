@@ -51,8 +51,10 @@ class GestioneSettimanaH24 : Fragment() {
 
 
 
-        val selectedButtonColor = Color.parseColor("#2BB107")
-        val deselectedButtonColor = Color.TRANSPARENT
+        val selectedButtonColor = Color.parseColor("#3FA325")
+        //val selectedButtonColor = R.drawable.cv_buttons
+        //val deselectedButtonColor = Color.TRANSPARENT
+        val deselectedButtonColor = Color.parseColor("#ACACAC")
         var clickSett1: Boolean? = null
         var clickSett2: Boolean? = null
 
