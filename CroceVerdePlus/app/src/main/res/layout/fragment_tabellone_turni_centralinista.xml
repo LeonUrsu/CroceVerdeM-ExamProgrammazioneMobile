@@ -21,22 +21,12 @@
             android:id="@+id/segna_cancella_btn"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="Segnami Cancellami"
+            android:layout_marginTop="8dp"
+            android:text="Segna Cancella"
             app:layout_constraintEnd_toEndOf="@+id/milite_input"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/milite_input"
             app:layout_constraintTop_toBottomOf="@+id/milite_input" />
-
-        <Button
-            android:id="@+id/disponibilita_btn"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="2dp"
-            android:text="Disponibilità"
-            app:layout_constraintEnd_toEndOf="@+id/segna_cancella_btn"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/segna_cancella_btn"
-            app:layout_constraintTop_toBottomOf="@+id/segna_cancella_btn" />
 
         <Spinner
             android:id="@+id/milite_input"
