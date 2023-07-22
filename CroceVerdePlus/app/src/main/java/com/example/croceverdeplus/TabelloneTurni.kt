@@ -115,8 +115,6 @@ class TabelloneTurni {
             }
         }
         var millis = lunedi.plusDays(giorno.toLong()).second.toLong() * 1000 //data in millesecondi
-        var hashmap = hashMapOf("data" to millis, "tipo_tabella" to settimana)
-        //Database().aggiungi_documento_a_db(hashmap,"disponibilita")
         return arrayOf(millis, settimana)
     }
 
@@ -178,10 +176,10 @@ class TabelloneTurni {
     ): MutableList<Milite> {
         val militiFiltrati: MutableList<Milite> = mutableListOf()
         militi.forEach {
-            val risultatoVerificaGrado = when(servizio_val + grado_val){
+            var risultatoVerificaGrado = when(servizio_val + grado_val){
                 "1181a" -> it.grado118prima
-                "1182a" -> it.grado118prima
-                "1183a" -> it.grado118prima
+                "1182a" -> it.grado118seconda
+                "1183a" -> it.grado118terza
                 "h241a" -> it.gradoh24prima
                 "h242a" -> it.gradoh24seconda
                 "h243a" -> it.gradoh24terza
