@@ -67,7 +67,7 @@ class TabelloneTurni {
             "Giovedì" -> "gio"
             "Venerdì" -> "ven"
             "Sabato" -> "sab"
-            "Documenica" -> "dom"
+            "Domenica" -> "dom"
             else -> {
                 "lun"
             }

@@ -7,12 +7,12 @@ import org.junit.Test
 
 class TabelloneTurniTest {
 
-    var militi: MutableList<Milite> = mutableListOf()
-    val servizio_val: String = "118"
-    val grado_val: String = "2a"
 
-    @Before
-    fun setup() {
+    @Test
+    fun filtra_militi_test() {
+        var militi: MutableList<Milite> = mutableListOf()
+        val servizio_val: String = "118"
+        val grado_val: String = "2a"
         var n = 1
         militi.add(
             Milite(
@@ -119,14 +119,6 @@ class TabelloneTurniTest {
                 0
             )
         )
-    }
-
-    @After
-    fun teardown() {
-    }
-
-    @Test
-    fun filtra_militi_test() {
         var lista_filtrata = TabelloneTurni().filtra_militi(militi, servizio_val, grado_val)
         Assert.assertEquals(
             2,
@@ -135,5 +127,15 @@ class TabelloneTurniTest {
         Assert.assertEquals(12, militi.size)
     }
 
+
+    @Test
+    fun id_builder_test(){
+        val servizio_val: String = "H24"
+        val giorno_val: String = "Domenica"
+        val orario_val: String = "7 - 14"
+        val grado_val: String = "2a"
+        val idCostruito = TabelloneTurni().id_builder(servizio_val,giorno_val,orario_val,grado_val)
+        Assert.assertEquals("turno_h24_dom_mat_2", idCostruito)
+    }
 
 }
