@@ -1,12 +1,9 @@
 package com.example.croceverdeplus
 
-import org.junit.After
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 
 class TabelloneTurniTest {
-
 
     @Test
     fun filtra_militi_test() {
@@ -127,13 +124,12 @@ class TabelloneTurniTest {
         Assert.assertEquals(12, militi.size)
     }
 
-
     @Test
     fun id_builder_test(){
-        val servizio_val: String = "H24"
-        val giorno_val: String = "Domenica"
-        val orario_val: String = "7 - 14"
-        val grado_val: String = "2a"
+        val servizio_val = "H24"
+        val giorno_val = "Domenica"
+        val orario_val = "7 - 14"
+        val grado_val = "2a"
         val idCostruito = TabelloneTurni().id_builder(servizio_val,giorno_val,orario_val,grado_val)
         Assert.assertEquals("turno_h24_dom_mat_2", idCostruito)
     }
