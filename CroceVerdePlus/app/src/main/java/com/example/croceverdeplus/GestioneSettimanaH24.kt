@@ -40,11 +40,26 @@ class GestioneSettimanaH24 : Fragment() {
         val currentWeekDates = getWeekDates(currentDate)
         val currentWeekStart = currentWeekDates.first
         val currentWeekEnd = currentWeekDates.second
+        //Date dei giorni della settimana corrente
+        val currentDays = getDays(currentDate)
+        val tuesday = currentDays[0]
+        val wednesday = currentDays[1]
+        val thursday = currentDays[2]
+        val friday = currentDays[3]
+        val saturday = currentDays[4]
 
         // Data di inizio e fine della settimana successiva
         val nextWeekDates = getWeekDates(getNextMonday(currentWeekEnd))
         val nextWeekStart = nextWeekDates.first
         val nextWeekEnd = nextWeekDates.second
+        //Date dei giorni della settimana successiva
+        val nextDays = getDays(getNextMonday(currentWeekEnd))
+        val tuesdayNext = nextDays[0]
+        val wednesdayNext = nextDays[1]
+        val thursdayNext = nextDays[2]
+        val fridayNext = nextDays[3]
+        val saturdayNext = nextDays[4]
+
 
         buttonSettimana1.text = "${formatDateRange(currentWeekStart, currentWeekEnd)}"
         buttonSettimana2.text = "${formatDateRange(nextWeekStart, nextWeekEnd)}"
@@ -81,18 +96,42 @@ class GestioneSettimanaH24 : Fragment() {
                     if (!querySnapshot.isEmpty) {
                         if (clickSett1 == true) {
                             db.collection("tabelle")
-                                .document("tabella_118").update("data_lunedi", nextWeekStart)
+                                .document("tabella_118").update("data_lunedi", nextWeekStart,
+                                "data_martedi", tuesdayNext,
+                                    "data_mercoledi", wednesdayNext,
+                                    "data_giovedi", thursdayNext,
+                                    "data_venerdi", fridayNext,
+                                    "data_sabato", saturdayNext,
+                                    "data_domenica", nextWeekEnd)
                             db.collection("tabelle")
-                                .document("tabella_118_h24").update("data_lunedi", currentWeekStart)
+                                .document("tabella_118_h24").update("data_lunedi", currentWeekStart,
+                                    "data_martedi", tuesday,
+                                    "data_mercoledi", wednesday,
+                                    "data_giovedi", thursday,
+                                    "data_venerdi", friday,
+                                    "data_sabato", saturday,
+                                    "data_domenica", currentWeekEnd)
 
                             updateTabelle()
 
                         }
                         if (clickSett2 == true) {
                             db.collection("tabelle")
-                                .document("tabella_118").update("data_lunedi", currentWeekStart)
+                                .document("tabella_118").update("data_lunedi", currentWeekStart,
+                                    "data_martedi", tuesday,
+                                    "data_mercoledi", wednesday,
+                                    "data_giovedi", thursday,
+                                    "data_venerdi", friday,
+                                    "data_sabato", saturday,
+                                    "data_domenica", currentWeekEnd)
                             db.collection("tabelle")
-                                .document("tabella_118_h24").update("data_lunedi", nextWeekStart)
+                                .document("tabella_118_h24").update("data_lunedi", nextWeekStart,
+                                    "data_martedi", tuesdayNext,
+                                    "data_mercoledi", wednesdayNext,
+                                    "data_giovedi", thursdayNext,
+                                    "data_venerdi", fridayNext,
+                                    "data_sabato", saturdayNext,
+                                    "data_domenica", nextWeekEnd)
 
                             updateTabelle()
                         }
@@ -143,6 +182,24 @@ private fun getNextMonday(date: Date): Date {
     calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY)
 
     return calendar.time
+}
+
+private fun getDays(date: Date): List<Any>{
+    val calendar = Calendar.getInstance()
+    calendar.time = date
+
+    calendar.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY)
+    val tuesday = calendar.time
+    calendar.add(Calendar.DAY_OF_WEEK, 1)
+    val wednesday = calendar.time
+    calendar.add(Calendar.DAY_OF_WEEK, 1)
+    val thursday = calendar.time
+    calendar.add(Calendar.DAY_OF_WEEK, 1)
+    val friday = calendar.time
+    calendar.add(Calendar.DAY_OF_WEEK, 1)
+    val saturday = calendar.time
+
+    return listOf(tuesday, wednesday, thursday, friday, saturday)
 }
 
 //Per formattare in String
