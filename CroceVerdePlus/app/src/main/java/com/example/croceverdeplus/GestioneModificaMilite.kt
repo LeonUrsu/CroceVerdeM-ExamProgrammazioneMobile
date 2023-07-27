@@ -1,19 +1,17 @@
 package com.example.croceverdeplus
 
 import android.content.ContentValues
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.widget.SwitchCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -34,12 +32,12 @@ class GestioneModificaMilite : Fragment() {
         val dataDiNascita: EditText = root.findViewById(R.id.editTextDataMod)
         val residenza: EditText = root.findViewById(R.id.editTextresidenzaMod)
         //val spinner: Spinner = root.findViewById(R.id.spinnerMod)
-        val switch118prima: Switch = root.findViewById(R.id.switch7)
-        val switch118seconda: Switch = root.findViewById(R.id.switch8)
-        val switch118terza: Switch = root.findViewById(R.id.switch13)
-        val switchH24prima: Switch = root.findViewById(R.id.switch10)
-        val switchH24seconda: Switch = root.findViewById(R.id.switch11)
-        val switchH24terza: Switch = root.findViewById(R.id.switch12)
+        val switch118prima: SwitchCompat = root.findViewById(R.id.switch7)
+        val switch118seconda: SwitchCompat = root.findViewById(R.id.switch8)
+        val switch118terza: SwitchCompat = root.findViewById(R.id.switch13)
+        val switchH24prima: SwitchCompat = root.findViewById(R.id.switch10)
+        val switchH24seconda: SwitchCompat = root.findViewById(R.id.switch11)
+        val switchH24terza: SwitchCompat = root.findViewById(R.id.switch12)
         val buttonModify: Button = root.findViewById(R.id.buttonMiliteMod)
         val db = Firebase.firestore
 
@@ -56,7 +54,6 @@ class GestioneModificaMilite : Fragment() {
         cognome.setText(cognomeM)
         dataDiNascita.setText(dataDiNascitaM)
         residenza.setText(residenzaM)
-
 
 
 

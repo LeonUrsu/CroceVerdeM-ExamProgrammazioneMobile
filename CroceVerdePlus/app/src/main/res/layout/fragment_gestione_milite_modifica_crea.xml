@@ -86,68 +86,74 @@
         app:layout_constraintTop_toBottomOf="@+id/spinner3"
         app:layout_constraintVertical_bias="0.897" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch19"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:theme="@style/switch_colors"
         android:text="118 Prima"
         app:layout_constraintEnd_toEndOf="@+id/switch20"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch20"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:theme="@style/switch_colors"
         android:text="118 Seconda"
         app:layout_constraintEnd_toEndOf="@+id/switch21"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/switch21"
         app:layout_constraintTop_toBottomOf="@+id/switch19" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch21"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="20dp"
+        android:theme="@style/switch_colors"
         android:text="118 Terza"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch20" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch22"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:theme="@style/switch_colors"
         android:text="H24 Prima"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/switch23"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch23"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
+        android:theme="@style/switch_colors"
         android:text="H24 Seconda"
         app:layout_constraintEnd_toEndOf="@+id/switch24"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/switch24"
         app:layout_constraintTop_toBottomOf="@+id/switch22" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch24"
         android:layout_width="160dp"
         android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="32dp"
+        android:theme="@style/switch_colors"
         android:text="H24 Terza"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switch23" />
