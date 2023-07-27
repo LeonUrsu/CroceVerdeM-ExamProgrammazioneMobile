@@ -42,7 +42,7 @@
         android:id="@+id/editTextData"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
         android:hint="Data di nascita"
         android:inputType="text"
@@ -55,20 +55,10 @@
         android:id="@+id/editTextresidenza"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="30dp"
         android:ems="10"
         android:hint="Residenza"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/spinner"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/spinner3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -78,7 +68,7 @@
         android:id="@+id/spinner3"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginBottom="324dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -93,6 +83,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3"
+        app:layout_constraintVertical_bias="0.897" />
+
+    <Switch
+        android:id="@+id/switch19"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="118 Prima"
+        app:layout_constraintEnd_toEndOf="@+id/switch20"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+    <Switch
+        android:id="@+id/switch20"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="118 Seconda"
+        app:layout_constraintEnd_toEndOf="@+id/switch21"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/switch21"
+        app:layout_constraintTop_toBottomOf="@+id/switch19" />
+
+    <Switch
+        android:id="@+id/switch21"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:text="118 Terza"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch20" />
+
+    <Switch
+        android:id="@+id/switch22"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="H24 Prima"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/switch23"
+        app:layout_constraintTop_toBottomOf="@+id/spinner3" />
+
+    <Switch
+        android:id="@+id/switch23"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:text="H24 Seconda"
+        app:layout_constraintEnd_toEndOf="@+id/switch24"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/switch24"
+        app:layout_constraintTop_toBottomOf="@+id/switch22" />
+
+    <Switch
+        android:id="@+id/switch24"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:text="H24 Terza"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch23" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

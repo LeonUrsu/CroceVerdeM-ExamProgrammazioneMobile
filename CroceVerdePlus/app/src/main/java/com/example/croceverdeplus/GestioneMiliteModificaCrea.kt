@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
+import android.widget.Switch
 import android.widget.Toast
 
 class GestioneMiliteModificaCrea : Fragment() {
@@ -26,8 +27,14 @@ class GestioneMiliteModificaCrea : Fragment() {
         val dataDiNascita: EditText = root.findViewById(R.id.editTextData)
         val residenza: EditText = root.findViewById(R.id.editTextresidenza)
         val button: Button = root.findViewById(R.id.buttonMilite)
+        val switch118prima: Switch = root.findViewById(R.id.switch19)
+        val switch118seconda: Switch = root.findViewById(R.id.switch20)
+        val switch118terza: Switch = root.findViewById(R.id.switch21)
+        val switchH24prima: Switch = root.findViewById(R.id.switch22)
+        val switchH24seconda: Switch = root.findViewById(R.id.switch23)
+        val switchH24terza: Switch = root.findViewById(R.id.switch24)
 
-        val spinner: Spinner = root.findViewById(R.id.spinner)
+        //val spinner: Spinner = root.findViewById(R.id.spinner)
         val spinnerRuolo: Spinner = root.findViewById(R.id.spinner3)
 
         val milite = Milite()
@@ -64,10 +71,10 @@ class GestioneMiliteModificaCrea : Fragment() {
         }
 
 
-        val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
-                                "gradoh24prima","gradoh24seconda","gradoh24terza")
+        //val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
+                               // "gradoh24prima","gradoh24seconda","gradoh24terza")
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
+        /*val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner.adapter = adapter
 
@@ -80,35 +87,46 @@ class GestioneMiliteModificaCrea : Fragment() {
 
 
 
+         */
 
-                val data = Database()
 
-                button.setOnClickListener{
+        val data = Database()
 
-                    data.addUserM(nome.text.toString(), cognome.text.toString(),
-                        dataDiNascita.text.toString(), residenza.text.toString(),
-                        milite.grado118prima, milite.grado118seconda,
-                        milite.grado118terza, milite.gradoh24prima,
-                        milite.gradoh24seconda, milite.gradoh24terza,
-                        milite.volontario, milite.dipendente)
+        button.setOnClickListener{
 
-                    Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+            val switch118primaValue = switch118prima.isChecked
+            val switch118secondaValue = switch118seconda.isChecked
+            val switch118terzaValue = switch118terza.isChecked
+            val switchH24primaValue = switchH24prima.isChecked
+            val switchH24secondaValue = switchH24seconda.isChecked
+            val switchH24terzaValue = switchH24terza.isChecked
 
-                }
-            }
+            data.addUserM(nome.text.toString(), cognome.text.toString(),
+                dataDiNascita.text.toString(), residenza.text.toString(),
+                switch118primaValue, switch118secondaValue,
+                switch118terzaValue, switchH24primaValue,
+                switchH24secondaValue, switchH24terzaValue,
+                milite.volontario, milite.dipendente)
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
+            Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+
+        }
+            //}
+
+            /*override fun onNothingSelected(parent: AdapterView<*>) {
                 Toast.makeText(requireActivity(), "Seleziona un grado", Toast.LENGTH_SHORT).show()
             }
-        }
+
+             */
+        //}
 
 
         return root
     }
 
-}
+//}
 
-fun setGrado(selectedGrado: String?, milite: Milite) {
+/*fun setGrado(selectedGrado: String?, milite: Milite) {
 
 
     when(selectedGrado) {
@@ -170,4 +188,7 @@ fun setGrado(selectedGrado: String?, milite: Milite) {
         }
     }
 
+}
+
+ */
 }

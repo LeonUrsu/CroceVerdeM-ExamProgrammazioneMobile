@@ -40,7 +40,13 @@ class GestioneMilite : Fragment() {
         cognome.text = userParts[1]
         dataDiNascita.text = userParts[2]
         residenza.text = userParts[3]
-        grado.text = userParts[4]
+        if (userParts.size == 5){
+            grado.text = "Grado mancante"
+        } else {
+            //grado.text = userParts[5]
+            val gradoValue = userParts.subList(5, userParts.size).joinToString("\n")
+            grado.text = gradoValue
+        }
 
         val data = Database()
 

@@ -13,7 +13,7 @@
         android:id="@+id/imageView4"
         android:layout_width="195dp"
         android:layout_height="177dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="28dp"
         android:layout_marginBottom="371dp"
         app:layout_constraintBottom_toTopOf="@+id/cancella_milite_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,14 +70,12 @@
         android:id="@+id/cancella_milite_btn"
         android:layout_width="210dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="35dp"
         android:text="Cancella milite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/aggiorna_milite_btn"
