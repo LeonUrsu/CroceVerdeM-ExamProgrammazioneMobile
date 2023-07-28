@@ -61,7 +61,10 @@
     <style name="cv_stileBottoni" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/cv_buttons </item>
     </style>
-    
+
+    <style name="switch_colors" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/CV_green</item>
+    </style>
     
 
 

@@ -1,7 +1,6 @@
 package com.example.croceverdeplus
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,9 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
-import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.widget.SwitchCompat
+import androidx.fragment.app.Fragment
 
 class GestioneMiliteModificaCrea : Fragment() {
 
@@ -27,12 +27,13 @@ class GestioneMiliteModificaCrea : Fragment() {
         val dataDiNascita: EditText = root.findViewById(R.id.editTextData)
         val residenza: EditText = root.findViewById(R.id.editTextresidenza)
         val button: Button = root.findViewById(R.id.buttonMilite)
-        val switch118prima: Switch = root.findViewById(R.id.switch19)
-        val switch118seconda: Switch = root.findViewById(R.id.switch20)
-        val switch118terza: Switch = root.findViewById(R.id.switch21)
-        val switchH24prima: Switch = root.findViewById(R.id.switch22)
-        val switchH24seconda: Switch = root.findViewById(R.id.switch23)
-        val switchH24terza: Switch = root.findViewById(R.id.switch24)
+        val switch118prima: SwitchCompat = root.findViewById(R.id.switch19)
+        val switch118seconda: SwitchCompat = root.findViewById(R.id.switch20)
+        val switch118terza: SwitchCompat = root.findViewById(R.id.switch21)
+        val switchH24prima: SwitchCompat = root.findViewById(R.id.switch22)
+        val switchH24seconda: SwitchCompat = root.findViewById(R.id.switch23)
+        val switchH24terza: SwitchCompat = root.findViewById(R.id.switch24)
+
 
         //val spinner: Spinner = root.findViewById(R.id.spinner)
         val spinnerRuolo: Spinner = root.findViewById(R.id.spinner3)
