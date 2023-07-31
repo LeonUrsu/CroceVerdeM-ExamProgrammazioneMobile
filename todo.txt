@@ -1,7 +1,3 @@
-DATABASE:----------------------------- 
-un servizio online, bisogna controllare se si verificano condizione di stallo nella sincronizazione delle informazioni dei turni, 
-questa verifica andrà fatta con la simulazine di molte richieste in poco tempo di operazione
-
 Noitifiche
 visualizzazione nell'app il limite minimo dei turni da fare nel mese nel profilo del volontario e colorarlo di rosso, bisogna 
 implementare la cronologia dei turni per poter calcolare il numero da raggiungere di ore nel seguente mese.
