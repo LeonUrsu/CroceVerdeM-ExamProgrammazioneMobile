@@ -3,6 +3,7 @@ package com.example.croceverdeplus
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
@@ -290,12 +291,6 @@ class Database {
         }
     }
 
-    private fun stabilisci_nome_tabella(turno: String): String {
-        if (turno.contains("tabella118h24"))
-            return "tabella_118_h24"
-        else return "tabella_118"
-    }
-
     /*
     Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
      */
@@ -347,7 +342,8 @@ class Database {
             turno,
             cognomeNomeSpinner,
             risultato_campo[3],
-            document)
+            document
+        )
         var autorizzazioneGradoMiliteCorretta =
             if (autorizzazioneGradoMilite == null) false else autorizzazioneGradoMilite
         var presenzaMilite = document.getString(turno)
@@ -355,21 +351,116 @@ class Database {
             if (autorizzazioneGradoMiliteCorretta && autorizzazoneMiliteDoppione) {
                 aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                 aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
+                aggiungi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                 Toast.makeText(act, "segnato", Toast.LENGTH_SHORT).show()
             }
         } else
             if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA MILITE
                 aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                 rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                 Toast.makeText(act, "cancellato dal turno", Toast.LENGTH_SHORT).show()
             }
     }
 
     /*
+    Metodo per rimuovere una prenotazione dal db grazie al nome completo della tabella e del turno
+    che si andrà a rimuovere
+     */
+    private fun rimuovi_prenotazione(
+        cognomeNomeSpinner: String,
+        turno: String,
+        nome_tipo_tabella: String
+    ) {
+        db.collection("prenotazioni")
+            .get()
+            .addOnSuccessListener { result ->
+                for (prenotazione in result) {
+                    if (prenotazione.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        var turnoPrenotazioneCompleto =
+                            prenotazione.getString("turnoPrenotazioneCompleto")
+                        var turnoPrenotazioneCostruito = nome_tipo_tabella + "_" + turno
+                        if (turnoPrenotazioneCompleto == turnoPrenotazioneCostruito) {
+                            cancella_documento_da_db("prenotazioni", prenotazione.id)
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+    }
+
+    /*
+    Metodo per aggiungere una prenotazione al db
+     */
+    private fun aggiungi_prenotazione(
+        cognomeNomeSpinner: String,
+        turno: String,
+        nome_tipo_tabella: String
+    ) {
+        var dataPrenotazione = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        var map = trova_campo(turno)
+        var prenotazione = Prenotazione(
+            dataPrenotazione,
+            map!!.get(2),
+            cognomeNomeSpinner,
+            nome_tipo_tabella + "_" + turno
+        )
+        aggiungi_documento_a_db(prenotazione, "prenotazioni")
+    }
+
+    /*
+    definizione metodo di ProfiloVolontarioDipendente
+     */
+    fun setta_stato_regolarita_turno(root: View, cognomeNomeSpinner: String) {
+        db.collection("prenotazioni")
+            .get()
+            .addOnSuccessListener { result ->
+                var turni_fatti = 0
+                for (prenotazione in result) {
+                    if (prenotazione.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
+                        //todo fare il calcolo delle ore necessarie e aggiungerle al layout
+                        var days_ago_30 =
+                            LocalDateTime.now().minusDays(30) //.toEpochSecond(ZoneOffset.UTC)
+                        var data_prenotazione_in_seconds =
+                            prenotazione.getString("dataPrenotazione")!!.toLong() / 1000
+                        var data_prenotazione = LocalDateTime.ofEpochSecond(
+                            data_prenotazione_in_seconds,
+                            0,
+                            ZoneOffset.UTC
+                        )
+                        data_prenotazione = data_prenotazione.plusDays(30)
+                        if (data_prenotazione.isAfter(days_ago_30)) {
+                            turni_fatti += 1
+                        }
+                    }
+                }
+                if (turni_fatti >= 2) {
+                    root.findViewById<TextView>(R.id.regolarita_turno).setText("stato regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.GREEN)
+                } else {
+                    root.findViewById<TextView>(R.id.regolarita_turno).setText("Stato non regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.RED)
+                }
+
+
+            }
+            .addOnFailureListener { exception ->
+                Log.d(TAG, "Error getting documents: ", exception)
+            }
+
+
+        //var regolarita_turno = "Turno non regolare ore mancanti: "
+        //document.getLong(oreTurno118prima).toString()//TODO da finire qui
+        TODO("Not yet implemented")
+    }
+
+    /*
     Metodo per verificare se qualche altro milite è presente nello stesso turno ma su grado diverso
     return = true se il milite non è presente nei turni
-           = false se il milite è presente nei turni
-     */
+    return = false se il milite è presente nei turni
+    */
     private fun autorizzazione_prenotazione_turno_unica(
         turno: String,
         cognomeNomeSpinner: String,
@@ -405,6 +496,16 @@ class Database {
     }
 
     /*
+    Metodo per cancellare documento da db
+     */
+    fun cancella_documento_da_db(collection: String, documentId: String) {
+        db.collection(collection).document(documentId)
+            .delete()
+            .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+            .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+    }
+
+    /*
     Metodo per registrare le disponibilità nel db
      */
     fun disponibilita_btn(cognomeNomeSpinner: String, root: View, nome_tipo_settimana: String) {
@@ -413,7 +514,7 @@ class Database {
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
                 var turno = TabelloneTurni().rileva_valori_spinner(root)
-                var dataDisponibilita = costruisci_data_disponibilita_in_Long(document, turno)
+                var dataDisponibilita = costruisci_data_disponibilita_in_long(document, turno)
                 costruisci_trasmetti_disponibilità(
                     dataDisponibilita,
                     cognomeNomeSpinner,
@@ -429,38 +530,11 @@ class Database {
 
 
     /*
-    /*
-    Metodo per costruire la data della disponibilità del milite
-     */
-    private fun costruisci_data_disponibilita_in_Long(dataLunedi: Timestamp, turno: String): Long? {
-        var data = dataLunedi.seconds * 1000
-        val lunedi =
-            Instant.ofEpochMilli(data).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        var str = turno.substring(turno.length - 9)
-        str = str.substring(0, 3)
-        val giorno: Int = when (str) {
-            "lun" -> 0
-            "mar" -> 1
-            "mer" -> 2
-            "gio" -> 3
-            "ven" -> 4
-            "sab" -> 5
-            "dom" -> 6
-            else -> {
-                0
-            }
-        }
-        var localDateTime = lunedi.plusDays(giorno.toLong())
-        //var millis_long = localDateTime.getLong(ChronoField.EPOCH_DAY)   //data in millesecondi
-        var millis_long = localDateTime.atZone(ZoneOffset.UTC)?.toInstant()?.toEpochMilli()
-        return millis_long
-    }
-     */
-
-    /*
-    Metodo per costruire la data della disponibilità del milite, si registra il long
+    Metodo per costruire la data della disponibilità del milite, si registra il long.
+    Nel metodo bisogna passare un turno e grazie a questo nome si riesce a trovare la data
+    corrispondente che si associa ad esso.
     */
-    private fun costruisci_data_disponibilita_in_Long(
+    private fun costruisci_data_disponibilita_in_long(
         document: DocumentSnapshot,
         turno: String
     ): Long {
@@ -679,7 +753,7 @@ class Database {
                     var dis = document.toObject<Disponibilita>()
                     disponibilita.add(dis)
                 }
-                carica_disponibilità_nel_fragment(root, disponibilita, context)
+                carica_disponibilita_nel_fragment(root, disponibilita, context)
             }
             .addOnFailureListener { exception ->
                 Log.d(TAG, "Error getting documents: ", exception)
@@ -690,7 +764,7 @@ class Database {
     /*
     Metodo per caricare la disponibilità dei militi e vedersli in una scrollview
      */
-    private fun carica_disponibilità_nel_fragment(
+    private fun carica_disponibilita_nel_fragment(
         root: View,
         disponibilita: MutableList<Disponibilita>,
         context: Context

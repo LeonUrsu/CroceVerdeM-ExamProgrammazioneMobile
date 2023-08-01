@@ -63,6 +63,12 @@
                 android:textSize="23sp" />
 
             <TextView
+                android:id="@+id/regolarita_turno"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:text="Turno non regolare ore mancanti:  " />
+
+            <TextView
                 android:id="@+id/prima_118"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

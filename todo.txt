@@ -1,3 +1,13 @@
-Noitifiche
-visualizzazione nell'app il limite minimo dei turni da fare nel mese nel profilo del volontario e colorarlo di rosso, bisogna 
-implementare la cronologia dei turni per poter calcolare il numero da raggiungere di ore nel seguente mese.
+DATABASE:----------------------------- 
+un servizio online, bisogna controllare se si verificano condizione di stallo nella sincronizazione delle informazioni dei turni, 
+questa verifica andrà fatta con la simulazine di molte richieste in poco tempo di operazione
+
+Notifiche----------------------------
+
+COSA: visualizzazione nell'app il limite minimo dei turni da fare nel mese nel profilo del volontario e colorarlo di rosso, bisogna 
+implementare la cronologia dei turni per poter calcolare il numero da raggiungere di ore nel seguente mese. 
+
+COME:
+1. implementare nel database una struttura dati per il salvataggio dei turni svolti dai volontari in modo che sia salvata anche la data.
+2. modificare il layout del profilo milite per mostrare le ore necessarie(riquadro color verde/rosso con all'interno le ore mancanti da fare)
+3. calcolare il mese corrente e mostrare nel profilo del milite la quantità di ore necessaria per regolarizzarsi con i turni svolti.

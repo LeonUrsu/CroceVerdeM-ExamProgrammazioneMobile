@@ -32,9 +32,13 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
         return root
     }
 
+    private fun setta_stato_regolarita_turno(root : View){
+        Database().setta_stato_regolarita_turno(root, cognomeNomeSpinner)
+    }
+
     /*
-    Metodo per settare il nome e cognome e data di nascita del milite nel suo profilo
-     */
+        Metodo per settare il nome e cognome e data di nascita del milite nel suo profilo
+         */
     fun setta_info_profilo(root: View, cognomeNomeSpinner: String) {
         val db = Firebase.firestore
         db.collection("militi")
@@ -51,12 +55,15 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
                             document.getString("cognome")
                         root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
                             document.getString("dataDiNascita")
+
                         var oreTurno118prima = "oreTurno118prima"
                         var oreTurno118seconda = "oreTurno118seconda"
                         var oreTurno118terza = "oreTurno118terza"
                         var oreTurnoh24prima = "oreTurnoh24prima"
                         var oreTurnoh24seconda = "oreTurnoh24seconda"
                         var oreTurnoh24terza = "oreTurnoh24terza"
+
+                        setta_stato_regolarita_turno(root)
                         root.findViewById<TextView>(R.id.prima_118).text =
                             oreTurno118prima + "  " + document.getLong(oreTurno118prima).toString()
                         root.findViewById<TextView>(R.id.seconda_118).text =
@@ -71,6 +78,7 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
                                 .toString()
                         root.findViewById<TextView>(R.id.terza_h24).text =
                             oreTurnoh24terza + "  " + document.getLong(oreTurnoh24terza).toString()
+                        setta_stato_regolarita_turno(root)
                     }
                 }
             }
