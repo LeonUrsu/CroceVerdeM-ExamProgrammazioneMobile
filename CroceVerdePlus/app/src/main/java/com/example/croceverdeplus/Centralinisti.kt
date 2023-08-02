@@ -8,8 +8,7 @@ data class Centralinisti(
     var cognome: String? = null,
     var cognomeNomeSpinner : String? = null,
     var dataDiNascita: String? = null,
-    var residenza: String? = null,
-    val ruolo: String? = null) {
+    var residenza: String? = null) {
 
     constructor(  nome: String?,  cognome: String?,
                   dataDiNascita: String?, residenza: String?) : this() {
