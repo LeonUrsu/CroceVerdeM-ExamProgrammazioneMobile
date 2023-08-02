@@ -45,7 +45,7 @@ class Database {
             }
         }.joinToString("")
 
-        val ruolo = "Centralinista"
+        //val ruolo = "Centralinista"
 
         db.collection("centralinisti").add(centralinista)
             .addOnSuccessListener { documentReference ->
@@ -57,7 +57,7 @@ class Database {
                     .update("username", username)
                 db.collection("centralinisti").document(documentReference.id)
                     .update("password", password)
-                db.collection("centralinisti").document(documentReference.id).update("ruolo", ruolo)
+                //db.collection("centralinisti").document(documentReference.id).update("ruolo", ruolo)
 
             }.addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
