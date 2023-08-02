@@ -223,7 +223,6 @@ class Database {
         return array_militi
     }
 
-
     /*
     Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
     in ordine cronologico
@@ -424,7 +423,10 @@ class Database {
                         var days_ago_30 =
                             LocalDateTime.now().minusDays(30) //.toEpochSecond(ZoneOffset.UTC)
                         var data_prenotazione_in_seconds =
-                            prenotazione.getString("dataPrenotazione")!!.toLong() / 1000
+                            prenotazione.getLong("dataPrenotazione")
+                        data_prenotazione_in_seconds = data_prenotazione_in_seconds!!.toLong()
+                        if (data_prenotazione_in_seconds == null) data_prenotazione_in_seconds =
+                            0 else data_prenotazione_in_seconds.toLong()
                         var data_prenotazione = LocalDateTime.ofEpochSecond(
                             data_prenotazione_in_seconds,
                             0,
@@ -437,10 +439,13 @@ class Database {
                     }
                 }
                 if (turni_fatti >= 2) {
-                    root.findViewById<TextView>(R.id.regolarita_turno).setText("stato regolare ${turni_fatti.toString()}/2")
-                    root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.GREEN)
+                    root.findViewById<TextView>(R.id.regolarita_turno)
+                        .setText("stato regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno)
+                        .setBackgroundColor(Color.GREEN)
                 } else {
-                    root.findViewById<TextView>(R.id.regolarita_turno).setText("Stato non regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno)
+                        .setText("Stato non regolare ${turni_fatti.toString()}/2")
                     root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.RED)
                 }
 
@@ -453,7 +458,6 @@ class Database {
 
         //var regolarita_turno = "Turno non regolare ore mancanti: "
         //document.getLong(oreTurno118prima).toString()//TODO da finire qui
-        TODO("Not yet implemented")
     }
 
     /*

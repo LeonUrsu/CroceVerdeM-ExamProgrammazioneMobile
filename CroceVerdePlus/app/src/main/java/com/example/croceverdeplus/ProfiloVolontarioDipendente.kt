@@ -21,18 +21,17 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         var root = inflater.inflate(
-            R.layout.fragment_profilo_volontario_dipendente,
-            container,
-            false
+            R.layout.fragment_profilo_volontario_dipendente, container, false
         )
-        root.findViewById<Button>(R.id.logout).setOnClickListener { exit_function(requireActivity()) }
+        root.findViewById<Button>(R.id.logout)
+            .setOnClickListener { exit_function(requireActivity()) }
         setta_info_profilo(root, this.cognomeNomeSpinner)
         val logout = root.findViewById(R.id.logout) as Button
         logout.setOnClickListener { exit_function(requireActivity()) }
         return root
     }
 
-    private fun setta_stato_regolarita_turno(root : View){
+    private fun setta_stato_regolarita_turno(root: View) {
         Database().setta_stato_regolarita_turno(root, cognomeNomeSpinner)
     }
 
