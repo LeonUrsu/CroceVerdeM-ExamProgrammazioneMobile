@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:backgroundTint="#ACACAC"
-        android:onClick="esci_btn"
         android:text="Esci"
         android:theme="@style/CV_buttons"
         app:layout_constraintEnd_toEndOf="@+id/button8"
