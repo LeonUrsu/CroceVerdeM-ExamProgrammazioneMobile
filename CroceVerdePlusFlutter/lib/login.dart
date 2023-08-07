@@ -36,10 +36,13 @@ class _Login extends State<Login> {
   void _login(String username, String password) {
 
     if(username == "a" && password == "p"){
-      Navigator.push(
+      /*Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => AmministratoreScreen()));
+              builder: (context) => Amministratore()));
+
+       */
+      Navigator.pushNamed(context, '/amministratore');
     }
 
   }
@@ -54,45 +57,47 @@ class _Login extends State<Login> {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(16, 100, 16, 50), // Distanza sinistra, sopra, destra, sotto
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/Logo CV.png'),
-              SizedBox(height: 75), // Spazio tra il testo e i TextField
-              TextField(
-                controller: _usernameController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 50),
-              FilledButton(
-                onPressed: () {
-                  String username = _usernameController.text;
-                  String password = _passwordController.text;
-                  // Controllo username e password inseriti
-                  _login(username, password);
-                },
-                child: Text('Login'),
-                style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    Size(100, 43),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/Logo CV.png'),
+                SizedBox(height: 75), // Spazio tra il testo e i TextField
+                TextField(
+                  controller: _usernameController,
+                  decoration: InputDecoration(
+                    labelText: 'Username',
+                    border: OutlineInputBorder(),
                   ),
                 ),
-              ),
-              //SizedBox(height: 50),
-              //CircularProgressIndicator()
-            ],
+                SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
+                TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 50),
+                FilledButton(
+                  onPressed: () {
+                    String username = _usernameController.text;
+                    String password = _passwordController.text;
+                    // Controllo username e password inseriti
+                    _login(username, password);
+                  },
+                  child: Text('Login'),
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all<Size>(
+                      Size(100, 43),
+                    ),
+                  ),
+                ),
+                //SizedBox(height: 50),
+                //CircularProgressIndicator()
+              ],
+            ),
           ),
         ),
       ),

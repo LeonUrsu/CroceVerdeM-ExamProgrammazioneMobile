@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/', // Rotta iniziale
       routes: {
         '/': (context) => Login(),
-        '/amministratore': (context) => AmministratoreScreen(),
+        '/amministratore': (context) => Amministratore(),
       },
     );
   }
