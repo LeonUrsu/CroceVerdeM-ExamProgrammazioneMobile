@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "349933502162",
+    "project_id": "croceverdeplus",
+    "storage_bucket": "croceverdeplus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349933502162:android:81518d947d9d820c36b70b",
+        "android_client_info": {
+          "package_name": "com.example.croce_verde_plus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349933502162-9ekl5tue7q4hf2296lnhu75spphtu11f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhbvDRAdDhtMUKWOhAsgVLKmeoch0m4Ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349933502162-9ekl5tue7q4hf2296lnhu75spphtu11f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -96,8 +96,6 @@ class _Amministratore extends State<Amministratore> {
                     ),
                   ),
                 ),
-                //SizedBox(height: 50),
-                //CircularProgressIndicator()
               ],
             ),
           ),
