@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'amministratore.dart';
+import 'gestione_militi.dart';
 import 'login.dart';
 
 Future<void> main() async {
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => Login(),
         '/amministratore': (context) => Amministratore(),
+        '/lista_militi':  (context) => GestioneMiliti(),
       },
     );
   }

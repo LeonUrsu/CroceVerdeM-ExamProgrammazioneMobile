@@ -57,8 +57,7 @@ class _Amministratore extends State<Amministratore> {
                 SizedBox(height: 75), // Spazio tra il testo e i TextField
                 ElevatedButton(
                   onPressed: () {
-
-
+                    Navigator.pushNamed(context, '/lista_militi');
                   },
                   child: Text('Gestisci Militi'),
                   style: ButtonStyle(
