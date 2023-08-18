@@ -109,6 +109,6 @@ class TabelloneTurniCentralinista : Fragment() {
     fun segna_cancella_btn_function(root: View, act: Activity) {
         val milite = root.findViewById<Spinner>(R.id.milite_input).selectedItem.toString()
         var id_turno = TabelloneTurni().rileva_valori_spinner(root)
-        Database().segna_o_cancella_milite_dal_turno(nome_tipo_tabella, id_turno, milite, root, act)
+        Database().segna_o_cancella_milite_dal_turno_centralinista(nome_tipo_tabella, id_turno, milite, root, act)
     }
 }

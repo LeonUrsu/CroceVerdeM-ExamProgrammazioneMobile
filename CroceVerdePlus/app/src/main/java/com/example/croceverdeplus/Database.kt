@@ -261,7 +261,7 @@ class Database {
     /*
     Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
      */
-    fun segna_o_cancella_milite_dal_turno(
+    fun segna_o_cancella_milite_dal_turno_centralinista(
         nome_tipo_tabella: String,
         turno: String,
         cognomeNomeSpinner: String, root: View, act: Activity
@@ -274,13 +274,27 @@ class Database {
                 if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
                     aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                     aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
+                    aggiungi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                     Toast.makeText(act, "Milite segnato", Toast.LENGTH_SHORT).show()
                 } else
                     if (presenzaMilite == cognomeNomeSpinner) {// RAMO CANCElLA
                         aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                         rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                        rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                         Toast.makeText(act, "Milite cancellato", Toast.LENGTH_SHORT).show()
-
+                    }else{
+                        if(presenzaMilite != cognomeNomeSpinner) {
+                            //cancellazione milite vecchio
+                            aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
+                            rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                            rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
+                            //aggiunta del milite nuovo
+                            var nuovoMilite = presenzaMilite.toString()
+                            aggiorna_tabellone_milite(nuovoMilite, nome_tipo_tabella, turno, root)
+                            aggiungi_ore_lavorate(nuovoMilite, turno)
+                            aggiungi_prenotazione(nuovoMilite, turno, nome_tipo_tabella)
+                            Toast.makeText(act, "Milite sostituito", Toast.LENGTH_SHORT).show()
+                        }
                     }
             } else {
                 Log.d(TAG, "No such document")
