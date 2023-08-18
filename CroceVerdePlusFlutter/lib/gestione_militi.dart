@@ -52,6 +52,9 @@ class _GestioneMiliti extends State<GestioneMiliti> {
                   gradiTrue.add(Text(gradiNomi[i]));
                 }
               }
+                if (gradiTrue.isEmpty) {
+                  gradiTrue.add(Text('Nessun grado'));
+                }
 
               //lista contenente la data di nascita e la residenza del milite
               List<Widget> altreInfo = [
@@ -85,12 +88,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
       ),
       floatingActionButton: FloatingActionButton(
       onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => AggiungiMilite(),
-          ),
-        );
+        Navigator.pushNamed(context, '/crea_milite');
       },
       child: Icon(Icons.add), // Icona del bottone circolare
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -100,82 +98,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
 }
 
 //TODO CREARE "CREAZIONE_MILITE" E METTERCI QUESTA CLASSE + DB, E GESTIRE ONTAP ELEMENTI LISTA
-class AggiungiMilite extends StatefulWidget {
-  @override
-  _AggiungiMilite createState() => _AggiungiMilite();
-}
 
-class _AggiungiMilite extends State<AggiungiMilite> {
-
-  final _nomeController = TextEditingController();
-  final _cognomeController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Creazione Milite'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50), // Distanza sinistra, sopra, destra, sotto
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const TextField(
-                  decoration: InputDecoration(
-                    labelText: 'Nome',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Cognome',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Data di nascita',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
-                const TextField(
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Residenza',
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                SizedBox(height: 50),
-                FilledButton(
-                  onPressed: (){
-
-                  },
-                  child: Text('Crea'),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(100, 43),
-                    ),
-                  ),
-                ),
-                //SizedBox(height: 50),
-                //CircularProgressIndicator()
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 
 /*class DettaglioMilitiScreen extends StatelessWidget {

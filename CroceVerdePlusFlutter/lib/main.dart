@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'amministratore.dart';
+import 'crea_milite.dart';
 import 'gestione_militi.dart';
 import 'login.dart';
 
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => Login(),
         '/amministratore': (context) => Amministratore(),
         '/lista_militi':  (context) => GestioneMiliti(),
+        '/crea_milite':  (context) => AggiungiMilite(),
       },
     );
   }
