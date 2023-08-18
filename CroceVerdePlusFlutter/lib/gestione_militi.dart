@@ -99,7 +99,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
   }
 }
 
-
+//TODO CREARE "CREAZIONE_MILITE" E METTERCI QUESTA CLASSE + DB, E GESTIRE ONTAP ELEMENTI LISTA
 class AggiungiMilite extends StatefulWidget {
   @override
   _AggiungiMilite createState() => _AggiungiMilite();
