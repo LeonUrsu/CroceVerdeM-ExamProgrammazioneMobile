@@ -111,7 +111,7 @@ class _Login extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset('assets/Logo CV.png'),
-                SizedBox(height: 75), // Spazio tra il testo e i TextField
+                SizedBox(height: 75), // Spazio tra l'immagine e i TextField
                 TextField(
                   controller: _usernameController,
                   decoration: InputDecoration(
