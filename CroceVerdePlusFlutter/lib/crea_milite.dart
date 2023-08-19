@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'milite.dart';
 
@@ -166,24 +167,47 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                     String dataDiNascita = _datadinascitaController.text;
                     String residenza = _residenzaController.text;
 
-                    Milite nuovoMilite = Milite(
-                      nome: nome,
-                      cognome: cognome,
-                      dataDiNascita: dataDiNascita,
-                      residenza: residenza,
-                      cognomeNomeSpinner: '$cognome $nome',
-                      username: '$nome.$cognome',
-                      password: generaPassword(),
-                      grado118prima: valoreSwitch1,
-                      grado118seconda: valoreSwitch2,
-                      grado118terza: valoreSwitch3,
-                      gradoh24prima: valoreSwitch4,
-                      gradoh24seconda: valoreSwitch5,
-                      gradoh24terza: valoreSwitch6,
-                    );
-                    Map<String, dynamic> militeMap = nuovoMilite.toMap();//permette interazioni con il DB mappando il milite
-                    // crea un nuovo documento (milite) nella collezione "militi"
-                    await FirebaseFirestore.instance.collection('militi').add(militeMap);
+                    if (nome.isNotEmpty && cognome.isNotEmpty &&
+                        dataDiNascita.isNotEmpty && residenza.isNotEmpty) {
+                      Milite nuovoMilite = Milite(
+                        nome: nome,
+                        cognome: cognome,
+                        dataDiNascita: dataDiNascita,
+                        residenza: residenza,
+                        cognomeNomeSpinner: '$cognome $nome',
+                        username: '$nome.$cognome',
+                        password: generaPassword(),
+                        grado118prima: valoreSwitch1,
+                        grado118seconda: valoreSwitch2,
+                        grado118terza: valoreSwitch3,
+                        gradoh24prima: valoreSwitch4,
+                        gradoh24seconda: valoreSwitch5,
+                        gradoh24terza: valoreSwitch6,
+                      );
+                      Map<String, dynamic> militeMap = nuovoMilite.toMap();//permette interazioni con il DB mappando il milite
+                      // crea un nuovo documento (milite) nella collezione "militi"
+                      await FirebaseFirestore.instance.collection('militi').add(militeMap);
+
+                      Fluttertoast.showToast(
+                        msg: 'Milite Creato',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                    } else {
+                      Fluttertoast.showToast(
+                        msg: 'Tutti i campi devono essere compilati',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0,
+                      );
+                    }
                   },
                   child: Text('Crea'),
                   style: ButtonStyle(

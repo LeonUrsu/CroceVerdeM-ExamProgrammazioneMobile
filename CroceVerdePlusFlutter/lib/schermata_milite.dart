@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SchermataMilite extends StatefulWidget {
   @override
@@ -57,11 +59,28 @@ class _SchermataMilite extends State<SchermataMilite> {
                   ),
                   SizedBox(height: 30),
                   FilledButton.tonal(
-                    onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        '/',
-                            (route) => false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                    onPressed: () async {
+                      //si trova il documento relativo al milite selezionato
+                      QuerySnapshot querySnapshot = await FirebaseFirestore
+                          .instance
+                          .collection('militi')
+                          .where('nome', isEqualTo: nome)
+                          .where('cognome', isEqualTo: cognome)
+                          .where('dataDiNascita', isEqualTo: dataDiNascita)
+                          .where('residenza', isEqualTo: residenza)
+                          .get();
+                      //se è stato trovato un risultato lo elimina
+                      if (querySnapshot.size > 0) {
+                        await querySnapshot.docs[0].reference.delete();
+                      }
+                      Fluttertoast.showToast(
+                        msg: 'Milite Eliminato',
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.BOTTOM,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.grey,
+                        textColor: Colors.white,
+                        fontSize: 16.0,
                       );
                     },
                     child: Text('Elimina Milite'),
