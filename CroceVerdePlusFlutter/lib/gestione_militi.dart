@@ -71,16 +71,14 @@ class _GestioneMiliti extends State<GestioneMiliti> {
                     ...gradiTrue,
                   ],
                 ),
-                /*onTap: () {
-                  Navigator.push(
+                onTap: () {
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => DettaglioMilitiScreen(nome: nome, cognome: cognome),
-                    ),
+                    '/schermata_milite',
+                    arguments: {'nome': nome, 'cognome': cognome, 'dataDiNascita': dataDiNascita,
+                    'residenza': residenza, 'gradi': gradiTrue},
                   );
                 },
-
-                 */
               );
             },
           );
@@ -90,15 +88,12 @@ class _GestioneMiliti extends State<GestioneMiliti> {
       onPressed: () {
         Navigator.pushNamed(context, '/crea_milite');
       },
-      child: Icon(Icons.add), // Icona del bottone circolare
+      child: Icon(Icons.add),
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
     );
   }
 }
-
-//TODO CREARE "CREAZIONE_MILITE" E METTERCI QUESTA CLASSE + DB, E GESTIRE ONTAP ELEMENTI LISTA
-
 
 
 /*class DettaglioMilitiScreen extends StatelessWidget {

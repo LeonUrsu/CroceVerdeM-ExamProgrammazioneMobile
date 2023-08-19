@@ -5,6 +5,7 @@ import 'amministratore.dart';
 import 'crea_milite.dart';
 import 'gestione_militi.dart';
 import 'login.dart';
+import 'schermata_milite.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/amministratore': (context) => Amministratore(),
         '/lista_militi':  (context) => GestioneMiliti(),
         '/crea_milite':  (context) => AggiungiMilite(),
+        '/schermata_milite': (context) => SchermataMilite()
       },
     );
   }
