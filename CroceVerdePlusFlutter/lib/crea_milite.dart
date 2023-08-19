@@ -33,6 +33,14 @@ class _AggiungiMilite extends State<AggiungiMilite> {
     return caratteri.join();
   }
 
+  bool valoreSwitch1 = false;
+  bool valoreSwitch2 = false;
+  bool valoreSwitch3 = false;
+  bool valoreSwitch4 = false;
+  bool valoreSwitch5 = false;
+  bool valoreSwitch6 = false;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +50,7 @@ class _AggiungiMilite extends State<AggiungiMilite> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50), // Distanza sinistra, sopra, destra, sotto
+          padding: EdgeInsets.fromLTRB(16, 85, 16, 50), // Distanza sinistra, sopra, destra, sotto
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -78,7 +86,79 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      children: [
+                        Text('Grado 118 prima'),
+                        Switch(
+                          value: valoreSwitch1,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch1 = value;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 5),
+                        Text('Grado 118 seconda'),
+                        Switch(
+                          value: valoreSwitch2,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch2 = value;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 5),
+                        Text('Grado 118 terza'),
+                        Switch(
+                          value: valoreSwitch3,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch3 = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text('Grado H24 prima'),
+                        Switch(
+                          value: valoreSwitch4,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch4 = value;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 5),
+                        Text('Grado H24 seconda'),
+                        Switch(
+                          value: valoreSwitch5,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch5 = value;
+                            });
+                          },
+                        ),
+                        SizedBox(height: 5),
+                        Text('Grado H24 terza'),
+                        Switch(
+                          value: valoreSwitch6,
+                          onChanged: (value) {
+                            setState(() {
+                              valoreSwitch6 = value;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
                 FilledButton(
                   onPressed: () async {
                     String nome = _nomeController.text;
@@ -94,6 +174,12 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                       cognomeNomeSpinner: '$cognome $nome',
                       username: '$nome.$cognome',
                       password: generaPassword(),
+                      grado118prima: valoreSwitch1,
+                      grado118seconda: valoreSwitch2,
+                      grado118terza: valoreSwitch3,
+                      gradoh24prima: valoreSwitch4,
+                      gradoh24seconda: valoreSwitch5,
+                      gradoh24terza: valoreSwitch6,
                     );
                     Map<String, dynamic> militeMap = nuovoMilite.toMap();//permette interazioni con il DB mappando il milite
                     // crea un nuovo documento (milite) nella collezione "militi"
