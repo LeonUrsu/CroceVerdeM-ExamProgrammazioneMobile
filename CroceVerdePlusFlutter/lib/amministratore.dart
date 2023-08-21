@@ -42,7 +42,7 @@ class _Amministratore extends State<Amministratore> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Croce Verde Plus'),
+        title: Text('Amministratore'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(

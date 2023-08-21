@@ -25,9 +25,9 @@ class Milite {
     required this.cognome,
     required this.dataDiNascita,
     required this.residenza,
-    required this.cognomeNomeSpinner,
-    required this.username,
-    required this.password,
+    this.cognomeNomeSpinner,
+    this.username,
+    this.password,
     this.grado118prima = false,
     this.grado118seconda = false,
     this.grado118terza = false,
@@ -41,6 +41,8 @@ class Milite {
     this.oreTurnoh24seconda = 0,
     this.oreTurnoh24terza = 0,
   });
+
+
 
   Map<String, dynamic> toMap() {
     return {

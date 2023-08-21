@@ -44,10 +44,11 @@ class _SchermataMilite extends State<SchermataMilite> {
                   SizedBox(height: 80),
                   FilledButton.tonal(
                     onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
+                      Navigator.pushNamed(
                         context,
-                        '/',
-                            (route) => false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                        '/modifica_milite',
+                        arguments: {'nome': nome, 'cognome': cognome, 'dataDiNascita': dataDiNascita,
+                          'residenza': residenza},
                       );
                     },
                     child: Text('Modifica Milite'),
