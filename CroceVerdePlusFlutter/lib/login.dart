@@ -33,11 +33,15 @@ class _Login extends State<Login> {
 
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
-  //bool _isLoading = false;
+  bool _rotellina = false;
 
   Future<void> _login (BuildContext context) async {
     final username = _usernameController.text;
     final password = _passwordController.text;
+
+    setState(() {
+      _rotellina = true; //visualizza la rotellina di caricamento
+    });
 
     final amministratoreQuery = FirebaseFirestore.instance
         .collection('amministratori')
@@ -73,9 +77,11 @@ class _Login extends State<Login> {
         fontSize: 16.0,
       );
     }
+
+    setState(() {
+      _rotellina = false; //nasconde la rotellina di caricamento
+    });
   }
-
-
 
 
 
@@ -138,8 +144,9 @@ class _Login extends State<Login> {
                     ),
                   ),
                 ),
-                //SizedBox(height: 50),
-                //CircularProgressIndicator()
+                SizedBox(height: 50),
+                if (_rotellina)
+                  CircularProgressIndicator()
               ],
             ),
           ),
