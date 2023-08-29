@@ -1,17 +1,19 @@
+import 'package:flutter/material.dart';
+
 class ProfiloMilite extends StatefulWidget {
-  const ProfiloMilite({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _ProfiloMilite createState() => _ProfiloMilite();
+}
+
+class _ProfiloMilite extends State<ProfiloMilite> {
+  @override
+  Widget build(BuildContext context) {
+    //ottenimento degli argomenti passati
+    //final Map<String, dynamic> args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    return Scaffold(
+        appBar: AppBar(
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        ),
+        body: const Center( child: Text("profilo milite")));
+  }
 }

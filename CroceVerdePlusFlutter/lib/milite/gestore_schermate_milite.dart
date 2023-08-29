@@ -1,28 +1,20 @@
+import 'package:croce_verde_plus/milite/profilo_milite.dart';
+import 'package:croce_verde_plus/milite/tabellone_turni_milite.dart';
 import 'package:flutter/material.dart';
 
-class Milite extends StatefulWidget {
-  const Milite({Key? key}) : super(key: key);
+class GestoreSchermateMilite extends StatefulWidget {
+  const GestoreSchermateMilite({Key? key}) : super(key: key);
 
   @override
   _Milite createState() => _Milite();
 }
 
-class _Milite extends State<Milite> {
+class _Milite extends State<GestoreSchermateMilite> {
   var shape = const CircularNotchedRectangle();
+  int _currentIndex = 0;
   var fabLocation = FloatingActionButtonLocation.endDocked;
 
-  /*void _login(String username, String password) {
-
-    if(username == "a" && password == "p"){
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => MiliteScreen()));
-    }
-
-  }
-
-   */
+  final tabs = [ProfiloMilite(), TabelloneTurniMilite()];
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +23,28 @@ class _Milite extends State<Milite> {
           title: Text('Milite'),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
-        bottomNavigationBar: costruzione_bottom_bar_navigation(context));
+        bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.table_chart_rounded),
+                label: 'Tabellone',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_rounded),
+                label: 'Profilo',
+              ),
+            ],
+            selectedItemColor: Colors.green,
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            }),
+        body: tabs[_currentIndex]);
   }
 
+/*
   Widget costruzione_bottom_bar_navigation(BuildContext context) {
     return BottomAppBar(
       shape: shape,
@@ -60,4 +71,6 @@ class _Milite extends State<Milite> {
       ),
     );
   }
+
+   */
 }
