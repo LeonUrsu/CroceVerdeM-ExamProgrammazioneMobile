@@ -9,7 +9,7 @@ class SchermataMilite extends StatefulWidget {
 
 class _SchermataMilite extends State<SchermataMilite> {
   @override
-  Widget build(BuildContext conztext) {
+  Widget build(BuildContext context) {
     //ottenimento degli argomenti passati
     final Map<String, dynamic> args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final String nome = args['nome'];

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:croce_verde_plus/milite/profilo_milite.dart';
 import 'package:croce_verde_plus/milite/tabellone_turni_milite.dart';
 import 'package:flutter/material.dart';
@@ -6,21 +7,19 @@ class GestoreSchermateMilite extends StatefulWidget {
   const GestoreSchermateMilite({Key? key}) : super(key: key);
 
   @override
-  _Milite createState() => _Milite();
+  _GestoreSchermateMilite createState() => _GestoreSchermateMilite();
 }
 
-class _Milite extends State<GestoreSchermateMilite> {
+class _GestoreSchermateMilite extends State<GestoreSchermateMilite> {
   var shape = const CircularNotchedRectangle();
   int _currentIndex = 0;
   var fabLocation = FloatingActionButtonLocation.endDocked;
-
-  final tabs = [ProfiloMilite(), TabelloneTurniMilite()];
+  final tabs = [TabelloneTurniMilite(), ProfiloMilite()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Milite'),
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -43,6 +42,8 @@ class _Milite extends State<GestoreSchermateMilite> {
             }),
         body: tabs[_currentIndex]);
   }
+
+
 
 /*
   Widget costruzione_bottom_bar_navigation(BuildContext context) {
