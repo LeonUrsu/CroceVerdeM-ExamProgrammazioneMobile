@@ -18,6 +18,7 @@ class _ProfiloMilite extends State<ProfiloMilite> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text('Profilo Milite'),
         ),
         body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("militi").snapshots(),

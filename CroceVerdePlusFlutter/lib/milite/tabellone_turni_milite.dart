@@ -15,6 +15,7 @@ class _TabelloneTurniMilite extends State<TabelloneTurniMilite> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text('Tabellone dei Turni'),
         ),
         body: const Center(child: Text("tabellone")));
   }
