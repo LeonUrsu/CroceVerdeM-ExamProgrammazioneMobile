@@ -2,7 +2,6 @@ package com.example.croceverdeplus
 
 import com.google.firebase.Timestamp
 
-
 class Tabella118h24 {
     var tipo_settimana: Boolean = true
     var data_lunedi: Timestamp? = null
@@ -12,7 +11,6 @@ class Tabella118h24 {
     var data_venerdi: Timestamp? = null
     var data_sabato: Timestamp? = null
     var data_domenica: Timestamp? = null
-
 
     var turno_118_lun_mat_1 = ""
     var turno_118_lun_mat_2 = ""
