@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 class GestoreMilite extends StatefulWidget {
   late String username;
 
-  GestoreMilite({required this.username});
+  GestoreMilite(String _username){
+    username = _username;
+  }
 
   @override
   _GestoreMilite createState() => _GestoreMilite(this.username);
@@ -22,7 +24,7 @@ class _GestoreMilite extends State<GestoreMilite> {
   var shape = const CircularNotchedRectangle();
   int _currentIndex = 0;
   var fabLocation = FloatingActionButtonLocation.endDocked;
-  var tabs = [TabelloneTurniMilite(), ProfiloMilite(_username)];
+  late var tabs = [TabelloneTurniMilite(), ProfiloMilite(_username)];
 
   @override
   Widget build(BuildContext context) {

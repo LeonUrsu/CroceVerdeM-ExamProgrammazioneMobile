@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'amministratore.dart';
+import 'milite/gestore_milite.dart';
 
 /*class LoginScreen extends StatelessWidget {
   @override
@@ -66,7 +67,7 @@ class _Login extends State<Login> {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           settings: const RouteSettings(name: '/militi'),
-          builder: (context) => ProfiloMilite(username),
+          builder: (context) => GestoreMilite(username),
         ),
       ); //TODO <<<<<<<<<<<<<<< passare lo username del milite loggato
     } else {
