@@ -3,18 +3,26 @@ import 'package:croce_verde_plus/milite/profilo_milite.dart';
 import 'package:croce_verde_plus/milite/tabellone_turni_milite.dart';
 import 'package:flutter/material.dart';
 
-class GestoreSchermateMilite extends StatefulWidget {
-  const GestoreSchermateMilite({Key? key}) : super(key: key);
+class GestoreMilite extends StatefulWidget {
+  late String username;
+
+  GestoreMilite({required this.username});
 
   @override
-  _GestoreSchermateMilite createState() => _GestoreSchermateMilite();
+  _GestoreMilite createState() => _GestoreMilite(this.username);
 }
 
-class _GestoreSchermateMilite extends State<GestoreSchermateMilite> {
+class _GestoreMilite extends State<GestoreMilite> {
+  static late String _username;
+
+  _GestoreMilite(String passed) {
+    _username = passed;
+  }
+
   var shape = const CircularNotchedRectangle();
   int _currentIndex = 0;
   var fabLocation = FloatingActionButtonLocation.endDocked;
-  final tabs = [TabelloneTurniMilite(), ProfiloMilite()];
+  var tabs = [TabelloneTurniMilite(), ProfiloMilite(_username)];
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +50,6 @@ class _GestoreSchermateMilite extends State<GestoreSchermateMilite> {
             }),
         body: tabs[_currentIndex]);
   }
-
-
 
 /*
   Widget costruzione_bottom_bar_navigation(BuildContext context) {

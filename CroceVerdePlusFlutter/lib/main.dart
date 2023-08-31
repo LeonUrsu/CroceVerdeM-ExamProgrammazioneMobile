@@ -5,7 +5,7 @@ import 'amministratore.dart';
 import 'crea_milite.dart';
 import 'gestione_militi.dart';
 import 'login.dart';
-import 'milite/gestore_schermate_milite.dart';
+import 'milite/gestore_milite.dart';
 import 'modifica_milite.dart';
 import 'schermata_milite.dart';
 
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         '/crea_milite':  (context) => AggiungiMilite(),
         '/schermata_milite': (context) => SchermataMilite(),
         '/modifica_milite': (context) => ModificaMilite(),
-        '/militi': (context) => GestoreSchermateMilite()
+        //'/militi': (context) => GestoreMilite(username: User,)
       },
     );
   }

@@ -2,11 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ProfiloMilite extends StatefulWidget {
+  late String username;
+  ProfiloMilite(String _username){
+    this.username = _username;
+  }
   @override
   _ProfiloMilite createState() => _ProfiloMilite();
 }
 
 class _ProfiloMilite extends State<ProfiloMilite> {
+
   @override
   Widget build(BuildContext context) {
     var datiMilite = {};
@@ -24,7 +29,7 @@ class _ProfiloMilite extends State<ProfiloMilite> {
               if (snapshot.hasData) {
                 final militi = snapshot.data?.docs.reversed.toList();
                 for (var milite in militi!) {
-                  if (username == milite.get("username")) {
+                  if (widget.username == milite.get(AutofillHints.username)) {
                     var temp = milite.get("nome");
                     datiMilite['nome'] = temp;
                     datiMilite['cognome'] = milite.get("cognome");

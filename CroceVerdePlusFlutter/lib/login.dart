@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:croce_verde_plus/milite/profilo_milite.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import 'amministratore.dart';
-
-
-
 
 /*class LoginScreen extends StatelessWidget {
   @override
@@ -25,17 +23,17 @@ import 'amministratore.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
   @override
   _Login createState() => _Login();
 }
 
 class _Login extends State<Login> {
-
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _rotellina = false;
 
-  Future<void> _login (BuildContext context) async {
+  Future<void> _login(BuildContext context) async {
     final username = _usernameController.text;
     final password = _passwordController.text;
 
@@ -57,14 +55,20 @@ class _Login extends State<Login> {
         .limit(1)
         .get();
 
-    final List<QuerySnapshot> results = await Future.wait([amministratoreQuery, militeQuery]);
+    final List<QuerySnapshot> results =
+        await Future.wait([amministratoreQuery, militeQuery]);
 
     if (results[0].docs.isNotEmpty) {
       // Amministratore trovato
       Navigator.pushReplacementNamed(context, '/amministratore');
     } else if (results[1].docs.isNotEmpty) {
       // Milite trovato
-      Navigator.pushReplacementNamed(context, '/militi');
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          settings: const RouteSettings(name: '/militi'),
+          builder: (context) => ProfiloMilite(username),
+        ),
+      ); //TODO <<<<<<<<<<<<<<< passare lo username del milite loggato
     } else {
       // Credenziali non valide
       Fluttertoast.showToast(
@@ -82,9 +86,6 @@ class _Login extends State<Login> {
       _rotellina = false; //nasconde la rotellina di caricamento
     });
   }
-
-
-
 
   /*void _login(String username, String password) {
 
@@ -111,13 +112,15 @@ class _Login extends State<Login> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50), // Distanza sinistra, sopra, destra, sotto
+          padding: EdgeInsets.fromLTRB(16, 100, 16, 50),
+          // Distanza sinistra, sopra, destra, sotto
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset('assets/Logo CV.png'),
-                SizedBox(height: 75), // Spazio tra l'immagine e i TextField
+                SizedBox(height: 75),
+                // Spazio tra l'immagine e i TextField
                 TextField(
                   controller: _usernameController,
                   decoration: InputDecoration(
@@ -125,7 +128,8 @@ class _Login extends State<Login> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 16), // Spazio tra il primo e il secondo TextField
+                SizedBox(height: 16),
+                // Spazio tra il primo e il secondo TextField
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
@@ -145,8 +149,7 @@ class _Login extends State<Login> {
                   ),
                 ),
                 SizedBox(height: 50),
-                if (_rotellina)
-                  CircularProgressIndicator()
+                if (_rotellina) CircularProgressIndicator()
               ],
             ),
           ),
