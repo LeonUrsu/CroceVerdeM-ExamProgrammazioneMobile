@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:croce_verde_plus/milite/profilo_milite.dart';
 import 'package:croce_verde_plus/milite/tabellone_turni_milite.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +23,7 @@ class _GestoreMilite extends State<GestoreMilite> {
   var shape = const CircularNotchedRectangle();
   int _currentIndex = 0;
   var fabLocation = FloatingActionButtonLocation.endDocked;
-  late var tabs = [TabelloneTurniMilite(), ProfiloMilite(_username)];
+  late var tabs = [TabelloneTurni(), ProfiloMilite(_username)];
 
   @override
   Widget build(BuildContext context) {
