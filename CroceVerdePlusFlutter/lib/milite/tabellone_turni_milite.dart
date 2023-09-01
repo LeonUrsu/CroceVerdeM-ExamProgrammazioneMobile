@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:croce_verde_plus/widget_tabellone.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -17,6 +18,11 @@ class _TabelloneTurni extends State<TabelloneTurni> {
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Tabellone dei Turni'),
         ),
-        body: const Center(child: Text("tabellone")));
+      body: Center(
+        child: WidgetTabella(),
+
+    ),
+    );
+
   }
 }

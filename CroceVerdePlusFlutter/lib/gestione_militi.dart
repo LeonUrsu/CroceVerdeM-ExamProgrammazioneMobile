@@ -19,7 +19,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
         stream: FirebaseFirestore.instance.collection('militi').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+            return Center(); //TODO ELIMINATO child: CircularProgressIndicator() INTERNO A CENTER()
           }
 
           // elenco di documenti della collezione "militi"

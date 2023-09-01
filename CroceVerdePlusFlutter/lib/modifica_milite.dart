@@ -8,7 +8,7 @@ class ModificaMilite extends StatefulWidget {
   @override
   _ModificaMilite createState() => _ModificaMilite();
 }
-//TODO DOPO ELIMINA RITORNA A LISTA, STESSA COSA DOPO MODIFICA
+
 class _ModificaMilite extends State<ModificaMilite> {
 
   bool valoreSwitch1 = false;
