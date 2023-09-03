@@ -11,83 +11,83 @@ class WidgetTabella extends StatefulWidget {
 class _WidgetTabellaState extends State<WidgetTabella> {
   bool visualizza118 = true;
   bool visualizzaH24118 = false;
-  Timestamp? lunedi118;
-  Timestamp? martedi118;
-  Timestamp? mercoledi118;
-  Timestamp? giovedi118;
-  Timestamp? venerdi118;
-  Timestamp? sabato118;
-  Timestamp? domenica118;
-  Timestamp? lunediH24;
-  Timestamp? martediH24;
-  Timestamp? mercolediH24;
-  Timestamp? giovediH24;
-  Timestamp? venerdiH24;
-  Timestamp? sabatoH24;
-  Timestamp? domenicaH24;
-  String? turno118LunMat1;
-  String? turno118LunMat2;
-  String? turno118LunMat3;
-  String? turno118LunPom1;
-  String? turno118LunPom2;
-  String? turno118LunPom3;
-  String? turno118LunSer1;
-  String? turno118LunSer2;
-  String? turno118LunSer3;
-  String? turno118MarMat1;
-  String? turno118MarMat2;
-  String? turno118MarMat3;
-  String? turno118MarPom1;
-  String? turno118MarPom2;
-  String? turno118MarPom3;
-  String? turno118MarSer1;
-  String? turno118MarSer2;
-  String? turno118MarSer3;
-  String? turno118MerMat1;
-  String? turno118MerMat2;
-  String? turno118MerMat3;
-  String? turno118MerPom1;
-  String? turno118MerPom2;
-  String? turno118MerPom3;
-  String? turno118MerSer1;
-  String? turno118MerSer2;
-  String? turno118MerSer3;
-  String? turno118GioMat1;
-  String? turno118GioMat2;
-  String? turno118GioMat3;
-  String? turno118GioPom1;
-  String? turno118GioPom2;
-  String? turno118GioPom3;
-  String? turno118GioSer1;
-  String? turno118GioSer2;
-  String? turno118GioSer3;
-  String? turno118VenMat1;
-  String? turno118VenMat2;
-  String? turno118VenMat3;
-  String? turno118VenPom1;
-  String? turno118VenPom2;
-  String? turno118VenPom3;
-  String? turno118VenSer1;
-  String? turno118VenSer2;
-  String? turno118VenSer3;
-  String? turno118SabMat1;
-  String? turno118SabMat2;
-  String? turno118SabMat3;
-  String? turno118SabPom1;
-  String? turno118SabPom2;
-  String? turno118SabPom3;
-  String? turno118SabSer1;
-  String? turno118SabSer2;
-  String? turno118SabSer3;
-  String? turno118DomMat1;
-  String? turno118DomMat2;
-  String? turno118DomMat3;
-  String? turno118DomPom1;
-  String? turno118DomPom2;
-  String? turno118DomPom3;
-  String? turno118DomSer1;
-  String? turno118DomSer2;
-  String? turno118DomSer3;
+  Timestamp lunedi118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp martedi118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp mercoledi118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp giovedi118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp venerdi118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp sabato118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp domenica118 = Timestamp.fromDate(DateTime(2023));
+  Timestamp lunediH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp martediH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp mercolediH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp giovediH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp venerdiH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp sabatoH24 = Timestamp.fromDate(DateTime(2023));
+  Timestamp domenicaH24 = Timestamp.fromDate(DateTime(2023));
+  String turno118LunMat1 = '';
+  String turno118LunMat2 = '';
+  String turno118LunMat3 = '';
+  String turno118LunPom1 = '';
+  String turno118LunPom2 = '';
+  String turno118LunPom3 = '';
+  String turno118LunSer1 = '';
+  String turno118LunSer2 = '';
+  String turno118LunSer3 = '';
+  String turno118MarMat1 = '';
+  String turno118MarMat2 = '';
+  String turno118MarMat3 = '';
+  String turno118MarPom1 = '';
+  String turno118MarPom2 = '';
+  String turno118MarPom3 = '';
+  String turno118MarSer1 = '';
+  String turno118MarSer2 = '';
+  String turno118MarSer3 = '';
+  String turno118MerMat1 = '';
+  String turno118MerMat2 = '';
+  String turno118MerMat3 = '';
+  String turno118MerPom1 = '';
+  String turno118MerPom2 = '';
+  String turno118MerPom3 = '';
+  String turno118MerSer1 = '';
+  String turno118MerSer2 = '';
+  String turno118MerSer3 = '';
+  String turno118GioMat1 = '';
+  String turno118GioMat2 = '';
+  String turno118GioMat3 = '';
+  String turno118GioPom1 = '';
+  String turno118GioPom2 = '';
+  String turno118GioPom3 = '';
+  String turno118GioSer1 = '';
+  String turno118GioSer2 = '';
+  String turno118GioSer3 = '';
+  String turno118VenMat1 = '';
+  String turno118VenMat2 = '';
+  String turno118VenMat3 = '';
+  String turno118VenPom1 = '';
+  String turno118VenPom2 = '';
+  String turno118VenPom3 = '';
+  String turno118VenSer1 = '';
+  String turno118VenSer2 = '';
+  String turno118VenSer3 = '';
+  String turno118SabMat1 = '';
+  String turno118SabMat2 = '';
+  String turno118SabMat3 = '';
+  String turno118SabPom1 = '';
+  String turno118SabPom2 = '';
+  String turno118SabPom3 = '';
+  String turno118SabSer1 = '';
+  String turno118SabSer2 = '';
+  String turno118SabSer3 = '';
+  String turno118DomMat1 = '';
+  String turno118DomMat2 = '';
+  String turno118DomMat3 = '';
+  String turno118DomPom1 = '';
+  String turno118DomPom2 = '';
+  String turno118DomPom3 = '';
+  String turno118DomSer1 = '';
+  String turno118DomSer2 = '';
+  String turno118DomSer3 = '';
   String? turno118H24LunMat1;
   String? turno118H24LunMat2;
   String? turno118H24LunMat3;
@@ -645,7 +645,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Lunedì ${DateFormat('dd/MM', 'it_IT').format(lunediH24!.toDate())}',
+                          'Lunedì ${DateFormat('dd/MM', 'it_IT').format(lunediH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -683,7 +683,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Martedì ${DateFormat('dd/MM', 'it_IT').format(martediH24!.toDate())}',
+                          'Martedì ${DateFormat('dd/MM', 'it_IT').format(martediH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -721,7 +721,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Mercoledì ${DateFormat('dd/MM', 'it_IT').format(mercolediH24!.toDate())}',
+                          'Mercoledì ${DateFormat('dd/MM', 'it_IT').format(mercolediH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -759,7 +759,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Giovedì ${DateFormat('dd/MM', 'it_IT').format(giovediH24!.toDate())}',
+                          'Giovedì ${DateFormat('dd/MM', 'it_IT').format(giovediH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -797,7 +797,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Venerdì ${DateFormat('dd/MM', 'it_IT').format(venerdiH24!.toDate())}',
+                          'Venerdì ${DateFormat('dd/MM', 'it_IT').format(venerdiH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -835,7 +835,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Sabato ${DateFormat('dd/MM', 'it_IT').format(sabatoH24!.toDate())}',
+                          'Sabato ${DateFormat('dd/MM', 'it_IT').format(sabatoH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -873,7 +873,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Domenica ${DateFormat('dd/MM', 'it_IT').format(domenicaH24!.toDate())}',
+                          'Domenica ${DateFormat('dd/MM', 'it_IT').format(domenicaH24.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -996,7 +996,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Lunedì\n${DateFormat('dd/MM', 'it_IT').format(lunedi118!.toDate())}',
+                          'Lunedì\n${DateFormat('dd/MM', 'it_IT').format(lunedi118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1025,7 +1025,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Martedì\n${DateFormat('dd/MM', 'it_IT').format(martedi118!.toDate())}',
+                          'Martedì\n${DateFormat('dd/MM', 'it_IT').format(martedi118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1054,7 +1054,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Mercoledì\n${DateFormat('dd/MM', 'it_IT').format(mercoledi118!.toDate())}',
+                          'Mercoledì\n${DateFormat('dd/MM', 'it_IT').format(mercoledi118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1083,7 +1083,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Giovedì\n${DateFormat('dd/MM', 'it_IT').format(giovedi118!.toDate())}',
+                          'Giovedì\n${DateFormat('dd/MM', 'it_IT').format(giovedi118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1112,7 +1112,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Venerdì\n${DateFormat('dd/MM', 'it_IT').format(venerdi118!.toDate())}',
+                          'Venerdì\n${DateFormat('dd/MM', 'it_IT').format(venerdi118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1141,7 +1141,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Sabato\n${DateFormat('dd/MM', 'it_IT').format(sabato118!.toDate())}',
+                          'Sabato\n${DateFormat('dd/MM', 'it_IT').format(sabato118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
@@ -1170,7 +1170,7 @@ class _WidgetTabellaState extends State<WidgetTabella> {
                           color: Colors.green,
                         ),
                         child: Text(
-                          'Domenica\n${DateFormat('dd/MM', 'it_IT').format(domenica118!.toDate())}',
+                          'Domenica\n${DateFormat('dd/MM', 'it_IT').format(domenica118.toDate())}',
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 10, color: Colors
                               .white),
