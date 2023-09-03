@@ -15,7 +15,7 @@ class _TabelloneTurni extends State<TabelloneTurni> {
           title: Text('Tabellone dei Turni'),
         ),
       body: Center(
-        child: WidgetTabella(), //TODO SCHERMATA ERRORE DA PROFILO A TABELLONE
+        child: WidgetTabella(),
       ),
     );
 
