@@ -1,5 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import '../widget_tabellone.dart';
 
 class WidgetSpinnerAmministratore extends StatefulWidget {
@@ -13,6 +13,7 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
   String valoreGiorno = "lun";
   String valoreOrario = "mat";
   String valoreGrado = "1";
+  String valoreMilite = "0";
 
   //variabili da inserire negli spinner
   List list_servizio = ["h24", "118"];
@@ -32,7 +33,11 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(height: 400,child: WidgetTabella(),),
+        Container(
+          height: 400,
+          child:
+              null, //WidgetTabella(), // TODO da rimuovere il null dopo la sistemazione del overflow
+        ),
         Center(
             child: Container(
           width: 230,
@@ -124,9 +129,13 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  DropdownButton<String>(
+              Center(
+                  widthFactor: 200,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        /*DropdownButton<String>(
                       hint: Text("Milite"),
                       underline: Container(height: 2, color: Colors.green),
                       onChanged: (String? nuovoOrario) {
@@ -134,16 +143,49 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
                           valoreOrario = nuovoOrario!;
                         });
                       },
-                      items: null),
-                  // TODO mettere la lista dei militi che si riempie
-                  Spacer()
-                ],
-              ),
+                      items: null)*/
+                        StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection("militi")
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              List<DropdownMenuItem> listaMiliti = [];
+                              if (!snapshot.hasData) {
+                                const CircularProgressIndicator();
+                              } else {
+                                final militi =
+                                    snapshot.data?.docs.reversed.toList();
+                                listaMiliti.add(const DropdownMenuItem(
+                                    value: "0",
+                                    child: Text("Seleziona il Milite")));
+                                for (var milite in militi!) {
+                                  listaMiliti.add(DropdownMenuItem(
+                                    value: milite.id,
+                                    child: Text(milite["cognomeNomeSpinner"]),
+                                  ));
+                                }
+                              }
+
+                              return DropdownButton(
+                                items: listaMiliti,
+                                onChanged: (nuovoMilite) {
+                                  setState(() {
+                                    valoreMilite = nuovoMilite;
+                                  });
+                                },
+                                value: valoreMilite,
+                                isExpanded: false,
+                              );
+                            })
+                      ],
+                    ),
+                  )),
               Spacer(),
               Container(
                 width: 230,
                 child: ElevatedButton(
                     onPressed: null,
+                    //TODO da finire il salvataggio dei dati
                     child: Text("Segna/Cancella"),
                     style: ElevatedButton.styleFrom(
                       textStyle: TextStyle(fontSize: 18),
