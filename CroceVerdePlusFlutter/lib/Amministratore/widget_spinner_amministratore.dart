@@ -28,11 +28,27 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
   List list_orario = ["7 - 14", "14 - 21", "21 - 7"];
   List list_grado = ["1a", "2a", "3a"];
 
-  @override
+  /*@override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(height: 400,child: WidgetTabella(),),
+        Center(
+
+   */
+  //codice vecchio che ho modificato
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Croce Verde Plus'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      ),
+      body: SingleChildScrollView(
+      child: Column(
+      children: [
+      Container(height: 592,child: WidgetTabella(),),
         Center(
             child: Container(
           width: 230,
@@ -155,6 +171,8 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
           ),
         ))
       ],
+    ),
+    ),
     );
   }
 }
