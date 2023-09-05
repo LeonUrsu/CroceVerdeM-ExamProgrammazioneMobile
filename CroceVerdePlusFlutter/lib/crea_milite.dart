@@ -40,6 +40,11 @@ class _AggiungiMilite extends State<AggiungiMilite> {
   bool valoreSwitch4 = false;
   bool valoreSwitch5 = false;
   bool valoreSwitch6 = false;
+  bool volontario = false;
+  bool dipendente = false;
+
+  List<String> opzioni = ["Volontario", "Dipendente"];
+  String? opzioneScelta;
 
 
   @override
@@ -51,7 +56,7 @@ class _AggiungiMilite extends State<AggiungiMilite> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 85, 16, 50), // Distanza sinistra, sopra, destra, sotto
+          padding: EdgeInsets.fromLTRB(16, 70, 16, 50), // Distanza sinistra, sopra, destra, sotto
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -87,7 +92,30 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: 10),
+                DropdownButton<String>(
+                  hint: Text("Seleziona Volontario o Dipendente"),
+                  value: opzioneScelta,
+                  onChanged: (String? nuovaOpzioneScelta) {
+                    setState(() {
+                      opzioneScelta = nuovaOpzioneScelta;
+                      if (nuovaOpzioneScelta == "Volontario") {
+                        volontario = true;
+                        dipendente = false;
+                      } else if (nuovaOpzioneScelta == "Dipendente") {
+                        volontario = false;
+                        dipendente = true;
+                      }
+                    });
+                  },
+                  items: opzioni.map((String scelta) {
+                    return DropdownMenuItem<String>(
+                      value: scelta,
+                      child: Text(scelta),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -168,7 +196,8 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                     String residenza = _residenzaController.text;
 
                     if (nome.isNotEmpty && cognome.isNotEmpty &&
-                        dataDiNascita.isNotEmpty && residenza.isNotEmpty) {
+                        dataDiNascita.isNotEmpty && residenza.isNotEmpty
+                        && opzioneScelta != null) {
                       Milite nuovoMilite = Milite(
                         nome: nome,
                         cognome: cognome,
@@ -177,6 +206,8 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                         cognomeNomeSpinner: '$cognome $nome',
                         username: '$nome.$cognome',
                         password: generaPassword(),
+                        volontario: volontario,
+                        dipendente: dipendente,
                         grado118prima: valoreSwitch1,
                         grado118seconda: valoreSwitch2,
                         grado118terza: valoreSwitch3,

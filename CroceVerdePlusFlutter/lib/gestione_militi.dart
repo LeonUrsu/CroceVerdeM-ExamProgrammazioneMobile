@@ -34,6 +34,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
               String cognome = document['cognome'];
               String dataDiNascita = document['dataDiNascita'];
               String residenza = document['residenza'];
+              bool volontario = document['volontario'];
 
               //liste per gestire la visualizzazione dei gradi settati a True
               List<String> gradiNomi = [
@@ -67,7 +68,8 @@ class _GestioneMiliti extends State<GestioneMiliti> {
                 subtitle: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ...altreInfo, //lista all'interno di column
+                    ...altreInfo,//lista all'interno di column
+                    Text(volontario ? 'Volontario' : 'Dipendente'),
                     ...gradiTrue,
                   ],
                 ),

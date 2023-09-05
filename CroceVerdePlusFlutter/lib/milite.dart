@@ -6,6 +6,8 @@ class Milite {
   final String? cognomeNomeSpinner;
   final String? username;
   final String? password;
+  final bool? volontario;
+  final bool? dipendente;
   final bool? grado118prima;
   final bool? grado118seconda;
   final bool? grado118terza;
@@ -28,6 +30,8 @@ class Milite {
     this.cognomeNomeSpinner,
     this.username,
     this.password,
+    this.volontario,
+    this.dipendente,
     this.grado118prima = false,
     this.grado118seconda = false,
     this.grado118terza = false,
@@ -53,6 +57,8 @@ class Milite {
       'cognomeNomeSpinner': cognomeNomeSpinner,
       'username': username,
       'password': password,
+      'volontario': volontario,
+      'dipendente': dipendente,
       'grado118prima': grado118prima,
       'grado118seconda': grado118seconda,
       'grado118terza': grado118terza,
