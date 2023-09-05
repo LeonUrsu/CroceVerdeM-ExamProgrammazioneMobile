@@ -16,7 +16,8 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
   String valoreOrario = "mat";
   String valoreGrado = "1";
   String valoreMilite = "0";
-  WidgetTabella widgetTabella = WidgetTabella();
+  var widgetTabella = WidgetTabella();
+  late var dropdownMenuItemServizio = widgetTabella.visualizzaH24118;
 
   @override
   Widget build(BuildContext context) {
@@ -44,37 +45,43 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           DropdownButton<String>(
-                              hint: const Text("Servizio"),
-                              underline:
-                                  Container(height: 2, color: Colors.green),
-                              onChanged: (String? nuovoServizio) {
-                                setState(() {
-                                  valoreServizio = nuovoServizio!;
-                                });
-                              },
-                              items: const [
-                                DropdownMenuItem<String>(
-                                    value: '118', child: Text("118")),
-                                DropdownMenuItem<String>(
-                                    value: 'H24', child: Text("H24"))
-                              ]),
+                            hint: const Text("Servizio"),
+                            underline:
+                                Container(height: 2, color: Colors.green),
+                            onChanged: (String? nuovoServizio) {
+                              setState(() {
+                                valoreServizio = nuovoServizio!;
+                              });
+                            },
+                            items: const [
+                              DropdownMenuItem<String>(
+                                  value: '118', child: Text("118")),
+                              DropdownMenuItem<String>(
+                                  value: 'H24', child: Text("H24"))
+                            ],
+                            value: valoreServizio,
+                            isExpanded: false,
+                          ),
                           DropdownButton<String>(
-                              hint: const Text("Orario"),
-                              underline:
-                                  Container(height: 2, color: Colors.green),
-                              onChanged: (String? nuovoOrario) {
-                                setState(() {
-                                  valoreOrario = nuovoOrario!;
-                                });
-                              },
-                              items: const [
-                                DropdownMenuItem<String>(
-                                    value: 'mat', child: Text("7 - 14")),
-                                DropdownMenuItem<String>(
-                                    value: 'pom', child: Text("14 - 21")),
-                                DropdownMenuItem<String>(
-                                    value: 'ser', child: Text("21 - 7"))
-                              ])
+                            hint: const Text("Orario"),
+                            underline:
+                                Container(height: 2, color: Colors.green),
+                            onChanged: (String? nuovoOrario) {
+                              setState(() {
+                                valoreOrario = nuovoOrario!;
+                              });
+                            },
+                            items: const [
+                              DropdownMenuItem<String>(
+                                  value: 'mat', child: Text("7 - 14")),
+                              DropdownMenuItem<String>(
+                                  value: 'pom', child: Text("14 - 21")),
+                              DropdownMenuItem<String>(
+                                  value: 'ser', child: Text("21 - 7"))
+                            ],
+                            value: valoreOrario,
+                            isExpanded: false,
+                          )
                         ],
                       ),
                       const Spacer(),
@@ -82,30 +89,33 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           DropdownButton<String>(
-                              hint: const Text("Giorno"),
-                              underline:
-                                  Container(height: 2, color: Colors.green),
-                              onChanged: (String? nuovoGiorno) {
-                                setState(() {
-                                  valoreGiorno = nuovoGiorno!;
-                                });
-                              },
-                              items: const [
-                                DropdownMenuItem<String>(
-                                    value: 'lun', child: Text("lunedì")),
-                                DropdownMenuItem<String>(
-                                    value: 'mar', child: Text("martedì")),
-                                DropdownMenuItem<String>(
-                                    value: 'mer', child: Text("mercoledì")),
-                                DropdownMenuItem<String>(
-                                    value: 'gio', child: Text("giovedì")),
-                                DropdownMenuItem<String>(
-                                    value: 'ven', child: Text("venerdì")),
-                                DropdownMenuItem<String>(
-                                    value: 'sab', child: Text("sabato")),
-                                DropdownMenuItem<String>(
-                                    value: 'dom', child: Text("domenica"))
-                              ]),
+                            hint: const Text("Giorno"),
+                            underline:
+                                Container(height: 2, color: Colors.green),
+                            onChanged: (String? nuovoGiorno) {
+                              setState(() {
+                                valoreGiorno = nuovoGiorno!;
+                              });
+                            },
+                            items: const [
+                              DropdownMenuItem<String>(
+                                  value: 'lun', child: Text("lunedì")),
+                              DropdownMenuItem<String>(
+                                  value: 'mar', child: Text("martedì")),
+                              DropdownMenuItem<String>(
+                                  value: 'mer', child: Text("mercoledì")),
+                              DropdownMenuItem<String>(
+                                  value: 'gio', child: Text("giovedì")),
+                              DropdownMenuItem<String>(
+                                  value: 'ven', child: Text("venerdì")),
+                              DropdownMenuItem<String>(
+                                  value: 'sab', child: Text("sabato")),
+                              DropdownMenuItem<String>(
+                                  value: 'dom', child: Text("domenica"))
+                            ],
+                            value: valoreGiorno,
+                            isExpanded: false,
+                          ),
                           DropdownButton<String>(
                             underline:
                                 Container(height: 2, color: Colors.green),
@@ -177,14 +187,17 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
                     width: 230,
                     child: ElevatedButton(
                         onPressed: () {
-                          segna_cancella_pressed(
-                              valoreMilite,
-                              valoreGrado,
-                              valoreServizio,
-                              valoreGiorno,
-                              valoreOrario,
-                              widgetTabella,
-                              valoreMilite);
+                          if (widgetTabella.visualizzaH24118) {
+                            segna_cancella_pressed(
+                                valoreMilite,
+                                valoreGrado,
+                                valoreServizio,
+                                valoreGiorno,
+                                valoreOrario,
+                                widgetTabella,
+                                valoreMilite);
+                          } else {//TODO aggiungere messagio a comparsa di fallimento perchè la tabella non è stata selezionata
+                             }
                         },
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 18),
@@ -233,11 +246,11 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
               .doc(nomeDocumentoTabellaDB);
           //verifico se il milite è presente nella tabella e se lo è metto a ""
           var risultatoPrenotazione;
-          if(tabellaTrovata.get(nomeTurnoDB) == cognomeNomeSpinnerMilite){
+          if (tabellaTrovata.get(nomeTurnoDB) == cognomeNomeSpinnerMilite) {
             risultatoPrenotazione = "";
             //calcolo aggiunta "positiva" delle ore al turno
             calcolaOreTurno(valoreOrario, true);
-          }else{
+          } else {
             risultatoPrenotazione = cognomeNomeSpinnerMilite;
             //calcolo aggiunta "positiva" delle ore al turno
             calcolaOreTurno(valoreOrario, false);
@@ -296,7 +309,9 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
         valoreStabilito = 10;
         break;
     }
-    if (!boolVar){ valoreStabilito *= -1;}
+    if (!boolVar) {
+      valoreStabilito *= -1;
+    }
     return valoreStabilito;
   }
 
@@ -319,6 +334,7 @@ class _WidgetSpinnerAmministratore extends State<WidgetSpinnerAmministratore> {
     }
     return "oreTurno$servizio$gradoLetterale";
   }
-  // TODO: i bug da sistemare sono molti, non c'è il controllo per verificare se un milite è già nel turno selezionato prima di eliminarlo e sostituirlo con un altro
-  // TODO: il milite viene eliminato e le ore non vengono scalate dal vecchio milite ma solamente aggiunte al nuovo milite
+
+// TODO: i bug da sistemare sono molti, non c'è il controllo per verificare se un milite è già nel turno selezionato prima di eliminarlo e sostituirlo con un altro
+// TODO: il milite viene eliminato e le ore non vengono scalate dal vecchio milite ma solamente aggiunte al nuovo milite
 }
