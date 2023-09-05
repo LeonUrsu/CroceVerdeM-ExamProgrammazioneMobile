@@ -19,12 +19,12 @@ import 'package:flutter/material.dart';
 
 class Amministratore extends StatefulWidget {
   const Amministratore({Key? key}) : super(key: key);
+
   @override
   _Amministratore createState() => _Amministratore();
 }
 
 class _Amministratore extends State<Amministratore> {
-
   /*void _login(String username, String password) {
     if(username == "a" && password == "p"){
       Navigator.push(
@@ -44,14 +44,16 @@ class _Amministratore extends State<Amministratore> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50), // Distanza sinistra, sopra, destra, sotto
+          padding: EdgeInsets.fromLTRB(16, 100, 16, 50),
+          // Distanza sinistra, sopra, destra, sotto
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset('assets/Logo CV.png'),
-                SizedBox(height: 75), // Spazio tra il testo e i TextField
+                SizedBox(height: 75),
+                // Spazio tra il testo e i TextField
                 ElevatedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/lista_militi');
@@ -63,11 +65,16 @@ class _Amministratore extends State<Amministratore> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30), // Spazio tra il primo e il secondo TextField
+                SizedBox(height: 30),
+                // Spazio tra il primo e il secondo TextField
                 ElevatedButton(
                   onPressed: () {
-
-
+                    Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      '/gestisciTurniMiliti',
+                      (route) =>
+                          false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                    );
                   },
                   child: Text('Gestisci turni militi'),
                   style: ButtonStyle(
@@ -82,7 +89,8 @@ class _Amministratore extends State<Amministratore> {
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       '/',
-                          (route) => false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                      (route) =>
+                          false, //tutte le rotte precedenti sono rimosse tranne quella di login
                     );
                   },
                   child: Text('Esci'),

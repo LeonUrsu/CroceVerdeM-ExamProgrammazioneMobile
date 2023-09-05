@@ -1,3 +1,4 @@
+import 'package:croce_verde_plus/tabellone_turni_amministratore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -34,7 +35,8 @@ class MyApp extends StatelessWidget {
         '/crea_milite':  (context) => AggiungiMilite(),
         '/schermata_milite': (context) => SchermataMilite(),
         '/modifica_milite': (context) => ModificaMilite(),
-        //'/militi': (context) => GestoreMilite(username: User,)
+        '/gestisciTurniMiliti': (context) => TabelloneTurniAmministratore(),
+        //'/gestisciTurniMiliti': (context) => GestoreMilite(username: User,)
       },
     );
   }
