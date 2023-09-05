@@ -26,16 +26,13 @@ class Amministratore extends StatefulWidget {
 class _Amministratore extends State<Amministratore> {
 
   /*void _login(String username, String password) {
-
     if(username == "a" && password == "p"){
       Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) => AmministratoreScreen()));
     }
-
   }
-
    */
 
   @override

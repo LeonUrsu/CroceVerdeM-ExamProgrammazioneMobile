@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+import 'Amministratore/widget_spinner_amministratore.dart';
+
 class TabelloneTurniAmministratore extends StatefulWidget {
   @override
   _TabelloneTurniAmministratore createState() => _TabelloneTurniAmministratore();
@@ -17,6 +19,6 @@ class _TabelloneTurniAmministratore extends State<TabelloneTurniAmministratore> 
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
           title: Text('Tabellone dei Turni'),
         ),
-        body: const Center(child: Text("tabellone")));
+        body: const WidgetSpinnerAmministratore());
   }
 }

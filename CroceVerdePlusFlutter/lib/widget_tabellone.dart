@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+
 class WidgetTabella extends StatefulWidget {
+  bool visualizza118 = true;
+  bool visualizzaH24118 = false;
   @override
   _WidgetTabella createState() => _WidgetTabella();
 }
 
 class _WidgetTabella extends State<WidgetTabella> {
-  bool visualizza118 = true;
-  bool visualizzaH24118 = false;
+
   Timestamp lunedi118 = Timestamp.fromDate(DateTime(2023));
   Timestamp martedi118 = Timestamp.fromDate(DateTime(2023));
   Timestamp mercoledi118 = Timestamp.fromDate(DateTime(2023));
@@ -228,14 +230,14 @@ class _WidgetTabella extends State<WidgetTabella> {
   //gestione della visualizzazione delle tabelle
   void switchTo118() {
     setState(() {
-      visualizza118 = true;
-      visualizzaH24118 = false;
+      widget.visualizza118 = true;
+      widget.visualizzaH24118 = false;
     });
   }
   void switchToH24118() {
     setState(() {
-      visualizza118 = false;
-      visualizzaH24118 = true;
+      widget.visualizza118 = false;
+      widget.visualizzaH24118 = true;
     });
   }
 
@@ -504,7 +506,7 @@ class _WidgetTabella extends State<WidgetTabella> {
             SizedBox(height: 10),
 
             //tabella 118/H24
-            if (visualizzaH24118)
+            if (widget.visualizzaH24118)
             Container(
               margin: EdgeInsets.fromLTRB(58, 0, 0, 0),
               child: Table(
@@ -548,7 +550,7 @@ class _WidgetTabella extends State<WidgetTabella> {
               ),
             ),
 
-            if(visualizzaH24118)
+            if(widget.visualizzaH24118)
             Table(
               border: TableBorder.all(),
               children: [
@@ -906,7 +908,7 @@ class _WidgetTabella extends State<WidgetTabella> {
 
 
           //tabella 118
-          if(visualizza118)
+          if(widget.visualizza118)
             Container(
               margin: EdgeInsets.fromLTRB(102, 0, 0, 0),
               child: Table(
@@ -934,7 +936,7 @@ class _WidgetTabella extends State<WidgetTabella> {
               ),
             ),
 
-            if(visualizza118)
+            if(widget.visualizza118)
             Table(
               border: TableBorder.all(),
               children: [
