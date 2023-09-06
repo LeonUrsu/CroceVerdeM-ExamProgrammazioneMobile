@@ -69,14 +69,9 @@ class _Amministratore extends State<Amministratore> {
                 // Spazio tra il primo e il secondo TextField
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/gestisciTurniMiliti',
-                      (route) =>
-                          false, //tutte le rotte precedenti sono rimosse tranne quella di login
-                    );
+                    Navigator.pushNamed(context, '/gestisciTurniMiliti');
                   },
-                  child: Text('Gestisci turni militi'),
+                  child: Text("Gestisci Tabellone"),
                   style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(
                       Size(300, 50),

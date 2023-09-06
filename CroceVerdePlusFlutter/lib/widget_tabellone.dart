@@ -485,11 +485,11 @@ class _WidgetTabella extends State<WidgetTabella> {
                   child: Text('SETT 118'),
                   style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(
-                      Size(180, 40),
+                      Size(160, 40),
                     ),
                   ),
                 ),
-                SizedBox(width: 20),
+                Spacer(flex: 1),
                 ElevatedButton(
                   onPressed: () {
                     switchToH24118();
@@ -497,14 +497,13 @@ class _WidgetTabella extends State<WidgetTabella> {
                   child: Text('SETT 118/H24'),
                   style: ButtonStyle(
                     fixedSize: MaterialStateProperty.all<Size>(
-                      Size(180, 40),
+                      Size(160, 40),
                     ),
                   ),
                 ),
               ],
             ),
             SizedBox(height: 10),
-
             //tabella 118/H24
             if (widget.visualizzaH24118)
             Container(
@@ -520,7 +519,7 @@ class _WidgetTabella extends State<WidgetTabella> {
                           width: 75,
                           color: Colors.green,
                           // Imposta il colore di sfondo a verde
-                          child: Center(
+                          child: const Center(
                               child: Text(
                                 'H24'
                                 , style: TextStyle(
@@ -535,7 +534,7 @@ class _WidgetTabella extends State<WidgetTabella> {
                           width: 75,
                           color: Colors.green,
                           // Imposta il colore di sfondo a verde
-                          child: Center(
+                          child: const Center(
                               child: Text(
                                 '118'
                                 , style: TextStyle(
@@ -559,7 +558,7 @@ class _WidgetTabella extends State<WidgetTabella> {
                     TableCell(
                       child: Container(
                         color: Colors.green,
-                        child: Center(
+                        child: const Center(
                             child: Text(
                               ''
                               , style: TextStyle(color: Colors.white),
