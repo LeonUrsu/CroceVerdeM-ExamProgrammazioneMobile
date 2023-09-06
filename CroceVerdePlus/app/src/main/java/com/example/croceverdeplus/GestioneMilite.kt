@@ -1,7 +1,8 @@
 package com.example.croceverdeplus
 
+import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,11 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+
 
 class GestioneMilite : Fragment() {
 
@@ -52,12 +56,30 @@ class GestioneMilite : Fragment() {
 
 
 
-        buttonDelete.setOnClickListener{
+        buttonDelete.setOnClickListener {
+            val builder = AlertDialog.Builder(requireActivity())
+            builder.setTitle("Conferma eliminazione")
+            builder.setMessage("Sei sicuro di voler eliminare questo utente?")
 
-            data.deleteUserM(nome.text.toString(), cognome.text.toString(),
-                dataDiNascita.text.toString(), residenza.text.toString())
+            //aggiunge l'opzione "Sì" che eliminerà l'utente
+            builder.setPositiveButton("Sì") { dialog, which ->
 
-            Toast.makeText(requireActivity(), "Milite eliminato", Toast.LENGTH_SHORT).show()
+                data.deleteUserM(nome.text.toString(), cognome.text.toString(),
+                    dataDiNascita.text.toString(), residenza.text.toString())
+
+                Toast.makeText(requireActivity(), "Milite eliminato", Toast.LENGTH_SHORT).show()
+            }
+            //aggiunge l'opzione "No" che chiude il popup
+            builder.setNegativeButton("No") { dialog, which ->
+            }
+
+            //mostra il popup di conferma
+            val dialog = builder.create()
+            dialog.show()
+            val negativeButton: Button = dialog.getButton(DialogInterface.BUTTON_NEGATIVE)
+            negativeButton.setTextColor(Color.parseColor("#2e7d19"))
+            val positiveButton: Button = dialog.getButton(DialogInterface.BUTTON_POSITIVE)
+            positiveButton.setTextColor(Color.parseColor("#2e7d19"))
         }
 
         buttonModify.setOnClickListener{
