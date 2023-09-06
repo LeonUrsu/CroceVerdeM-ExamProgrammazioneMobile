@@ -233,10 +233,14 @@ class _ModificaMilite extends State<ModificaMilite> {
                         DocumentSnapshot documentSnapshot = querySnapshot.docs.first;
                         DocumentReference militeRef = documentSnapshot.reference;
 
-                        //ottengo il valore di password
+                        //ottengo il valore di password, volontario e dipendente
                         String? currentPassword = documentSnapshot['password'];
-                        //assegno il valore di password alla mappa
+                        bool? volontario = documentSnapshot['volontario'];
+                        bool? dipendente = documentSnapshot['dipendente'];
+                        //assegno il valore di password, volontario e dipendente alla mappa
                         militeMap['password'] = currentPassword;
+                        militeMap['volontario'] = volontario;
+                        militeMap['dipendente'] = dipendente;
 
 
                         //aggiornamento dei campi del documento

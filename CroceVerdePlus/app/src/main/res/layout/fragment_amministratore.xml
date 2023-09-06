@@ -24,7 +24,7 @@
         android:id="@+id/button7"
         android:layout_width="206dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:backgroundTint="#ACACAC"
         android:text="Gestisci militi"
         android:theme="@style/CV_buttons"
@@ -37,7 +37,7 @@
         android:id="@+id/button10"
         android:layout_width="206dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="45dp"
         android:backgroundTint="#ACACAC"
         android:text="Esci"
         android:theme="@style/CV_buttons"
@@ -60,7 +60,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="224dp"
-        android:layout_height="197dp"
+        android:layout_height="150dp"
         android:layout_marginTop="26dp"
         android:background="@drawable/danger_red_tv_border"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -68,28 +68,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView">
 
         <Button
-            android:id="@+id/button12"
-            android:layout_width="206dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#ACACAC"
-            android:text="Ripristina ultimo backup"
-            android:theme="@style/CV_buttons"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <Button
             android:id="@+id/button13"
             android:layout_width="206dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="10dp"
             android:backgroundTint="#ACACAC"
             android:text="Scegli settimana H24"
             android:theme="@style/CV_buttons"
-            app:layout_constraintEnd_toEndOf="@+id/button12"
-            app:layout_constraintStart_toStartOf="@+id/button12"
-            app:layout_constraintTop_toBottomOf="@+id/button12" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/textView4"
@@ -109,6 +99,7 @@
         android:id="@+id/imageView"
         android:layout_width="268dp"
         android:layout_height="293dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
