@@ -24,10 +24,6 @@
             android:name=".MainActivityVolontario"
             android:exported="false" />
         <activity
-            android:name=".GestioneBackup"
-            android:exported="false"
-            android:parentActivityName=".Gestione" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragmentAmministratore"
         android:name="com.example.croceverdeplus.FragmentAmministratore"
-        android:label="fragment_amministratore"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_amministratore" >
         <action
             android:id="@+id/action_fragmentAmministratore_to_gestioneTuttiCentralinisti"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/gestioneTuttiCentralinisti"
         android:name="com.example.croceverdeplus.GestioneTuttiCentralinisti"
-        android:label="fragment_gestione_tutti_centralinisti"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_tutti_centralinisti" >
         <action
             android:id="@+id/action_gestioneTuttiCentralinisti_to_gestioneCentralinista"
@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/gestioneCentralinista"
         android:name="com.example.croceverdeplus.GestioneCentralinista"
-        android:label="fragment_gestione_centralinista"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_centralinista" >
         <argument
             android:name="selectedUser"
@@ -44,12 +44,12 @@
     <fragment
         android:id="@+id/gestioneCentralinistaCrea"
         android:name="com.example.croceverdeplus.GestioneCentralinistaCrea"
-        android:label="fragment_gestione_centralinista_crea"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_centralinista_crea" />
     <fragment
         android:id="@+id/gestioneTuttiMiliti"
         android:name="com.example.croceverdeplus.GestioneTuttiMiliti"
-        android:label="fragment_gestione_tutti_militi"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_tutti_militi" >
         <action
             android:id="@+id/action_gestioneTuttiMiliti_to_gestioneMilite"
@@ -61,7 +61,7 @@
     <fragment
         android:id="@+id/gestioneMilite"
         android:name="com.example.croceverdeplus.GestioneMilite"
-        android:label="fragment_gestione_milite"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_milite" >
         <argument
             android:name="selectedUser"
@@ -73,12 +73,12 @@
     <fragment
         android:id="@+id/gestioneMiliteModificaCrea"
         android:name="com.example.croceverdeplus.GestioneMiliteModificaCrea"
-        android:label="fragment_gestione_milite_modifica_crea"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_milite_modifica_crea" />
     <fragment
         android:id="@+id/gestioneModificaMilite"
         android:name="com.example.croceverdeplus.GestioneModificaMilite"
-        android:label="fragment_gestione_modifica_milite"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_modifica_milite" >
         <argument
             android:name="nome"
@@ -96,6 +96,6 @@
     <fragment
         android:id="@+id/gestioneSettimanaH24"
         android:name="com.example.croceverdeplus.GestioneSettimanaH24"
-        android:label="fragment_gestione_settimana_h24"
+        android:label="CroceVerdePlus"
         tools:layout="@layout/fragment_gestione_settimana_h24" />
 </navigation>
