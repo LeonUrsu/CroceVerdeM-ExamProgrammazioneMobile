@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/', // Rotta iniziale
       routes: {
-        '/': (context) => Login(),
+        //'/': (context) => Login(),//todo------------------
+        '/': (context) => TabelloneTurniAmministratore(),
         '/amministratore': (context) => Amministratore(),
         '/lista_militi':  (context) => GestioneMiliti(),
         '/crea_milite':  (context) => AggiungiMilite(),

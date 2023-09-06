@@ -24,8 +24,8 @@ class _TabelloneTurniAmministratore
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tabellone Turni dei Militi"),
-        iconTheme: IconThemeData(color: Colors.black),
+        title: const Text("Tabellone Turni dei Militi"),
+        iconTheme: const IconThemeData(color: Colors.black),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: SingleChildScrollView(
@@ -59,7 +59,7 @@ class _TabelloneTurniAmministratore
                               DropdownMenuItem<String>(
                                   value: '118', child: Text("118")),
                               DropdownMenuItem<String>(
-                                  value: 'H24', child: Text("H24"))
+                                  value: 'h24', child: Text("H24"))
                             ],
                             value: valoreServizio,
                             isExpanded: false,
@@ -189,19 +189,7 @@ class _TabelloneTurniAmministratore
                     width: 230,
                     child: ElevatedButton(
                         onPressed: () {
-                          if (widgetTabella.visualizzaH24118) {
-                            segna_cancella_pressed(
-                                valoreMilite,
-                                valoreGrado,
-                                valoreServizio,
-                                valoreGiorno,
-                                valoreOrario,
-                                widgetTabella,
-                                valoreMilite);
-                          } else {
-                            showToastMessage(
-                                "Milite non prenotato, la tabella non contiene servizi H24");
-                          }
+                          onPressedSegnaCancella(valoreMilite);
                         },
                         style: ElevatedButton.styleFrom(
                           textStyle: const TextStyle(fontSize: 18),
@@ -220,66 +208,9 @@ class _TabelloneTurniAmministratore
         onPressed: () {
           Navigator.pushNamed(context, '/crea_milite');
         },
-        child: Icon(Icons.add),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        child: const Icon(Icons.add),
       ),
-    );
-  }
-
-  /*
-  Metodo per segnare o cancellare i militi nel db aggiungendo o togliendo le ore di turno dal milite
-   */
-  segna_cancella_pressed(
-      String valoreMilite,
-      String valoreGrado,
-      String valoreServizio,
-      String valoreGiorno,
-      String valoreOrario,
-      WidgetTabella widgetTabella,
-      String nomeMilite) {
-    var nomeDocumentoTabellaDB =
-        stabilisci_tipo_della_tabella(widgetTabella.visualizza118);
-    var nomeTurnoDB = costruisci_nome_turno_db(
-        valoreServizio, valoreGiorno, valoreOrario, valoreGrado);
-    var oreDaAggiungereAlMilite = 0;
-    var nomeTurnoSvolto =
-        stabilisci_nome_turno_svolto(valoreServizio, valoreGrado);
-    final militeRef =
-        FirebaseFirestore.instance.collection("militi").doc(valoreMilite);
-    militeRef.get().then(
-      (DocumentSnapshot doc) {
-        final militeRefData = doc.data() as Map<String, dynamic>;
-        if (!militeRefData.isEmpty) {
-          var cognomeNomeSpinnerMilite = militeRefData["cognomeNomeSpinner"];
-          //aggiornamento della tabella nel db
-          final tabellaTrovata = FirebaseFirestore.instance
-              .collection("tabelle")
-              .doc(nomeDocumentoTabellaDB);
-          //verifico se il milite è presente nella tabella e se lo è metto a ""
-          var risultatoPrenotazione;
-          if (tabellaTrovata.get(nomeTurnoDB) == cognomeNomeSpinnerMilite) {
-            risultatoPrenotazione = "";
-            //calcolo aggiunta "positiva" delle ore al turno
-            calcolaOreTurno(valoreOrario, true);
-          } else {
-            risultatoPrenotazione = cognomeNomeSpinnerMilite;
-            //calcolo aggiunta "negativa" delle ore al turno
-            calcolaOreTurno(valoreOrario, false);
-          }
-          //aggiorno la tabella ne db con la variabile: risultatoPrenotazione
-          tabellaTrovata.update({nomeTurnoDB: risultatoPrenotazione}).then(
-              (value) =>
-                  //aggiunta o rimozione delle ore al milite
-                  militeRef.update(
-                    {
-                      nomeTurnoSvolto:
-                          FieldValue.increment(oreDaAggiungereAlMilite)
-                    },
-                  ),
-              onError: (e) => print("Error updating document $e"));
-        }
-      },
-      onError: (e) => print("Error getting document: $e"),
     );
   }
 
@@ -299,7 +230,8 @@ class _TabelloneTurniAmministratore
    */
   costruisci_nome_turno_db(String valoreServizio, String valoreGiorno,
       String valoreOrario, String valoreGrado) {
-    return "${valoreServizio}_${valoreGiorno}_${valoreOrario}_$valoreGrado";
+    String std = "turno";
+    return "${std}_${valoreServizio}_${valoreGiorno}_${valoreOrario}_$valoreGrado";
   }
 
   /*
@@ -330,9 +262,8 @@ class _TabelloneTurniAmministratore
   Metodo per stabilire i nome del campo per le statistiche del milite
    */
   stabilisci_nome_turno_svolto(String valoreServizio, String valoreGrado) {
-    var servizio = "";
     var gradoLetterale = "";
-    switch (valoreServizio) {
+    switch (valoreGrado) {
       case "1":
         gradoLetterale = "prima";
         break;
@@ -343,11 +274,77 @@ class _TabelloneTurniAmministratore
         gradoLetterale = "terza";
         break;
     }
-    return "oreTurno$servizio$gradoLetterale";
+    return "oreTurno$valoreServizio$gradoLetterale";
   }
 
+  /*
+  Metodo per mostrare a schermo un messagio toast passato per argomento
+   */
   void showToastMessage(String messaggio) =>
       Fluttertoast.showToast(msg: messaggio);
+
+  /*
+  Metodo per gestire la prenotazione o la cancellazione del milite nel db
+   */
+  gestisci_prenotazione_cancellazione_milite_db(String militeId) {
+    var db = FirebaseFirestore.instance;
+    final militeRef = db.collection("militi").doc(militeId);
+    militeRef.get().then(
+      (DocumentSnapshot doc) {
+        final milite = doc.data() as Map<String, dynamic>;
+        var nomeTabellaDB =
+            stabilisci_tipo_della_tabella(widgetTabella.visualizza118);
+        final tabellaRef = db.collection("tabelle").doc(nomeTabellaDB);
+        tabellaRef.get().then(
+          (DocumentSnapshot doc) {
+            final tabella = doc.data() as Map<String, dynamic>;
+            //INIZIO
+            var nomeTurnoTabellaDB = costruisci_nome_turno_db(
+                valoreServizio, valoreGiorno, valoreOrario, valoreGrado);
+            var oreDelTurno = 0;
+            var nomeTurnoStatistiche =
+                stabilisci_nome_turno_svolto(valoreServizio, valoreGrado);
+            if (tabella[nomeTurnoTabellaDB] == milite["cognomeNomeSpinner"]) {
+              //elimina milite dal turno e cancella le ore dal suo profilo
+              oreDelTurno = calcolaOreTurno(valoreOrario, true);
+              militeRef.update(
+                {nomeTurnoStatistiche: FieldValue.increment(oreDelTurno)},
+              );
+              tabellaRef.update({nomeTurnoTabellaDB: ""});
+            } else {
+              //segna milite nel turno e aggiungi le ore al suo profilo
+              oreDelTurno = calcolaOreTurno(valoreOrario, true);
+              militeRef.update(
+                {nomeTurnoStatistiche: FieldValue.increment(oreDelTurno)},
+              );
+              tabellaRef
+                  .update({nomeTurnoTabellaDB: milite["cognomeNomeSpinner"]});
+            }
+          },
+        );
+      },
+    );
+  }
+
+  void onPressedSegnaCancella(String valoreMilite) {
+    if (valoreMilite == "0") {
+      showToastMessage("Milite non selezionato");
+      return;
+    }
+    bool tabellaView = true;
+    if (valoreServizio == "h24") {
+      tabellaView = (widgetTabella.visualizzaH24118) ? true : false;
+    }
+    if (tabellaView) {
+      gestisci_prenotazione_cancellazione_milite_db(
+        valoreMilite,
+      );
+    } else {
+      showToastMessage(
+          "Milite non prenotato, la tabella non contiene servizi H24");
+      return;
+    }
+  }
 
 // TODO: i bug da sistemare sono molti, non c'è il controllo per verificare se un milite è già nel turno selezionato prima di eliminarlo e sostituirlo con un altro
 // TODO: il milite viene eliminato e le ore non vengono scalate dal vecchio milite ma solamente aggiunte al nuovo milite
