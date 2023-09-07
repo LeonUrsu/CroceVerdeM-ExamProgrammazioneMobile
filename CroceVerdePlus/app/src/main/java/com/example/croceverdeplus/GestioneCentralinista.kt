@@ -47,10 +47,10 @@ class GestioneCentralinista : Fragment() {
         button.setOnClickListener{
             val builder = AlertDialog.Builder(requireActivity())
             builder.setTitle("Conferma eliminazione")
-            builder.setMessage("Sei sicuro di voler eliminare questo utente?")
+            builder.setMessage("Sei sicuro di voler eliminare questo centralinista?")
 
             //aggiunge l'opzione "Sì" che eliminerà l'utente
-            builder.setPositiveButton("Sì") { dialog, which ->
+            builder.setPositiveButton("Sì") { _, _ ->
 
                 data.deleteUser(
                     nome.text.toString(), cognome.text.toString(),
@@ -60,7 +60,7 @@ class GestioneCentralinista : Fragment() {
                     .show()
             }
             //aggiunge l'opzione "No" che chiude il popup
-            builder.setNegativeButton("No") { dialog, which ->
+            builder.setNegativeButton("No") { _, _ ->
             }
 
             //mostra il popup di conferma
