@@ -65,7 +65,7 @@
     <style name="switch_colors" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/CV_green</item>
     </style>
-    
+
 
 
 </resources>

@@ -2,7 +2,6 @@ package com.example.croceverdeplus
 
 import android.content.ContentValues
 import android.os.Bundle
-import android.provider.Settings.Global.putString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,21 +22,19 @@ class GestioneTuttiCentralinisti : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_centralinisti, container, false)
-
 
         val button: Button = root.findViewById(R.id.button5)
 
         button.setOnClickListener {
-
             findNavController().navigate(R.id.action_gestioneTuttiCentralinisti_to_gestioneCentralinistaCrea)
         }
 
         listView = root.findViewById(R.id.lista_centralinisti)
         db = FirebaseFirestore.getInstance()
         loadDataFromDB()
+
         return root
     }
 
@@ -72,11 +69,7 @@ class GestioneTuttiCentralinisti : Fragment() {
     }
 
     private fun navigateToGestioneCentralinista(selectedUser: String) {
-
         val action = GestioneTuttiCentralinistiDirections.actionGestioneTuttiCentralinistiToGestioneCentralinista(selectedUser)
         findNavController().navigate(action)
-
-
-
     }
 }
