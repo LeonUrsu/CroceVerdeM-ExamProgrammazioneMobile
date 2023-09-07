@@ -26,10 +26,10 @@ class GestioneCentralinista : Fragment() {
 
         val immProfilo: ImageView = root.findViewById(R.id.imageView4)
         immProfilo.setImageResource(R.drawable.accountimage)
-        var nome: TextView = root.findViewById(R.id.nome_text_centralinista)
-        var cognome: TextView = root.findViewById(R.id.cognome_text_centralinista)
-        var dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_centralinista)
-        var residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
+        val nome: TextView = root.findViewById(R.id.nome_text_centralinista)
+        val cognome: TextView = root.findViewById(R.id.cognome_text_centralinista)
+        val dataDiNascita: TextView = root.findViewById(R.id.data_di_nascita_text_centralinista)
+        val residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
         val button: Button = root.findViewById(R.id.cancella_centralinista_btn)
 
         //ottengo i dati relativi al centralinista selezionato e li inserisco nelle TextView
