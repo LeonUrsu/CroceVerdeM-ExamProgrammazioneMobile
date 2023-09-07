@@ -13,8 +13,7 @@ class GestioneCentralinistaCrea : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_centralinista_crea, container, false)
 
         val nome: EditText = root.findViewById(R.id.editTextText3)

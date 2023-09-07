@@ -1,7 +1,6 @@
 package com.example.croceverdeplus
 
 import android.content.ContentValues
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -21,8 +20,7 @@ class GestioneModificaMilite : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_modifica_milite, container, false)
 
         val args: GestioneModificaMiliteArgs by navArgs()
@@ -31,7 +29,6 @@ class GestioneModificaMilite : Fragment() {
         val cognome: EditText = root.findViewById(R.id.editTextcognomeMod)
         val dataDiNascita: EditText = root.findViewById(R.id.editTextDataMod)
         val residenza: EditText = root.findViewById(R.id.editTextresidenzaMod)
-        //val spinner: Spinner = root.findViewById(R.id.spinnerMod)
         val switch118prima: SwitchCompat = root.findViewById(R.id.switch7)
         val switch118seconda: SwitchCompat = root.findViewById(R.id.switch8)
         val switch118terza: SwitchCompat = root.findViewById(R.id.switch13)
@@ -39,40 +36,19 @@ class GestioneModificaMilite : Fragment() {
         val switchH24seconda: SwitchCompat = root.findViewById(R.id.switch11)
         val switchH24terza: SwitchCompat = root.findViewById(R.id.switch12)
         val buttonModify: Button = root.findViewById(R.id.buttonMiliteMod)
+
         val db = Firebase.firestore
 
         val nomeM = args.nome
-
         val cognomeM = args.cognome
-
         val dataDiNascitaM = args.dataDiNascita
-
         val residenzaM = args.residenza
-
 
         nome.setText(nomeM)
         cognome.setText(cognomeM)
         dataDiNascita.setText(dataDiNascitaM)
         residenza.setText(residenzaM)
 
-
-
-        /*val userGradi = listOf("grado118prima", "grado118seconda", "grado118terza",
-            "gradoh24prima","gradoh24seconda","gradoh24terza")
-
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, userGradi)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinner.adapter = adapter
-
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedGrado = parent.getItemAtPosition(position) as? String
-
-
-
-         */
-
-        //val db = Firebase.firestore
 
         buttonModify.setOnClickListener {
 
@@ -119,100 +95,6 @@ class GestioneModificaMilite : Fragment() {
                         db.collection("militi").document(document.id).update("gradoh24seconda", switchH24secondaValue)
                         db.collection("militi").document(document.id).update("gradoh24terza", switchH24terzaValue)
 
-                        /*switch118prima.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118prima", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118prima", false)
-                            }
-                        }
-                        switch118seconda.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118seconda", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118seconda", false)
-                            }
-                        }
-                        switch118terza.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118terza", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("grado118terza", false)
-                            }
-                        }
-                        switchH24prima.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24prima", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24prima", false)
-                            }
-                        }
-                        switchH24seconda.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24seconda", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24seconda", false)
-                            }
-                        }
-                        switchH24terza.setOnCheckedChangeListener { _, isChecked ->
-                            if (isChecked) {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24terza", true)
-                            } else {
-                                db.collection("militi")
-                                    .document(document.id).update("gradoh24terza", false)
-                            }
-                        }
-
-                         */
-                        /*if (selectedGrado == "grado118prima" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("grado118prima", true,
-                                            "grado118seconda", false, "grado118terza", false,
-                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
-                                }
-                                if (selectedGrado == "grado118seconda" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("grado118seconda", false,
-                                            "grado118seconda", true, "grado118terza", false,
-                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
-                                }
-                                if (selectedGrado == "grado118terza" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("grado118terza", false,
-                                            "grado118seconda", false, "grado118terza", true,
-                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", false)
-                                }
-                                if (selectedGrado == "gradoh24prima" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("gradoh24prima", false,
-                                            "grado118seconda", false, "grado118terza", false,
-                                            "gradoh24prima", true, "gradoh24seconda", false, "gradoh24terza", false)
-                                }
-                                if (selectedGrado == "gradoh24seconda" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("gradoh24seconda", false,
-                                            "grado118seconda", false, "grado118terza", false,
-                                            "gradoh24prima", false, "gradoh24seconda", true, "gradoh24terza", false)
-                                }
-                                if (selectedGrado == "gradoh24terza" ) {
-                                    db.collection("militi")
-                                        .document(document.id).update("gradoh24terza", false,
-                                            "grado118seconda", false, "grado118terza", false,
-                                            "gradoh24prima", false, "gradoh24seconda", false, "gradoh24terza", true)
-                                }
-
-                                 */
                     }
 
                     Toast.makeText(requireActivity(), "Milite aggiornato", Toast.LENGTH_SHORT)
@@ -223,15 +105,6 @@ class GestioneModificaMilite : Fragment() {
                 }
         }
 
-
-    //}
-
-    /*override fun onNothingSelected(parent: AdapterView<*>) {
-                Toast.makeText(requireActivity(), "Seleziona un grado", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-             */
         return root
     }
 }

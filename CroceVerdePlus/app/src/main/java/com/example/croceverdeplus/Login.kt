@@ -15,7 +15,4 @@ class Login : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
-
-
-
 }

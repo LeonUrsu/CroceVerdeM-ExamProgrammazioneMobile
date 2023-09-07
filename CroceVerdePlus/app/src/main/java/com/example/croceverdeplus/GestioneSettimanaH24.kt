@@ -20,11 +20,9 @@ import java.util.Locale
 
 class GestioneSettimanaH24 : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_settimana_h24, container, false)
 
         val password: EditText = root.findViewById(R.id.editTextTextPassword)
@@ -64,11 +62,7 @@ class GestioneSettimanaH24 : Fragment() {
         buttonSettimana1.text = "${formatDateRange(currentWeekStart, currentWeekEnd)}"
         buttonSettimana2.text = "${formatDateRange(nextWeekStart, nextWeekEnd)}"
 
-
-
         val selectedButtonColor = Color.parseColor("#3FA325")
-        //val selectedButtonColor = R.drawable.cv_buttons
-        //val deselectedButtonColor = Color.TRANSPARENT
         val deselectedButtonColor = Color.parseColor("#ACACAC")
         var clickSett1: Boolean? = null
         var clickSett2: Boolean? = null
@@ -90,10 +84,12 @@ class GestioneSettimanaH24 : Fragment() {
             clickSett2 = true
         }
 
+
         buttonOk.setOnClickListener {
             db.collection("amministratori").whereEqualTo("password", password.text.toString()).get()
                 .addOnSuccessListener { querySnapshot ->
                     if (!querySnapshot.isEmpty) {
+                        //aggiorno i giorni della settimana delle due tabelle in base alla scelta dell'utente
                         if (clickSett1 == true) {
                             db.collection("tabelle")
                                 .document("tabella_118").update("data_lunedi", nextWeekStart,
@@ -135,13 +131,8 @@ class GestioneSettimanaH24 : Fragment() {
 
                             updateTabelle()
                         }
-
-
-
                     }
                 }
-
-
         }
 
         return root
@@ -184,6 +175,7 @@ private fun getNextMonday(date: Date): Date {
     return calendar.time
 }
 
+//ottengo i giorni interni della settimana
 private fun getDays(date: Date): List<Any>{
     val calendar = Calendar.getInstance()
     calendar.time = date
@@ -202,18 +194,17 @@ private fun getDays(date: Date): List<Any>{
     return listOf(tuesday, wednesday, thursday, friday, saturday)
 }
 
-//Per formattare in String
+//utilizzato per formattare in String
 private fun formatDateRange(start: Date, end: Date): String {
     val dateFormat = SimpleDateFormat("dd/MM", Locale.getDefault())
     return "${dateFormat.format(start)} - ${dateFormat.format(end)}"
 }
 
-
+//utilizzato per resettare le tabelle
 private fun updateTabelle() {
     val db = Firebase.firestore
 
     val docRef = db.collection("tabelle").document("tabella_118")
-
     val updates = hashMapOf<String, Any>(
         "turno_118_dom_mat_1" to "",
         "turno_118_dom_mat_2" to "",
@@ -296,7 +287,6 @@ private fun updateTabelle() {
 
 
     val docRefH24 = db.collection("tabelle").document("tabella_118_h24")
-
     val updatesH24 = hashMapOf<String, Any>(
         "turno_118_dom_mat_1" to "",
         "turno_118_dom_mat_2" to "",

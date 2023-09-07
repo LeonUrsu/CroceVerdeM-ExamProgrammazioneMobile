@@ -18,11 +18,9 @@ import androidx.navigation.fragment.navArgs
 
 class GestioneMilite : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_milite, container, false)
 
         val args: GestioneMiliteArgs by navArgs()
@@ -37,8 +35,8 @@ class GestioneMilite : Fragment() {
         val buttonDelete: Button = root.findViewById(R.id.cancella_milite_btn)
         val buttonModify: Button = root.findViewById(R.id.aggiorna_milite_btn)
 
+        //ottengo i dati relativi al milite selezionato e li inserisco nelle TextView
         val selectedUser = args.selectedUser
-
         val userParts = selectedUser.split("\n")
         nome.text = userParts[0]
         cognome.text = userParts[1]
@@ -47,14 +45,11 @@ class GestioneMilite : Fragment() {
         if (userParts.size == 5){
             grado.text = "Grado mancante"
         } else {
-            //grado.text = userParts[5]
             val gradoValue = userParts.subList(5, userParts.size).joinToString("\n")
             grado.text = gradoValue
         }
 
         val data = Database()
-
-
 
         buttonDelete.setOnClickListener {
             val builder = AlertDialog.Builder(requireActivity())

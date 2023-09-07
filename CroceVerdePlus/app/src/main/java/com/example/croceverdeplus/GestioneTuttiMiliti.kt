@@ -20,19 +20,15 @@ class GestioneTuttiMiliti : Fragment() {
     private lateinit var db: FirebaseFirestore
     var selectedItem: String? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_tutti_militi, container, false)
 
         val buttonM: Button = root.findViewById(R.id.button6)
 
         buttonM.setOnClickListener {
-
             findNavController().navigate(R.id.action_gestioneTuttiMiliti_to_gestioneMiliteModificaCrea)
-
         }
 
         listView = root.findViewById(R.id.lista_militi)
@@ -140,6 +136,5 @@ class GestioneTuttiMiliti : Fragment() {
         val action = GestioneTuttiMilitiDirections.actionGestioneTuttiMilitiToGestioneMilite(selectedUser)
         findNavController().navigate(action)
     }
-
 
 }

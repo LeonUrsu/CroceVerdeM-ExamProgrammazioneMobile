@@ -29,6 +29,7 @@ class Database {
 
     private val db = Firebase.firestore
 
+    //metodo per creare un centralinista
     fun addUser(
         nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
@@ -45,8 +46,6 @@ class Database {
             }
         }.joinToString("")
 
-        //val ruolo = "Centralinista"
-
         db.collection("centralinisti").add(centralinista)
             .addOnSuccessListener { documentReference ->
                 Log.d(
@@ -57,14 +56,13 @@ class Database {
                     .update("username", username)
                 db.collection("centralinisti").document(documentReference.id)
                     .update("password", password)
-                //db.collection("centralinisti").document(documentReference.id).update("ruolo", ruolo)
 
             }.addOnFailureListener { e ->
                 Log.w(TAG, "Error adding document", e)
             }
     }
 
-
+    //metodo per eliminare un centralinista
     fun deleteUser(
         nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {
@@ -146,7 +144,7 @@ class Database {
         convert_from_spinner.adapter = gameKindArray
     }
 
-
+    //metodo per creare un milite
     fun addUserM(
         nome: String, cognome: String, dataDiNascita: String, residenza: String,
         grado118prima: Boolean?, grado118seconda: Boolean?,
@@ -190,6 +188,7 @@ class Database {
         }
     }
 
+    //metodo per eliminare un milite
     fun deleteUserM(
         nome: String, cognome: String, dataDiNascita: String, residenza: String
     ) {

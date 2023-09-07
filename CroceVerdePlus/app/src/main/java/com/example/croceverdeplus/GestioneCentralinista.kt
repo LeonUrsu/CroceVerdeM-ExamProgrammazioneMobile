@@ -17,11 +17,9 @@ import androidx.navigation.fragment.navArgs
 
 class GestioneCentralinista : Fragment() {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+        savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.fragment_gestione_centralinista, container, false)
 
         val args: GestioneCentralinistaArgs by navArgs()
@@ -34,8 +32,8 @@ class GestioneCentralinista : Fragment() {
         var residenza: TextView = root.findViewById(R.id.indirizzo_milite_text)
         val button: Button = root.findViewById(R.id.cancella_centralinista_btn)
 
+        //ottengo i dati relativi al centralinista selezionato e li inserisco nelle TextView
         val selectedUser = args.selectedUser
-
         val userParts = selectedUser.split("\n")
         nome.text = userParts[0]
         cognome.text = userParts[1]
