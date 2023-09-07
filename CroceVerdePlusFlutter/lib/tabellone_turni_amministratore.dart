@@ -32,7 +32,7 @@ class _TabelloneTurniAmministratore
         child: Column(
           children: [
             SizedBox(
-              height: 592,
+              height: 600,
               child: widgetTabella,
             ),
             Center(
@@ -172,6 +172,8 @@ class _TabelloneTurniAmministratore
 
                                   return DropdownButton(
                                     items: listaMiliti,
+                                    underline: Container(
+                                        height: 2, color: Colors.green),
                                     onChanged: (nuovoMilite) {
                                       setState(() {
                                         valoreMilite = nuovoMilite;
@@ -191,25 +193,14 @@ class _TabelloneTurniAmministratore
                         onPressed: () {
                           onPressedSegnaCancella(valoreMilite);
                         },
-                        style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 18),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
-                        ),
                         child: const Text("Segna/Cancella")),
-                  )
+                  ),
                 ],
               ),
-            ))
+            )),
+            const SizedBox(height: 20)
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/crea_milite');
-        },
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        child: const Icon(Icons.add),
       ),
     );
   }
@@ -346,7 +337,8 @@ class _TabelloneTurniAmministratore
     }
   }
 
-// TODO: i bug da sistemare sono molti, non c'è il controllo per verificare se un milite è già nel turno selezionato prima di eliminarlo e sostituirlo con un altro
-// TODO: il milite viene eliminato e le ore non vengono scalate dal vecchio milite ma solamente aggiunte al nuovo milite
-// TODO come nell'associazione vera, nell'app sarà a discizione dell'amministratore prenotare i militi nei turni a seconda del grado, il sistema non bloccherà tale scelta se il milite non soddisfa il grado necessario
+// TODO: Non c'è il controllo per verificare se un milite è già nel turno selezionato prima di eliminarlo e sostituirlo con un altro
+// TODO: Quando il milite viene eliminato, le ore lavorate non vengono scalate dal vecchio milite ma vengono solamente aggiunte al nuovo milite
+// TODO: Come nell'associazione vera, nell'app sarà a discizione dell'amministratore prenotare i militi nei turni a seconda del grado, il sistema non bloccherà tale scelta se il milite non soddisfa il grado necessario
+// TODO: Il sistema non esegue i controllo se un volontario è gia presente nello stesso turno 2 o 3 volte,
 }

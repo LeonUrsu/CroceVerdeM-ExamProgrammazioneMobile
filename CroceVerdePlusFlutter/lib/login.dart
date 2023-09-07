@@ -6,22 +6,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'amministratore.dart';
 import 'milite/gestore_milite.dart';
 
-/*class LoginScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //Firebase.initializeApp();
-    return MaterialApp(
-      //debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const Login(),
-    );
-  }
-}
-
- */
-
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -69,7 +53,7 @@ class _Login extends State<Login> {
           settings: const RouteSettings(name: '/militi'),
           builder: (context) => GestoreMilite(username),
         ),
-      ); //TODO <<<<<<<<<<<<<<< passare lo username del milite loggato
+      );
     } else {
       // Credenziali non valide
       Fluttertoast.showToast(
@@ -108,51 +92,44 @@ class _Login extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Croce Verde Plus'),
+        title: const Text('Croce Verde Plus'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50),
-          // Distanza sinistra, sopra, destra, sotto
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset('assets/Logo CV.png'),
-                SizedBox(height: 75),
-                // Spazio tra l'immagine e i TextField
-                TextField(
-                  controller: _usernameController,
-                  decoration: InputDecoration(
-                    labelText: 'Username',
-                    border: OutlineInputBorder(),
-                  ),
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(16, 20, 16, 50),
+        // Distanza sinistra, sopra, destra, sotto
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/Logo CV.png'),
+              const SizedBox(height: 50),
+              // Spazio tra l'immagine e i TextField
+              TextField(
+                controller: _usernameController,
+                decoration: const InputDecoration(
+                  labelText: 'Username',
+                  border: OutlineInputBorder(),
                 ),
-                SizedBox(height: 16),
-                // Spazio tra il primo e il secondo TextField
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    border: OutlineInputBorder(),
-                  ),
+              ),
+              const SizedBox(height: 10),
+              // Spazio tra il primo e il secondo TextField
+              TextField(
+                controller: _passwordController,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
                 ),
-                SizedBox(height: 50),
-                FilledButton(
-                  onPressed: () => _login(context),
-                  child: Text('Login'),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(100, 43),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 50),
-                if (_rotellina) CircularProgressIndicator()
-              ],
-            ),
+              ),
+              const SizedBox(height: 25),
+              ElevatedButton(
+                onPressed: () => _login(context),
+                child: Text('Login'),
+              ),
+              const SizedBox(height: 50),
+              if (_rotellina) CircularProgressIndicator()
+            ],
           ),
         ),
       ),

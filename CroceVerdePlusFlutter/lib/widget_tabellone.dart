@@ -477,7 +477,7 @@ class _WidgetTabella extends State<WidgetTabella> {
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: [const Spacer(),
                 ElevatedButton(
                   onPressed: () {
                     switchTo118();
@@ -489,7 +489,7 @@ class _WidgetTabella extends State<WidgetTabella> {
                     ),
                   ),
                 ),
-                Spacer(flex: 1),
+                Spacer(),
                 ElevatedButton(
                   onPressed: () {
                     switchToH24118();
@@ -500,7 +500,7 @@ class _WidgetTabella extends State<WidgetTabella> {
                       Size(160, 40),
                     ),
                   ),
-                ),
+                ),const Spacer()
               ],
             ),
             SizedBox(height: 10),

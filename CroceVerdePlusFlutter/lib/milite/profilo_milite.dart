@@ -3,28 +3,30 @@ import 'package:flutter/material.dart';
 
 class ProfiloMilite extends StatefulWidget {
   late String username;
-  ProfiloMilite(String _username){
+
+  ProfiloMilite(String _username) {
     this.username = _username;
   }
+
   @override
   _ProfiloMilite createState() => _ProfiloMilite();
 }
 
 class _ProfiloMilite extends State<ProfiloMilite> {
-
   @override
   Widget build(BuildContext context) {
     var datiMilite = {};
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: Text('Profilo Milite'),
-        ),
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(0.0), // here the desired height
+            child: AppBar(
+              backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+            )),
         body: StreamBuilder<QuerySnapshot>(
             stream: FirebaseFirestore.instance.collection("militi").snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               if (snapshot.hasData) {
                 final militi = snapshot.data?.docs.reversed.toList();
@@ -49,53 +51,61 @@ class _ProfiloMilite extends State<ProfiloMilite> {
                   }
                 }
               }
-              return SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(16, 75, 16, 50),
-                  // Distanza sinistra, sopra, destra, sotto
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/account_image.png',
-                          width: 200,
-                          height: 200,
-                        ),
-                        SizedBox(height: 60),
-                        Text(datiMilite["nome"]),
-                        Text(datiMilite["cognome"]),
-                        Text(datiMilite["dataDiNascita"]),
-                        Text("oreTurno118prima " +
-                            datiMilite["oreTurno118prima"].toString()),
-                        Text("oreTurno118seconda " +
-                            datiMilite["oreTurno118seconda"].toString()),
-                        Text("oreTurno118terza " +
-                            datiMilite["oreTurno118terza"].toString()),
-                        Text("oreTurnoh24prima " +
-                            datiMilite["oreTurnoh24prima"].toString()),
-                        Text("oreTurnoh24seconda " +
-                            datiMilite["oreTurnoh24seconda"].toString()),
-                        Text("oreTurnoh24terza " +
-                            datiMilite["oreTurnoh24terza"].toString()),
-                        FilledButton.tonal(
-                          onPressed: () {
-                            Navigator.pushNamedAndRemoveUntil(
-                              context,
-                              '/',
-                              (route) =>
-                                  false, //tutte le rotte precedenti sono rimosse tranne quella di login
-                            );
-                          },
-                          child: Text('Esci'),
-                          style: ButtonStyle(
-                            fixedSize: MaterialStateProperty.all<Size>(
-                              Size(100, 43),
-                            ),
+              return Padding(
+                padding: const EdgeInsets.fromLTRB(16, 50, 16, 25),
+                // Distanza sinistra, sopra, destra, sotto
+                child: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Spacer(),
+                      Image.asset(
+                        'assets/account_image.png',
+                        width: 200,
+                        height: 200,
+                      ),
+                      const SizedBox(height: 60),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              datiMilite["nome"] + " " + datiMilite["cognome"]),
+                          Text(datiMilite["dataDiNascita"]),
+                          Text(
+                              "ore in 118 di prima: ${datiMilite["oreTurno118prima"]}"),
+                          Text(
+                              "ore in 118 di seconda: ${datiMilite["oreTurno118seconda"]}"),
+                          Text(
+                              "ore in 118 di terza: ${datiMilite["oreTurno118terza"]}"),
+                          Text(
+                              "ore in H24 di prima: ${datiMilite["oreTurnoh24prima"]}"),
+                          Text(
+                              "ore in H24 di seconda: ${datiMilite["oreTurnoh24seconda"]}"),
+                          Text(
+                              "ore in H24 di terza: ${datiMilite["oreTurnoh24terza"]}"),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      FilledButton.tonal(
+                        onPressed: () {
+                          Navigator.pushNamedAndRemoveUntil(
+                            context,
+                            '/',
+                            (route) =>
+                                false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                          );
+                        },
+                        style: ButtonStyle(
+                          fixedSize: MaterialStateProperty.all<Size>(
+                            const Size(100, 43),
                           ),
                         ),
-                      ],
-                    ),
+                        child: const Text('Esci'),
+                      ),
+                      const Spacer()
+                    ],
                   ),
                 ),
               );

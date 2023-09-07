@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-/*class AmministratoreScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Schermata Milite'),
-      ),
-      body: Center(
-        child: Text('immagine'),
-      ),
-    );
-  }
-}
-
- */
-
 class Amministratore extends StatefulWidget {
   const Amministratore({Key? key}) : super(key: key);
 
@@ -25,78 +8,66 @@ class Amministratore extends StatefulWidget {
 }
 
 class _Amministratore extends State<Amministratore> {
-  /*void _login(String username, String password) {
-    if(username == "a" && password == "p"){
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => AmministratoreScreen()));
-    }
-  }
-   */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Amministratore'),
+        title: const Text('Amministratore'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16, 100, 16, 50),
-          // Distanza sinistra, sopra, destra, sotto
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset('assets/Logo CV.png'),
-                SizedBox(height: 75),
-                // Spazio tra il testo e i TextField
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/lista_militi');
-                  },
-                  child: Text('Gestisci Militi'),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(300, 50),
-                    ),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(16, 50, 16, 50),
+        // Distanza sinistra, sopra, destra, sotto
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/Logo CV.png'),
+              const SizedBox(height: 40),
+              // Spazio tra il testo e i TextField
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/lista_militi');
+                },
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    const Size(300, 50),
                   ),
                 ),
-                SizedBox(height: 30),
-                // Spazio tra il primo e il secondo TextField
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/gestisciTurniMiliti');
-                  },
-                  child: Text("Gestisci Tabellone"),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(300, 50),
-                    ),
+                child: const Text('Gestisci Militi'),
+              ),
+              const SizedBox(height: 20),
+              // Spazio tra il primo e il secondo TextField
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/gestisciTurniMiliti');
+                },
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    const Size(300, 50),
                   ),
                 ),
-                SizedBox(height: 80),
-                FilledButton.tonal(
-                  onPressed: () {
-                    Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      '/',
-                      (route) =>
-                          false, //tutte le rotte precedenti sono rimosse tranne quella di login
-                    );
-                  },
-                  child: Text('Esci'),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(100, 43),
-                    ),
+                child: const Text("Gestisci Tabellone"),
+              ),
+              const SizedBox(height: 60),
+              FilledButton.tonal(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    '/',
+                    (route) =>
+                        false, //tutte le rotte precedenti sono rimosse tranne quella di login
+                  );
+                },
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    const Size(100, 43),
                   ),
                 ),
-              ],
-            ),
+                child: const Text('Esci'),
+              ),
+            ],
           ),
         ),
       ),
