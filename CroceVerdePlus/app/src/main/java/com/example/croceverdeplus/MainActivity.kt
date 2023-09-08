@@ -102,20 +102,6 @@ class MainActivity : AppCompatActivity() {
                                                     }
                                                 }
                                             }
-                                        /*
-                                            if (username.text.toString().isEmpty() && password.text.toString().isEmpty() && querySnapshot.isEmpty) {
-                                                username.error = "Inserisci username"
-                                                password.error = "Inserisci password"
-                                                loading.visibility = View.INVISIBLE
-                                            }
-                                            if (username.text.toString().isEmpty() && querySnapshot.isEmpty){
-                                                username.error = "Inserisci username"
-                                                loading.visibility = View.INVISIBLE
-                                            }
-                                            if (password.text.toString().isEmpty() && querySnapshot.isEmpty) {
-                                                password.error = "Inserisci password"
-                                                loading.visibility = View.INVISIBLE
-                                            }*/
                                         }
                                 }
                             }
