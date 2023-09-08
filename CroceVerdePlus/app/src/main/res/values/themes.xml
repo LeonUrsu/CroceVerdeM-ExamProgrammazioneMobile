@@ -5,7 +5,6 @@
         <item name="android:gravity">center</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:statusBarColor" tools:tagetApi="1">@color/CV_green </item>
-        <item name="android:buttonTintMode"></item>
     </style>
 
     <style name="stileBottoni" parent="Base.Theme.CroceVerdePlus">

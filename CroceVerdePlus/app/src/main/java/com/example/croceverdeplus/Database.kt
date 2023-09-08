@@ -1,5 +1,6 @@
 package com.example.croceverdeplus
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -12,7 +13,6 @@ import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
@@ -20,7 +20,6 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.time.Instant
 import java.time.LocalDateTime
-import java.time.ZoneId
 import java.time.ZoneOffset
 import kotlin.random.Random
 
@@ -89,30 +88,6 @@ class Database {
 
     }
 
-    /*
-    Metodo per recuperare i militidal db
-     */
-    fun popula_spinner_militi(root: View, act: Activity) {
-        db.collection("militi")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-                var militi: MutableList<String> = mutableListOf()
-                for (document in result) {
-                    var nome_temp = document.getString("cognomeNomeSpinner")
-                    if (nome_temp != null)
-                        militi.add(nome_temp)
-                }
-                militi.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it }))
-                set_spinner(root, militi, act)
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
-
 
     /*
     Metodo per polulare lo spinner dei militi per segnarli sul tabellone
@@ -120,21 +95,6 @@ class Database {
     fun set_spinner(root: View, militi_array: MutableList<String>, act: Activity) {
         val gameKindArray: ArrayAdapter<String> =
             ArrayAdapter<String>(
-                act,
-                android.R.layout.simple_spinner_item,
-                militi_array
-            )
-        gameKindArray.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        val convert_from_spinner: Spinner = root.findViewById(R.id.milite_input)
-        convert_from_spinner.adapter = gameKindArray
-    }
-
-    /*
-    Metodo per polulare lo spinner dei militi per segnarli sul tabellone
-    */
-    fun set_spinner_milite(root: View, militi_array: MutableList<Milite>, act: Activity) {
-        val gameKindArray: ArrayAdapter<Milite> =
-            ArrayAdapter<Milite>(
                 act,
                 android.R.layout.simple_spinner_item,
                 militi_array
@@ -215,49 +175,6 @@ class Database {
     }
 
     /*
-    Metodo per ricevere un array di tutti i militi presenti nel DB, i militi del
-     */
-    fun ricevi_array_militi(): ArrayList<Milite> {
-        var array_militi = ArrayList<Milite>()
-        return array_militi
-    }
-
-    /*
-    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
-    in ordine cronologico
-    */
-    fun ricevi_tabella_118_h24() {
-        val docRef = db.collection("tabelle").document("tabella_118_h24")
-        docRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                document.toObject<Tabella118>()
-            } else {
-                Log.d(TAG, "No such document")
-            }
-        }.addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
-    }
-
-    /*
-    Metodo per ricevere i dati delle due tabelle, deve restituire le due tabelle in un ArrayOf<Tabella>
-    in ordine cronologico
-    */
-    fun ricevi_tabella_118() {
-        val docRef = db.collection("tabelle").document("tabella_118")
-        docRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                document.toObject<Tabella118>()
-                Log.d(TAG, "No such document")
-            }
-        }.addOnFailureListener { exception ->
-            Log.d(TAG, "get failed with ", exception)
-        }
-    }
-
-    /*
     Metodo per segnare o cancellare un milite dal turno,  se il milite è presente nel tunro oppure non si trova nel turno
      */
     fun segna_o_cancella_milite_dal_turno_centralinista(
@@ -269,7 +186,7 @@ class Database {
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                var presenzaMilite = document.getString(turno)
+                val presenzaMilite = document.getString(turno)
                 if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
                     aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
                     aggiungi_ore_lavorate(cognomeNomeSpinner, turno)
@@ -281,14 +198,14 @@ class Database {
                         rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
                         rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                         Toast.makeText(act, "Milite cancellato", Toast.LENGTH_SHORT).show()
-                    }else{
-                        if(presenzaMilite != cognomeNomeSpinner) {
+                    } else {
+                        if (presenzaMilite != cognomeNomeSpinner) {
                             //cancellazione milite vecchio
                             aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
                             rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
                             rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                             //aggiunta del milite nuovo
-                            var nuovoMilite = presenzaMilite.toString()
+                            val nuovoMilite = presenzaMilite.toString()
                             aggiorna_tabellone_milite(nuovoMilite, nome_tipo_tabella, turno, root)
                             aggiungi_ore_lavorate(nuovoMilite, turno)
                             aggiungi_prenotazione(nuovoMilite, turno, nome_tipo_tabella)
@@ -337,9 +254,9 @@ class Database {
         nome_tipo_tabella: String,
         root: View, act: Activity
     ) {
-        var risultato_campo = trova_campo(turno)
-        var campo = risultato_campo!![2]
-        var autorizzazioneGradoMilite = when (campo) {
+        val risultato_campo = trova_campo(turno)
+        val campo = risultato_campo!![2]
+        val autorizzazioneGradoMilite = when (campo) {
             "1181" -> milite.grado118prima
             "1182" -> milite.grado118seconda
             "1183" -> milite.grado118terza
@@ -350,15 +267,15 @@ class Database {
                 false
             }
         }
-        var autorizzazoneMiliteDoppione = autorizzazione_prenotazione_turno_unica(
+        val autorizzazoneMiliteDoppione = autorizzazione_prenotazione_turno_unica(
             turno,
             cognomeNomeSpinner,
             risultato_campo[3],
             document
         )
-        var autorizzazioneGradoMiliteCorretta =
+        val autorizzazioneGradoMiliteCorretta =
             if (autorizzazioneGradoMilite == null) false else autorizzazioneGradoMilite
-        var presenzaMilite = document.getString(turno)
+        val presenzaMilite = document.getString(turno)
         if (presenzaMilite == "") {// RAMO AGGIUNGI MILITE AL TURNO
             if (autorizzazioneGradoMiliteCorretta && autorizzazoneMiliteDoppione) {
                 aggiorna_tabellone_milite(cognomeNomeSpinner, nome_tipo_tabella, turno, root)
@@ -389,9 +306,9 @@ class Database {
             .addOnSuccessListener { result ->
                 for (prenotazione in result) {
                     if (prenotazione.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
-                        var turnoPrenotazioneCompleto =
+                        val turnoPrenotazioneCompleto =
                             prenotazione.getString("turnoPrenotazioneCompleto")
-                        var turnoPrenotazioneCostruito = nome_tipo_tabella + "_" + turno
+                        val turnoPrenotazioneCostruito = nome_tipo_tabella + "_" + turno
                         if (turnoPrenotazioneCompleto == turnoPrenotazioneCostruito) {
                             cancella_documento_da_db("prenotazioni", prenotazione.id)
                         }
@@ -411,11 +328,11 @@ class Database {
         turno: String,
         nome_tipo_tabella: String
     ) {
-        var dataPrenotazione = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
-        var map = trova_campo(turno)
-        var prenotazione = Prenotazione(
+        val dataPrenotazione = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        val map = trova_campo(turno)
+        val prenotazione = Prenotazione(
             dataPrenotazione,
-            map!!.get(2),
+            map!![2],
             cognomeNomeSpinner,
             nome_tipo_tabella + "_" + turno
         )
@@ -425,6 +342,7 @@ class Database {
     /*
     definizione metodo di ProfiloVolontarioDipendente
      */
+    @SuppressLint("SetTextI18n")
     fun setta_stato_regolarita_turno(root: View, cognomeNomeSpinner: String) {
         db.collection("prenotazioni")
             .get()
@@ -433,13 +351,12 @@ class Database {
                 for (prenotazione in result) {
                     if (prenotazione.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
                         //todo fare il calcolo delle ore necessarie e aggiungerle al layout
-                        var days_ago_30 =
+                        val days_ago_30 =
                             LocalDateTime.now().minusDays(30) //.toEpochSecond(ZoneOffset.UTC)
                         var data_prenotazione_in_seconds =
                             prenotazione.getLong("dataPrenotazione")
                         data_prenotazione_in_seconds = data_prenotazione_in_seconds!!.toLong()
-                        if (data_prenotazione_in_seconds == null) data_prenotazione_in_seconds =
-                            0 else data_prenotazione_in_seconds.toLong()
+                        data_prenotazione_in_seconds.toLong()
                         var data_prenotazione = LocalDateTime.ofEpochSecond(
                             data_prenotazione_in_seconds,
                             0,
@@ -452,13 +369,11 @@ class Database {
                     }
                 }
                 if (turni_fatti >= 2) {
-                    root.findViewById<TextView>(R.id.regolarita_turno)
-                        .setText("stato regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno).text = "stato regolare $turni_fatti/2 turni fatti"
                     root.findViewById<TextView>(R.id.regolarita_turno)
                         .setBackgroundColor(Color.GREEN)
                 } else {
-                    root.findViewById<TextView>(R.id.regolarita_turno)
-                        .setText("Stato non regolare ${turni_fatti.toString()}/2")
+                    root.findViewById<TextView>(R.id.regolarita_turno).text = "Stato non regolare ${turni_fatti}/2 turni fatti"
                     root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.RED)
                 }
 
@@ -484,9 +399,9 @@ class Database {
         grado: String,
         document: DocumentSnapshot
     ): Boolean {
-        val turno1passato = turno.replace("_" + grado, "_1")
-        val turno2passato = turno.replace("_" + grado, "_2")
-        val turno3passato = turno.replace("_" + grado, "_3")
+        val turno1passato = turno.replace("_$grado", "_1")
+        val turno2passato = turno.replace("_$grado", "_2")
+        val turno3passato = turno.replace("_$grado", "_3")
         val risultato = when (cognomeNomeSpinner) {
             document.getString(turno1passato) -> false
             document.getString(turno2passato) -> false
@@ -530,9 +445,9 @@ class Database {
         docRef.get().addOnSuccessListener { document ->
             if (document != null) {
                 Log.d(TAG, "DocumentSnapshot data: ${document.data}")
-                var turno = TabelloneTurni().rileva_valori_spinner(root)
-                var dataDisponibilita = costruisci_data_disponibilita_in_long(document, turno)
-                costruisci_trasmetti_disponibilità(
+                val turno = TabelloneTurni().rileva_valori_spinner(root)
+                val dataDisponibilita = costruisci_data_disponibilita_in_long(document, turno)
+                costruisci_trasmetti_disponibilita(
                     dataDisponibilita,
                     cognomeNomeSpinner,
                     nome_tipo_settimana + "_" + turno
@@ -576,12 +491,12 @@ class Database {
     /*
     Metodo per costruire un oggetto disponibilità e mandartlo nel DB
      */
-    private fun costruisci_trasmetti_disponibilità(
+    private fun costruisci_trasmetti_disponibilita(
         dataDisponibilita: Long?,
         cognomeNomeSpinner: String,
         turno: String
     ) {
-        var collection = "disponibilità"
+        val collection = "disponibilità"
 
         class Disponibilita {
             var nomeCognomeSpinner: String? = null
@@ -589,7 +504,7 @@ class Database {
             var turnoDisponibilita: String? = null
         }
 
-        var ogg = Disponibilita()
+        val ogg = Disponibilita()
         ogg.nomeCognomeSpinner = cognomeNomeSpinner
         ogg.dataDisponibilita = dataDisponibilita
         ogg.turnoDisponibilita = turno
@@ -644,8 +559,8 @@ class Database {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
                         val militeRef = db.collection("militi").document(document.id)
                         val risultati = trova_campo(turno)
-                        var decrementValue: Long = risultati!!.get(1).toLong() * -1
-                        var oreTurno = risultati.get(0)
+                        val decrementValue: Long = risultati!!.get(1).toLong() * -1
+                        val oreTurno = risultati[0]
                         militeRef.update(oreTurno, FieldValue.increment(decrementValue))
                     }
                 }
@@ -685,7 +600,7 @@ class Database {
             // whatever is appropriate in this case
             throw IllegalArgumentException("word has fewer than 13 characters!")
         }
-        var giorno = str.substring(4, 7)
+        val giorno = str.substring(4, 7)
         return giorno
     }
 
@@ -703,7 +618,7 @@ class Database {
             // whatever is appropriate in this case
             throw IllegalArgumentException("word has fewer than 13 characters!")
         }
-        var servizio = str.substring(0, 3)
+        val servizio = str.substring(0, 3)
         var orario = str.substring(8, 11)
         orario = when (orario) {
             "mat" -> "7"
@@ -713,9 +628,9 @@ class Database {
                 "0"
             }
         }
-        var grado = str.substring(12)
-        var formato = servizio + grado
-        var turno = when (formato) {
+        val grado = str.substring(12)
+        val formato = servizio + grado
+        val turno = when (formato) {
             "1181" -> "oreTurno118prima"
             "1182" -> "oreTurno118seconda"
             "1183" -> "oreTurno118terza"
@@ -743,8 +658,8 @@ class Database {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
                         val militeRef = db.collection("militi").document(document.id)
                         val risultati = trova_campo(turno)
-                        var incrementValue: Long = risultati!!.get(1).toLong()
-                        var oreTurno = risultati.get(0)
+                        val incrementValue: Long = risultati!![1].toLong()
+                        val oreTurno = risultati.get(0)
                         militeRef.update(oreTurno, FieldValue.increment(incrementValue))
                     }
                 }
@@ -765,9 +680,9 @@ class Database {
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
-                var disponibilita: MutableList<Disponibilita> = mutableListOf()
+                val disponibilita: MutableList<Disponibilita> = mutableListOf()
                 for (document in result) {
-                    var dis = document.toObject<Disponibilita>()
+                    val dis = document.toObject<Disponibilita>()
                     disponibilita.add(dis)
                 }
                 carica_disponibilita_nel_fragment(root, disponibilita, context)
@@ -790,49 +705,14 @@ class Database {
         disponibilita.forEach {
             it.nomeCognomeSpinner
             val dis = TextView(context)
-            var long_time = it.dataDisponibilita?.toLong()
+            var long_time = it.dataDisponibilita
             if (long_time == null) long_time = 0.toLong()
-            var localdatatime =
+            val localdatatime =
                 LocalDateTime.ofInstant(Instant.ofEpochMilli(long_time), ZoneOffset.UTC)
             dis.hint =
                 "${it.nomeCognomeSpinner}  ${it.turnoDisponibilita}  ${localdatatime.toLocalDate()}"
             dis.textSize = 20F
             linearLayout.addView(dis)
-        }
-    }
-
-    fun popula_lista_checklist(root: View, contex: Context) {
-        db.collection("presidi_ambulanza_118")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG, "${document.id} => ${document.data}")
-                }
-                var presidi_list: MutableList<String> = mutableListOf()
-                for (document in result) {
-                    document.getString("nome_presidio")?.let { presidi_list.add(it) }
-                }
-                carica_presidi_ambulanza_nel_fragment(root, contex, presidi_list)
-            }
-            .addOnFailureListener { exception ->
-                Log.d(TAG, "Error getting documents: ", exception)
-            }
-    }
-
-    /*
-    Metodo per caricare i presidi dell'ambulanza nel fragment
-     */
-    private fun carica_presidi_ambulanza_nel_fragment(
-        root: View,
-        context: Context,
-        presidi: MutableList<String>
-    ) {
-        val linearLayout = root.findViewById(R.id.checkListVolontario) as LinearLayout
-        presidi.forEach {
-            val presidio = CheckBox(context)
-            presidio.hint = "$it"
-            presidio.textSize = 20F
-            linearLayout.addView(presidio)
         }
     }
 
@@ -846,18 +726,18 @@ class Database {
                 for (document in result) {
                     Log.d(TAG, "${document.id} => ${document.data}")
                 }
-                var militi: MutableList<Milite> = mutableListOf()
+                val militi: MutableList<Milite> = mutableListOf()
                 for (document in result) {
                     militi.add(document.toObject<Milite>())
                 }
-                var militi_filtrati: MutableList<Milite> =
+                val militi_filtrati: MutableList<Milite> =
                     TabelloneTurni().filtra_militi(militi, servizio, grado)
-                var militi_filtrati_string: MutableList<String> = mutableListOf()
+                val militi_filtrati_string: MutableList<String> = mutableListOf()
                 for (milite in militi_filtrati) {
                     if (milite.cognomeNomeSpinner != null)
                         militi_filtrati_string.add(milite.cognomeNomeSpinner!!)
                 }
-                militi_filtrati_string.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it }))
+                militi_filtrati_string.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it })
                 set_spinner(root, militi_filtrati_string, act)
             }
             .addOnFailureListener { exception ->
@@ -878,7 +758,7 @@ class Database {
             }
             if (snapshot != null && snapshot.exists()) {
                 Log.d(TAG, "Current data: ${snapshot.data}")
-                var tabellaRicevuta = snapshot.toObject<Tabella118h24>()
+                val tabellaRicevuta = snapshot.toObject<Tabella118h24>()
                 TabelloneTurni().setta_info_tabella_118_h24(root, tabellaRicevuta)
             } else {
                 Log.d(TAG, "Current data: null")
@@ -899,7 +779,7 @@ class Database {
             }
             if (snapshot != null && snapshot.exists()) {
                 Log.d(TAG, "Current data: ${snapshot.data}")
-                var tabellaRicevuta = snapshot.toObject<Tabella118>()
+                val tabellaRicevuta = snapshot.toObject<Tabella118>()
                 TabelloneTurni().setta_info_tabella_118(root, tabellaRicevuta)
             } else {
                 Log.d(TAG, "Current data: null")

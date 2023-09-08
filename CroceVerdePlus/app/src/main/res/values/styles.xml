@@ -3,6 +3,8 @@
 
     <style name="CroceVerdePlusNewStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/CV_text</item>
+        <item name="android:fontStyle"></item>
         <item name="buttonStyle">@style/cv_stileBottoni</item>
         <item name="colorPrimary">@color/CV_green</item>
     </style>
@@ -41,6 +43,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:backgroundTint">#656363</item>
         <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="CV_profilo">
@@ -60,6 +63,8 @@
 
     <style name="cv_stileBottoni" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/cv_buttons </item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="switch_colors" parent="Theme.AppCompat.Light">
