@@ -89,6 +89,21 @@ class MainActivity : AppCompatActivity() {
                                                 loading.visibility = View.INVISIBLE
                                             }
                                             if (username.text.toString().isEmpty() && password.text.toString().isEmpty() && querySnapshot.isEmpty) {
+                                                Toast.makeText(this@MainActivity, "Username e Password non inseriti", Toast.LENGTH_SHORT).show()
+                                                loading.visibility = View.INVISIBLE
+                                            } else {
+                                                if (username.text.toString().isEmpty() && querySnapshot.isEmpty){
+                                                    Toast.makeText(this@MainActivity, "Username non inserito", Toast.LENGTH_SHORT).show()
+                                                    loading.visibility = View.INVISIBLE
+                                                } else {
+                                                    if (password.text.toString().isEmpty() && querySnapshot.isEmpty) {
+                                                        Toast.makeText(this@MainActivity, "Password non inserita", Toast.LENGTH_SHORT).show()
+                                                        loading.visibility = View.INVISIBLE
+                                                    }
+                                                }
+                                            }
+                                        /*
+                                            if (username.text.toString().isEmpty() && password.text.toString().isEmpty() && querySnapshot.isEmpty) {
                                                 username.error = "Inserisci username"
                                                 password.error = "Inserisci password"
                                                 loading.visibility = View.INVISIBLE
@@ -100,7 +115,7 @@ class MainActivity : AppCompatActivity() {
                                             if (password.text.toString().isEmpty() && querySnapshot.isEmpty) {
                                                 password.error = "Inserisci password"
                                                 loading.visibility = View.INVISIBLE
-                                            }
+                                            }*/
                                         }
                                 }
                             }
