@@ -27,7 +27,6 @@
         android:layout_marginTop="25dp"
         android:backgroundTint="#ACACAC"
         android:text="Gestisci militi"
-        android:theme="@style/CV_buttons"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout3"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
@@ -40,7 +39,6 @@
         android:layout_marginTop="45dp"
         android:backgroundTint="#ACACAC"
         android:text="Esci"
-        android:theme="@style/CV_buttons"
         app:layout_constraintEnd_toEndOf="@+id/button8"
         app:layout_constraintStart_toStartOf="@+id/button8"
         app:layout_constraintTop_toBottomOf="@+id/button8" />
@@ -52,7 +50,6 @@
         android:layout_marginTop="12dp"
         android:backgroundTint="#ACACAC"
         android:text="Gestisci Centralinisti"
-        android:theme="@style/CV_buttons"
         app:layout_constraintEnd_toEndOf="@+id/button7"
         app:layout_constraintStart_toStartOf="@+id/button7"
         app:layout_constraintTop_toBottomOf="@+id/button7" />
@@ -75,7 +72,6 @@
             android:layout_marginBottom="10dp"
             android:backgroundTint="#ACACAC"
             android:text="Scegli settimana H24"
-            android:theme="@style/CV_buttons"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

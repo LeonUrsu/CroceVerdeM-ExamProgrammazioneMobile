@@ -1,13 +1,11 @@
 package com.example.croceverdeplus
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
-import android.content.res.Resources
 import android.util.Log
 import android.view.View
 import android.widget.Spinner
 import android.widget.TextView
-import android.widget.ViewFlipper
-import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObject
 import java.time.Instant
@@ -16,15 +14,6 @@ import java.time.format.DateTimeFormatter
 
 
 class TabelloneTurni {
-
-    /*
-    Metodo per rilevare il nome presente nello spinner dei militi disponibili per il turno
-     */
-    fun rileva_nomi_spinner(root: View, tipo_settimana: Boolean): String {
-        val nome_cognome: String =
-            root.findViewById<Spinner>(R.id.milite_input).selectedItem.toString()
-        return nome_cognome
-    }
 
     /*
     Metodo per rilevarela posizione del valore dello  spinner selezionato nel
@@ -91,37 +80,6 @@ class TabelloneTurni {
         return "turno_" + servizio + "_" + giorno + "_" + orario + "_" + grado
     }
 
-    fun rileva_data_turno(turno: String, dataLunedi: Timestamp): Array<Any> {
-        var data = dataLunedi.seconds * 1000
-        val lunedi =
-            Instant.ofEpochMilli(data.toLong()).atZone(ZoneId.systemDefault()).toLocalDateTime()
-        var settimana = ""
-        if (turno.contains("turno118h24"))
-            settimana = "settimana_118_h24"
-        else settimana = "settimana_118"
-        var str = turno.substring(turno.length - 9)
-        str = str.substring(0, 3)
-        //tabella_118_turno_118_lun_mat_1
-        val giorno: Int = when (str) {
-            "lun" -> 0
-            "mar" -> 1
-            "mer" -> 2
-            "gio" -> 3
-            "ven" -> 4
-            "sab" -> 5
-            "dom" -> 6
-            else -> {
-                0
-            }
-        }
-        var millis = lunedi.plusDays(giorno.toLong()).second.toLong() * 1000 //data in millesecondi
-        return arrayOf(millis, settimana)
-    }
-
-
-    fun rileva_nome_milite(root: View, tipo_settimana: Boolean) {
-        var nome_milite = TabelloneTurni().rileva_nomi_spinner(root, tipo_settimana)
-    }
 
     /*
     Metodo Per settare la tabella 118
@@ -133,7 +91,7 @@ class TabelloneTurni {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
-                    var documento = document.toObject<Tabella118>()
+                    val documento = document.toObject<Tabella118>()
                     setta_info_tabella_118(root, documento)
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
@@ -154,7 +112,7 @@ class TabelloneTurni {
             .addOnSuccessListener { document ->
                 if (document != null) {
                     Log.d(ContentValues.TAG, "DocumentSnapshot data: ${document.data}")
-                    var documento = document.toObject<Tabella118h24>()
+                    val documento = document.toObject<Tabella118h24>()
                     setta_info_tabella_118_h24(root, documento)
                 } else {
                     Log.d(ContentValues.TAG, "No such document")
@@ -176,7 +134,7 @@ class TabelloneTurni {
     ): MutableList<Milite> {
         val militiFiltrati: MutableList<Milite> = mutableListOf()
         militi.forEach {
-            var risultatoVerificaGrado = when(servizio_val + grado_val){
+            val risultatoVerificaGrado = when(servizio_val + grado_val){
                 "1181a" -> it.grado118prima
                 "1182a" -> it.grado118seconda
                 "1183a" -> it.grado118terza
@@ -196,6 +154,7 @@ class TabelloneTurni {
     la cosa ricevuta e un oggetto di configurazione da li si estraggono le date
     la tabella con 118 corrisponde al valore false
     */
+    @SuppressLint("SetTextI18n")
     fun setta_info_tabella_118(root: View, tabella: Tabella118?) {
         if (tabella != null) {
 
@@ -332,7 +291,7 @@ class TabelloneTurni {
             root.findViewById<TextView>(R.id.tabella_118_turno_118_dom_ser_3).text =
                 tabella.turno_118_dom_ser_3
 
-            var milli = tabella.data_lunedi!!.seconds * 1000
+            val milli = tabella.data_lunedi!!.seconds * 1000
             val lunedi =
                 Instant.ofEpochMilli(milli).atZone(ZoneId.systemDefault()).toLocalDateTime()
             val formatter = DateTimeFormatter.ofPattern("dd/MM")
@@ -625,31 +584,19 @@ class TabelloneTurni {
             root.findViewById<TextView>(R.id.tabella_118_h24_turno_h24_dom_ser_3).text =
                 tabella.turno_h24_dom_ser_3
 
-            var milli = tabella.data_lunedi!!.seconds * 1000
+            val milli = tabella.data_lunedi!!.seconds * 1000
             val lunedi =
                 Instant.ofEpochMilli(milli).atZone(ZoneId.systemDefault()).toLocalDateTime()
             val formatter = DateTimeFormatter.ofPattern("dd/MM")
-            root.findViewById<TextView>(R.id.lunedi118h24).setText(
-                "Lunedì   ${lunedi.format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.martedi118h24).setText(
-                "Martedì   ${lunedi.plusDays(1).format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.mercoledi118h24).setText(
+            root.findViewById<TextView>(R.id.lunedi118h24).text = "Lunedì   ${lunedi.format(formatter)}"
+            root.findViewById<TextView>(R.id.martedi118h24).text = "Martedì   ${lunedi.plusDays(1).format(formatter)}"
+            root.findViewById<TextView>(R.id.mercoledi118h24).text =
                 "Mercoledì   ${lunedi.plusDays(2).format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.giovedi118h24).setText(
-                "Giovedì   ${lunedi.plusDays(3).format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.venerdi118h24).setText(
-                "Venerdì   ${lunedi.plusDays(4).format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.sabato118h24).setText(
-                "Sabato   ${lunedi.plusDays(5).format(formatter)}"
-            )
-            root.findViewById<TextView>(R.id.domenica118h24).setText(
+            root.findViewById<TextView>(R.id.giovedi118h24).text = "Giovedì   ${lunedi.plusDays(3).format(formatter)}"
+            root.findViewById<TextView>(R.id.venerdi118h24).text = "Venerdì   ${lunedi.plusDays(4).format(formatter)}"
+            root.findViewById<TextView>(R.id.sabato118h24).text = "Sabato   ${lunedi.plusDays(5).format(formatter)}"
+            root.findViewById<TextView>(R.id.domenica118h24).text =
                 "Domenica   ${lunedi.plusDays(6).format(formatter)}"
-            )
 
         }
     }

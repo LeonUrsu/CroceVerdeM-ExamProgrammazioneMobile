@@ -49,9 +49,12 @@ class ProfiloCentralinista(val cognomeNomeSpinner: String) : Fragment() {
                 for (document in result) {
                     if (document.getString("cognomeNomeSpinner") == cognomeNomeSpinner) {
                         val centralinista = document.toObject<Centralinisti>()
-                        root.findViewById<TextView>(R.id.nome_text_profilo_centralinista).setText(centralinista.nome.toString())
-                        root.findViewById<TextView>(R.id.cognome_text_profilo_centralinista).setText(centralinista.cognome)
-                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_centralinista).setText(centralinista.dataDiNascita.toString())
+                        root.findViewById<TextView>(R.id.nome_text_profilo_centralinista).text =
+                            centralinista.nome.toString()
+                        root.findViewById<TextView>(R.id.cognome_text_profilo_centralinista).text =
+                            centralinista.cognome
+                        root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_centralinista).text =
+                            centralinista.dataDiNascita.toString()
                     }
                 }
             }

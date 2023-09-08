@@ -20,7 +20,7 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var root = inflater.inflate(
+        val root = inflater.inflate(
             R.layout.fragment_profilo_volontario_dipendente, container, false
         )
         root.findViewById<Button>(R.id.logout)
@@ -55,12 +55,12 @@ class ProfiloVolontarioDipendente(val cognomeNomeSpinner: String) : Fragment() {
                         root.findViewById<TextView>(R.id.data_di_nascita_text_profilo_volontario).text =
                             document.getString("dataDiNascita")
 
-                        var oreTurno118prima = "oreTurno118prima"
-                        var oreTurno118seconda = "oreTurno118seconda"
-                        var oreTurno118terza = "oreTurno118terza"
-                        var oreTurnoh24prima = "oreTurnoh24prima"
-                        var oreTurnoh24seconda = "oreTurnoh24seconda"
-                        var oreTurnoh24terza = "oreTurnoh24terza"
+                        val oreTurno118prima = "oreTurno118prima"
+                        val oreTurno118seconda = "oreTurno118seconda"
+                        val oreTurno118terza = "oreTurno118terza"
+                        val oreTurnoh24prima = "oreTurnoh24prima"
+                        val oreTurnoh24seconda = "oreTurnoh24seconda"
+                        val oreTurnoh24terza = "oreTurnoh24terza"
 
                         setta_stato_regolarita_turno(root)
                         root.findViewById<TextView>(R.id.prima_118).text =

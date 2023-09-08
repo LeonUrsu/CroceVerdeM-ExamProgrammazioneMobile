@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CroceVerdePlusNewStyle" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textSize">18dp</item>
-        <item name="android:textColor">@color/CV_text</item>
-        <item name="android:fontStyle"></item>
+    <style name="CroceVerdePlusStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/cv_text</item>
+        <item name="colorPrimary">@color/cv_green</item>
+        <item name="background">@color/gray</item>
+
+        <item name="android:buttonStyle">@style/cv_stileBottoni</item>
         <item name="buttonStyle">@style/cv_stileBottoni</item>
-        <item name="colorPrimary">@color/CV_green</item>
+        <item name="android:spinnerStyle">@style/cv_stileSpinner</item>
+        <item name="spinnerStyle">@style/cv_stileSpinner</item>
+
+        <!-- basarsi su questi
+        <item name="android:spinnerStyle">@style/cv_spinners</item>
+        <item name="spinnerStyle">@style/cv_spinners</item>
+        -->
     </style>
 
-    <style name="CVP_tabella">
+    <style name="cv_stileTabella">
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="CVP_titoli">
+    <style name="cv_stileTitoli">
         <item name="android:textSize">34sp</item>
-        <item name="android:background">@color/CV_green</item>
+        <item name="android:background">@color/cv_green</item>
     </style>
 
     <style name="CVP_nomi">
@@ -26,7 +35,7 @@
 
     <style name="CVP_giorni">
         <item name="android:textSize">10sp</item>
-        <item name="android:background">@color/CV_green</item>
+        <item name="android:background">@color/cv_green</item>
     </style>
 
     <style name="CVP_orari">
@@ -36,24 +45,18 @@
 
     <style name="CVP_vuoto">
         <item name="android:textSize">10sp</item>
-        <item name="android:background">@color/CV_green</item>
+        <item name="android:background">@color/cv_green</item>
     </style>
 
-    <style name="CV_buttons">
-        <item name="android:layout_height">40dp</item>
-        <item name="android:backgroundTint">#656363</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/white</item>
-    </style>
 
-    <style name="CV_profilo">
+    <style name="cv_stileProfilo">
         <item name="android:layout_width">230dp</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginTop">20dp</item>
     </style>
 
-    <style name="cv_righe_profilo">
+    <style name="cv_righeProfilo">
         <item name="android:layout_height">40dp</item>
         <item name="android:backgroundTint">#656363</item>
         <item name="android:textSize">20sp</item>
@@ -62,15 +65,29 @@
     </style>
 
     <style name="cv_stileBottoni" parent="Widget.AppCompat.Button">
-        <item name="android:background">@drawable/cv_buttons </item>
+        <item name="android:background">@drawable/cv_buttons</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="switch_colors" parent="Theme.AppCompat.Light">
-        <item name="colorControlActivated">@color/CV_green</item>
+        <item name="colorControlActivated">@color/cv_green</item>
     </style>
 
+    <style name="cv_stileSpinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/cv_spinners</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:spinnerItemStyle">@style/MooSpinnerItem</item>
+    </style>
+
+
+    <style name="MooSpinnerItem" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textAppearance">@style/MooTextAppearanceSpinnerItem</item>
+    </style>
+
+    <style name="MooTextAppearanceSpinnerItem" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/white</item>
+    </style>
 
 
 </resources>

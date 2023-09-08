@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getSupportActionBar()!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.CV_green)))
+        supportActionBar!!.setBackgroundDrawable(ColorDrawable(resources.getColor(R.color.cv_green)))
         setContentView(R.layout.fragment_login)
         title = "CroceVerdePlus"
         val username: EditText = findViewById(R.id.username_input)

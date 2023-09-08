@@ -4,6 +4,8 @@
     <color name="danger_color">#800000</color>
     <color name="white">#FFFFFF</color>
     <color name="gray">#939292</color>
-    <color name="CV_green">#5cc462</color>
-    <color name="CV_text">#171717</color>
+    <color name="cv_greenTT">#5cc462</color>
+    <color name="cv_green">#039834</color>
+    <color name="cv_light_green">#c4ffca</color>
+    <color name="cv_text">#171717</color>
     </resources>

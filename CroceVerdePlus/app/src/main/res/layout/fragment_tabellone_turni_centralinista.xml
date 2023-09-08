@@ -95,6 +95,7 @@
 
                 <Spinner
                     android:id="@+id/servizio_input_centralinista"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="140dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="4dp"
@@ -108,7 +109,7 @@
                 <Spinner
                     android:id="@+id/orario_input"
                     android:layout_width="140dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:entries="@array/orario_input_array"
                     app:layout_constraintBottom_toTopOf="@+id/milite_input"
                     app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
@@ -119,7 +120,7 @@
                 <Spinner
                     android:id="@+id/grado_input_centralinista"
                     android:layout_width="140dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:entries="@array/grado_input_array"
                     app:layout_constraintBottom_toBottomOf="@+id/orario_input"
                     app:layout_constraintEnd_toEndOf="@+id/giorno_input"
@@ -129,7 +130,7 @@
                 <Spinner
                     android:id="@+id/giorno_input"
                     android:layout_width="140dp"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:entries="@array/giorno_input_array"
                     app:layout_constraintBottom_toBottomOf="@+id/servizio_input_centralinista"
                     app:layout_constraintEnd_toEndOf="parent"

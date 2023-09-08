@@ -20,7 +20,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="@color/CV_green"
+        android:background="@color/cv_green"
         app:itemIconTint="@color/nav_color"
         app:itemTextColor="@color/nav_color"
         app:menu="@menu/nav_bottom_volontario_dipendente" />

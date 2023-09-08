@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:theme="@style/CV_profilo">
+            android:theme="@style/cv_stileProfilo">
 
 
                 <ImageView

@@ -78,7 +78,7 @@ class TabelloneTurniCentralinista : Fragment() {
         }
 
         //segue l'aggiornamento in tempo reale dei dati delle tabelle dal firebase db
-        var db = Database()
+        val db = Database()
         db.aggiorna_tabella_118_h24_in_tempo_reale(root)
         db.aggiorna_tabella_118_in_tempo_reale(root)
 
@@ -91,14 +91,14 @@ class TabelloneTurniCentralinista : Fragment() {
         settimana_1.setOnClickListener {
             vf_centralinista.displayedChild = 1
             nome_tipo_tabella = "tabella_118"
-            spinner_servizio.setEnabled(false)
+            spinner_servizio.isEnabled = false
         }
 
         val settimana_2 = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_2.setOnClickListener {
             vf_centralinista.displayedChild = 2
             nome_tipo_tabella = "tabella_118_h24"
-            spinner_servizio.setEnabled(true)
+            spinner_servizio.isEnabled = true
         }
         return root
     }
@@ -108,7 +108,7 @@ class TabelloneTurniCentralinista : Fragment() {
      */
     fun segna_cancella_btn_function(root: View, act: Activity) {
         val milite = root.findViewById<Spinner>(R.id.milite_input).selectedItem.toString()
-        var id_turno = TabelloneTurni().rileva_valori_spinner(root)
+        val id_turno = TabelloneTurni().rileva_valori_spinner(root)
         Database().segna_o_cancella_milite_dal_turno_centralinista(nome_tipo_tabella, id_turno, milite, root, act)
     }
 }

@@ -8,7 +8,6 @@ import android.graphics.Color
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.Spinner
 import android.widget.TextView
@@ -199,18 +198,17 @@ class Database {
                         rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
                         Toast.makeText(act, "Milite cancellato", Toast.LENGTH_SHORT).show()
                     } else {
-                        if (presenzaMilite != cognomeNomeSpinner) {
-                            //cancellazione milite vecchio
-                            aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
-                            rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
-                            rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
-                            //aggiunta del milite nuovo
-                            val nuovoMilite = presenzaMilite.toString()
-                            aggiorna_tabellone_milite(nuovoMilite, nome_tipo_tabella, turno, root)
-                            aggiungi_ore_lavorate(nuovoMilite, turno)
-                            aggiungi_prenotazione(nuovoMilite, turno, nome_tipo_tabella)
-                            Toast.makeText(act, "Milite sostituito", Toast.LENGTH_SHORT).show()
-                        }
+                        //cancellazione milite vecchio
+                        aggiorna_tabellone_milite("", nome_tipo_tabella, turno, root)
+                        rimuovi_ore_lavorate(cognomeNomeSpinner, turno)
+                        rimuovi_prenotazione(cognomeNomeSpinner, turno, nome_tipo_tabella)
+                        //aggiunta del milite nuovo
+                        val nuovoMilite = presenzaMilite.toString()
+                        aggiorna_tabellone_milite(nuovoMilite, nome_tipo_tabella, turno, root)
+                        aggiungi_ore_lavorate(nuovoMilite, turno)
+                        aggiungi_prenotazione(nuovoMilite, turno, nome_tipo_tabella)
+                        Toast.makeText(act, "Milite sostituito", Toast.LENGTH_SHORT).show()
+
                     }
             } else {
                 Log.d(TAG, "No such document")
@@ -369,11 +367,13 @@ class Database {
                     }
                 }
                 if (turni_fatti >= 2) {
-                    root.findViewById<TextView>(R.id.regolarita_turno).text = "stato regolare $turni_fatti/2 turni fatti"
+                    root.findViewById<TextView>(R.id.regolarita_turno).text =
+                        "stato regolare $turni_fatti/2 turni fatti"
                     root.findViewById<TextView>(R.id.regolarita_turno)
                         .setBackgroundColor(Color.GREEN)
                 } else {
-                    root.findViewById<TextView>(R.id.regolarita_turno).text = "Stato non regolare ${turni_fatti}/2 turni fatti"
+                    root.findViewById<TextView>(R.id.regolarita_turno).text =
+                        "Stato non regolare ${turni_fatti}/2 turni fatti"
                     root.findViewById<TextView>(R.id.regolarita_turno).setBackgroundColor(Color.RED)
                 }
 

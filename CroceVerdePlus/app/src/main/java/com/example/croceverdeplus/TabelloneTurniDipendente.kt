@@ -20,7 +20,7 @@ class TabelloneTurniDipendente : Fragment() {
         val vf_dipendente = root.findViewById(R.id.vf_dipendente) as ViewFlipper
 
         //segue l'aggiornamento in tempo reale dei dati delle tabelle dal firebase db
-        var db = Database()
+        val db = Database()
         db.aggiorna_tabella_118_h24_in_tempo_reale(root)
         db.aggiorna_tabella_118_in_tempo_reale(root)
 
