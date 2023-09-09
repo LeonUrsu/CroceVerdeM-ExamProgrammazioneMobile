@@ -18,6 +18,55 @@ class _SchermataMilite extends State<SchermataMilite> {
     final String residenza = args['residenza'];
     final List<Widget> gradi = args['gradi'];
 
+    //mostra popup di conferma eliminazione milite
+    void popupEliminazioneMilite(BuildContext context) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Conferma Eliminazione'),
+            content: Text('Sei sicuro di voler eliminare questo milite?'),
+            actions: <Widget>[
+              TextButton(
+                child: Text('No'),
+                onPressed: () {
+                  Navigator.of(context).pop(); //chiusura popup
+                },
+              ),
+              TextButton(
+                child: Text('Sì'),
+                onPressed: () async {
+                  //eliminazione milite
+                  QuerySnapshot querySnapshot = await FirebaseFirestore
+                      .instance
+                      .collection('militi')
+                      .where('nome', isEqualTo: nome)
+                      .where('cognome', isEqualTo: cognome)
+                      .where('dataDiNascita', isEqualTo: dataDiNascita)
+                      .where('residenza', isEqualTo: residenza)
+                      .get();
+                  if (querySnapshot.size > 0) {
+                    await querySnapshot.docs[0].reference.delete();
+                  }
+                  Fluttertoast.showToast(
+                    msg: 'Milite Eliminato',
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.BOTTOM,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.grey,
+                    textColor: Colors.white,
+                    fontSize: 16.0,
+                  );
+
+                  Navigator.of(context).pop(); //chiusura popup
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Dettaglio Milite'),
@@ -32,8 +81,8 @@ class _SchermataMilite extends State<SchermataMilite> {
                 children: [
                   Image.asset(
                     'assets/account_image.png',
-                    width: 200,
-                    height: 200,
+                    width: 175,
+                    height: 175,
                   ),
                   SizedBox(height: 60),
                   Text(nome),
@@ -61,28 +110,7 @@ class _SchermataMilite extends State<SchermataMilite> {
                   SizedBox(height: 30),
                   FilledButton.tonal(
                     onPressed: () async {
-                      //si trova il documento relativo al milite selezionato
-                      QuerySnapshot querySnapshot = await FirebaseFirestore
-                          .instance
-                          .collection('militi')
-                          .where('nome', isEqualTo: nome)
-                          .where('cognome', isEqualTo: cognome)
-                          .where('dataDiNascita', isEqualTo: dataDiNascita)
-                          .where('residenza', isEqualTo: residenza)
-                          .get();
-                      //se è stato trovato un risultato lo elimina
-                      if (querySnapshot.size > 0) {
-                        await querySnapshot.docs[0].reference.delete();
-                      }
-                      Fluttertoast.showToast(
-                        msg: 'Milite Eliminato',
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        timeInSecForIosWeb: 1,
-                        backgroundColor: Colors.grey,
-                        textColor: Colors.white,
-                        fontSize: 16.0,
-                      );
+                      popupEliminazioneMilite(context);
                     },
                     child: Text('Elimina Milite'),
                     style: ButtonStyle(

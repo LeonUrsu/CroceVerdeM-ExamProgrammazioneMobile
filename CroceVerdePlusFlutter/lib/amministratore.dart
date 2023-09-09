@@ -23,9 +23,10 @@ class _Amministratore extends State<Amministratore> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('assets/Logo CV.png'),
+              Image.asset('assets/Logo CV.png',
+                width: 300,
+                height: 300),
               const SizedBox(height: 40),
-              // Spazio tra il testo e i TextField
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/lista_militi');
@@ -38,7 +39,6 @@ class _Amministratore extends State<Amministratore> {
                 child: const Text('Gestisci Militi'),
               ),
               const SizedBox(height: 20),
-              // Spazio tra il primo e il secondo TextField
               ElevatedButton(
                 onPressed: () {
                   Navigator.pushNamed(context, '/gestisciTurniMiliti');

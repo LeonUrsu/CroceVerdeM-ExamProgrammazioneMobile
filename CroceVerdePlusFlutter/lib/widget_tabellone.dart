@@ -518,7 +518,6 @@ class _WidgetTabella extends State<WidgetTabella> {
                           height: 40,
                           width: 75,
                           color: Colors.green,
-                          // Imposta il colore di sfondo a verde
                           child: const Center(
                               child: Text(
                                 'H24'
@@ -533,7 +532,6 @@ class _WidgetTabella extends State<WidgetTabella> {
                           height: 40,
                           width: 75,
                           color: Colors.green,
-                          // Imposta il colore di sfondo a verde
                           child: const Center(
                               child: Text(
                                 '118'

@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:croce_verde_plus/milite/profilo_milite.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-import 'amministratore.dart';
 import 'milite/gestore_milite.dart';
 
 class Login extends StatefulWidget {
@@ -44,10 +42,10 @@ class _Login extends State<Login> {
         await Future.wait([amministratoreQuery, militeQuery]);
 
     if (results[0].docs.isNotEmpty) {
-      // Amministratore trovato
+      //amministratore trovato
       Navigator.pushReplacementNamed(context, '/amministratore');
     } else if (results[1].docs.isNotEmpty) {
-      // Milite trovato
+      //milite trovato
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           settings: const RouteSettings(name: '/militi'),
@@ -55,7 +53,7 @@ class _Login extends State<Login> {
         ),
       );
     } else {
-      // Credenziali non valide
+      //credenziali non valide
       Fluttertoast.showToast(
         msg: 'Utente non valido',
         toastLength: Toast.LENGTH_SHORT,
@@ -72,22 +70,6 @@ class _Login extends State<Login> {
     });
   }
 
-  /*void _login(String username, String password) {
-
-    if(username == "a" && password == "p"){
-      /*Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Amministratore()));
-
-       */
-      Navigator.pushNamed(context, '/amministratore'); //pushnamed aggiunge la schermata alla pila delle rotte
-    }
-
-  }
-
-   */
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,9 +84,10 @@ class _Login extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/Logo CV.png'),
+              Image.asset('assets/Logo CV.png',
+                  width: 275,
+                  height: 275),
               const SizedBox(height: 50),
-              // Spazio tra l'immagine e i TextField
               TextField(
                 controller: _usernameController,
                 decoration: const InputDecoration(
@@ -113,7 +96,6 @@ class _Login extends State<Login> {
                 ),
               ),
               const SizedBox(height: 10),
-              // Spazio tra il primo e il secondo TextField
               TextField(
                 controller: _passwordController,
                 obscureText: true,
