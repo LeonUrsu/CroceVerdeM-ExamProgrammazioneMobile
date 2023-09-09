@@ -1,6 +1,8 @@
 package com.example.croceverdeplus
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 
 class GestioneMiliteModificaCrea : Fragment() {
 
@@ -19,6 +22,10 @@ class GestioneMiliteModificaCrea : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
         val root =  inflater.inflate(R.layout.fragment_gestione_milite_modifica_crea, container, false)
+
+        val handler = Handler(Looper.getMainLooper())
+        //imposta un ritardo di 1 secondo (1000 millisecondi)
+        val delayMillis = 1000L
 
         val nome: EditText = root.findViewById(R.id.editTextnome)
         val cognome: EditText = root.findViewById(R.id.editTextcognome)
@@ -69,23 +76,45 @@ class GestioneMiliteModificaCrea : Fragment() {
         val data = Database()
 
         button.setOnClickListener{
+            //gestione inserimento corretto dei dati
+            val nomeText = nome.text.toString().trim()
+            val cognomeText = cognome.text.toString().trim()
+            val dataDiNascitaText = dataDiNascita.text.toString().trim()
+            val residenzaText = residenza.text.toString().trim()
 
-            val switch118primaValue = switch118prima.isChecked
-            val switch118secondaValue = switch118seconda.isChecked
-            val switch118terzaValue = switch118terza.isChecked
-            val switchH24primaValue = switchH24prima.isChecked
-            val switchH24secondaValue = switchH24seconda.isChecked
-            val switchH24terzaValue = switchH24terza.isChecked
+            if(nomeText.isNotEmpty() && cognomeText.isNotEmpty() &&
+                dataDiNascitaText.isNotEmpty() && residenzaText.isNotEmpty()) {
 
-            data.addUserM(nome.text.toString(), cognome.text.toString(),
-                dataDiNascita.text.toString(), residenza.text.toString(),
-                switch118primaValue, switch118secondaValue,
-                switch118terzaValue, switchH24primaValue,
-                switchH24secondaValue, switchH24terzaValue,
-                milite.volontario, milite.dipendente)
+                val switch118primaValue = switch118prima.isChecked
+                val switch118secondaValue = switch118seconda.isChecked
+                val switch118terzaValue = switch118terza.isChecked
+                val switchH24primaValue = switchH24prima.isChecked
+                val switchH24secondaValue = switchH24seconda.isChecked
+                val switchH24terzaValue = switchH24terza.isChecked
 
-            Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+                data.addUserM(
+                    nome.text.toString(), cognome.text.toString(),
+                    dataDiNascita.text.toString(), residenza.text.toString(),
+                    switch118primaValue, switch118secondaValue,
+                    switch118terzaValue, switchH24primaValue,
+                    switchH24secondaValue, switchH24terzaValue,
+                    milite.volontario, milite.dipendente
+                )
 
+                Toast.makeText(requireActivity(), "Milite creato", Toast.LENGTH_SHORT).show()
+
+                //torno alla lista militi con un ritardo di 1 secondo
+                val runnable = Runnable {
+                    val navController = root.findNavController()
+                    navController.popBackStack(R.id.gestioneTuttiMiliti, true)
+                    navController.navigate(R.id.gestioneTuttiMiliti)
+                }
+                handler.postDelayed(runnable, delayMillis)
+
+            } else {
+                //se almeno uno dei campi è vuoto visualizza questo messaggio
+                Toast.makeText(requireActivity(), "Tutti i campi sono obbligatori", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return root

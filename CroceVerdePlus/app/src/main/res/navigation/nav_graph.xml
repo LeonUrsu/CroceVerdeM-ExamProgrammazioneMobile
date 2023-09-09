@@ -40,12 +40,19 @@
         <argument
             android:name="selectedUser"
             app:argType="string" />
+        <action
+            android:id="@+id/action_gestioneCentralinista_to_gestioneTuttiCentralinisti"
+            app:destination="@id/gestioneTuttiCentralinisti" />
     </fragment>
     <fragment
         android:id="@+id/gestioneCentralinistaCrea"
         android:name="com.example.croceverdeplus.GestioneCentralinistaCrea"
         android:label="CroceVerdePlus"
-        tools:layout="@layout/fragment_gestione_centralinista_crea" />
+        tools:layout="@layout/fragment_gestione_centralinista_crea" >
+        <action
+            android:id="@+id/action_gestioneCentralinistaCrea_to_gestioneTuttiCentralinisti"
+            app:destination="@id/gestioneTuttiCentralinisti" />
+    </fragment>
     <fragment
         android:id="@+id/gestioneTuttiMiliti"
         android:name="com.example.croceverdeplus.GestioneTuttiMiliti"
@@ -69,12 +76,19 @@
         <action
             android:id="@+id/action_gestioneMilite_to_gestioneModificaMilite"
             app:destination="@id/gestioneModificaMilite" />
+        <action
+            android:id="@+id/action_gestioneMilite_to_gestioneTuttiMiliti"
+            app:destination="@id/gestioneTuttiMiliti" />
     </fragment>
     <fragment
         android:id="@+id/gestioneMiliteModificaCrea"
         android:name="com.example.croceverdeplus.GestioneMiliteModificaCrea"
         android:label="CroceVerdePlus"
-        tools:layout="@layout/fragment_gestione_milite_modifica_crea" />
+        tools:layout="@layout/fragment_gestione_milite_modifica_crea" >
+        <action
+            android:id="@+id/action_gestioneMiliteModificaCrea_to_gestioneTuttiMiliti"
+            app:destination="@id/gestioneTuttiMiliti" />
+    </fragment>
     <fragment
         android:id="@+id/gestioneModificaMilite"
         android:name="com.example.croceverdeplus.GestioneModificaMilite"
@@ -92,6 +106,9 @@
         <argument
             android:name="residenza"
             app:argType="string" />
+        <action
+            android:id="@+id/action_gestioneModificaMilite_to_gestioneTuttiMiliti"
+            app:destination="@id/gestioneTuttiMiliti" />
     </fragment>
     <fragment
         android:id="@+id/gestioneSettimanaH24"

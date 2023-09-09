@@ -3,6 +3,8 @@ package com.example.croceverdeplus
 import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 
 
@@ -23,6 +26,9 @@ class GestioneCentralinista : Fragment() {
         val root = inflater.inflate(R.layout.fragment_gestione_centralinista, container, false)
 
         val args: GestioneCentralinistaArgs by navArgs()
+        val handler = Handler(Looper.getMainLooper())
+        //imposta un ritardo di 1 secondo (1000 millisecondi)
+        val delayMillis = 1000L
 
         val immProfilo: ImageView = root.findViewById(R.id.imageView4)
         immProfilo.setImageResource(R.drawable.accountimage)
@@ -56,6 +62,15 @@ class GestioneCentralinista : Fragment() {
 
                 Toast.makeText(requireActivity(), "Centralinista eliminato", Toast.LENGTH_SHORT)
                     .show()
+
+                //torno alla lista centralinisti con un ritardo di 1 secondo
+                val runnable = Runnable {
+                    val navController = root.findNavController()
+                    navController.popBackStack(R.id.gestioneTuttiCentralinisti, true)
+                    navController.navigate(R.id.gestioneTuttiCentralinisti)
+                }
+                handler.postDelayed(runnable, delayMillis)
+
             }
             //aggiunge l'opzione "No" che chiude il popup
             builder.setNegativeButton("No") { _, _ ->
