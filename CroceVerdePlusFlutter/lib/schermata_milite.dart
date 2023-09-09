@@ -81,8 +81,8 @@ class _SchermataMilite extends State<SchermataMilite> {
                 children: [
                   Image.asset(
                     'assets/account_image.png',
-                    width: 200,
-                    height: 200,
+                    width: 175,
+                    height: 175,
                   ),
                   SizedBox(height: 60),
                   Text(nome),
