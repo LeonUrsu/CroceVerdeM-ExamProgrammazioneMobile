@@ -18,7 +18,7 @@ class _GestioneMiliti extends State<GestioneMiliti> {
         stream: FirebaseFirestore.instance.collection('militi').snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return Center(); //TODO ELIMINATO child: CircularProgressIndicator() INTERNO A CENTER()
+            return Center();
           }
 
           // elenco di documenti della collezione "militi"
@@ -105,27 +105,3 @@ class _GestioneMiliti extends State<GestioneMiliti> {
     );
   }
 }
-
-/*class DettaglioMilitiScreen extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Gestione Milite'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Nome: $nome'),
-            Text('Cognome: $cognome'),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
- */

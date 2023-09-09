@@ -247,8 +247,6 @@ class _AggiungiMilite extends State<AggiungiMilite> {
                     ),
                   ),
                 ),
-                //SizedBox(height: 50),
-                //CircularProgressIndicator()
               ],
             ),
           ),

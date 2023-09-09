@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: lightTheme,
-      initialRoute: '/', // Rotta iniziale
+      initialRoute: '/', //rotta iniziale
       routes: {
         '/': (context) => Login(),
         '/amministratore': (context) => Amministratore(),

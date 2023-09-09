@@ -22,29 +22,6 @@ class _ModificaMilite extends State<ModificaMilite> {
   TextEditingController _cognomeController = TextEditingController();
   TextEditingController _datadinascitaController = TextEditingController();
   TextEditingController _residenzaController = TextEditingController();
-/*
-  String nomeArgs = '';
-  String cognomeArgs = '';
-  String dataDiNascitaArgs = '';
-  String residenzaArgs = '';
-
-  @override
-  void initState() {
-    super.initState();
-
-    final Map<String, dynamic> args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
-    final String nomeArgs = args['nome'];
-    final String cognomeArgs = args['cognome'];
-    final String dataDiNascitaArgs = args['dataDiNascita'];
-    final String residenzaArgs = args['residenza'];
-
-    _nomeController.text = nomeArgs;
-    _cognomeController.text = cognomeArgs;
-    _datadinascitaController.text = dataDiNascitaArgs;
-    _residenzaController.text = residenzaArgs;
-  }
-
-   */
 
   @override
   Widget build(BuildContext context) {
@@ -54,28 +31,6 @@ class _ModificaMilite extends State<ModificaMilite> {
     final String cognomeArgs = args['cognome'];
     final String dataDiNascitaArgs = args['dataDiNascita'];
     final String residenzaArgs = args['residenza'];
-
-
-
-
-/*
-    _nomeController = TextEditingController(text: nomeArgs);
-    _cognomeController = TextEditingController(text: cognomeArgs);
-    _datadinascitaController = TextEditingController(text: dataDiNascitaArgs);
-    _residenzaController = TextEditingController(text: residenzaArgs);
-
-
-     */
-
-
-    /*TextEditingController _nomeController = TextEditingController(text: nomeArgs);
-    TextEditingController _cognomeController = TextEditingController(text: cognomeArgs);
-    TextEditingController _datadinascitaController = TextEditingController(text: dataDiNascitaArgs);
-    TextEditingController _residenzaController = TextEditingController(text: residenzaArgs);
-
-
-     */
-
 
     return Scaffold(
       appBar: AppBar(
