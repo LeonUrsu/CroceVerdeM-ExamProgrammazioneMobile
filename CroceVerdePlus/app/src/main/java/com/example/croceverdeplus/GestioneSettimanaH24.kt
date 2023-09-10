@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -62,7 +63,7 @@ class GestioneSettimanaH24 : Fragment() {
         buttonSettimana1.text = "${formatDateRange(currentWeekStart, currentWeekEnd)}"
         buttonSettimana2.text = "${formatDateRange(nextWeekStart, nextWeekEnd)}"
 
-        val selectedButtonColor = Color.parseColor("#3FA325")
+        val selectedButtonColor = Color.parseColor("#5cc462")
         val deselectedButtonColor = Color.parseColor("#ACACAC")
         var clickSett1: Boolean? = null
         var clickSett2: Boolean? = null
@@ -109,27 +110,40 @@ class GestioneSettimanaH24 : Fragment() {
                                     "data_domenica", currentWeekEnd)
 
                             updateTabelle()
+                            Toast.makeText(requireActivity(), "Le tabelle sono state aggiornate", Toast.LENGTH_SHORT).show()
 
-                        }
-                        if (clickSett2 == true) {
-                            db.collection("tabelle")
-                                .document("tabella_118").update("data_lunedi", currentWeekStart,
-                                    "data_martedi", tuesday,
-                                    "data_mercoledi", wednesday,
-                                    "data_giovedi", thursday,
-                                    "data_venerdi", friday,
-                                    "data_sabato", saturday,
-                                    "data_domenica", currentWeekEnd)
-                            db.collection("tabelle")
-                                .document("tabella_118_h24").update("data_lunedi", nextWeekStart,
-                                    "data_martedi", tuesdayNext,
-                                    "data_mercoledi", wednesdayNext,
-                                    "data_giovedi", thursdayNext,
-                                    "data_venerdi", fridayNext,
-                                    "data_sabato", saturdayNext,
-                                    "data_domenica", nextWeekEnd)
+                        } else {
+                            if (clickSett2 == true) {
+                                db.collection("tabelle")
+                                    .document("tabella_118").update(
+                                        "data_lunedi", currentWeekStart,
+                                        "data_martedi", tuesday,
+                                        "data_mercoledi", wednesday,
+                                        "data_giovedi", thursday,
+                                        "data_venerdi", friday,
+                                        "data_sabato", saturday,
+                                        "data_domenica", currentWeekEnd
+                                    )
+                                db.collection("tabelle")
+                                    .document("tabella_118_h24").update(
+                                        "data_lunedi", nextWeekStart,
+                                        "data_martedi", tuesdayNext,
+                                        "data_mercoledi", wednesdayNext,
+                                        "data_giovedi", thursdayNext,
+                                        "data_venerdi", fridayNext,
+                                        "data_sabato", saturdayNext,
+                                        "data_domenica", nextWeekEnd
+                                    )
 
-                            updateTabelle()
+                                updateTabelle()
+                                Toast.makeText(
+                                    requireActivity(),
+                                    "Le tabelle sono state aggiornate",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                Toast.makeText(requireActivity(), "Seleziona una settimana", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 }
