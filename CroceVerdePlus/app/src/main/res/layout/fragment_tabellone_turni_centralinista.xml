@@ -94,7 +94,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/orario_input" />
 
                 <Spinner
-                    android:id="@+id/servizio_input_centralinista"
+                    android:id="@+id/servizio_input"
                     style="@style/Base.Widget.AppCompat.Spinner.Underlined"
                     android:layout_width="140dp"
                     android:layout_height="50dp"
@@ -112,10 +112,10 @@
                     android:layout_height="40dp"
                     android:entries="@array/orario_input_array"
                     app:layout_constraintBottom_toTopOf="@+id/milite_input"
-                    app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
+                    app:layout_constraintEnd_toEndOf="@+id/servizio_input"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/servizio_input_centralinista"
-                    app:layout_constraintTop_toBottomOf="@+id/servizio_input_centralinista" />
+                    app:layout_constraintStart_toStartOf="@+id/servizio_input"
+                    app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
 
                 <Spinner
                     android:id="@+id/grado_input_centralinista"
@@ -132,11 +132,11 @@
                     android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:entries="@array/giorno_input_array"
-                    app:layout_constraintBottom_toBottomOf="@+id/servizio_input_centralinista"
+                    app:layout_constraintBottom_toBottomOf="@+id/servizio_input"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/servizio_input_centralinista"
-                    app:layout_constraintTop_toTopOf="@+id/servizio_input_centralinista" />
+                    app:layout_constraintStart_toEndOf="@+id/servizio_input"
+                    app:layout_constraintTop_toTopOf="@+id/servizio_input" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

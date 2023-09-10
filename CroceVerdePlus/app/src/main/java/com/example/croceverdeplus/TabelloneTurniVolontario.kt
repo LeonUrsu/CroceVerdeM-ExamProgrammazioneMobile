@@ -17,12 +17,10 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
     var nome_tipo_tabella: String = ""
     var root: View? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         val root =
             inflater.inflate(R.layout.fragment_tabellone_turni_volontario, container, false)
         val vf_volontario = root.findViewById(R.id.vf_volontario) as ViewFlipper
@@ -30,14 +28,13 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
         vf_volontario.displayedChild = numero_tabella
         nome_tipo_tabella = "tabella_118"
 
-        val spinner_servizio = root.findViewById<Spinner>(R.id.servizio_input_centralinista)
+        val spinner_servizio = root.findViewById<Spinner>(R.id.servizio_input)
         spinner_servizio.isEnabled = false
 
         //segue l'aggiornamento in tempo reale dei dati delle tabelle dal firebase db
         val db = Database()
         db.aggiorna_tabella_118_h24_in_tempo_reale(root)
         db.aggiorna_tabella_118_in_tempo_reale(root)
-
 
         val segnami_cancellami_btn = root.findViewById(R.id.segna_cancella_btn) as Button
         segnami_cancellami_btn.setOnClickListener {
@@ -51,7 +48,6 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
             Toast.makeText(requireActivity(), "disponibilità assegnata", Toast.LENGTH_SHORT).show()
         }
 
-
         val settimana_n_btn = root.findViewById(R.id.settimana_n) as Button
         settimana_n_btn.setOnClickListener {
             vf_volontario.displayedChild = 1
@@ -60,7 +56,6 @@ class TabelloneTurniVolontario(val cognomeNomeSpinner: String) : Fragment() {
             spinner_servizio.isEnabled = false
 
         }
-
 
         val settimana_n_plus_btn = root.findViewById(R.id.settimana_n_plus_1) as Button
         settimana_n_plus_btn.setOnClickListener {

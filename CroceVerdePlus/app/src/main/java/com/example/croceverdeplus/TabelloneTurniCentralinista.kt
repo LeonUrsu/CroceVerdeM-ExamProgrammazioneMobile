@@ -27,7 +27,7 @@ class TabelloneTurniCentralinista : Fragment() {
         nome_tipo_tabella = "tabella_118_h24"
 
         //segue l'aggiornamento nella lista dei militi in base al grado del turno che è stato selezionato
-        val spinner_servizio: Spinner = root.findViewById(R.id.servizio_input_centralinista)
+        val spinner_servizio: Spinner = root.findViewById(R.id.servizio_input)
         spinner_servizio.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>,
@@ -35,7 +35,7 @@ class TabelloneTurniCentralinista : Fragment() {
                 position: Int,
                 id: Long
             ) {
-                root.findViewById<Spinner>(R.id.servizio_input_centralinista)
+                root.findViewById<Spinner>(R.id.servizio_input)
                 if (position == 0)
                     tipo_servizio_filtro = "118"
                 else tipo_servizio_filtro = "h24"

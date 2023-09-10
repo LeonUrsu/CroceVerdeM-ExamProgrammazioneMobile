@@ -12,7 +12,6 @@ import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-
 class TabelloneTurni {
 
     /*
@@ -22,7 +21,7 @@ class TabelloneTurni {
     */
     fun rileva_valori_spinner(root: View): String {
         val servizio_val: String =
-            root.findViewById<Spinner>(R.id.servizio_input_centralinista).selectedItem.toString()
+            root.findViewById<Spinner>(R.id.servizio_input).selectedItem.toString()
         val orario_val: String =
             root.findViewById<Spinner>(R.id.orario_input).selectedItem.toString()
         val giorno_val: String =

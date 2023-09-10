@@ -77,43 +77,50 @@ class _Login extends State<Login> {
         title: const Text('Croce Verde Plus'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(16, 20, 16, 50),
-        // Distanza sinistra, sopra, destra, sotto
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/Logo CV.png',
-                  width: 275,
-                  height: 275),
-              const SizedBox(height: 50),
-              TextField(
-                controller: _usernameController,
-                decoration: const InputDecoration(
-                  labelText: 'Username',
-                  border: OutlineInputBorder(),
-                ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(16, 20, 16, 50),
+            // Distanza sinistra, sopra, destra, sotto
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/Logo CV.png', width: 275, height: 275),
+                  const SizedBox(height: 50),
+                  TextField(
+                    textInputAction: TextInputAction.next,
+                    onEditingComplete: () => FocusScope.of(context).nextFocus(),
+
+                    controller: _usernameController,
+                    decoration: const InputDecoration(
+                      labelText: 'Username',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  TextField(
+                    textInputAction: TextInputAction.done,
+                    onSubmitted: (_) => FocusScope.of(context).unfocus(),
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  ElevatedButton(
+                    onPressed: () => _login(context),
+                    child: Text('Login'),
+                  ),
+                  const SizedBox(height: 50),
+                  if (_rotellina) CircularProgressIndicator()
+                ],
               ),
-              const SizedBox(height: 10),
-              TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 25),
-              ElevatedButton(
-                onPressed: () => _login(context),
-                child: Text('Login'),
-              ),
-              const SizedBox(height: 50),
-              if (_rotellina) CircularProgressIndicator()
-            ],
-          ),
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

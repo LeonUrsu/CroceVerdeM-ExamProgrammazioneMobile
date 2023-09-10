@@ -60,7 +60,7 @@
                 android:layout_height="291dp">
 
                 <Spinner
-                    android:id="@+id/servizio_input_centralinista"
+                    android:id="@+id/servizio_input"
                     android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:entries="@array/servzio_input_array"
@@ -77,10 +77,10 @@
                     android:layout_marginTop="20dp"
                     android:entries="@array/orario_input_array"
                     app:layout_constraintBottom_toTopOf="@+id/segna_cancella_btn"
-                    app:layout_constraintEnd_toEndOf="@+id/servizio_input_centralinista"
+                    app:layout_constraintEnd_toEndOf="@+id/servizio_input"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="@+id/servizio_input_centralinista"
-                    app:layout_constraintTop_toBottomOf="@+id/servizio_input_centralinista" />
+                    app:layout_constraintStart_toStartOf="@+id/servizio_input"
+                    app:layout_constraintTop_toBottomOf="@+id/servizio_input" />
 
                 <Spinner
                     android:id="@+id/grado_input_centralinista"
@@ -99,11 +99,11 @@
                     android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:entries="@array/giorno_input_array"
-                    app:layout_constraintBottom_toBottomOf="@+id/servizio_input_centralinista"
+                    app:layout_constraintBottom_toBottomOf="@+id/servizio_input"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/servizio_input_centralinista"
-                    app:layout_constraintTop_toTopOf="@+id/servizio_input_centralinista" />
+                    app:layout_constraintStart_toEndOf="@+id/servizio_input"
+                    app:layout_constraintTop_toTopOf="@+id/servizio_input" />
 
                 <Button
                     android:id="@+id/segna_cancella_btn"
