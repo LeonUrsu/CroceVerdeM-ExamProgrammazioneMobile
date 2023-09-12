@@ -1,0 +1,23 @@
+Militi:
+	Volontari:
+		v1: username: Antonio.Natale
+		    password: pass
+		v2: username: Marco.Germondani
+		    password: pass
+		v3: username: Elliot.Alderson
+		    password: pass
+		v4: username: Elisa.Giacovelli
+		    password: pass
+	Dipendenti:
+		d1: username: Giovanni.DiLorenzo
+		    password: pass
+
+Centralinisti:
+	c1: username: daniele.derossi
+	    password: pass
+
+Amministratore:
+	a1: username: admin1
+	    password: pass1
+	a2: username: admin2
+	    password: pass2
